@@ -1,0 +1,221 @@
+{
+  "Resources": {
+    "ec2adminecommerceroleD7383331": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "ec2.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "AdminECommerceStack/ec2-admin-e-commerce-role/Resource"
+      }
+    },
+    "ec2adminecommerceroleDefaultPolicyC8522414": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "dynamodb:ConditionCheckItem"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "AdminECommerceStack1A8E9AF3",
+                    "Arn"
+                  ]
+                },
+                {
+                  "Ref": "AWS::NoValue"
+                }
+              ]
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "ec2adminecommerceroleDefaultPolicyC8522414",
+        "Roles": [
+          {
+            "Ref": "ec2adminecommerceroleD7383331"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "AdminECommerceStack/ec2-admin-e-commerce-role/DefaultPolicy/Resource"
+      }
+    },
+    "ec2adminecommercesg45D75988": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "AdminECommerceStack/ec2-admin-e-commerce-sg",
+        "GroupName": "ec2-admin-e-commerce-sg",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allows SSH access from Internet",
+            "FromPort": 22,
+            "IpProtocol": "tcp",
+            "ToPort": 22
+          },
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allows HTTP access from Internet",
+            "FromPort": 80,
+            "IpProtocol": "tcp",
+            "ToPort": 80
+          },
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allows HTTPS access from Internet",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443
+          },
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Specific port for our server",
+            "FromPort": 8000,
+            "IpProtocol": "tcp",
+            "ToPort": 8000
+          }
+        ],
+        "VpcId": "vpc-e022889d"
+      },
+      "Metadata": {
+        "aws:cdk:path": "AdminECommerceStack/ec2-admin-e-commerce-sg/Resource"
+      }
+    },
+    "ec2adminecommerceInstanceProfile6BF2275F": {
+      "Type": "AWS::IAM::InstanceProfile",
+      "Properties": {
+        "Roles": [
+          {
+            "Ref": "ec2adminecommerceroleD7383331"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "AdminECommerceStack/ec2-admin-e-commerce/InstanceProfile"
+      }
+    },
+    "ec2adminecommerce7002D824": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "AvailabilityZone": "us-east-1a",
+        "IamInstanceProfile": {
+          "Ref": "ec2adminecommerceInstanceProfile6BF2275F"
+        },
+        "ImageId": {
+          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+        },
+        "InstanceType": "t2.micro",
+        "KeyName": "ec2-admin-e-commerce-key",
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "ec2adminecommercesg45D75988",
+              "GroupId"
+            ]
+          }
+        ],
+        "SubnetId": "subnet-b7d44dd1",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "ec2-admin-e-commerce"
+          }
+        ],
+        "UserData": {
+          "Fn::Base64": "#!/bin/bash"
+        }
+      },
+      "DependsOn": [
+        "ec2adminecommerceroleDefaultPolicyC8522414",
+        "ec2adminecommerceroleD7383331"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "AdminECommerceStack/ec2-admin-e-commerce/Resource"
+      }
+    },
+    "AdminECommerceStack1A8E9AF3": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "KeySchema": [
+          {
+            "AttributeName": "email",
+            "KeyType": "HASH"
+          }
+        ],
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "email",
+            "AttributeType": "S"
+          }
+        ],
+        "PointInTimeRecoverySpecification": {
+          "PointInTimeRecoveryEnabled": true
+        },
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 1,
+          "WriteCapacityUnits": 1
+        },
+        "TableName": "admins"
+      },
+      "UpdateReplacePolicy": "Delete",
+      "DeletionPolicy": "Delete",
+      "Metadata": {
+        "aws:cdk:path": "AdminECommerceStack/AdminECommerceStack/Resource"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WNvQ7CMAyEn4U9GAIDKxIDYqIqvEDqGinQxpWTgKoo705/BILpzqe7zxr0VsN6sTcvv8T6sUrIQpAuweBDleQ5CpI63FxhxLQUSMbjHEMXgzqw80EihjH7lLMaWcmaFlLJzTSetODGYj+xvu40AIxDKoRvthm2hJvhO2EUG/qjcOzG2n/wGf0Csqp7Z1quK0hXU81vJ5NzVo5rgrtfPfUO1qAXd2/tUqILtiUoZ30DU9YdPAsBAAA="
+      },
+      "Metadata": {
+        "aws:cdk:path": "AdminECommerceStack/CDKMetadata/Default"
+      }
+    }
+  },
+  "Parameters": {
+    "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter": {
+      "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+      "Default": "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+    }
+  },
+  "Outputs": {
+    "ec2adminecommerceoutput": {
+      "Value": {
+        "Fn::GetAtt": [
+          "ec2adminecommerce7002D824",
+          "PublicIp"
+        ]
+      }
+    }
+  }
+}
