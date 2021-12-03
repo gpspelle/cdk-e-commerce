@@ -95,13 +95,6 @@
             "FromPort": 443,
             "IpProtocol": "tcp",
             "ToPort": 443
-          },
-          {
-            "CidrIp": "0.0.0.0/0",
-            "Description": "Specific port for our server",
-            "FromPort": 8000,
-            "IpProtocol": "tcp",
-            "ToPort": 8000
           }
         ],
         "VpcId": "vpc-e022889d"
@@ -151,7 +144,7 @@
           }
         ],
         "UserData": {
-          "Fn::Base64": "#!/bin/bash"
+          "Fn::Base64": "#!/bin/bash\n#!/bin/bash\n\ncd /home/ec2-user/\n\n## Updating Packages\nsudo yum update -y\n\n## Installing Git Client\nsudo yum install git -y\n\n## Installing Cronttab\nsudo yum install crontabs -y\nsudo chkconfig crond on\nsudo service crond start\n\n## For system to be able to compile software, you need many development tools, such as make, gcc, and autoconf.\nsudo yum groupinstall \"Development Tools\" -y\n\n## Installing Nginx\nsudo amazon-linux-extras install nginx1 -y\n\n## Modifying Nginx Server Configuration\nsudo cat > /etc/nginx/nginx.conf <<EOL\nuser nginx;\nworker_processes auto;\ninclude /usr/share/nginx/modules/*.conf;\nevents {\n    worker_connections 1024;\n}\nhttp {\n    sendfile on;\n    tcp_nopush on;\n    tcp_nodelay on;\n    keepalive_timeout 65;\n    types_hash_max_size 2048;\n    error_log /dev/null;\n    access_log /dev/null;\n    include /etc/nginx/mime.types;\n    default_type application/octet-stream;\n    upstream express_server {\n        server 127.0.0.1:8000;\n        keepalive 64;\n    }\n    server {\n        listen 80 default_server;\n        listen [::]:80 default_server;\n        server_name _;\n        location / {\n            proxy_set_header X-Forwarded-For \\$proxy_add_x_forwarded_for;\n            proxy_set_header X-Real-IP \\$remote_addr;\n            proxy_set_header Host \\$http_host;\n            proxy_set_header Upgrade \\$http_upgrade;\n            proxy_set_header Connection \"upgrade\";\n            proxy_http_version 1.1;\n            proxy_pass http://express_server/;\n            proxy_redirect off;\n            proxy_read_timeout 240s;\n        }\n    }\n}\nEOL\n\n## Starting Nginx Services\nsudo chkconfig nginx on\nsudo service nginx start\nsudo service nginx restart\n\n## Writing the Script to be run as ec2-user\ncat > /tmp/subscript.sh << EOF\n\n## Installing NVM\ncurl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash\n \necho 'export NVM_DIR=\"/home/ec2-user/.nvm\"' >> /home/ec2-user/.bashrc\necho '[ -s \"\\$NVM_DIR/nvm.sh\" ] && . \"\\$NVM_DIR/nvm.sh\"  # This loads nvm' >> /home/ec2-user/.bashrc\n \n## Dot source the files to ensure that variables are available within the current shell\n. /home/ec2-user/.nvm/nvm.sh\n. /home/ec2-user/.bashrc\n \n## Install Node.js\nnvm install v17.0.1\nnvm use v17.0.1\nnvm alias default v17.0.1\n\ngit clone https://github.com/gpspelle/admin-e-commerce-auth\ncd admin-e-commerce-auth\n\n## Installing Global PM2 package\nnpm install -g pm2\n\nnpm install\n\n## Starting the Server\npm2 start index.js\n\n## Saving the current state of pm2\npm2 save\n\n## Adding Cron Job to Auto Restart PM2 on Reboot\ncat <(crontab -l) <(echo \"@reboot /home/ec2-user/.nvm/versions/node/v17.0.1/bin/node /home/ec2-user/.nvm/versions/node/v17.0.1/bin/pm2 resurrect\") | crontab -\n\nEOF\n\n## Changing the owner of the temp script so ec2-user could run it \nchown ec2-user:ec2-user /tmp/subscript.sh && chmod a+x /tmp/subscript.sh\n\n## Executing the script as ec2-user\nsleep 1; su - ec2-user -c \"/tmp/subscript.sh\""
         }
       },
       "DependsOn": [
@@ -195,7 +188,7 @@
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WNvQ7CMAyEn4U9GAIDKxIDYqIqvEDqGinQxpWTgKoo705/BILpzqe7zxr0VsN6sTcvv8T6sUrIQpAuweBDleQ5CpI63FxhxLQUSMbjHEMXgzqw80EihjH7lLMaWcmaFlLJzTSetODGYj+xvu40AIxDKoRvthm2hJvhO2EUG/qjcOzG2n/wGf0Csqp7Z1quK0hXU81vJ5NzVo5rgrtfPfUO1qAXd2/tUqILtiUoZ30DU9YdPAsBAAA="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WNzQrCMBCEn8V7XK0KXgUP4slSfYF0u0L6ky2bRCkh725bUfQ0s8PMtxlk2x2sFwf9dEusmlVEFoJ49RobVZDjIEjqeLe5Ft2RJ5mOS/B98OrI1nkJ6KfsU05qYkWjO4gFt/N41pxbg8PM+rrzCNAWKRe+m3bcEm7G74RBjB9OwqGfav/BZ/QLSKoarO64KiHedPl+O5uUkrJcEdRu9cj2sIZsUTtjlhKsNx1B8dYXvKfGYAsBAAA="
       },
       "Metadata": {
         "aws:cdk:path": "AdminECommerceStack/CDKMetadata/Default"

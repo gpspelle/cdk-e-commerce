@@ -9,7 +9,7 @@
         "path": "Tree",
         "constructInfo": {
           "fqn": "@aws-cdk/core.Construct",
-          "version": "1.131.0"
+          "version": "1.134.0"
         }
       },
       "ECommerceStack": {
@@ -50,7 +50,7 @@
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-dynamodb.CfnTable",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "ScalingRole": {
@@ -58,13 +58,13 @@
                 "path": "ECommerceStack/ECommerceStack/ScalingRole",
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.Resource",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "@aws-cdk/aws-dynamodb.Table",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           },
           "api": {
@@ -83,7 +83,7 @@
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-apigateway.CfnRestApi",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "CloudWatchRole": {
@@ -126,13 +126,13 @@
                     },
                     "constructInfo": {
                       "fqn": "@aws-cdk/aws-iam.CfnRole",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-iam.Role",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "Account": {
@@ -151,7 +151,7 @@
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-apigateway.CfnAccount",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "Deployment": {
@@ -172,13 +172,13 @@
                     },
                     "constructInfo": {
                       "fqn": "@aws-cdk/aws-apigateway.CfnDeployment",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-apigateway.Deployment",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "DeploymentStage.dev": {
@@ -202,13 +202,13 @@
                     },
                     "constructInfo": {
                       "fqn": "@aws-cdk/aws-apigateway.CfnStage",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-apigateway.Stage",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "Endpoint": {
@@ -216,7 +216,7 @@
                 "path": "ECommerceStack/api/Endpoint",
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.CfnOutput",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "Default": {
@@ -276,13 +276,13 @@
                         },
                         "constructInfo": {
                           "fqn": "@aws-cdk/aws-apigateway.CfnMethod",
-                          "version": "1.131.0"
+                          "version": "1.134.0"
                         }
                       }
                     },
                     "constructInfo": {
                       "fqn": "@aws-cdk/aws-apigateway.Method",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   },
                   "products": {
@@ -309,7 +309,7 @@
                         },
                         "constructInfo": {
                           "fqn": "@aws-cdk/aws-apigateway.CfnResource",
-                          "version": "1.131.0"
+                          "version": "1.134.0"
                         }
                       },
                       "OPTIONS": {
@@ -362,13 +362,13 @@
                             },
                             "constructInfo": {
                               "fqn": "@aws-cdk/aws-apigateway.CfnMethod",
-                              "version": "1.131.0"
+                              "version": "1.134.0"
                             }
                           }
                         },
                         "constructInfo": {
                           "fqn": "@aws-cdk/aws-apigateway.Method",
-                          "version": "1.131.0"
+                          "version": "1.134.0"
                         }
                       },
                       "GET": {
@@ -413,7 +413,7 @@
                             },
                             "constructInfo": {
                               "fqn": "@aws-cdk/aws-lambda.CfnPermission",
-                              "version": "1.131.0"
+                              "version": "1.134.0"
                             }
                           },
                           "ApiPermission.Test.ECommerceStackapi77EDABDF.GET..products": {
@@ -450,7 +450,7 @@
                             },
                             "constructInfo": {
                               "fqn": "@aws-cdk/aws-lambda.CfnPermission",
-                              "version": "1.131.0"
+                              "version": "1.134.0"
                             }
                           },
                           "Resource": {
@@ -494,19 +494,19 @@
                             },
                             "constructInfo": {
                               "fqn": "@aws-cdk/aws-apigateway.CfnMethod",
-                              "version": "1.131.0"
+                              "version": "1.134.0"
                             }
                           }
                         },
                         "constructInfo": {
                           "fqn": "@aws-cdk/aws-apigateway.Method",
-                          "version": "1.131.0"
+                          "version": "1.134.0"
                         }
                       }
                     },
                     "constructInfo": {
                       "fqn": "@aws-cdk/aws-apigateway.Resource",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   },
                   "product": {
@@ -533,7 +533,7 @@
                         },
                         "constructInfo": {
                           "fqn": "@aws-cdk/aws-apigateway.CfnResource",
-                          "version": "1.131.0"
+                          "version": "1.134.0"
                         }
                       },
                       "OPTIONS": {
@@ -586,13 +586,13 @@
                             },
                             "constructInfo": {
                               "fqn": "@aws-cdk/aws-apigateway.CfnMethod",
-                              "version": "1.131.0"
+                              "version": "1.134.0"
                             }
                           }
                         },
                         "constructInfo": {
                           "fqn": "@aws-cdk/aws-apigateway.Method",
-                          "version": "1.131.0"
+                          "version": "1.134.0"
                         }
                       },
                       "PUT": {
@@ -637,7 +637,7 @@
                             },
                             "constructInfo": {
                               "fqn": "@aws-cdk/aws-lambda.CfnPermission",
-                              "version": "1.131.0"
+                              "version": "1.134.0"
                             }
                           },
                           "ApiPermission.Test.ECommerceStackapi77EDABDF.PUT..product": {
@@ -674,7 +674,7 @@
                             },
                             "constructInfo": {
                               "fqn": "@aws-cdk/aws-lambda.CfnPermission",
-                              "version": "1.131.0"
+                              "version": "1.134.0"
                             }
                           },
                           "Resource": {
@@ -718,31 +718,31 @@
                             },
                             "constructInfo": {
                               "fqn": "@aws-cdk/aws-apigateway.CfnMethod",
-                              "version": "1.131.0"
+                              "version": "1.134.0"
                             }
                           }
                         },
                         "constructInfo": {
                           "fqn": "@aws-cdk/aws-apigateway.Method",
-                          "version": "1.131.0"
+                          "version": "1.134.0"
                         }
                       }
                     },
                     "constructInfo": {
                       "fqn": "@aws-cdk/aws-apigateway.Resource",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-apigateway.ResourceBase",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "@aws-cdk/aws-apigateway.RestApi",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           },
           "apiUrl": {
@@ -750,7 +750,7 @@
             "path": "ECommerceStack/apiUrl",
             "constructInfo": {
               "fqn": "@aws-cdk/core.CfnOutput",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           },
           "get-products-lambda": {
@@ -797,7 +797,7 @@
                     },
                     "constructInfo": {
                       "fqn": "@aws-cdk/aws-iam.CfnRole",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   },
                   "DefaultPolicy": {
@@ -848,19 +848,19 @@
                         },
                         "constructInfo": {
                           "fqn": "@aws-cdk/aws-iam.CfnPolicy",
-                          "version": "1.131.0"
+                          "version": "1.134.0"
                         }
                       }
                     },
                     "constructInfo": {
                       "fqn": "@aws-cdk/aws-iam.Policy",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-iam.Role",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "Code": {
@@ -872,7 +872,7 @@
                     "path": "ECommerceStack/get-products-lambda/Code/Stage",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.AssetStaging",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   },
                   "AssetBucket": {
@@ -884,19 +884,19 @@
                         "path": "ECommerceStack/get-products-lambda/Code/AssetBucket/Notifications",
                         "constructInfo": {
                           "fqn": "@aws-cdk/core.Construct",
-                          "version": "1.131.0"
+                          "version": "1.134.0"
                         }
                       }
                     },
                     "constructInfo": {
                       "fqn": "@aws-cdk/aws-s3.BucketBase",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-s3-assets.Asset",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "Resource": {
@@ -955,13 +955,13 @@
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-lambda.CfnFunction",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "@aws-cdk/aws-lambda.Function",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           },
           "AssetParameters": {
@@ -977,7 +977,7 @@
                     "path": "ECommerceStack/AssetParameters/617cfd2d0eda809a511475f33cef3d6c167da95ade3be6908ecbc19345727586/S3Bucket",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   },
                   "S3VersionKey": {
@@ -985,7 +985,7 @@
                     "path": "ECommerceStack/AssetParameters/617cfd2d0eda809a511475f33cef3d6c167da95ade3be6908ecbc19345727586/S3VersionKey",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   },
                   "ArtifactHash": {
@@ -993,47 +993,47 @@
                     "path": "ECommerceStack/AssetParameters/617cfd2d0eda809a511475f33cef3d6c167da95ade3be6908ecbc19345727586/ArtifactHash",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.Construct",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
-              "1bd68d9c58738ba2f1ea9ea3508c9c64c07760711b108d19bafc0efbfad78bd8": {
-                "id": "1bd68d9c58738ba2f1ea9ea3508c9c64c07760711b108d19bafc0efbfad78bd8",
-                "path": "ECommerceStack/AssetParameters/1bd68d9c58738ba2f1ea9ea3508c9c64c07760711b108d19bafc0efbfad78bd8",
+              "8890568521aac7845ddd40f2754b6e8350e1afd0e91c1e9e535e07ffc7b5cc51": {
+                "id": "8890568521aac7845ddd40f2754b6e8350e1afd0e91c1e9e535e07ffc7b5cc51",
+                "path": "ECommerceStack/AssetParameters/8890568521aac7845ddd40f2754b6e8350e1afd0e91c1e9e535e07ffc7b5cc51",
                 "children": {
                   "S3Bucket": {
                     "id": "S3Bucket",
-                    "path": "ECommerceStack/AssetParameters/1bd68d9c58738ba2f1ea9ea3508c9c64c07760711b108d19bafc0efbfad78bd8/S3Bucket",
+                    "path": "ECommerceStack/AssetParameters/8890568521aac7845ddd40f2754b6e8350e1afd0e91c1e9e535e07ffc7b5cc51/S3Bucket",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   },
                   "S3VersionKey": {
                     "id": "S3VersionKey",
-                    "path": "ECommerceStack/AssetParameters/1bd68d9c58738ba2f1ea9ea3508c9c64c07760711b108d19bafc0efbfad78bd8/S3VersionKey",
+                    "path": "ECommerceStack/AssetParameters/8890568521aac7845ddd40f2754b6e8350e1afd0e91c1e9e535e07ffc7b5cc51/S3VersionKey",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   },
                   "ArtifactHash": {
                     "id": "ArtifactHash",
-                    "path": "ECommerceStack/AssetParameters/1bd68d9c58738ba2f1ea9ea3508c9c64c07760711b108d19bafc0efbfad78bd8/ArtifactHash",
+                    "path": "ECommerceStack/AssetParameters/8890568521aac7845ddd40f2754b6e8350e1afd0e91c1e9e535e07ffc7b5cc51/ArtifactHash",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.Construct",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1": {
@@ -1045,7 +1045,7 @@
                     "path": "ECommerceStack/AssetParameters/1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1/S3Bucket",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   },
                   "S3VersionKey": {
@@ -1053,7 +1053,7 @@
                     "path": "ECommerceStack/AssetParameters/1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1/S3VersionKey",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   },
                   "ArtifactHash": {
@@ -1061,19 +1061,19 @@
                     "path": "ECommerceStack/AssetParameters/1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1/ArtifactHash",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.Construct",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "@aws-cdk/core.Construct",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           },
           "put-product-lambda": {
@@ -1120,7 +1120,7 @@
                     },
                     "constructInfo": {
                       "fqn": "@aws-cdk/aws-iam.CfnRole",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   },
                   "DefaultPolicy": {
@@ -1198,19 +1198,19 @@
                         },
                         "constructInfo": {
                           "fqn": "@aws-cdk/aws-iam.CfnPolicy",
-                          "version": "1.131.0"
+                          "version": "1.134.0"
                         }
                       }
                     },
                     "constructInfo": {
                       "fqn": "@aws-cdk/aws-iam.Policy",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-iam.Role",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "Code": {
@@ -1222,7 +1222,7 @@
                     "path": "ECommerceStack/put-product-lambda/Code/Stage",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.AssetStaging",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   },
                   "AssetBucket": {
@@ -1234,19 +1234,19 @@
                         "path": "ECommerceStack/put-product-lambda/Code/AssetBucket/Notifications",
                         "constructInfo": {
                           "fqn": "@aws-cdk/core.Construct",
-                          "version": "1.131.0"
+                          "version": "1.134.0"
                         }
                       }
                     },
                     "constructInfo": {
                       "fqn": "@aws-cdk/aws-s3.BucketBase",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-s3-assets.Asset",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "Resource": {
@@ -1257,7 +1257,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": {
-                        "Ref": "AssetParameters1bd68d9c58738ba2f1ea9ea3508c9c64c07760711b108d19bafc0efbfad78bd8S3Bucket767D2C17"
+                        "Ref": "AssetParameters8890568521aac7845ddd40f2754b6e8350e1afd0e91c1e9e535e07ffc7b5cc51S3BucketA42FCE5B"
                       },
                       "s3Key": {
                         "Fn::Join": [
@@ -1270,7 +1270,7 @@
                                   "Fn::Split": [
                                     "||",
                                     {
-                                      "Ref": "AssetParameters1bd68d9c58738ba2f1ea9ea3508c9c64c07760711b108d19bafc0efbfad78bd8S3VersionKey3CFC73AF"
+                                      "Ref": "AssetParameters8890568521aac7845ddd40f2754b6e8350e1afd0e91c1e9e535e07ffc7b5cc51S3VersionKeyFF92EBDE"
                                     }
                                   ]
                                 }
@@ -1283,7 +1283,7 @@
                                   "Fn::Split": [
                                     "||",
                                     {
-                                      "Ref": "AssetParameters1bd68d9c58738ba2f1ea9ea3508c9c64c07760711b108d19bafc0efbfad78bd8S3VersionKey3CFC73AF"
+                                      "Ref": "AssetParameters8890568521aac7845ddd40f2754b6e8350e1afd0e91c1e9e535e07ffc7b5cc51S3VersionKeyFF92EBDE"
                                     }
                                   ]
                                 }
@@ -1306,13 +1306,13 @@
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-lambda.CfnFunction",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "@aws-cdk/aws-lambda.Function",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           },
           "s3-bucket": {
@@ -1324,7 +1324,7 @@
                 "path": "ECommerceStack/s3-bucket/Notifications",
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.Construct",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "Resource": {
@@ -1387,7 +1387,7 @@
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-s3.CfnBucket",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "Policy": {
@@ -1471,13 +1471,13 @@
                     },
                     "constructInfo": {
                       "fqn": "@aws-cdk/aws-s3.CfnBucketPolicy",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-s3.BucketPolicy",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "AutoDeleteObjectsCustomResource": {
@@ -1489,19 +1489,19 @@
                     "path": "ECommerceStack/s3-bucket/AutoDeleteObjectsCustomResource/Default",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnResource",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.CustomResource",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "@aws-cdk/aws-s3.Bucket",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           },
           "Custom::S3AutoDeleteObjectsCustomResourceProvider": {
@@ -1513,7 +1513,7 @@
                 "path": "ECommerceStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Staging",
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.AssetStaging",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "Role": {
@@ -1521,7 +1521,7 @@
                 "path": "ECommerceStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role",
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.CfnResource",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "Handler": {
@@ -1529,13 +1529,13 @@
                 "path": "ECommerceStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler",
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.CfnResource",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "@aws-cdk/core.CustomResourceProvider",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           },
           "CDKMetadata": {
@@ -1547,19 +1547,19 @@
                 "path": "ECommerceStack/CDKMetadata/Default",
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.CfnResource",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "@aws-cdk/core.Construct",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           }
         },
         "constructInfo": {
           "fqn": "@aws-cdk/core.Stack",
-          "version": "1.131.0"
+          "version": "1.134.0"
         }
       },
       "AdminECommerceStack": {
@@ -1575,7 +1575,7 @@
                 "path": "AdminECommerceStack/VPC/PublicSubnet1",
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.Resource",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "PublicSubnet2": {
@@ -1583,7 +1583,7 @@
                 "path": "AdminECommerceStack/VPC/PublicSubnet2",
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.Resource",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "PublicSubnet3": {
@@ -1591,7 +1591,7 @@
                 "path": "AdminECommerceStack/VPC/PublicSubnet3",
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.Resource",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "PublicSubnet4": {
@@ -1599,7 +1599,7 @@
                 "path": "AdminECommerceStack/VPC/PublicSubnet4",
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.Resource",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "PublicSubnet5": {
@@ -1607,7 +1607,7 @@
                 "path": "AdminECommerceStack/VPC/PublicSubnet5",
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.Resource",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "PublicSubnet6": {
@@ -1615,13 +1615,13 @@
                 "path": "AdminECommerceStack/VPC/PublicSubnet6",
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.Resource",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "@aws-cdk/core.Resource",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           },
           "ec2-admin-e-commerce-role": {
@@ -1650,7 +1650,7 @@
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-iam.CfnRole",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "DefaultPolicy": {
@@ -1701,19 +1701,19 @@
                     },
                     "constructInfo": {
                       "fqn": "@aws-cdk/aws-iam.CfnPolicy",
-                      "version": "1.131.0"
+                      "version": "1.134.0"
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-iam.Policy",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "@aws-cdk/aws-iam.Role",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           },
           "ec2-admin-e-commerce-sg": {
@@ -1756,13 +1756,6 @@
                         "fromPort": 443,
                         "toPort": 443,
                         "description": "Allows HTTPS access from Internet"
-                      },
-                      {
-                        "cidrIp": "0.0.0.0/0",
-                        "ipProtocol": "tcp",
-                        "fromPort": 8000,
-                        "toPort": 8000,
-                        "description": "Specific port for our server"
                       }
                     ],
                     "vpcId": "vpc-e022889d"
@@ -1770,13 +1763,13 @@
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-ec2.CfnSecurityGroup",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "@aws-cdk/aws-ec2.SecurityGroup",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           },
           "ec2-admin-e-commerce": {
@@ -1798,7 +1791,7 @@
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-iam.CfnInstanceProfile",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "Resource": {
@@ -1832,19 +1825,19 @@
                       }
                     ],
                     "userData": {
-                      "Fn::Base64": "#!/bin/bash"
+                      "Fn::Base64": "#!/bin/bash\n#!/bin/bash\n\ncd /home/ec2-user/\n\n## Updating Packages\nsudo yum update -y\n\n## Installing Git Client\nsudo yum install git -y\n\n## Installing Cronttab\nsudo yum install crontabs -y\nsudo chkconfig crond on\nsudo service crond start\n\n## For system to be able to compile software, you need many development tools, such as make, gcc, and autoconf.\nsudo yum groupinstall \"Development Tools\" -y\n\n## Installing Nginx\nsudo amazon-linux-extras install nginx1 -y\n\n## Modifying Nginx Server Configuration\nsudo cat > /etc/nginx/nginx.conf <<EOL\nuser nginx;\nworker_processes auto;\ninclude /usr/share/nginx/modules/*.conf;\nevents {\n    worker_connections 1024;\n}\nhttp {\n    sendfile on;\n    tcp_nopush on;\n    tcp_nodelay on;\n    keepalive_timeout 65;\n    types_hash_max_size 2048;\n    error_log /dev/null;\n    access_log /dev/null;\n    include /etc/nginx/mime.types;\n    default_type application/octet-stream;\n    upstream express_server {\n        server 127.0.0.1:8000;\n        keepalive 64;\n    }\n    server {\n        listen 80 default_server;\n        listen [::]:80 default_server;\n        server_name _;\n        location / {\n            proxy_set_header X-Forwarded-For \\$proxy_add_x_forwarded_for;\n            proxy_set_header X-Real-IP \\$remote_addr;\n            proxy_set_header Host \\$http_host;\n            proxy_set_header Upgrade \\$http_upgrade;\n            proxy_set_header Connection \"upgrade\";\n            proxy_http_version 1.1;\n            proxy_pass http://express_server/;\n            proxy_redirect off;\n            proxy_read_timeout 240s;\n        }\n    }\n}\nEOL\n\n## Starting Nginx Services\nsudo chkconfig nginx on\nsudo service nginx start\nsudo service nginx restart\n\n## Writing the Script to be run as ec2-user\ncat > /tmp/subscript.sh << EOF\n\n## Installing NVM\ncurl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash\n \necho 'export NVM_DIR=\"/home/ec2-user/.nvm\"' >> /home/ec2-user/.bashrc\necho '[ -s \"\\$NVM_DIR/nvm.sh\" ] && . \"\\$NVM_DIR/nvm.sh\"  # This loads nvm' >> /home/ec2-user/.bashrc\n \n## Dot source the files to ensure that variables are available within the current shell\n. /home/ec2-user/.nvm/nvm.sh\n. /home/ec2-user/.bashrc\n \n## Install Node.js\nnvm install v17.0.1\nnvm use v17.0.1\nnvm alias default v17.0.1\n\ngit clone https://github.com/gpspelle/admin-e-commerce-auth\ncd admin-e-commerce-auth\n\n## Installing Global PM2 package\nnpm install -g pm2\n\nnpm install\n\n## Starting the Server\npm2 start index.js\n\n## Saving the current state of pm2\npm2 save\n\n## Adding Cron Job to Auto Restart PM2 on Reboot\ncat <(crontab -l) <(echo \"@reboot /home/ec2-user/.nvm/versions/node/v17.0.1/bin/node /home/ec2-user/.nvm/versions/node/v17.0.1/bin/pm2 resurrect\") | crontab -\n\nEOF\n\n## Changing the owner of the temp script so ec2-user could run it \nchown ec2-user:ec2-user /tmp/subscript.sh && chmod a+x /tmp/subscript.sh\n\n## Executing the script as ec2-user\nsleep 1; su - ec2-user -c \"/tmp/subscript.sh\""
                     }
                   }
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-ec2.CfnInstance",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "@aws-cdk/aws-ec2.Instance",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           },
           "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": {
@@ -1852,7 +1845,7 @@
             "path": "AdminECommerceStack/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter",
             "constructInfo": {
               "fqn": "@aws-cdk/core.CfnParameter",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           },
           "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118": {
@@ -1860,7 +1853,7 @@
             "path": "AdminECommerceStack/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118",
             "constructInfo": {
               "fqn": "@aws-cdk/core.Resource",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           },
           "ec2-admin-e-commerce-output": {
@@ -1868,7 +1861,7 @@
             "path": "AdminECommerceStack/ec2-admin-e-commerce-output",
             "constructInfo": {
               "fqn": "@aws-cdk/core.CfnOutput",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           },
           "AdminECommerceStack": {
@@ -1905,7 +1898,7 @@
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-dynamodb.CfnTable",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               },
               "ScalingRole": {
@@ -1913,13 +1906,13 @@
                 "path": "AdminECommerceStack/AdminECommerceStack/ScalingRole",
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.Resource",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "@aws-cdk/aws-dynamodb.Table",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           },
           "CDKMetadata": {
@@ -1931,25 +1924,25 @@
                 "path": "AdminECommerceStack/CDKMetadata/Default",
                 "constructInfo": {
                   "fqn": "@aws-cdk/core.CfnResource",
-                  "version": "1.131.0"
+                  "version": "1.134.0"
                 }
               }
             },
             "constructInfo": {
               "fqn": "@aws-cdk/core.Construct",
-              "version": "1.131.0"
+              "version": "1.134.0"
             }
           }
         },
         "constructInfo": {
           "fqn": "@aws-cdk/core.Stack",
-          "version": "1.131.0"
+          "version": "1.134.0"
         }
       }
     },
     "constructInfo": {
       "fqn": "@aws-cdk/core.App",
-      "version": "1.131.0"
+      "version": "1.134.0"
     }
   }
 }

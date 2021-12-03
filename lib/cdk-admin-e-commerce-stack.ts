@@ -2,6 +2,7 @@ import * as cdk from '@aws-cdk/core'
 import * as ec2 from '@aws-cdk/aws-ec2' // import ec2 library 
 import * as iam from '@aws-cdk/aws-iam' // import iam library for permissions
 import * as dynamodb from '@aws-cdk/aws-dynamodb'
+import {readFileSync} from 'fs';
 
 export class AdminECommerceStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
@@ -51,12 +52,6 @@ export class AdminECommerceStack extends cdk.Stack {
       'Allows HTTPS access from Internet'
     )
 
-    securityGroup.addIngressRule(
-      ec2.Peer.anyIpv4(),
-      ec2.Port.tcp(8000),
-      'Specific port for our server'
-    )
-
     // Finally lets provision our ec2 instance
     const instance = new ec2.Instance(this, 'ec2-admin-e-commerce', {
       vpc: defaultVpc,
@@ -79,6 +74,12 @@ export class AdminECommerceStack extends cdk.Stack {
     new cdk.CfnOutput(this, 'ec2-admin-e-commerce-output', {
       value: instance.instancePublicIp
     })
+
+    // 👇 load user data script
+    const userDataScript = readFileSync('./lib/start-server.sh', 'utf8');
+
+    // 👇 add user data to the EC2 instance
+    instance.addUserData(userDataScript);
 
     // 👇 create Dynamodb table
     const table = new dynamodb.Table(this, id, {

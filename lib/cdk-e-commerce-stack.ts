@@ -22,7 +22,7 @@ export class ECommerceStack extends cdk.Stack {
 
     console.log("table name 👉", table.tableName)
     console.log("table arn 👉", table.tableArn)
-
+   
     const api = new apigateway.RestApi(this, "api", {
       description: "e-commerce api gateway",
       deployOptions: {
@@ -33,7 +33,7 @@ export class ECommerceStack extends cdk.Stack {
         allowHeaders: ["Content-Type", "X-Amz-Date", "Authorization", "X-Api-Key"],
         allowMethods: ["OPTIONS", "GET", "POST", "PUT", "PATCH", "DELETE"],
         allowCredentials: true,
-        allowOrigins: apigateway.Cors.ALL_ORIGINS,
+        allowOrigins: ['*'],
       },
     })
 
@@ -53,7 +53,7 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 integrate GET /products with getProductsLambda
     products.addMethod(
       "GET",
-      new apigateway.LambdaIntegration(getProductsLambda, { proxy: true })
+      new apigateway.LambdaIntegration(getProductsLambda)
     )
 
     // 👇 grant the lambda role read permissions to our table
@@ -73,7 +73,7 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 integrate PUT /product with putProductLambda
     product.addMethod(
       "PUT",
-      new apigateway.LambdaIntegration(putProductLambda, { proxy: true })
+      new apigateway.LambdaIntegration(putProductLambda)
     )
 
     // 👇 grant the lambda role write permissions to our table
