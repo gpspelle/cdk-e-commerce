@@ -9,8 +9,8 @@ export class ECommerceStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
     super(scope, id, props)
 
-    // 👇 create Dynamodb table
-    const table = new dynamodb.Table(this, id, {
+    // 👇 create Dynamodb table for products
+    const productsTable = new dynamodb.Table(this, `${id}-products-table`, {
       tableName: "products",
       billingMode: dynamodb.BillingMode.PROVISIONED,
       readCapacity: 1,
@@ -20,9 +20,24 @@ export class ECommerceStack extends cdk.Stack {
       pointInTimeRecovery: true,
     })
 
-    console.log("table name 👉", table.tableName)
-    console.log("table arn 👉", table.tableArn)
+    console.log("products table name 👉", productsTable.tableName)
+    console.log("products table arn 👉", productsTable.tableArn)
    
+    // 👇 create Dynamodb table for admins
+    const adminsTable = new dynamodb.Table(this, `${id}-admins-table`, {
+      tableName: "admins",
+      billingMode: dynamodb.BillingMode.PROVISIONED,
+      readCapacity: 1,
+      writeCapacity: 1,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      partitionKey: { name: "email", type: dynamodb.AttributeType.STRING },
+      pointInTimeRecovery: true,
+    })
+
+    console.log("admins table name 👉", adminsTable.tableName)
+    console.log("admins table arn 👉", adminsTable.tableArn)
+
+    // 👇 create Api Gateway
     const api = new apigateway.RestApi(this, "api", {
       description: "e-commerce api gateway",
       deployOptions: {
@@ -40,6 +55,25 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 create an Output for the API URL
     new cdk.CfnOutput(this, "apiUrl", { value: api.url })
 
+    // 👇 define POST login function
+    const postLoginLambda = new lambda.Function(this, "post-login-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "index.main",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/post-login")),
+    })
+
+    // 👇 add a /login resource
+    const login = api.root.addResource("login")
+
+    // 👇 integrate POST /login with postLoginLambda
+    login.addMethod(
+      "POST",
+      new apigateway.LambdaIntegration(postLoginLambda)
+    )
+
+    // 👇 grant the lambda role read permissions to the admins table
+    adminsTable.grantReadData(postLoginLambda)
+
     // 👇 define GET products function
     const getProductsLambda = new lambda.Function(this, "get-products-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
@@ -56,8 +90,8 @@ export class ECommerceStack extends cdk.Stack {
       new apigateway.LambdaIntegration(getProductsLambda)
     )
 
-    // 👇 grant the lambda role read permissions to our table
-    table.grantReadData(getProductsLambda)
+    // 👇 grant the lambda role read permissions to the products table
+    productsTable.grantReadData(getProductsLambda)
 
     // 👇 define PUT product function
     const putProductLambda = new lambda.Function(this, "put-product-lambda", {
@@ -76,8 +110,8 @@ export class ECommerceStack extends cdk.Stack {
       new apigateway.LambdaIntegration(putProductLambda)
     )
 
-    // 👇 grant the lambda role write permissions to our table
-    table.grantWriteData(putProductLambda)
+    // 👇 grant the lambda role write permissions to the products table
+    productsTable.grantWriteData(putProductLambda)
 
     // 👇 create bucket
     const s3Bucket = new s3.Bucket(this, "s3-bucket", {
