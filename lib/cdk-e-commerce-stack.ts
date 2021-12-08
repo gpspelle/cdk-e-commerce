@@ -113,6 +113,23 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 grant the lambda role write permissions to the products table
     productsTable.grantWriteData(putProductLambda)
 
+    // 👇 define DELETE product function
+    const deleteProductLambda = new lambda.Function(this, "delete-product-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "index.main",
+      timeout: cdk.Duration.seconds(100),
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/delete-product")),
+    })
+
+    // 👇 integrate DELETE /product with deleteProductLambda
+    product.addMethod(
+      "DELETE",
+      new apigateway.LambdaIntegration(deleteProductLambda)
+    )
+
+    // 👇 grant the lambda role write permissions to the products table
+    productsTable.grantWriteData(deleteProductLambda)
+
     // 👇 create bucket
     const s3Bucket = new s3.Bucket(this, "s3-bucket", {
       bucketName: "e-commerce-images-bucket",
@@ -146,7 +163,9 @@ export class ECommerceStack extends cdk.Stack {
       ],
     })
 
-    // 👇 grant access to bucket
+    // 👇 grant write access to bucket
     s3Bucket.grantWrite(putProductLambda)
+    // 👇 grant read and write access to bucket
+    s3Bucket.grantReadWrite(deleteProductLambda)
   }
 }

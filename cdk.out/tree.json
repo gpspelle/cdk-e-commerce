@@ -246,7 +246,7 @@
                           "Ref": "apiC8550315"
                         },
                         "deploymentId": {
-                          "Ref": "apiDeployment149F12944c702e2081e1b523d879bfe9ad4fa4b5"
+                          "Ref": "apiDeployment149F129448e8908e8a420f90a254c1a881cfc79d"
                         },
                         "stageName": "dev"
                       }
@@ -1001,6 +1001,138 @@
                           "fqn": "@aws-cdk/aws-apigateway.Method",
                           "version": "1.134.0"
                         }
+                      },
+                      "DELETE": {
+                        "id": "DELETE",
+                        "path": "ECommerceStack/api/Default/product/DELETE",
+                        "children": {
+                          "ApiPermission.ECommerceStackapi77EDABDF.DELETE..product": {
+                            "id": "ApiPermission.ECommerceStackapi77EDABDF.DELETE..product",
+                            "path": "ECommerceStack/api/Default/product/DELETE/ApiPermission.ECommerceStackapi77EDABDF.DELETE..product",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "deleteproductlambdaEA497826",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:us-east-1:453299922179:",
+                                      {
+                                        "Ref": "apiC8550315"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "apiDeploymentStagedev96712F43"
+                                      },
+                                      "/DELETE/product"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "@aws-cdk/aws-lambda.CfnPermission",
+                              "version": "1.134.0"
+                            }
+                          },
+                          "ApiPermission.Test.ECommerceStackapi77EDABDF.DELETE..product": {
+                            "id": "ApiPermission.Test.ECommerceStackapi77EDABDF.DELETE..product",
+                            "path": "ECommerceStack/api/Default/product/DELETE/ApiPermission.Test.ECommerceStackapi77EDABDF.DELETE..product",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "deleteproductlambdaEA497826",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":execute-api:us-east-1:453299922179:",
+                                      {
+                                        "Ref": "apiC8550315"
+                                      },
+                                      "/test-invoke-stage/DELETE/product"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "@aws-cdk/aws-lambda.CfnPermission",
+                              "version": "1.134.0"
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "ECommerceStack/api/Default/product/DELETE/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "DELETE",
+                                "resourceId": {
+                                  "Ref": "apiproduct211E8A85"
+                                },
+                                "restApiId": {
+                                  "Ref": "apiC8550315"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:",
+                                        {
+                                          "Ref": "AWS::Partition"
+                                        },
+                                        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "deleteproductlambdaEA497826",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "@aws-cdk/aws-apigateway.CfnMethod",
+                              "version": "1.134.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "@aws-cdk/aws-apigateway.Method",
+                          "version": "1.134.0"
+                        }
                       }
                     },
                     "constructInfo": {
@@ -1311,13 +1443,13 @@
                   "version": "1.134.0"
                 }
               },
-              "a8c5ec18f68418dd20c99bbb7d7195fd18ae7f6a2fb425547169b8fd94ab7a7a": {
-                "id": "a8c5ec18f68418dd20c99bbb7d7195fd18ae7f6a2fb425547169b8fd94ab7a7a",
-                "path": "ECommerceStack/AssetParameters/a8c5ec18f68418dd20c99bbb7d7195fd18ae7f6a2fb425547169b8fd94ab7a7a",
+              "ccfeb5d437c02e498857b8649f2159ed765908acad6dfd63b97543f5243895c8": {
+                "id": "ccfeb5d437c02e498857b8649f2159ed765908acad6dfd63b97543f5243895c8",
+                "path": "ECommerceStack/AssetParameters/ccfeb5d437c02e498857b8649f2159ed765908acad6dfd63b97543f5243895c8",
                 "children": {
                   "S3Bucket": {
                     "id": "S3Bucket",
-                    "path": "ECommerceStack/AssetParameters/a8c5ec18f68418dd20c99bbb7d7195fd18ae7f6a2fb425547169b8fd94ab7a7a/S3Bucket",
+                    "path": "ECommerceStack/AssetParameters/ccfeb5d437c02e498857b8649f2159ed765908acad6dfd63b97543f5243895c8/S3Bucket",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
                       "version": "1.134.0"
@@ -1325,7 +1457,7 @@
                   },
                   "S3VersionKey": {
                     "id": "S3VersionKey",
-                    "path": "ECommerceStack/AssetParameters/a8c5ec18f68418dd20c99bbb7d7195fd18ae7f6a2fb425547169b8fd94ab7a7a/S3VersionKey",
+                    "path": "ECommerceStack/AssetParameters/ccfeb5d437c02e498857b8649f2159ed765908acad6dfd63b97543f5243895c8/S3VersionKey",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
                       "version": "1.134.0"
@@ -1333,7 +1465,41 @@
                   },
                   "ArtifactHash": {
                     "id": "ArtifactHash",
-                    "path": "ECommerceStack/AssetParameters/a8c5ec18f68418dd20c99bbb7d7195fd18ae7f6a2fb425547169b8fd94ab7a7a/ArtifactHash",
+                    "path": "ECommerceStack/AssetParameters/ccfeb5d437c02e498857b8649f2159ed765908acad6dfd63b97543f5243895c8/ArtifactHash",
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/core.CfnParameter",
+                      "version": "1.134.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.Construct",
+                  "version": "1.134.0"
+                }
+              },
+              "90cf56329cb4e5b6b626cb679fb3c6af03c269ae36a8c7a9da538c24d7dc37ba": {
+                "id": "90cf56329cb4e5b6b626cb679fb3c6af03c269ae36a8c7a9da538c24d7dc37ba",
+                "path": "ECommerceStack/AssetParameters/90cf56329cb4e5b6b626cb679fb3c6af03c269ae36a8c7a9da538c24d7dc37ba",
+                "children": {
+                  "S3Bucket": {
+                    "id": "S3Bucket",
+                    "path": "ECommerceStack/AssetParameters/90cf56329cb4e5b6b626cb679fb3c6af03c269ae36a8c7a9da538c24d7dc37ba/S3Bucket",
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/core.CfnParameter",
+                      "version": "1.134.0"
+                    }
+                  },
+                  "S3VersionKey": {
+                    "id": "S3VersionKey",
+                    "path": "ECommerceStack/AssetParameters/90cf56329cb4e5b6b626cb679fb3c6af03c269ae36a8c7a9da538c24d7dc37ba/S3VersionKey",
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/core.CfnParameter",
+                      "version": "1.134.0"
+                    }
+                  },
+                  "ArtifactHash": {
+                    "id": "ArtifactHash",
+                    "path": "ECommerceStack/AssetParameters/90cf56329cb4e5b6b626cb679fb3c6af03c269ae36a8c7a9da538c24d7dc37ba/ArtifactHash",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
                       "version": "1.134.0"
@@ -1777,7 +1943,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": {
-                        "Ref": "AssetParametersa8c5ec18f68418dd20c99bbb7d7195fd18ae7f6a2fb425547169b8fd94ab7a7aS3Bucket18208412"
+                        "Ref": "AssetParametersccfeb5d437c02e498857b8649f2159ed765908acad6dfd63b97543f5243895c8S3Bucket51659EB3"
                       },
                       "s3Key": {
                         "Fn::Join": [
@@ -1790,7 +1956,7 @@
                                   "Fn::Split": [
                                     "||",
                                     {
-                                      "Ref": "AssetParametersa8c5ec18f68418dd20c99bbb7d7195fd18ae7f6a2fb425547169b8fd94ab7a7aS3VersionKey42DA6441"
+                                      "Ref": "AssetParametersccfeb5d437c02e498857b8649f2159ed765908acad6dfd63b97543f5243895c8S3VersionKeyC14A674E"
                                     }
                                   ]
                                 }
@@ -1803,7 +1969,7 @@
                                   "Fn::Split": [
                                     "||",
                                     {
-                                      "Ref": "AssetParametersa8c5ec18f68418dd20c99bbb7d7195fd18ae7f6a2fb425547169b8fd94ab7a7aS3VersionKey42DA6441"
+                                      "Ref": "AssetParametersccfeb5d437c02e498857b8649f2159ed765908acad6dfd63b97543f5243895c8S3VersionKeyC14A674E"
                                     }
                                   ]
                                 }
@@ -1816,6 +1982,248 @@
                     "role": {
                       "Fn::GetAtt": [
                         "putproductlambdaServiceRole2AB129BC",
+                        "Arn"
+                      ]
+                    },
+                    "handler": "index.main",
+                    "runtime": "nodejs14.x",
+                    "timeout": 100
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-lambda.CfnFunction",
+                  "version": "1.134.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-lambda.Function",
+              "version": "1.134.0"
+            }
+          },
+          "delete-product-lambda": {
+            "id": "delete-product-lambda",
+            "path": "ECommerceStack/delete-product-lambda",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "ECommerceStack/delete-product-lambda/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ECommerceStack/delete-product-lambda/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-iam.CfnRole",
+                      "version": "1.134.0"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "ECommerceStack/delete-product-lambda/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ECommerceStack/delete-product-lambda/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "dynamodb:BatchWriteItem",
+                                    "dynamodb:PutItem",
+                                    "dynamodb:UpdateItem",
+                                    "dynamodb:DeleteItem"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": [
+                                    {
+                                      "Fn::GetAtt": [
+                                        "ECommerceStackproductstable86592532",
+                                        "Arn"
+                                      ]
+                                    },
+                                    {
+                                      "Ref": "AWS::NoValue"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "Action": [
+                                    "s3:GetObject*",
+                                    "s3:GetBucket*",
+                                    "s3:List*",
+                                    "s3:DeleteObject*",
+                                    "s3:PutObject",
+                                    "s3:Abort*"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": [
+                                    {
+                                      "Fn::GetAtt": [
+                                        "s3bucket64CB25AF",
+                                        "Arn"
+                                      ]
+                                    },
+                                    {
+                                      "Fn::Join": [
+                                        "",
+                                        [
+                                          {
+                                            "Fn::GetAtt": [
+                                              "s3bucket64CB25AF",
+                                              "Arn"
+                                            ]
+                                          },
+                                          "/*"
+                                        ]
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "deleteproductlambdaServiceRoleDefaultPolicy34BA7ED0",
+                            "roles": [
+                              {
+                                "Ref": "deleteproductlambdaServiceRole807E7403"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "@aws-cdk/aws-iam.CfnPolicy",
+                          "version": "1.134.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-iam.Policy",
+                      "version": "1.134.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-iam.Role",
+                  "version": "1.134.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "ECommerceStack/delete-product-lambda/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "ECommerceStack/delete-product-lambda/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/core.AssetStaging",
+                      "version": "1.134.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "ECommerceStack/delete-product-lambda/Code/AssetBucket",
+                    "children": {
+                      "Notifications": {
+                        "id": "Notifications",
+                        "path": "ECommerceStack/delete-product-lambda/Code/AssetBucket/Notifications",
+                        "constructInfo": {
+                          "fqn": "@aws-cdk/core.Construct",
+                          "version": "1.134.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-s3.BucketBase",
+                      "version": "1.134.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-s3-assets.Asset",
+                  "version": "1.134.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "ECommerceStack/delete-product-lambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Ref": "AssetParameters90cf56329cb4e5b6b626cb679fb3c6af03c269ae36a8c7a9da538c24d7dc37baS3Bucket3C11302F"
+                      },
+                      "s3Key": {
+                        "Fn::Join": [
+                          "",
+                          [
+                            {
+                              "Fn::Select": [
+                                0,
+                                {
+                                  "Fn::Split": [
+                                    "||",
+                                    {
+                                      "Ref": "AssetParameters90cf56329cb4e5b6b626cb679fb3c6af03c269ae36a8c7a9da538c24d7dc37baS3VersionKeyC1880D1A"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "Fn::Select": [
+                                1,
+                                {
+                                  "Fn::Split": [
+                                    "||",
+                                    {
+                                      "Ref": "AssetParameters90cf56329cb4e5b6b626cb679fb3c6af03c269ae36a8c7a9da538c24d7dc37baS3VersionKeyC1880D1A"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        ]
+                      }
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "deleteproductlambdaServiceRole807E7403",
                         "Arn"
                       ]
                     },
