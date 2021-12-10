@@ -130,6 +130,23 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 grant the lambda role write permissions to the products table
     productsTable.grantWriteData(deleteProductLambda)
 
+    // 👇 define PATCH product function
+    const patchProductLambda = new lambda.Function(this, "patch-product-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "index.main",
+      timeout: cdk.Duration.seconds(100),
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/patch-product")),
+    })
+
+    // 👇 integrate PATCH /product with patchProductLambda
+    product.addMethod(
+      "PATCH",
+      new apigateway.LambdaIntegration(patchProductLambda)
+    )
+
+    // 👇 grant the lambda role write permissions to the products table
+    productsTable.grantWriteData(patchProductLambda)
+
     // 👇 create bucket
     const s3Bucket = new s3.Bucket(this, "s3-bucket", {
       bucketName: "e-commerce-images-bucket",
@@ -167,5 +184,7 @@ export class ECommerceStack extends cdk.Stack {
     s3Bucket.grantWrite(putProductLambda)
     // 👇 grant read and write access to bucket
     s3Bucket.grantReadWrite(deleteProductLambda)
+    // 👇 grant read and write access to bucket
+    s3Bucket.grantReadWrite(patchProductLambda)
   }
 }
