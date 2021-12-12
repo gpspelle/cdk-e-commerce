@@ -74,6 +74,25 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 grant the lambda role read permissions to the admins table
     adminsTable.grantReadData(postLoginLambda)
 
+    // 👇 define GET product function
+    const getProductLambda = new lambda.Function(this, "get-product-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "index.main",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-product")),
+    })
+
+    // 👇 add a /product resource
+    const product = api.root.addResource("product")
+
+    // 👇 integrate GET /product with getProductLambda
+    product.addMethod(
+      "GET",
+      new apigateway.LambdaIntegration(getProductLambda)
+    )
+
+    // 👇 grant the lambda role read permissions to the products table
+    productsTable.grantReadData(getProductLambda)
+
     // 👇 define GET products function
     const getProductsLambda = new lambda.Function(this, "get-products-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
@@ -100,9 +119,6 @@ export class ECommerceStack extends cdk.Stack {
       timeout: cdk.Duration.seconds(100),
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/put-product")),
     })
-
-    // 👇 add a /product resource
-    const product = api.root.addResource("product")
 
     // 👇 integrate PUT /product with putProductLambda
     product.addMethod(

@@ -57,6 +57,44 @@
           {
             "type": "aws:cdk:asset",
             "data": {
+              "path": "asset.c9d61f19239908bab7065c519c337186adae051e12be183831ea598daf9066ca",
+              "id": "c9d61f19239908bab7065c519c337186adae051e12be183831ea598daf9066ca",
+              "packaging": "zip",
+              "sourceHash": "c9d61f19239908bab7065c519c337186adae051e12be183831ea598daf9066ca",
+              "s3BucketParameter": "AssetParametersc9d61f19239908bab7065c519c337186adae051e12be183831ea598daf9066caS3Bucket5F9A2018",
+              "s3KeyParameter": "AssetParametersc9d61f19239908bab7065c519c337186adae051e12be183831ea598daf9066caS3VersionKey7AD898A6",
+              "artifactHashParameter": "AssetParametersc9d61f19239908bab7065c519c337186adae051e12be183831ea598daf9066caArtifactHash7AF94BDD"
+            },
+            "trace": [
+              "ConstructNode.addMetadata (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/construct-compat.ts:252:92)",
+              "LegacyStackSynthesizer.doAddFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:161:23)",
+              "LegacyStackSynthesizer.addFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:66:19)",
+              "LegacyStackSynthesizer.addFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:70:37)",
+              "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
+              "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
+              "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:78:30)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          },
+          {
+            "type": "aws:cdk:asset",
+            "data": {
               "path": "asset.617cfd2d0eda809a511475f33cef3d6c167da95ade3be6908ecbc19345727586",
               "id": "617cfd2d0eda809a511475f33cef3d6c167da95ade3be6908ecbc19345727586",
               "packaging": "zip",
@@ -73,7 +111,7 @@
               "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
               "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:78:31)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:97:31)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -111,7 +149,7 @@
               "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
               "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:97:30)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:116:30)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -149,7 +187,7 @@
               "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
               "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:117:33)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:133:33)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -171,13 +209,13 @@
           {
             "type": "aws:cdk:asset",
             "data": {
-              "path": "asset.62ae4e612550e154b52baf4326b35c383a2cab59912a9e315b8e9afe4bcd7215",
-              "id": "62ae4e612550e154b52baf4326b35c383a2cab59912a9e315b8e9afe4bcd7215",
+              "path": "asset.a82f2a335f0d9bdedb842ca65853562243f9b1237c6dd928c1999275ca614578",
+              "id": "a82f2a335f0d9bdedb842ca65853562243f9b1237c6dd928c1999275ca614578",
               "packaging": "zip",
-              "sourceHash": "62ae4e612550e154b52baf4326b35c383a2cab59912a9e315b8e9afe4bcd7215",
-              "s3BucketParameter": "AssetParameters62ae4e612550e154b52baf4326b35c383a2cab59912a9e315b8e9afe4bcd7215S3Bucket9F89F7F3",
-              "s3KeyParameter": "AssetParameters62ae4e612550e154b52baf4326b35c383a2cab59912a9e315b8e9afe4bcd7215S3VersionKey677504F5",
-              "artifactHashParameter": "AssetParameters62ae4e612550e154b52baf4326b35c383a2cab59912a9e315b8e9afe4bcd7215ArtifactHash1076EA18"
+              "sourceHash": "a82f2a335f0d9bdedb842ca65853562243f9b1237c6dd928c1999275ca614578",
+              "s3BucketParameter": "AssetParametersa82f2a335f0d9bdedb842ca65853562243f9b1237c6dd928c1999275ca614578S3BucketD3B62D64",
+              "s3KeyParameter": "AssetParametersa82f2a335f0d9bdedb842ca65853562243f9b1237c6dd928c1999275ca614578S3VersionKey325D36BC",
+              "artifactHashParameter": "AssetParametersa82f2a335f0d9bdedb842ca65853562243f9b1237c6dd928c1999275ca614578ArtifactHash8FF1C487"
             },
             "trace": [
               "ConstructNode.addMetadata (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/construct-compat.ts:252:92)",
@@ -187,7 +225,7 @@
               "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
               "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:134:32)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:150:32)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -226,7 +264,7 @@
               "Function.getOrCreateProvider (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/custom-resource-provider/custom-resource-provider.ts:70:10)",
               "Bucket.enableAutoDeleteObjects (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:1154:45)",
               "new Bucket (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:826:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:151:22)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:167:22)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -440,7 +478,7 @@
         "/ECommerceStack/api/Deployment/Resource": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "apiDeployment149F1294ab2e82446c02b19180c4cfaf5518a581",
+            "data": "apiDeployment149F1294918a0264bdfba0c7d4a811a140eee3c3",
             "trace": [
               "new Deployment (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/deployment.ts:34:21)",
               "RestApi._configureDeployment (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/restapi.ts:318:32)",
@@ -692,148 +730,6 @@
             ]
           }
         ],
-        "/ECommerceStack/api/Default/products/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "apiproductsA7D90674",
-            "trace": [
-              "new Resource (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:342:22)",
-              "RootResource.addResource (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:91:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:85:31)",
-              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
-              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
-              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
-              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
-              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
-              "Module.load (node:internal/modules/cjs/loader:975:32)",
-              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
-              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
-              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
-              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
-              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
-              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
-              "Module.load (node:internal/modules/cjs/loader:975:32)",
-              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
-              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
-              "node:internal/main/run_main_module:17:47"
-            ]
-          }
-        ],
-        "/ECommerceStack/api/Default/products/OPTIONS/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "apiproductsOPTIONS054C0992",
-            "trace": [
-              "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:116:22)",
-              "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
-              "Resource.addCorsPreflight (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:201:17)",
-              "new Resource (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:368:12)",
-              "RootResource.addResource (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:91:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:85:31)",
-              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
-              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
-              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
-              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
-              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
-              "Module.load (node:internal/modules/cjs/loader:975:32)",
-              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
-              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
-              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
-              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
-              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
-              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
-              "Module.load (node:internal/modules/cjs/loader:975:32)",
-              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
-              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
-              "node:internal/main/run_main_module:17:47"
-            ]
-          }
-        ],
-        "/ECommerceStack/api/Default/products/GET/ApiPermission.ECommerceStackapi77EDABDF.GET..products": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "apiproductsGETApiPermissionECommerceStackapi77EDABDFGETproducts0D1F88F0",
-            "trace": [
-              "Function.addPermission (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:130:5)",
-              "LambdaIntegration.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:41:18)",
-              "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:98:36)",
-              "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:88:14)",
-              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
-              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
-              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
-              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
-              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
-              "Module.load (node:internal/modules/cjs/loader:975:32)",
-              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
-              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
-              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
-              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
-              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
-              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
-              "Module.load (node:internal/modules/cjs/loader:975:32)",
-              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
-              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
-              "node:internal/main/run_main_module:17:47"
-            ]
-          }
-        ],
-        "/ECommerceStack/api/Default/products/GET/ApiPermission.Test.ECommerceStackapi77EDABDF.GET..products": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "apiproductsGETApiPermissionTestECommerceStackapi77EDABDFGETproducts72C7BC39",
-            "trace": [
-              "Function.addPermission (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:130:5)",
-              "LambdaIntegration.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:49:20)",
-              "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:98:36)",
-              "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:88:14)",
-              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
-              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
-              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
-              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
-              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
-              "Module.load (node:internal/modules/cjs/loader:975:32)",
-              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
-              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
-              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
-              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
-              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
-              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
-              "Module.load (node:internal/modules/cjs/loader:975:32)",
-              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
-              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
-              "node:internal/main/run_main_module:17:47"
-            ]
-          }
-        ],
-        "/ECommerceStack/api/Default/products/GET/Resource": [
-          {
-            "type": "aws:cdk:logicalId",
-            "data": "apiproductsGETCE98977B",
-            "trace": [
-              "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:116:22)",
-              "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:88:14)",
-              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
-              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
-              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
-              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
-              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
-              "Module.load (node:internal/modules/cjs/loader:975:32)",
-              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
-              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
-              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
-              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
-              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
-              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
-              "Module.load (node:internal/modules/cjs/loader:975:32)",
-              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
-              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
-              "node:internal/main/run_main_module:17:47"
-            ]
-          }
-        ],
         "/ECommerceStack/api/Default/product/Resource": [
           {
             "type": "aws:cdk:logicalId",
@@ -841,7 +737,7 @@
             "trace": [
               "new Resource (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:342:22)",
               "RootResource.addResource (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:91:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:105:30)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:85:30)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -871,7 +767,92 @@
               "Resource.addCorsPreflight (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:201:17)",
               "new Resource (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:368:12)",
               "RootResource.addResource (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:91:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:105:30)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:85:30)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/ECommerceStack/api/Default/product/GET/ApiPermission.ECommerceStackapi77EDABDF.GET..product": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apiproductGETApiPermissionECommerceStackapi77EDABDFGETproduct2557DDD0",
+            "trace": [
+              "Function.addPermission (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:130:5)",
+              "LambdaIntegration.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:41:18)",
+              "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:98:36)",
+              "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:88:13)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/ECommerceStack/api/Default/product/GET/ApiPermission.Test.ECommerceStackapi77EDABDF.GET..product": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apiproductGETApiPermissionTestECommerceStackapi77EDABDFGETproductC2FC93A1",
+            "trace": [
+              "Function.addPermission (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:130:5)",
+              "LambdaIntegration.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:49:20)",
+              "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:98:36)",
+              "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:88:13)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/ECommerceStack/api/Default/product/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apiproductGET01F6B831",
+            "trace": [
+              "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:116:22)",
+              "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:88:13)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -900,7 +881,7 @@
               "LambdaIntegration.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:41:18)",
               "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:98:36)",
               "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:108:13)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:124:13)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -929,7 +910,7 @@
               "LambdaIntegration.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:49:20)",
               "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:98:36)",
               "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:108:13)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:124:13)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -956,7 +937,7 @@
             "trace": [
               "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:116:22)",
               "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:108:13)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:124:13)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -985,7 +966,7 @@
               "LambdaIntegration.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:41:18)",
               "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:98:36)",
               "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:125:13)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:141:13)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1014,7 +995,7 @@
               "LambdaIntegration.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:49:20)",
               "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:98:36)",
               "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:125:13)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:141:13)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1041,7 +1022,7 @@
             "trace": [
               "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:116:22)",
               "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:125:13)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:141:13)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1070,7 +1051,7 @@
               "LambdaIntegration.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:41:18)",
               "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:98:36)",
               "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:142:13)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:158:13)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1099,7 +1080,7 @@
               "LambdaIntegration.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:49:20)",
               "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:98:36)",
               "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:142:13)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:158:13)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1126,7 +1107,149 @@
             "trace": [
               "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:116:22)",
               "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:142:13)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:158:13)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/ECommerceStack/api/Default/products/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apiproductsA7D90674",
+            "trace": [
+              "new Resource (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:342:22)",
+              "RootResource.addResource (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:91:12)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:104:31)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/ECommerceStack/api/Default/products/OPTIONS/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apiproductsOPTIONS054C0992",
+            "trace": [
+              "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:116:22)",
+              "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
+              "Resource.addCorsPreflight (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:201:17)",
+              "new Resource (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:368:12)",
+              "RootResource.addResource (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:91:12)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:104:31)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/ECommerceStack/api/Default/products/GET/ApiPermission.ECommerceStackapi77EDABDF.GET..products": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apiproductsGETApiPermissionECommerceStackapi77EDABDFGETproducts0D1F88F0",
+            "trace": [
+              "Function.addPermission (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:130:5)",
+              "LambdaIntegration.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:41:18)",
+              "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:98:36)",
+              "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:107:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/ECommerceStack/api/Default/products/GET/ApiPermission.Test.ECommerceStackapi77EDABDF.GET..products": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apiproductsGETApiPermissionTestECommerceStackapi77EDABDFGETproducts72C7BC39",
+            "trace": [
+              "Function.addPermission (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function-base.ts:130:5)",
+              "LambdaIntegration.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/integrations/lambda.ts:49:20)",
+              "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:98:36)",
+              "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:107:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/ECommerceStack/api/Default/products/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "apiproductsGETCE98977B",
+            "trace": [
+              "new Method (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/method.ts:116:22)",
+              "Resource.addMethod (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-apigateway/lib/resource.ts:95:12)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:107:14)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1350,6 +1473,102 @@
             ]
           }
         ],
+        "/ECommerceStack/AssetParameters/c9d61f19239908bab7065c519c337186adae051e12be183831ea598daf9066ca/S3Bucket": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AssetParametersc9d61f19239908bab7065c519c337186adae051e12be183831ea598daf9066caS3Bucket5F9A2018",
+            "trace": [
+              "new FileAssetParameters (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:16:32)",
+              "LegacyStackSynthesizer.doAddFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
+              "LegacyStackSynthesizer.addFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:66:19)",
+              "LegacyStackSynthesizer.addFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:70:37)",
+              "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
+              "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
+              "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:78:30)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/ECommerceStack/AssetParameters/c9d61f19239908bab7065c519c337186adae051e12be183831ea598daf9066ca/S3VersionKey": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AssetParametersc9d61f19239908bab7065c519c337186adae051e12be183831ea598daf9066caS3VersionKey7AD898A6",
+            "trace": [
+              "new FileAssetParameters (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:21:31)",
+              "LegacyStackSynthesizer.doAddFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
+              "LegacyStackSynthesizer.addFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:66:19)",
+              "LegacyStackSynthesizer.addFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:70:37)",
+              "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
+              "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
+              "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:78:30)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/ECommerceStack/AssetParameters/c9d61f19239908bab7065c519c337186adae051e12be183831ea598daf9066ca/ArtifactHash": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "AssetParametersc9d61f19239908bab7065c519c337186adae051e12be183831ea598daf9066caArtifactHash7AF94BDD",
+            "trace": [
+              "new FileAssetParameters (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:26:34)",
+              "LegacyStackSynthesizer.doAddFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
+              "LegacyStackSynthesizer.addFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:66:19)",
+              "LegacyStackSynthesizer.addFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:70:37)",
+              "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
+              "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
+              "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:78:30)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
         "/ECommerceStack/AssetParameters/617cfd2d0eda809a511475f33cef3d6c167da95ade3be6908ecbc19345727586/S3Bucket": [
           {
             "type": "aws:cdk:logicalId",
@@ -1362,7 +1581,7 @@
               "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
               "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:78:31)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:97:31)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1394,7 +1613,7 @@
               "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
               "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:78:31)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:97:31)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1426,7 +1645,7 @@
               "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
               "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:78:31)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:97:31)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1458,7 +1677,7 @@
               "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
               "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:97:30)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:116:30)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1490,7 +1709,7 @@
               "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
               "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:97:30)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:116:30)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1522,7 +1741,7 @@
               "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
               "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:97:30)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:116:30)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1554,7 +1773,7 @@
               "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
               "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:117:33)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:133:33)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1586,7 +1805,7 @@
               "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
               "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:117:33)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:133:33)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1618,7 +1837,7 @@
               "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
               "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:117:33)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:133:33)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1638,10 +1857,10 @@
             ]
           }
         ],
-        "/ECommerceStack/AssetParameters/62ae4e612550e154b52baf4326b35c383a2cab59912a9e315b8e9afe4bcd7215/S3Bucket": [
+        "/ECommerceStack/AssetParameters/a82f2a335f0d9bdedb842ca65853562243f9b1237c6dd928c1999275ca614578/S3Bucket": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameters62ae4e612550e154b52baf4326b35c383a2cab59912a9e315b8e9afe4bcd7215S3Bucket9F89F7F3",
+            "data": "AssetParametersa82f2a335f0d9bdedb842ca65853562243f9b1237c6dd928c1999275ca614578S3BucketD3B62D64",
             "trace": [
               "new FileAssetParameters (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:16:32)",
               "LegacyStackSynthesizer.doAddFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
@@ -1650,7 +1869,7 @@
               "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
               "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:134:32)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:150:32)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1670,10 +1889,10 @@
             ]
           }
         ],
-        "/ECommerceStack/AssetParameters/62ae4e612550e154b52baf4326b35c383a2cab59912a9e315b8e9afe4bcd7215/S3VersionKey": [
+        "/ECommerceStack/AssetParameters/a82f2a335f0d9bdedb842ca65853562243f9b1237c6dd928c1999275ca614578/S3VersionKey": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameters62ae4e612550e154b52baf4326b35c383a2cab59912a9e315b8e9afe4bcd7215S3VersionKey677504F5",
+            "data": "AssetParametersa82f2a335f0d9bdedb842ca65853562243f9b1237c6dd928c1999275ca614578S3VersionKey325D36BC",
             "trace": [
               "new FileAssetParameters (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:21:31)",
               "LegacyStackSynthesizer.doAddFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
@@ -1682,7 +1901,7 @@
               "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
               "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:134:32)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:150:32)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1702,10 +1921,10 @@
             ]
           }
         ],
-        "/ECommerceStack/AssetParameters/62ae4e612550e154b52baf4326b35c383a2cab59912a9e315b8e9afe4bcd7215/ArtifactHash": [
+        "/ECommerceStack/AssetParameters/a82f2a335f0d9bdedb842ca65853562243f9b1237c6dd928c1999275ca614578/ArtifactHash": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameters62ae4e612550e154b52baf4326b35c383a2cab59912a9e315b8e9afe4bcd7215ArtifactHash1076EA18",
+            "data": "AssetParametersa82f2a335f0d9bdedb842ca65853562243f9b1237c6dd928c1999275ca614578ArtifactHash8FF1C487",
             "trace": [
               "new FileAssetParameters (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:26:34)",
               "LegacyStackSynthesizer.doAddFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
@@ -1714,7 +1933,7 @@
               "new Asset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3-assets/lib/asset.ts:102:40)",
               "AssetCode.bind (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/code.ts:183:20)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:341:29)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:134:32)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:150:32)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1747,7 +1966,7 @@
               "Function.getOrCreateProvider (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/custom-resource-provider/custom-resource-provider.ts:70:10)",
               "Bucket.enableAutoDeleteObjects (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:1154:45)",
               "new Bucket (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:826:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:151:22)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:167:22)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1780,7 +1999,7 @@
               "Function.getOrCreateProvider (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/custom-resource-provider/custom-resource-provider.ts:70:10)",
               "Bucket.enableAutoDeleteObjects (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:1154:45)",
               "new Bucket (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:826:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:151:22)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:167:22)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1813,7 +2032,90 @@
               "Function.getOrCreateProvider (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/custom-resource-provider/custom-resource-provider.ts:70:10)",
               "Bucket.enableAutoDeleteObjects (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:1154:45)",
               "new Bucket (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:826:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:151:22)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:167:22)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/ECommerceStack/get-product-lambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getproductlambdaServiceRole4B05CFEE",
+            "trace": [
+              "new Role (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-iam/lib/role.ts:199:18)",
+              "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:321:31)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:78:30)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/ECommerceStack/get-product-lambda/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getproductlambdaServiceRoleDefaultPolicyBEF3489E",
+            "trace": [
+              "new Policy (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-iam/lib/policy.ts:89:22)",
+              "Role.addToPrincipalPolicy (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-iam/lib/role.ts:236:28)",
+              "Function.addToPrincipal (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-iam/lib/grant.ts:92:61)",
+              "Table.combinedGrant (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-dynamodb/lib/table.ts:527:29)",
+              "Table.grantReadData (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-dynamodb/lib/table.ts:322:17)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:94:19)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "main (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1095:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1147:10)",
+              "Module.load (node:internal/modules/cjs/loader:975:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/ECommerceStack/get-product-lambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "getproductlambda5295BB42",
+            "trace": [
+              "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:391:35)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:78:30)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1840,7 +2142,7 @@
             "trace": [
               "new Role (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-iam/lib/role.ts:199:18)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:321:31)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:78:31)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:97:31)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1870,7 +2172,7 @@
               "Function.addToPrincipal (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-iam/lib/grant.ts:92:61)",
               "Table.combinedGrant (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-dynamodb/lib/table.ts:527:29)",
               "Table.grantReadData (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-dynamodb/lib/table.ts:322:17)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:94:19)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:113:19)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1896,7 +2198,7 @@
             "data": "getproductslambda0220F63B",
             "trace": [
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:391:35)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:78:31)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:97:31)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1923,7 +2225,7 @@
             "trace": [
               "new Role (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-iam/lib/role.ts:199:18)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:321:31)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:97:30)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:116:30)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1953,7 +2255,7 @@
               "Function.addToPrincipal (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-iam/lib/grant.ts:92:61)",
               "Table.combinedGrant (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-dynamodb/lib/table.ts:527:29)",
               "Table.grantWriteData (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-dynamodb/lib/table.ts:346:17)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:114:19)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:130:19)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -1979,7 +2281,7 @@
             "data": "putproductlambda887F64D5",
             "trace": [
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:391:35)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:97:30)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:116:30)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -2006,7 +2308,7 @@
             "trace": [
               "new Role (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-iam/lib/role.ts:199:18)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:321:31)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:117:33)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:133:33)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -2036,7 +2338,7 @@
               "Function.addToPrincipal (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-iam/lib/grant.ts:92:61)",
               "Table.combinedGrant (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-dynamodb/lib/table.ts:527:29)",
               "Table.grantWriteData (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-dynamodb/lib/table.ts:346:17)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:131:19)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:147:19)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -2062,7 +2364,7 @@
             "data": "deleteproductlambdaEA497826",
             "trace": [
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:391:35)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:117:33)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:133:33)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -2089,7 +2391,7 @@
             "trace": [
               "new Role (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-iam/lib/role.ts:199:18)",
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:321:31)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:134:32)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:150:32)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -2119,7 +2421,7 @@
               "Function.addToPrincipal (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-iam/lib/grant.ts:92:61)",
               "Table.combinedGrant (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-dynamodb/lib/table.ts:527:29)",
               "Table.grantWriteData (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-dynamodb/lib/table.ts:346:17)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:148:19)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:164:19)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -2145,7 +2447,7 @@
             "data": "patchproductlambdaB9500F3A",
             "trace": [
               "new Function (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-lambda/lib/function.ts:391:35)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:134:32)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:150:32)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -2171,7 +2473,7 @@
             "data": "s3bucket64CB25AF",
             "trace": [
               "new Bucket (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:758:22)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:151:22)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:167:22)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -2201,7 +2503,7 @@
               "Function.addToPrincipalOrResource (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-iam/lib/grant.ts:76:45)",
               "Bucket.grantPublicAccess (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:329:22)",
               "new Bucket (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:818:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:151:22)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:167:22)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -2229,7 +2531,7 @@
               "new CustomResource (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/custom-resource.ts:36:21)",
               "Bucket.enableAutoDeleteObjects (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:1175:28)",
               "new Bucket (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:826:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:151:22)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:167:22)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -2258,7 +2560,7 @@
               "Function.getOrCreateProvider (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/custom-resource-provider/custom-resource-provider.ts:70:10)",
               "Bucket.enableAutoDeleteObjects (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:1154:45)",
               "new Bucket (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:826:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:151:22)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:167:22)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -2287,7 +2589,7 @@
               "Function.getOrCreateProvider (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/custom-resource-provider/custom-resource-provider.ts:70:10)",
               "Bucket.enableAutoDeleteObjects (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:1154:45)",
               "new Bucket (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-s3/lib/bucket.ts:826:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:151:22)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:167:22)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:7:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
