@@ -161,7 +161,10 @@ export class ECommerceStack extends cdk.Stack {
     )
 
     // 👇 grant the lambda role write permissions to the products table
-    productsTable.grantWriteData(deleteProductLambda)
+    productsTable.grantReadWriteData(deleteProductLambda)
+
+    // 👇 grant the lambda role write permissions to the product tags table
+    productTagsTable.grantWriteData(deleteProductLambda)
 
     // 👇 define PATCH product function
     const patchProductLambda = new lambda.Function(this, "patch-product-lambda", {
@@ -178,7 +181,10 @@ export class ECommerceStack extends cdk.Stack {
     )
 
     // 👇 grant the lambda role write permissions to the products table
-    productsTable.grantWriteData(patchProductLambda)
+    productsTable.grantReadWriteData(patchProductLambda)
+
+    // 👇 grant the lambda role write permissions to the product tags table
+    productTagsTable.grantWriteData(patchProductLambda)
 
     // 👇 add a /tags resource
     const tags = api.root.addResource("tags")

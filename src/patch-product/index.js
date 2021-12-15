@@ -4,14 +4,71 @@ const AWS = require("aws-sdk")
 const REGION = "us-east-1"
 AWS.config.update({ region: REGION })
 
-var docClient = new AWS.DynamoDB.DocumentClient();
+const docClient = new AWS.DynamoDB.DocumentClient();
 const S3Client = new AWS.S3()
-const tableName = "products"
+const productsTable = "products"
+const productTagsTable = "productTags"
 const bucketName = "e-commerce-images-bucket"
 
-const updateItemOnDynamoDB = async (tableName, item, idAttributeName) => {
+const handleError = (callback, error) => {
+  console.error("Error", error);
+
+  callback({
+    statusCode: 500,
+    body: JSON.stringify(error),
+    headers: {
+      "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+      'Content-Type': 'application/json'
+    },
+    isBase64Encoded: false
+  });
+}
+
+const removeProductFromTag = async (oldTag, id) => {
   const params = {
-      TableName: tableName,
+    TableName: productTagsTable,
+    Key: { TAG_NAME: oldTag },
+    ExpressionAttributeNames: {
+      "#p": "products"
+    },
+    ExpressionAttributeValues: {
+      ":id": docClient.createSet([id]),
+    },
+    UpdateExpression: "DELETE #p :id",
+  }
+
+  await docClient.update(params).promise()
+}
+
+const addProductToTag = async (tag, id) => {
+  const params = {
+    TableName: productTagsTable,
+    Key: { TAG_NAME: tag },
+    ExpressionAttributeNames: {
+      "#p": "products"
+    },
+    ExpressionAttributeValues: {
+      ":id": docClient.createSet([id]),
+    },
+    UpdateExpression: "ADD #p :id",
+  }
+
+  await docClient.update(params).promise()
+}
+
+
+const getItemFromDynamoDB = async (id) => {
+  const params = {
+    TableName: productsTable,
+    Key: { id }
+  }
+
+  return docClient.get(params).promise();
+}
+
+const updateItemOnDynamoDB = async (item, idAttributeName) => {
+  const params = {
+      TableName: productsTable,
       Key: {},
       ExpressionAttributeValues: {},
       ExpressionAttributeNames: {},
@@ -33,13 +90,21 @@ const updateItemOnDynamoDB = async (tableName, item, idAttributeName) => {
   }
 
   for (let i = 0; i < attributes.length; i++) {
-      let attribute = attributes[i];
-      if (attribute != idAttributeName) {
-          params["UpdateExpression"] += prefix + "#" + attribute + " = :" + attribute;
-          params["ExpressionAttributeValues"][":" + attribute] = attribute === "PRODUCT_IMAGES" ? productImages : item[attribute];
-          params["ExpressionAttributeNames"]["#" + attribute] = attribute;
-          prefix = ", ";
+    const attribute = attributes[i];
+    if (attribute != idAttributeName) {
+      params["UpdateExpression"] += prefix + "#" + attribute + " = :" + attribute;
+
+      if (attribute === "PROUCT_IMAGES") {
+        params["ExpressionAttributeValues"][":" + attribute] = productImages;
+      } else if (attribute === "PRODUCT_TAGS") {
+        params["ExpressionAttributeValues"][":" + attribute] = docClient.createSet(item[attribute]);
+      } else {
+        params["ExpressionAttributeValues"][":" + attribute] = item[attribute]
       }
+
+      params["ExpressionAttributeNames"]["#" + attribute] = attribute;
+      prefix = ", ";
+    }
   }
 
   await docClient.update(params).promise();
@@ -105,7 +170,46 @@ async function emptyS3Directory(bucket, dir) {
 const main = async (event, context, callback) => {
   const task = JSON.parse(event.body)
   const id = task.id
+  const tags = task.PRODUCT_TAGS
   const images = task.PRODUCT_IMAGES
+
+  if (tags) {
+    var response;
+    try {
+      response = await getItemFromDynamoDB(id)
+      console.log(`Successfuly retrieved item ${id} from dynamodb`);
+    } catch (error) {
+      handleError(callback, error)
+    }
+
+    const oldTags = response.Item?.PRODUCT_TAGS?.values
+
+    if (oldTags) {
+      for (const oldTag of oldTags) {
+        if (tags.includes(oldTag)) {
+          continue;
+        }
+  
+        try {
+          await removeProductFromTag(oldTag, id)
+        } catch (error) {
+          handleError(callback, error)
+        }
+      }
+    }
+
+    for (const tag of tags) {
+      if (oldTags.includes(tag)) {
+        continue;
+      }
+
+      try {
+        await addProductToTag(tag, id)
+      } catch (error) {
+        handleError(callback, error)
+      }
+    }
+  }
 
   // if images is defined we remove all the old images
   if (images) {
@@ -113,36 +217,16 @@ const main = async (event, context, callback) => {
       await emptyS3Directory(bucketName, `${id}/`);
       console.log(`Successfuly deleted product ${id} from S3 bucket`);
     } catch (error) {
-      console.error("Error", error);
-
-      callback({
-        statusCode: 500,
-        body: JSON.stringify(error),
-        headers: {
-          "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-          'Content-Type': 'application/json'
-        },
-        isBase64Encoded: false
-      });
+      handleError(callback, error);
     }
   }
 
   // update parameters on dynamodb
   try {
-    await updateItemOnDynamoDB(tableName, task, "id");
+    await updateItemOnDynamoDB(task, "id");
     console.log("Successfuly updated item on dynamodb");
   } catch(error) {
-    console.error("Error", error);
-
-    callback({
-      statusCode: 500,
-      body: JSON.stringify(error),
-      headers: {
-        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-        'Content-Type': 'application/json'
-      },
-      isBase64Encoded: false
-    });
+    handleError(callback, error);
   }
 
   // if images is defined, add the new images
@@ -163,19 +247,7 @@ const main = async (event, context, callback) => {
       // Uploading files to the bucket
       S3Client.upload(S3Params, function (err, data) {
         if (err) {
-          console.error("Error", err)
-  
-          callback({
-            statusCode: 500,
-            body: JSON.stringify(err),
-            headers: {
-              "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-              'Content-Type': 'application/json'
-            },
-            isBase64Encoded: false
-          });
-          
-          return;
+          handleError(callback, error);
         }
   
         console.log(`File uploaded to S3 bucket successfully. ${data.Location}`)
