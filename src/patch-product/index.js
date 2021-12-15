@@ -245,8 +245,8 @@ const main = async (event, context, callback) => {
       } 
     
       // Uploading files to the bucket
-      S3Client.upload(S3Params, function (err, data) {
-        if (err) {
+      S3Client.upload(S3Params, function (error, data) {
+        if (error) {
           handleError(callback, error);
         }
   
