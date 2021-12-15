@@ -25,17 +25,31 @@ export class ECommerceStack extends cdk.Stack {
    
     // 👇 create Dynamodb table for admins
     const adminsTable = new dynamodb.Table(this, `${id}-admins-table`, {
-      tableName: "admins",
+      tableName: "users",
       billingMode: dynamodb.BillingMode.PROVISIONED,
       readCapacity: 1,
       writeCapacity: 1,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
-      partitionKey: { name: "email", type: dynamodb.AttributeType.STRING },
+      partitionKey: { name: "username", type: dynamodb.AttributeType.STRING },
       pointInTimeRecovery: true,
     })
 
     console.log("admins table name 👉", adminsTable.tableName)
     console.log("admins table arn 👉", adminsTable.tableArn)
+
+    // 👇 create Dynamodb table for product categories
+    const productTagsTable = new dynamodb.Table(this, `${id}-product-tags-table`, {
+      tableName: "productTags",
+      billingMode: dynamodb.BillingMode.PROVISIONED,
+      readCapacity: 1,
+      writeCapacity: 1,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      partitionKey: { name: "TAG_NAME", type: dynamodb.AttributeType.STRING },
+      pointInTimeRecovery: true,
+    })
+
+    console.log("product tags table name 👉", productTagsTable.tableName)
+    console.log("product tags table arn 👉", productTagsTable.tableArn)
 
     // 👇 create Api Gateway
     const api = new apigateway.RestApi(this, "api", {
@@ -162,6 +176,43 @@ export class ECommerceStack extends cdk.Stack {
 
     // 👇 grant the lambda role write permissions to the products table
     productsTable.grantWriteData(patchProductLambda)
+
+    // 👇 add a /tags resource
+    const tags = api.root.addResource("tags")
+
+    // 👇 define PUT tags function
+    const putTagsLambda = new lambda.Function(this, "put-tags-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "index.main",
+      timeout: cdk.Duration.seconds(100),
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/put-tags")),
+    })
+
+    // 👇 grant the lambda role write permissions to the product tags table
+    productTagsTable.grantWriteData(putTagsLambda)
+
+    // 👇 integrate PUT /tags with putTagsLambda
+    tags.addMethod(
+      "PUT",
+      new apigateway.LambdaIntegration(putTagsLambda)
+    )
+
+    // 👇 define GET tags function
+    const getTagsLambda = new lambda.Function(this, "get-tags-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "index.main",
+      timeout: cdk.Duration.seconds(100),
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-tags")),
+    })
+
+    // 👇 integrate GET /tags with getTagsLambda
+    tags.addMethod(
+      "GET",
+      new apigateway.LambdaIntegration(getTagsLambda)
+    )
+
+    // 👇 grant the lambda role read permissions to the product tags table
+    productTagsTable.grantReadData(getTagsLambda)
 
     // 👇 create bucket
     const s3Bucket = new s3.Bucket(this, "s3-bucket", {
