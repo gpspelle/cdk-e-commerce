@@ -133,13 +133,13 @@
           {
             "type": "aws:cdk:asset",
             "data": {
-              "path": "asset.cdddd8e7ae1eb24628e011ccbd9eb76c19cfeadcbce1a88dc7583767ec2541ec",
-              "id": "cdddd8e7ae1eb24628e011ccbd9eb76c19cfeadcbce1a88dc7583767ec2541ec",
+              "path": "asset.31eb58511711df03907db8d00cd6f84f5ce1562c58486edddb574c17a8adcd8e",
+              "id": "31eb58511711df03907db8d00cd6f84f5ce1562c58486edddb574c17a8adcd8e",
               "packaging": "zip",
-              "sourceHash": "cdddd8e7ae1eb24628e011ccbd9eb76c19cfeadcbce1a88dc7583767ec2541ec",
-              "s3BucketParameter": "AssetParameterscdddd8e7ae1eb24628e011ccbd9eb76c19cfeadcbce1a88dc7583767ec2541ecS3BucketC435FA9F",
-              "s3KeyParameter": "AssetParameterscdddd8e7ae1eb24628e011ccbd9eb76c19cfeadcbce1a88dc7583767ec2541ecS3VersionKey5FF79C12",
-              "artifactHashParameter": "AssetParameterscdddd8e7ae1eb24628e011ccbd9eb76c19cfeadcbce1a88dc7583767ec2541ecArtifactHash7A85E922"
+              "sourceHash": "31eb58511711df03907db8d00cd6f84f5ce1562c58486edddb574c17a8adcd8e",
+              "s3BucketParameter": "AssetParameters31eb58511711df03907db8d00cd6f84f5ce1562c58486edddb574c17a8adcd8eS3BucketE253FC94",
+              "s3KeyParameter": "AssetParameters31eb58511711df03907db8d00cd6f84f5ce1562c58486edddb574c17a8adcd8eS3VersionKeyD131DD8E",
+              "artifactHashParameter": "AssetParameters31eb58511711df03907db8d00cd6f84f5ce1562c58486edddb574c17a8adcd8eArtifactHash57E1C4E3"
             },
             "trace": [
               "ConstructNode.addMetadata (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/construct-compat.ts:252:92)",
@@ -171,13 +171,13 @@
           {
             "type": "aws:cdk:asset",
             "data": {
-              "path": "asset.cfedaa97ceece8b2155a78407a7e375b74a7e443e33d28105c5fe3bceb9b72d2",
-              "id": "cfedaa97ceece8b2155a78407a7e375b74a7e443e33d28105c5fe3bceb9b72d2",
+              "path": "asset.99f7510f6471e825856098c8811b5bec44ed889467a70d9cdcb4861f52ef25b8",
+              "id": "99f7510f6471e825856098c8811b5bec44ed889467a70d9cdcb4861f52ef25b8",
               "packaging": "zip",
-              "sourceHash": "cfedaa97ceece8b2155a78407a7e375b74a7e443e33d28105c5fe3bceb9b72d2",
-              "s3BucketParameter": "AssetParameterscfedaa97ceece8b2155a78407a7e375b74a7e443e33d28105c5fe3bceb9b72d2S3Bucket67478F1D",
-              "s3KeyParameter": "AssetParameterscfedaa97ceece8b2155a78407a7e375b74a7e443e33d28105c5fe3bceb9b72d2S3VersionKey27EBEE04",
-              "artifactHashParameter": "AssetParameterscfedaa97ceece8b2155a78407a7e375b74a7e443e33d28105c5fe3bceb9b72d2ArtifactHashABAA5087"
+              "sourceHash": "99f7510f6471e825856098c8811b5bec44ed889467a70d9cdcb4861f52ef25b8",
+              "s3BucketParameter": "AssetParameters99f7510f6471e825856098c8811b5bec44ed889467a70d9cdcb4861f52ef25b8S3Bucket149B58B8",
+              "s3KeyParameter": "AssetParameters99f7510f6471e825856098c8811b5bec44ed889467a70d9cdcb4861f52ef25b8S3VersionKeyC8EC00DE",
+              "artifactHashParameter": "AssetParameters99f7510f6471e825856098c8811b5bec44ed889467a70d9cdcb4861f52ef25b8ArtifactHash25BD6550"
             },
             "trace": [
               "ConstructNode.addMetadata (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/construct-compat.ts:252:92)",
@@ -209,13 +209,13 @@
           {
             "type": "aws:cdk:asset",
             "data": {
-              "path": "asset.e7d7d3c675eb11ff7a62e216f2cbdd4d5593f6887478727af9d35258fa424024",
-              "id": "e7d7d3c675eb11ff7a62e216f2cbdd4d5593f6887478727af9d35258fa424024",
+              "path": "asset.3afd62bb17888f9b4658641f553cba4d8bc449145c0f44bbd65607facf8cfe7e",
+              "id": "3afd62bb17888f9b4658641f553cba4d8bc449145c0f44bbd65607facf8cfe7e",
               "packaging": "zip",
-              "sourceHash": "e7d7d3c675eb11ff7a62e216f2cbdd4d5593f6887478727af9d35258fa424024",
-              "s3BucketParameter": "AssetParameterse7d7d3c675eb11ff7a62e216f2cbdd4d5593f6887478727af9d35258fa424024S3Bucket2690488C",
-              "s3KeyParameter": "AssetParameterse7d7d3c675eb11ff7a62e216f2cbdd4d5593f6887478727af9d35258fa424024S3VersionKey4A9963A4",
-              "artifactHashParameter": "AssetParameterse7d7d3c675eb11ff7a62e216f2cbdd4d5593f6887478727af9d35258fa424024ArtifactHash440B256F"
+              "sourceHash": "3afd62bb17888f9b4658641f553cba4d8bc449145c0f44bbd65607facf8cfe7e",
+              "s3BucketParameter": "AssetParameters3afd62bb17888f9b4658641f553cba4d8bc449145c0f44bbd65607facf8cfe7eS3Bucket5239636B",
+              "s3KeyParameter": "AssetParameters3afd62bb17888f9b4658641f553cba4d8bc449145c0f44bbd65607facf8cfe7eS3VersionKeyAA357D64",
+              "artifactHashParameter": "AssetParameters3afd62bb17888f9b4658641f553cba4d8bc449145c0f44bbd65607facf8cfe7eArtifactHash6F50352B"
             },
             "trace": [
               "ConstructNode.addMetadata (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/construct-compat.ts:252:92)",
@@ -2023,10 +2023,10 @@
             ]
           }
         ],
-        "/ECommerceStack/AssetParameters/cdddd8e7ae1eb24628e011ccbd9eb76c19cfeadcbce1a88dc7583767ec2541ec/S3Bucket": [
+        "/ECommerceStack/AssetParameters/31eb58511711df03907db8d00cd6f84f5ce1562c58486edddb574c17a8adcd8e/S3Bucket": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameterscdddd8e7ae1eb24628e011ccbd9eb76c19cfeadcbce1a88dc7583767ec2541ecS3BucketC435FA9F",
+            "data": "AssetParameters31eb58511711df03907db8d00cd6f84f5ce1562c58486edddb574c17a8adcd8eS3BucketE253FC94",
             "trace": [
               "new FileAssetParameters (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:16:32)",
               "LegacyStackSynthesizer.doAddFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
@@ -2055,10 +2055,10 @@
             ]
           }
         ],
-        "/ECommerceStack/AssetParameters/cdddd8e7ae1eb24628e011ccbd9eb76c19cfeadcbce1a88dc7583767ec2541ec/S3VersionKey": [
+        "/ECommerceStack/AssetParameters/31eb58511711df03907db8d00cd6f84f5ce1562c58486edddb574c17a8adcd8e/S3VersionKey": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameterscdddd8e7ae1eb24628e011ccbd9eb76c19cfeadcbce1a88dc7583767ec2541ecS3VersionKey5FF79C12",
+            "data": "AssetParameters31eb58511711df03907db8d00cd6f84f5ce1562c58486edddb574c17a8adcd8eS3VersionKeyD131DD8E",
             "trace": [
               "new FileAssetParameters (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:21:31)",
               "LegacyStackSynthesizer.doAddFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
@@ -2087,10 +2087,10 @@
             ]
           }
         ],
-        "/ECommerceStack/AssetParameters/cdddd8e7ae1eb24628e011ccbd9eb76c19cfeadcbce1a88dc7583767ec2541ec/ArtifactHash": [
+        "/ECommerceStack/AssetParameters/31eb58511711df03907db8d00cd6f84f5ce1562c58486edddb574c17a8adcd8e/ArtifactHash": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameterscdddd8e7ae1eb24628e011ccbd9eb76c19cfeadcbce1a88dc7583767ec2541ecArtifactHash7A85E922",
+            "data": "AssetParameters31eb58511711df03907db8d00cd6f84f5ce1562c58486edddb574c17a8adcd8eArtifactHash57E1C4E3",
             "trace": [
               "new FileAssetParameters (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:26:34)",
               "LegacyStackSynthesizer.doAddFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
@@ -2119,10 +2119,10 @@
             ]
           }
         ],
-        "/ECommerceStack/AssetParameters/cfedaa97ceece8b2155a78407a7e375b74a7e443e33d28105c5fe3bceb9b72d2/S3Bucket": [
+        "/ECommerceStack/AssetParameters/99f7510f6471e825856098c8811b5bec44ed889467a70d9cdcb4861f52ef25b8/S3Bucket": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameterscfedaa97ceece8b2155a78407a7e375b74a7e443e33d28105c5fe3bceb9b72d2S3Bucket67478F1D",
+            "data": "AssetParameters99f7510f6471e825856098c8811b5bec44ed889467a70d9cdcb4861f52ef25b8S3Bucket149B58B8",
             "trace": [
               "new FileAssetParameters (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:16:32)",
               "LegacyStackSynthesizer.doAddFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
@@ -2151,10 +2151,10 @@
             ]
           }
         ],
-        "/ECommerceStack/AssetParameters/cfedaa97ceece8b2155a78407a7e375b74a7e443e33d28105c5fe3bceb9b72d2/S3VersionKey": [
+        "/ECommerceStack/AssetParameters/99f7510f6471e825856098c8811b5bec44ed889467a70d9cdcb4861f52ef25b8/S3VersionKey": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameterscfedaa97ceece8b2155a78407a7e375b74a7e443e33d28105c5fe3bceb9b72d2S3VersionKey27EBEE04",
+            "data": "AssetParameters99f7510f6471e825856098c8811b5bec44ed889467a70d9cdcb4861f52ef25b8S3VersionKeyC8EC00DE",
             "trace": [
               "new FileAssetParameters (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:21:31)",
               "LegacyStackSynthesizer.doAddFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
@@ -2183,10 +2183,10 @@
             ]
           }
         ],
-        "/ECommerceStack/AssetParameters/cfedaa97ceece8b2155a78407a7e375b74a7e443e33d28105c5fe3bceb9b72d2/ArtifactHash": [
+        "/ECommerceStack/AssetParameters/99f7510f6471e825856098c8811b5bec44ed889467a70d9cdcb4861f52ef25b8/ArtifactHash": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameterscfedaa97ceece8b2155a78407a7e375b74a7e443e33d28105c5fe3bceb9b72d2ArtifactHashABAA5087",
+            "data": "AssetParameters99f7510f6471e825856098c8811b5bec44ed889467a70d9cdcb4861f52ef25b8ArtifactHash25BD6550",
             "trace": [
               "new FileAssetParameters (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:26:34)",
               "LegacyStackSynthesizer.doAddFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
@@ -2215,10 +2215,10 @@
             ]
           }
         ],
-        "/ECommerceStack/AssetParameters/e7d7d3c675eb11ff7a62e216f2cbdd4d5593f6887478727af9d35258fa424024/S3Bucket": [
+        "/ECommerceStack/AssetParameters/3afd62bb17888f9b4658641f553cba4d8bc449145c0f44bbd65607facf8cfe7e/S3Bucket": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameterse7d7d3c675eb11ff7a62e216f2cbdd4d5593f6887478727af9d35258fa424024S3Bucket2690488C",
+            "data": "AssetParameters3afd62bb17888f9b4658641f553cba4d8bc449145c0f44bbd65607facf8cfe7eS3Bucket5239636B",
             "trace": [
               "new FileAssetParameters (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:16:32)",
               "LegacyStackSynthesizer.doAddFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
@@ -2247,10 +2247,10 @@
             ]
           }
         ],
-        "/ECommerceStack/AssetParameters/e7d7d3c675eb11ff7a62e216f2cbdd4d5593f6887478727af9d35258fa424024/S3VersionKey": [
+        "/ECommerceStack/AssetParameters/3afd62bb17888f9b4658641f553cba4d8bc449145c0f44bbd65607facf8cfe7e/S3VersionKey": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameterse7d7d3c675eb11ff7a62e216f2cbdd4d5593f6887478727af9d35258fa424024S3VersionKey4A9963A4",
+            "data": "AssetParameters3afd62bb17888f9b4658641f553cba4d8bc449145c0f44bbd65607facf8cfe7eS3VersionKeyAA357D64",
             "trace": [
               "new FileAssetParameters (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:21:31)",
               "LegacyStackSynthesizer.doAddFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",
@@ -2279,10 +2279,10 @@
             ]
           }
         ],
-        "/ECommerceStack/AssetParameters/e7d7d3c675eb11ff7a62e216f2cbdd4d5593f6887478727af9d35258fa424024/ArtifactHash": [
+        "/ECommerceStack/AssetParameters/3afd62bb17888f9b4658641f553cba4d8bc449145c0f44bbd65607facf8cfe7e/ArtifactHash": [
           {
             "type": "aws:cdk:logicalId",
-            "data": "AssetParameterse7d7d3c675eb11ff7a62e216f2cbdd4d5593f6887478727af9d35258fa424024ArtifactHash440B256F",
+            "data": "AssetParameters3afd62bb17888f9b4658641f553cba4d8bc449145c0f44bbd65607facf8cfe7eArtifactHash6F50352B",
             "trace": [
               "new FileAssetParameters (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/private/asset-parameters.ts:26:34)",
               "LegacyStackSynthesizer.doAddFileAsset (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/core/lib/stack-synthesizers/legacy.ts:144:16)",

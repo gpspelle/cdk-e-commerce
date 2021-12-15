@@ -91,7 +91,7 @@ const main = async (event, context, callback) => {
     handleError(callback, error)
   }
 
-  const oldTags = response.Item?.PRODUCT_TAGS?.values
+  const oldTags = response.Item?.PRODUCT_TAGS.values
   if (oldTags) {
     for (const oldTag of oldTags) {
       try {
