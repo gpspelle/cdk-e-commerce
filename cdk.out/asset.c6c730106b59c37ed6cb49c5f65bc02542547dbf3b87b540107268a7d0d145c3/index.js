@@ -99,13 +99,12 @@ const main = (event, context, callback) => {
       Key: {
         "TAG_NAME": tag
       },
-      UpdateExpression: "SET #c = list_append(if_not_exists(#c, :empty_list), :vals)",
+      UpdateExpression: "SET #c = list_append(#c, :vals)",
       ExpressionAttributeNames: {
          "#c": "products"
       },
       ExpressionAttributeValues: {
-        ":vals": [id],
-        ":empty_list": [],
+        ":vals": [id]
       },
       ReturnValues: "UPDATED_NEW",
     }

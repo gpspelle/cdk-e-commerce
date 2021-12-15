@@ -142,6 +142,9 @@ export class ECommerceStack extends cdk.Stack {
 
     // 👇 grant the lambda role write permissions to the products table
     productsTable.grantWriteData(putProductLambda)
+    
+    // 👇 grant the lambda role write permissions to the product tags table
+    productTagsTable.grantWriteData(putProductLambda)
 
     // 👇 define DELETE product function
     const deleteProductLambda = new lambda.Function(this, "delete-product-lambda", {
