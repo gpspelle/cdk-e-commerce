@@ -25,12 +25,12 @@ export class ECommerceStack extends cdk.Stack {
    
     // 👇 create Dynamodb table for admins
     const adminsTable = new dynamodb.Table(this, `${id}-admins-table`, {
-      tableName: "users",
+      tableName: "accounts",
       billingMode: dynamodb.BillingMode.PROVISIONED,
       readCapacity: 1,
       writeCapacity: 1,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
-      partitionKey: { name: "username", type: dynamodb.AttributeType.STRING },
+      partitionKey: { name: "email", type: dynamodb.AttributeType.STRING },
       pointInTimeRecovery: true,
     })
 
@@ -68,6 +68,25 @@ export class ECommerceStack extends cdk.Stack {
 
     // 👇 create an Output for the API URL
     new cdk.CfnOutput(this, "apiUrl", { value: api.url })
+
+    // 👇 define PUT login function
+    const putAccountLambda = new lambda.Function(this, "put-account-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "index.main",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/put-account")),
+    })
+
+    // 👇 add a /account resource
+    const account = api.root.addResource("account")
+
+    // 👇 integrate PUT /account with putAccountLambda
+    account.addMethod(
+      "PUT",
+      new apigateway.LambdaIntegration(putAccountLambda)
+    )
+
+    // 👇 grant the lambda role read permissions to the admins table
+    adminsTable.grantWriteData(putAccountLambda)
 
     // 👇 define POST login function
     const postLoginLambda = new lambda.Function(this, "post-login-lambda", {
