@@ -25,7 +25,7 @@ const handleError = (callback, error) => {
 
     callback(null, {
         statusCode: error.statusCode,
-        body: JSON.stringify({ message: "Erro desconhecido, tente novamente." }),
+        body: JSON.stringify({ message: 'Erro desconhecido, tente novamente.' }),
         headers: {
             "Access-Control-Allow-Origin": "*", // Required for CORS support to work
             "Content-Type": "application/json"

@@ -9,28 +9,16 @@ const ddb = new AWS.DynamoDB({ apiVersion: "2012-08-10" })
 const accountsTable = "accounts"
 
 const handleError = (callback, error) => {
-    console.error(error);
-
-    if (error.code === "ConditionalCheckFailedException") {
-        callback(null, {
-            statusCode: error.statusCode,
-            body: JSON.stringify({ message: "O email utilizado já está em uso." }),
-            headers: {
-                "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-                "Content-Type": "application/json"
-            },
-            isBase64Encoded: false
-        });
-    }
-
-    callback(null, {
-        statusCode: error.statusCode,
-        body: JSON.stringify({ message: "Erro desconhecido, tente novamente." }),
-        headers: {
-            "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-            "Content-Type": "application/json"
-        },
-        isBase64Encoded: false
+    console.error("Error", error);
+  
+    callback({
+      statusCode: 500,
+      body: JSON.stringify(error),
+      headers: {
+        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+        'Content-Type': 'application/json'
+      },
+      isBase64Encoded: false
     });
 }
 
@@ -50,12 +38,12 @@ const main = async (event, context, callback) => {
     const { email, name, commercialName, phoneNumber, password} = task
 
     if (!checkUserInput(email, phoneNumber, password)) {
-        callback(null, {
+        callback({
             statusCode: 400,
-            body: JSON.stringify("Email, telefone ou senha não atendem os requisitos mínimos"),
+            body: JSON.stringify("Malformed user input, check the user email and if the password meet the basic requirements"),
             headers: {
               "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-              "Content-Type": "application/json"
+              'Content-Type': 'application/json'
             },
             isBase64Encoded: false
         });
@@ -69,10 +57,6 @@ const main = async (event, context, callback) => {
             commercial_name: { S: commercialName },
             phone_number: { S: phoneNumber },
             password: { S: password },
-        },
-        ConditionExpression: "attribute_not_exists(#pk)",
-        ExpressionAttributeNames : {
-            "#pk" : "email"
         },
     }
 
