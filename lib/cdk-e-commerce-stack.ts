@@ -4,6 +4,7 @@ import * as lambda from "@aws-cdk/aws-lambda"
 import * as s3 from "@aws-cdk/aws-s3"
 import * as cdk from "@aws-cdk/core"
 import * as path from "path"
+import { AuthorizationType } from "@aws-cdk/aws-apigateway"
 
 export class ECommerceStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
@@ -25,7 +26,7 @@ export class ECommerceStack extends cdk.Stack {
    
     // 👇 create Dynamodb table for admins
     const adminsTable = new dynamodb.Table(this, `${id}-admins-table`, {
-      tableName: "accounts",
+      tableName: "admins",
       billingMode: dynamodb.BillingMode.PROVISIONED,
       readCapacity: 1,
       writeCapacity: 1,
@@ -51,6 +52,18 @@ export class ECommerceStack extends cdk.Stack {
     console.log("product tags table name 👉", productTagsTable.tableName)
     console.log("product tags table arn 👉", productTagsTable.tableArn)
 
+    // 👇 define auth lambda function
+    const authLambdaFunction = new lambda.Function(this, "auth-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "index.main",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/auth")),
+    })
+
+    const auth = new apigateway.TokenAuthorizer(this, "jwt-token-auth", {
+      handler: authLambdaFunction,
+      identitySource: "method.request.header.x-access-token"
+    })
+
     // 👇 create Api Gateway
     const api = new apigateway.RestApi(this, "api", {
       description: "e-commerce api gateway",
@@ -59,7 +72,7 @@ export class ECommerceStack extends cdk.Stack {
       },
       // 👇 enable CORS
       defaultCorsPreflightOptions: {
-        allowHeaders: ["Content-Type", "X-Amz-Date", "Authorization", "X-Api-Key"],
+        allowHeaders: ["Content-Type", "X-Amz-Date", "Authorization", "X-Api-Key", "x-access-token"],
         allowMethods: ["OPTIONS", "GET", "POST", "PUT", "PATCH", "DELETE"],
         allowCredentials: true,
         allowOrigins: ['*'],
@@ -69,15 +82,30 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 create an Output for the API URL
     new cdk.CfnOutput(this, "apiUrl", { value: api.url })
 
+    // 👇 add a /account resource
+    const account = api.root.addResource("account")
+
+    // 👇 add a /login resource
+    const login = api.root.addResource("login")
+
+    // 👇 add a /product resource
+    const product = api.root.addResource("product")
+
+    // 👇 add a /products resource
+    const products = api.root.addResource("products")
+
+    // 👇 add a /customer-product resource
+    const customerProduct = api.root.addResource("customer-product")
+
+    // 👇 add a /customer-products resource
+    const customerProducts = api.root.addResource("customer-products")
+
     // 👇 define PUT login function
     const putAccountLambda = new lambda.Function(this, "put-account-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "index.main",
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/put-account")),
     })
-
-    // 👇 add a /account resource
-    const account = api.root.addResource("account")
 
     // 👇 integrate PUT /account with putAccountLambda
     account.addMethod(
@@ -95,9 +123,6 @@ export class ECommerceStack extends cdk.Stack {
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/post-login")),
     })
 
-    // 👇 add a /login resource
-    const login = api.root.addResource("login")
-
     // 👇 integrate POST /login with postLoginLambda
     login.addMethod(
       "POST",
@@ -107,25 +132,6 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 grant the lambda role read permissions to the admins table
     adminsTable.grantReadData(postLoginLambda)
 
-    // 👇 define GET product function
-    const getProductLambda = new lambda.Function(this, "get-product-lambda", {
-      runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-product")),
-    })
-
-    // 👇 add a /product resource
-    const product = api.root.addResource("product")
-
-    // 👇 integrate GET /product with getProductLambda
-    product.addMethod(
-      "GET",
-      new apigateway.LambdaIntegration(getProductLambda)
-    )
-
-    // 👇 grant the lambda role read permissions to the products table
-    productsTable.grantReadData(getProductLambda)
-
     // 👇 define GET products function
     const getProductsLambda = new lambda.Function(this, "get-products-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
@@ -133,17 +139,50 @@ export class ECommerceStack extends cdk.Stack {
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-products")),
     })
 
-    // 👇 add a /products resource
-    const products = api.root.addResource("products")
-
     // 👇 integrate GET /products with getProductsLambda
     products.addMethod(
       "GET",
-      new apigateway.LambdaIntegration(getProductsLambda)
+      new apigateway.LambdaIntegration(getProductsLambda),
+      {
+        authorizationType: AuthorizationType.CUSTOM,
+        authorizer: auth,
+      }
     )
 
     // 👇 grant the lambda role read permissions to the products table
     productsTable.grantReadData(getProductsLambda)
+
+    // 👇 define GET customer product function
+    const getCustomerProductLambda = new lambda.Function(this, "get-customer-product-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "index.main",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-customer-product")),
+    })
+
+    // 👇 integrate GET /customer-product with getCustomerProductLambda
+    customerProduct.addMethod(
+      "GET",
+      new apigateway.LambdaIntegration(getCustomerProductLambda)
+    )
+
+    // 👇 grant the lambda role read permissions to the products table
+    productsTable.grantReadData(getCustomerProductLambda)
+
+    // 👇 define GET customer products function
+    const getCustomerProductsLambda = new lambda.Function(this, "get-customer-products-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "index.main",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-customer-products")),
+    })
+
+    // 👇 integrate GET /customer-products with getCustomerProductsLambda
+    customerProducts.addMethod(
+      "GET",
+      new apigateway.LambdaIntegration(getCustomerProductsLambda)
+    )
+
+    // 👇 grant the lambda role read permissions to the products table
+    productsTable.grantReadData(getCustomerProductsLambda)
 
     // 👇 define PUT product function
     const putProductLambda = new lambda.Function(this, "put-product-lambda", {
@@ -156,7 +195,11 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 integrate PUT /product with putProductLambda
     product.addMethod(
       "PUT",
-      new apigateway.LambdaIntegration(putProductLambda)
+      new apigateway.LambdaIntegration(putProductLambda),
+      {
+        authorizationType: AuthorizationType.CUSTOM,
+        authorizer: auth,
+      }
     )
 
     // 👇 grant the lambda role write permissions to the products table
@@ -176,7 +219,11 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 integrate DELETE /product with deleteProductLambda
     product.addMethod(
       "DELETE",
-      new apigateway.LambdaIntegration(deleteProductLambda)
+      new apigateway.LambdaIntegration(deleteProductLambda),
+      {
+        authorizationType: AuthorizationType.CUSTOM,
+        authorizer: auth,
+      }
     )
 
     // 👇 grant the lambda role write permissions to the products table
@@ -196,7 +243,11 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 integrate PATCH /product with patchProductLambda
     product.addMethod(
       "PATCH",
-      new apigateway.LambdaIntegration(patchProductLambda)
+      new apigateway.LambdaIntegration(patchProductLambda),
+      {
+        authorizationType: AuthorizationType.CUSTOM,
+        authorizer: auth,
+      }
     )
 
     // 👇 grant the lambda role write permissions to the products table
