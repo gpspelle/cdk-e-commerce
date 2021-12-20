@@ -85,6 +85,9 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 add a /account resource
     const account = api.root.addResource("account")
 
+    // 👇 add a /account resource
+    const accounts = api.root.addResource("accounts")
+
     // 👇 add a /login resource
     const login = api.root.addResource("login")
 
@@ -100,7 +103,7 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 add a /customer-products resource
     const customerProducts = api.root.addResource("customer-products")
 
-    // 👇 define PUT login function
+    // 👇 define PUT account function
     const putAccountLambda = new lambda.Function(this, "put-account-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "index.main",
@@ -113,8 +116,24 @@ export class ECommerceStack extends cdk.Stack {
       new apigateway.LambdaIntegration(putAccountLambda)
     )
 
-    // 👇 grant the lambda role read permissions to the admins table
+    // 👇 grant the lambda role put permissions to the admins table
     adminsTable.grantWriteData(putAccountLambda)
+
+    // 👇 define PUT account function
+    const getAccountsLambda = new lambda.Function(this, "get-accounts-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "index.main",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-accounts")),
+    })
+
+    // 👇 integrate GET /accounts with getAccountsLambda
+    accounts.addMethod(
+      "GET",
+      new apigateway.LambdaIntegration(getAccountsLambda)
+    )
+
+    // 👇 grant the lambda role read permissions to the admins table
+    adminsTable.grantReadData(getAccountsLambda)
 
     // 👇 define POST login function
     const postLoginLambda = new lambda.Function(this, "post-login-lambda", {

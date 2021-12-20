@@ -314,7 +314,7 @@
         "aws:cdk:path": "ECommerceStack/api/Account"
       }
     },
-    "apiDeployment149F12940cb8c751bcadde5b723889842050c38c": {
+    "apiDeployment149F1294f18776fd97df38cf655ce3bc15d4c21c": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -326,6 +326,9 @@
         "apiaccountOPTIONS8E2572AD",
         "apiaccountPUTDA39F327",
         "apiaccount7E8D5771",
+        "apiaccountsGETB86617AD",
+        "apiaccountsOPTIONS4256F313",
+        "apiaccounts738F8F89",
         "apicustomerproductGET896F0605",
         "apicustomerproductOPTIONS53EA1F03",
         "apicustomerproductDCCB8D74",
@@ -360,7 +363,7 @@
           "Ref": "apiC8550315"
         },
         "DeploymentId": {
-          "Ref": "apiDeployment149F12940cb8c751bcadde5b723889842050c38c"
+          "Ref": "apiDeployment149F1294f18776fd97df38cf655ce3bc15d4c21c"
         },
         "StageName": "dev"
       },
@@ -582,6 +585,175 @@
       },
       "Metadata": {
         "aws:cdk:path": "ECommerceStack/api/Default/account/PUT/Resource"
+      }
+    },
+    "apiaccounts738F8F89": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "ParentId": {
+          "Fn::GetAtt": [
+            "apiC8550315",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "accounts",
+        "RestApiId": {
+          "Ref": "apiC8550315"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/api/Default/accounts/Resource"
+      }
+    },
+    "apiaccountsOPTIONS4256F313": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "OPTIONS",
+        "ResourceId": {
+          "Ref": "apiaccounts738F8F89"
+        },
+        "RestApiId": {
+          "Ref": "apiC8550315"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationResponses": [
+            {
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-access-token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'",
+                "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,POST,PUT,PATCH,DELETE'",
+                "method.response.header.Access-Control-Allow-Credentials": "'true'"
+              },
+              "StatusCode": "204"
+            }
+          ],
+          "RequestTemplates": {
+            "application/json": "{ statusCode: 200 }"
+          },
+          "Type": "MOCK"
+        },
+        "MethodResponses": [
+          {
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Methods": true,
+              "method.response.header.Access-Control-Allow-Credentials": true
+            },
+            "StatusCode": "204"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/api/Default/accounts/OPTIONS/Resource"
+      }
+    },
+    "apiaccountsGETApiPermissionECommerceStackapi77EDABDFGETaccountsA21D79B5": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "getaccountslambda902DEA8D",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:us-east-1:453299922179:",
+              {
+                "Ref": "apiC8550315"
+              },
+              "/",
+              {
+                "Ref": "apiDeploymentStagedev96712F43"
+              },
+              "/GET/accounts"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/api/Default/accounts/GET/ApiPermission.ECommerceStackapi77EDABDF.GET..accounts"
+      }
+    },
+    "apiaccountsGETApiPermissionTestECommerceStackapi77EDABDFGETaccountsEF2E405D": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "getaccountslambda902DEA8D",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:us-east-1:453299922179:",
+              {
+                "Ref": "apiC8550315"
+              },
+              "/test-invoke-stage/GET/accounts"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/api/Default/accounts/GET/ApiPermission.Test.ECommerceStackapi77EDABDF.GET..accounts"
+      }
+    },
+    "apiaccountsGETB86617AD": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "HttpMethod": "GET",
+        "ResourceId": {
+          "Ref": "apiaccounts738F8F89"
+        },
+        "RestApiId": {
+          "Ref": "apiC8550315"
+        },
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "IntegrationHttpMethod": "POST",
+          "Type": "AWS_PROXY",
+          "Uri": {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                {
+                  "Fn::GetAtt": [
+                    "getaccountslambda902DEA8D",
+                    "Arn"
+                  ]
+                },
+                "/invocations"
+              ]
+            ]
+          }
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/api/Default/accounts/GET/Resource"
       }
     },
     "apilogin14037FF2": {
@@ -2066,6 +2238,144 @@
         "aws:asset:property": "Code"
       }
     },
+    "getaccountslambdaServiceRoleCF9DA346": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/get-accounts-lambda/ServiceRole/Resource"
+      }
+    },
+    "getaccountslambdaServiceRoleDefaultPolicyF14E7A9E": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "dynamodb:ConditionCheckItem"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "ECommerceStackadminstable6CC65C3E",
+                    "Arn"
+                  ]
+                },
+                {
+                  "Ref": "AWS::NoValue"
+                }
+              ]
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "getaccountslambdaServiceRoleDefaultPolicyF14E7A9E",
+        "Roles": [
+          {
+            "Ref": "getaccountslambdaServiceRoleCF9DA346"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/get-accounts-lambda/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
+    "getaccountslambda902DEA8D": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "AssetParameters2ea5282099a2ede0df5b4b8a49fa1db06809f6a796083534af32c7a561aded42S3BucketC2E3CE4E"
+          },
+          "S3Key": {
+            "Fn::Join": [
+              "",
+              [
+                {
+                  "Fn::Select": [
+                    0,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParameters2ea5282099a2ede0df5b4b8a49fa1db06809f6a796083534af32c7a561aded42S3VersionKeyE3DD0FEC"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Fn::Select": [
+                    1,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParameters2ea5282099a2ede0df5b4b8a49fa1db06809f6a796083534af32c7a561aded42S3VersionKeyE3DD0FEC"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "getaccountslambdaServiceRoleCF9DA346",
+            "Arn"
+          ]
+        },
+        "Handler": "index.main",
+        "Runtime": "nodejs14.x"
+      },
+      "DependsOn": [
+        "getaccountslambdaServiceRoleDefaultPolicyF14E7A9E",
+        "getaccountslambdaServiceRoleCF9DA346"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/get-accounts-lambda/Resource",
+        "aws:asset:path": "asset.2ea5282099a2ede0df5b4b8a49fa1db06809f6a796083534af32c7a561aded42",
+        "aws:asset:original-path": "/Users/gpspelle/Documents/cdk-e-commerce/src/get-accounts",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
     "postloginlambdaServiceRole5FBE01F4": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -2746,7 +3056,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": {
-            "Ref": "AssetParameters3997a919d3375795cf79ae93170a2fbe38f27cc2df95127c75ba681d62ca4ae6S3BucketC8A45B51"
+            "Ref": "AssetParametersd384777221f09c947748f5a5dede658f4a1e9479e581a0c62cfe328899e09144S3Bucket3EAF280F"
           },
           "S3Key": {
             "Fn::Join": [
@@ -2759,7 +3069,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParameters3997a919d3375795cf79ae93170a2fbe38f27cc2df95127c75ba681d62ca4ae6S3VersionKey78227530"
+                          "Ref": "AssetParametersd384777221f09c947748f5a5dede658f4a1e9479e581a0c62cfe328899e09144S3VersionKey56CA0068"
                         }
                       ]
                     }
@@ -2772,7 +3082,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParameters3997a919d3375795cf79ae93170a2fbe38f27cc2df95127c75ba681d62ca4ae6S3VersionKey78227530"
+                          "Ref": "AssetParametersd384777221f09c947748f5a5dede658f4a1e9479e581a0c62cfe328899e09144S3VersionKey56CA0068"
                         }
                       ]
                     }
@@ -2798,7 +3108,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "ECommerceStack/put-product-lambda/Resource",
-        "aws:asset:path": "asset.3997a919d3375795cf79ae93170a2fbe38f27cc2df95127c75ba681d62ca4ae6",
+        "aws:asset:path": "asset.d384777221f09c947748f5a5dede658f4a1e9479e581a0c62cfe328899e09144",
         "aws:asset:original-path": "/Users/gpspelle/Documents/cdk-e-commerce/src/put-product",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -3761,6 +4071,18 @@
       "Type": "String",
       "Description": "Artifact hash for asset \"db6ea3931e543645e3b875fba009e3013c76b18279f4444c3568fe6085a63ed9\""
     },
+    "AssetParameters2ea5282099a2ede0df5b4b8a49fa1db06809f6a796083534af32c7a561aded42S3BucketC2E3CE4E": {
+      "Type": "String",
+      "Description": "S3 bucket for asset \"2ea5282099a2ede0df5b4b8a49fa1db06809f6a796083534af32c7a561aded42\""
+    },
+    "AssetParameters2ea5282099a2ede0df5b4b8a49fa1db06809f6a796083534af32c7a561aded42S3VersionKeyE3DD0FEC": {
+      "Type": "String",
+      "Description": "S3 key for asset version \"2ea5282099a2ede0df5b4b8a49fa1db06809f6a796083534af32c7a561aded42\""
+    },
+    "AssetParameters2ea5282099a2ede0df5b4b8a49fa1db06809f6a796083534af32c7a561aded42ArtifactHash3EA890A2": {
+      "Type": "String",
+      "Description": "Artifact hash for asset \"2ea5282099a2ede0df5b4b8a49fa1db06809f6a796083534af32c7a561aded42\""
+    },
     "AssetParameters406cc672c61cb80ef8c8b434088becdc31d66d659565f9fbbeddf87516106321S3BucketD3EB1FAD": {
       "Type": "String",
       "Description": "S3 bucket for asset \"406cc672c61cb80ef8c8b434088becdc31d66d659565f9fbbeddf87516106321\""
@@ -3809,17 +4131,17 @@
       "Type": "String",
       "Description": "Artifact hash for asset \"ce93efabb2117d817958592048b4f5a218ed49c0c961088244e9fd5b92a73d37\""
     },
-    "AssetParameters3997a919d3375795cf79ae93170a2fbe38f27cc2df95127c75ba681d62ca4ae6S3BucketC8A45B51": {
+    "AssetParametersd384777221f09c947748f5a5dede658f4a1e9479e581a0c62cfe328899e09144S3Bucket3EAF280F": {
       "Type": "String",
-      "Description": "S3 bucket for asset \"3997a919d3375795cf79ae93170a2fbe38f27cc2df95127c75ba681d62ca4ae6\""
+      "Description": "S3 bucket for asset \"d384777221f09c947748f5a5dede658f4a1e9479e581a0c62cfe328899e09144\""
     },
-    "AssetParameters3997a919d3375795cf79ae93170a2fbe38f27cc2df95127c75ba681d62ca4ae6S3VersionKey78227530": {
+    "AssetParametersd384777221f09c947748f5a5dede658f4a1e9479e581a0c62cfe328899e09144S3VersionKey56CA0068": {
       "Type": "String",
-      "Description": "S3 key for asset version \"3997a919d3375795cf79ae93170a2fbe38f27cc2df95127c75ba681d62ca4ae6\""
+      "Description": "S3 key for asset version \"d384777221f09c947748f5a5dede658f4a1e9479e581a0c62cfe328899e09144\""
     },
-    "AssetParameters3997a919d3375795cf79ae93170a2fbe38f27cc2df95127c75ba681d62ca4ae6ArtifactHashE4D6B497": {
+    "AssetParametersd384777221f09c947748f5a5dede658f4a1e9479e581a0c62cfe328899e09144ArtifactHash7E20C2C2": {
       "Type": "String",
-      "Description": "Artifact hash for asset \"3997a919d3375795cf79ae93170a2fbe38f27cc2df95127c75ba681d62ca4ae6\""
+      "Description": "Artifact hash for asset \"d384777221f09c947748f5a5dede658f4a1e9479e581a0c62cfe328899e09144\""
     },
     "AssetParameters0e5b305b61a5b29f4bce3d26d53a1050405d8b5ee53bb2ad88ae309a39d81890S3Bucket39601392": {
       "Type": "String",
