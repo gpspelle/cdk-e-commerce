@@ -673,13 +673,13 @@
                   "version": "1.134.0"
                 }
               },
-              "d46b10c0ba42c14cf537ccabf362f01b7cf0770912ea078952500113420fadd2": {
-                "id": "d46b10c0ba42c14cf537ccabf362f01b7cf0770912ea078952500113420fadd2",
-                "path": "ECommerceStack/AssetParameters/d46b10c0ba42c14cf537ccabf362f01b7cf0770912ea078952500113420fadd2",
+              "0f8dfd985131670ed4580f59f8c72ea252a6058a9b96bce8eff1e81e86b2ee72": {
+                "id": "0f8dfd985131670ed4580f59f8c72ea252a6058a9b96bce8eff1e81e86b2ee72",
+                "path": "ECommerceStack/AssetParameters/0f8dfd985131670ed4580f59f8c72ea252a6058a9b96bce8eff1e81e86b2ee72",
                 "children": {
                   "S3Bucket": {
                     "id": "S3Bucket",
-                    "path": "ECommerceStack/AssetParameters/d46b10c0ba42c14cf537ccabf362f01b7cf0770912ea078952500113420fadd2/S3Bucket",
+                    "path": "ECommerceStack/AssetParameters/0f8dfd985131670ed4580f59f8c72ea252a6058a9b96bce8eff1e81e86b2ee72/S3Bucket",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
                       "version": "1.134.0"
@@ -687,7 +687,7 @@
                   },
                   "S3VersionKey": {
                     "id": "S3VersionKey",
-                    "path": "ECommerceStack/AssetParameters/d46b10c0ba42c14cf537ccabf362f01b7cf0770912ea078952500113420fadd2/S3VersionKey",
+                    "path": "ECommerceStack/AssetParameters/0f8dfd985131670ed4580f59f8c72ea252a6058a9b96bce8eff1e81e86b2ee72/S3VersionKey",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
                       "version": "1.134.0"
@@ -695,7 +695,7 @@
                   },
                   "ArtifactHash": {
                     "id": "ArtifactHash",
-                    "path": "ECommerceStack/AssetParameters/d46b10c0ba42c14cf537ccabf362f01b7cf0770912ea078952500113420fadd2/ArtifactHash",
+                    "path": "ECommerceStack/AssetParameters/0f8dfd985131670ed4580f59f8c72ea252a6058a9b96bce8eff1e81e86b2ee72/ArtifactHash",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
                       "version": "1.134.0"
@@ -5303,7 +5303,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": {
-                        "Ref": "AssetParametersd46b10c0ba42c14cf537ccabf362f01b7cf0770912ea078952500113420fadd2S3BucketF2DB7635"
+                        "Ref": "AssetParameters0f8dfd985131670ed4580f59f8c72ea252a6058a9b96bce8eff1e81e86b2ee72S3Bucket51D038A5"
                       },
                       "s3Key": {
                         "Fn::Join": [
@@ -5316,7 +5316,7 @@
                                   "Fn::Split": [
                                     "||",
                                     {
-                                      "Ref": "AssetParametersd46b10c0ba42c14cf537ccabf362f01b7cf0770912ea078952500113420fadd2S3VersionKeyF3368A84"
+                                      "Ref": "AssetParameters0f8dfd985131670ed4580f59f8c72ea252a6058a9b96bce8eff1e81e86b2ee72S3VersionKeyB66B9A0E"
                                     }
                                   ]
                                 }
@@ -5329,7 +5329,7 @@
                                   "Fn::Split": [
                                     "||",
                                     {
-                                      "Ref": "AssetParametersd46b10c0ba42c14cf537ccabf362f01b7cf0770912ea078952500113420fadd2S3VersionKeyF3368A84"
+                                      "Ref": "AssetParameters0f8dfd985131670ed4580f59f8c72ea252a6058a9b96bce8eff1e81e86b2ee72S3VersionKeyB66B9A0E"
                                     }
                                   ]
                                 }
