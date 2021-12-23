@@ -1,10 +1,17 @@
 import * as dynamodb from "@aws-cdk/aws-dynamodb"
 import * as apigateway from "@aws-cdk/aws-apigateway"
+import * as apigatewayv2 from "@aws-cdk/aws-apigatewayv2"
 import * as lambda from "@aws-cdk/aws-lambda"
+import * as iam from "@aws-cdk/aws-iam"
 import * as s3 from "@aws-cdk/aws-s3"
 import * as cdk from "@aws-cdk/core"
 import * as path from "path"
+import { HttpLambdaAuthorizer, HttpLambdaResponseType } from '@aws-cdk/aws-apigatewayv2-authorizers';
+import { HttpLambdaIntegration } from '@aws-cdk/aws-apigatewayv2-integrations';
+import { DynamoEventSource } from '@aws-cdk/aws-lambda-event-sources'
+import { SES_EMAIL_FROM, REGION, SECRET, ACCOUNT, STAGE, ADMINS_TABLE } from '../.env'
 import { AuthorizationType } from "@aws-cdk/aws-apigateway"
+import { StreamViewType } from '@aws-cdk/aws-dynamodb'
 
 export class ECommerceStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
@@ -26,13 +33,14 @@ export class ECommerceStack extends cdk.Stack {
    
     // 👇 create Dynamodb table for admins
     const adminsTable = new dynamodb.Table(this, `${id}-admins-table`, {
-      tableName: "admins",
+      tableName: ADMINS_TABLE,
       billingMode: dynamodb.BillingMode.PROVISIONED,
       readCapacity: 1,
       writeCapacity: 1,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       partitionKey: { name: "email", type: dynamodb.AttributeType.STRING },
       pointInTimeRecovery: true,
+      stream: StreamViewType.NEW_IMAGE,
     })
 
     console.log("admins table name 👉", adminsTable.tableName)
@@ -52,23 +60,11 @@ export class ECommerceStack extends cdk.Stack {
     console.log("product tags table name 👉", productTagsTable.tableName)
     console.log("product tags table arn 👉", productTagsTable.tableArn)
 
-    // 👇 define auth lambda function
-    const authLambdaFunction = new lambda.Function(this, "auth-lambda", {
-      runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/auth")),
-    })
-
-    const auth = new apigateway.TokenAuthorizer(this, "jwt-token-auth", {
-      handler: authLambdaFunction,
-      identitySource: "method.request.header.x-access-token"
-    })
-
-    // 👇 create Api Gateway
-    const api = new apigateway.RestApi(this, "api", {
-      description: "e-commerce api gateway",
+    // 👇 create Rest Api Gateway
+    const restApi = new apigateway.RestApi(this, "api", {
+      description: "e-commerce rest api gateway",
       deployOptions: {
-        stageName: "dev",
+        stageName: STAGE,
       },
       // 👇 enable CORS
       defaultCorsPreflightOptions: {
@@ -80,28 +76,55 @@ export class ECommerceStack extends cdk.Stack {
     })
 
     // 👇 create an Output for the API URL
-    new cdk.CfnOutput(this, "apiUrl", { value: api.url })
+    new cdk.CfnOutput(this, "restApiUrl", { value: restApi.url })
+
+    // 👇 define adminAuth lambda function
+    const adminAuthLambdaFunction = new lambda.Function(this, "admin-auth-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "index.main",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/admin-auth")),
+      environment: {
+        SECRET,
+        REGION,
+        ACCOUNT,
+        STAGE,
+        API_ID: restApi.restApiId,
+      }
+    })
+
+    const adminAuth = new apigateway.TokenAuthorizer(this, "jwt-token-admin-auth", {
+      handler: adminAuthLambdaFunction,
+      identitySource: "method.request.header.x-access-token"
+    })
+
+    // 👇 create HTTP Api Gateway
+    const httpApi = new apigatewayv2.HttpApi(this, "http-api", {
+      description: "e-commerce http api gateway",
+    })
+
+    // 👇 create an Output for the API URL
+    new cdk.CfnOutput(this, "httpApiUrl", { value: httpApi.apiEndpoint })
 
     // 👇 add a /account resource
-    const account = api.root.addResource("account")
+    const account = restApi.root.addResource("account")
 
     // 👇 add a /account resource
-    const accounts = api.root.addResource("accounts")
+    const accounts = restApi.root.addResource("accounts")
 
     // 👇 add a /login resource
-    const login = api.root.addResource("login")
+    const login = restApi.root.addResource("login")
 
     // 👇 add a /product resource
-    const product = api.root.addResource("product")
+    const product = restApi.root.addResource("product")
 
     // 👇 add a /products resource
-    const products = api.root.addResource("products")
+    const products = restApi.root.addResource("products")
 
     // 👇 add a /customer-product resource
-    const customerProduct = api.root.addResource("customer-product")
+    const customerProduct = restApi.root.addResource("customer-product")
 
     // 👇 add a /customer-products resource
-    const customerProducts = api.root.addResource("customer-products")
+    const customerProducts = restApi.root.addResource("customer-products")
 
     // 👇 define PUT account function
     const putAccountLambda = new lambda.Function(this, "put-account-lambda", {
@@ -140,6 +163,10 @@ export class ECommerceStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "index.main",
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/post-login")),
+      environment: {
+        SECRET,
+        REGION
+      }
     })
 
     // 👇 integrate POST /login with postLoginLambda
@@ -164,7 +191,7 @@ export class ECommerceStack extends cdk.Stack {
       new apigateway.LambdaIntegration(getProductsLambda),
       {
         authorizationType: AuthorizationType.CUSTOM,
-        authorizer: auth,
+        authorizer: adminAuth,
       }
     )
 
@@ -217,7 +244,7 @@ export class ECommerceStack extends cdk.Stack {
       new apigateway.LambdaIntegration(putProductLambda),
       {
         authorizationType: AuthorizationType.CUSTOM,
-        authorizer: auth,
+        authorizer: adminAuth,
       }
     )
 
@@ -241,7 +268,7 @@ export class ECommerceStack extends cdk.Stack {
       new apigateway.LambdaIntegration(deleteProductLambda),
       {
         authorizationType: AuthorizationType.CUSTOM,
-        authorizer: auth,
+        authorizer: adminAuth,
       }
     )
 
@@ -265,7 +292,7 @@ export class ECommerceStack extends cdk.Stack {
       new apigateway.LambdaIntegration(patchProductLambda),
       {
         authorizationType: AuthorizationType.CUSTOM,
-        authorizer: auth,
+        authorizer: adminAuth,
       }
     )
 
@@ -276,7 +303,7 @@ export class ECommerceStack extends cdk.Stack {
     productTagsTable.grantWriteData(patchProductLambda)
 
     // 👇 add a /tags resource
-    const tags = api.root.addResource("tags")
+    const tags = restApi.root.addResource("tags")
 
     // 👇 define PUT tags function
     const putTagsLambda = new lambda.Function(this, "put-tags-lambda", {
@@ -351,5 +378,84 @@ export class ECommerceStack extends cdk.Stack {
     s3Bucket.grantReadWrite(deleteProductLambda)
     // 👇 grant read and write access to bucket
     s3Bucket.grantReadWrite(patchProductLambda)
+
+    // 👇 create the lambda that sends emails
+    const mailerFunction = new lambda.Function(this, 'mailer-function', {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      memorySize: 128,
+      timeout: cdk.Duration.seconds(3),
+      handler: 'index.main',
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/email-verification")),
+      environment: {
+        SES_EMAIL_FROM,
+        REGION,
+        API_ENDPOINT: httpApi.apiEndpoint,
+        SECRET
+      }
+    })
+
+    // 👇 Add permissions to the Lambda function to send Emails
+    mailerFunction.addToRolePolicy(
+      new iam.PolicyStatement({
+        effect: iam.Effect.ALLOW,
+        actions: [
+          'ses:SendEmail',
+          'ses:SendRawEmail',
+          'ses:SendTemplatedEmail',
+        ],
+        resources: [
+          `arn:aws:ses:${REGION}:${
+            ACCOUNT
+          }:identity/${SES_EMAIL_FROM}`,
+        ],
+      }),
+    )
+
+    mailerFunction.addEventSource(
+      new DynamoEventSource(adminsTable, {
+        startingPosition: lambda.StartingPosition.TRIM_HORIZON,
+        batchSize: 1,
+        bisectBatchOnError: true,
+        retryAttempts: 10,
+      }),
+    )
+
+    // 👇 define emailAuth lambda function
+    const emailAuthLambdaFunction = new lambda.Function(this, "email-auth-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "index.main",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/email-verification-auth")),
+      environment: {
+        SECRET
+      }
+    })
+
+    // 👇 create the lambda that sends emails
+    const getVerificationEmailLambdaFunction = new lambda.Function(this, 'get-verification-email', {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      timeout: cdk.Duration.seconds(5),
+      handler: 'index.main',
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-verification-email")),
+      environment: {
+        REGION,
+        ADMINS_TABLE
+      }
+    })
+
+    adminsTable.grantWriteData(getVerificationEmailLambdaFunction)
+
+    const emailVerificationIntegration = new HttpLambdaIntegration('EmailVerificationIntegration', getVerificationEmailLambdaFunction);
+
+    const emailAuth = new HttpLambdaAuthorizer('EmailVerificationAuthorizer', emailAuthLambdaFunction, {
+      responseTypes: [HttpLambdaResponseType.SIMPLE],
+      identitySource: ["$request.querystring.x-access-token"],
+    });
+
+    httpApi.addRoutes({
+      path: '/email',
+      methods: [ apigatewayv2.HttpMethod.GET ],
+      integration: emailVerificationIntegration,
+      authorizer: emailAuth,
+    });
   }
 }
