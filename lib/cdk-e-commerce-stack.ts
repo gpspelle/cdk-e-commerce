@@ -171,6 +171,55 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 grant the lambda role put permissions to the admins table
     adminsTable.grantWriteData(putAccountLambda)
 
+    // 👇 define PATCH account function
+    const patchAccountLambda = new lambda.Function(this, "patch-account-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "index.main",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/patch-account")),
+      environment: {
+        REGION,
+        ADMINS_TABLE,
+        ADMINS_TABLE_PARTITION_KEY,
+      }
+    })
+
+    // 👇 integrate PATCH /account with patchAccountLambda
+    account.addMethod(
+      "PATCH",
+      new apigateway.LambdaIntegration(patchAccountLambda),
+      {
+        authorizationType: AuthorizationType.CUSTOM,
+        authorizer: adminAuth,
+      }
+    )
+
+    // 👇 grant the lambda role put permissions to the admins table
+    adminsTable.grantReadWriteData(patchAccountLambda)
+
+    // 👇 define GET account function
+    const getAccountLambda = new lambda.Function(this, "get-account-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "index.main",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-account")),
+      environment: {
+        REGION,
+        ADMINS_TABLE,
+      }
+    })
+
+    // 👇 integrate GET /account with getAccountLambda
+    account.addMethod(
+      "GET",
+      new apigateway.LambdaIntegration(getAccountLambda),
+      {
+        authorizationType: AuthorizationType.CUSTOM,
+        authorizer: adminAuth,
+      }
+    )
+
+    // 👇 grant the lambda role get permissions to the admins table
+    adminsTable.grantReadData(getAccountLambda)
+
     // 👇 define PUT account function
     const getAccountsLambda = new lambda.Function(this, "get-accounts-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
