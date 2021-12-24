@@ -3,7 +3,12 @@ const AWS = require("aws-sdk")
 const { v4: uuidv4 } = require("uuid")
 const crypto = require("crypto");
 // Set the region
-const { REGION, ADMINS_TABLE, HASH_ALG } = process.env;
+const { 
+    REGION, 
+    ADMINS_TABLE,
+    ADMINS_TABLE_PARTITION_KEY,
+    HASH_ALG 
+} = process.env;
 AWS.config.update({ region: REGION })
 
 // Create the DynamoDB service object
@@ -67,7 +72,7 @@ const main = async (event, context, callback) => {
     const dynamodbParams = {
         TableName: ADMINS_TABLE,
         Item: {
-            email: { S: email.toLowerCase() },
+            [ADMINS_TABLE_PARTITION_KEY]: { S: email.toLowerCase() },
             id: { S: id },
             name: { S: name },
             commercial_name: { S: commercialName },
@@ -77,7 +82,7 @@ const main = async (event, context, callback) => {
         },
         ConditionExpression: "attribute_not_exists(#unique)",
         ExpressionAttributeNames : {
-            "#unique" : "email"
+            "#unique" : ADMINS_TABLE_PARTITION_KEY,
         },
     }
 
@@ -93,7 +98,7 @@ const main = async (event, context, callback) => {
         body: JSON.stringify("Success"),
         headers: {
             "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json"
         },
         isBase64Encoded: false
     });

@@ -21,6 +21,10 @@ import {
   IMAGES_BUCKET,
   PRODUCTS_TABLE,
   ACCESS_TOKEN_NAME,
+  PRODUCTS_TABLE_PARTITION_KEY,
+  ADMINS_TABLE_PARTITION_KEY,
+  PRODUCT_TAGS_TABLE_PARTITION_KEY,
+  EMAIL_VERIFICATION_LINK_ENDPOINT,
 } from '../.env'
 import { AuthorizationType } from "@aws-cdk/aws-apigateway"
 import { StreamViewType } from '@aws-cdk/aws-dynamodb'
@@ -36,7 +40,7 @@ export class ECommerceStack extends cdk.Stack {
       readCapacity: 1,
       writeCapacity: 1,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
-      partitionKey: { name: "id", type: dynamodb.AttributeType.STRING },
+      partitionKey: { name: PRODUCTS_TABLE_PARTITION_KEY, type: dynamodb.AttributeType.STRING },
       pointInTimeRecovery: true,
     })
 
@@ -50,7 +54,7 @@ export class ECommerceStack extends cdk.Stack {
       readCapacity: 1,
       writeCapacity: 1,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
-      partitionKey: { name: "email", type: dynamodb.AttributeType.STRING },
+      partitionKey: { name: ADMINS_TABLE_PARTITION_KEY, type: dynamodb.AttributeType.STRING },
       pointInTimeRecovery: true,
       stream: StreamViewType.NEW_IMAGE,
     })
@@ -65,7 +69,7 @@ export class ECommerceStack extends cdk.Stack {
       readCapacity: 1,
       writeCapacity: 1,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
-      partitionKey: { name: "TAG_NAME", type: dynamodb.AttributeType.STRING },
+      partitionKey: { name: PRODUCT_TAGS_TABLE_PARTITION_KEY, type: dynamodb.AttributeType.STRING },
       pointInTimeRecovery: true,
     })
 
@@ -149,6 +153,7 @@ export class ECommerceStack extends cdk.Stack {
       environment: {
         REGION,
         ADMINS_TABLE,
+        ADMINS_TABLE_PARTITION_KEY,
         HASH_ALG,
       }
     })
@@ -191,6 +196,7 @@ export class ECommerceStack extends cdk.Stack {
         SECRET,
         REGION,
         ADMINS_TABLE,
+        ADMINS_TABLE_PARTITION_KEY,
         HASH_ALG
       }
     })
@@ -277,6 +283,7 @@ export class ECommerceStack extends cdk.Stack {
       environment: {
         REGION,
         PRODUCTS_TABLE,
+        PRODUCTS_TABLE_PARTITION_KEY,
         PRODUCT_TAGS_TABLE,
         IMAGES_BUCKET,
       }
@@ -307,6 +314,7 @@ export class ECommerceStack extends cdk.Stack {
       environment: {
         REGION,
         PRODUCTS_TABLE,
+        PRODUCTS_TABLE_PARTITION_KEY,
         PRODUCT_TAGS_TABLE,
         IMAGES_BUCKET,
       }
@@ -337,6 +345,7 @@ export class ECommerceStack extends cdk.Stack {
       environment: {
         REGION,
         PRODUCTS_TABLE,
+        PRODUCTS_TABLE_PARTITION_KEY,
         PRODUCT_TAGS_TABLE,
         IMAGES_BUCKET,
       }
@@ -453,6 +462,7 @@ export class ECommerceStack extends cdk.Stack {
         API_ENDPOINT: httpApi.apiEndpoint,
         SECRET,
         ACCESS_TOKEN_NAME,
+        EMAIL_VERIFICATION_LINK_ENDPOINT,
       }
     })
 
@@ -501,7 +511,8 @@ export class ECommerceStack extends cdk.Stack {
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-verification-email")),
       environment: {
         REGION,
-        ADMINS_TABLE
+        ADMINS_TABLE,
+        ADMINS_TABLE_PARTITION_KEY,
       }
     })
 
@@ -515,7 +526,7 @@ export class ECommerceStack extends cdk.Stack {
     });
 
     httpApi.addRoutes({
-      path: '/email',
+      path: `/${EMAIL_VERIFICATION_LINK_ENDPOINT}`,
       methods: [ apigatewayv2.HttpMethod.GET ],
       integration: emailVerificationIntegration,
       authorizer: emailAuth,

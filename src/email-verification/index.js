@@ -6,13 +6,8 @@ const {
     API_ENDPOINT,
     SECRET,
     ACCESS_TOKEN_NAME,
+    EMAIL_VERIFICATION_LINK_ENDPOINT,
 } = process.env;
-
-if (!SES_EMAIL_FROM || !REGION || !API_ENDPOINT || !SECRET || !ACCESS_TOKEN_NAME) {
-  throw new Error(
-    'Please add the ACCESS_TOKEN_NAME, API_ENDPOINT, SES_EMAIL_FROM, SECRET and REGION environment variables.',
-  );
-}
 
 // Set the region
 AWS.config.update({ region: REGION })
@@ -98,7 +93,7 @@ function getTextContent({ name, email }) {
     expiresIn: '24h'
   });
 
-  const verificationLink = `${API_ENDPOINT}/email?${ACCESS_TOKEN_NAME}=${token}`
+  const verificationLink = `${API_ENDPOINT}/${EMAIL_VERIFICATION_LINK_ENDPOINT}?${ACCESS_TOKEN_NAME}=${token}`
 
   return `
     Prezado ${name},

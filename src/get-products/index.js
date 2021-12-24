@@ -1,7 +1,7 @@
 // Load the AWS SDK for Node.js
 var AWS = require("aws-sdk")
 // Set the region
-const { REGION, PRODUCTS_TABLE }
+const { REGION, PRODUCTS_TABLE } = process.env;
 AWS.config.update({ region: REGION })
 const docClient = new AWS.DynamoDB.DocumentClient()
 

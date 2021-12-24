@@ -1,6 +1,10 @@
 // Load the AWS SDK for Node.js
 var AWS = require("aws-sdk");
-const { REGION, ADMINS_TABLE } = process.env;
+const { 
+    REGION,
+    ADMINS_TABLE,
+    ADMINS_TABLE_PARTITION_KEY,
+} = process.env;
 // Set the region
 AWS.config.update({ region: REGION });
 
@@ -23,7 +27,7 @@ const handleError = (callback, error) => {
 const addEmailVerificationToAccount = async (email) => {
     const params = {
       TableName: ADMINS_TABLE,
-      Key: { email },
+      Key: { [ADMINS_TABLE_PARTITION_KEY]: email },
       ExpressionAttributeNames: {
         "#v": "is_email_verified"
       },

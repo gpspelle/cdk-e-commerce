@@ -3,7 +3,8 @@ const AWS = require("aws-sdk")
 // Set the region
 const { 
   REGION, 
-  PRODUCTS_TABLE, 
+  PRODUCTS_TABLE,
+  PRODUCTS_TABLE_PARTITION_KEY,
   PRODUCT_TAGS_TABLE, 
   IMAGES_BUCKET 
 } = process.env;
@@ -30,7 +31,7 @@ const handleError = (callback, error) => {
 const getItemFromDynamoDB = async (id) => {
   const params = {
     TableName: PRODUCTS_TABLE,
-    Key: { id }
+    Key: { [PRODUCTS_TABLE_PARTITION_KEY]: id }
   }
 
   return docClient.get(params).promise();
@@ -127,7 +128,7 @@ const main = async (event, context, callback) => {
 
   const dynamodbParams = {
     Key: {
-      "id": {
+      [PRODUCTS_TABLE_PARTITION_KEY]: {
         "S": id
       },
     }, 
