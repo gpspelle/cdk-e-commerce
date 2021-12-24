@@ -2,7 +2,7 @@
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 var AWS = require("aws-sdk");
-const { SECRET, REGION } = process.env;
+const { SECRET, REGION, ADMINS_TABLE, HASH_ALG } = process.env;
 // Set the region
 AWS.config.update({ region: REGION });
 const dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
@@ -11,16 +11,16 @@ const main = async (event) => {
     const task = JSON.parse(event.body)
     const email = task.email
     const params = {
-        TableName: "admins",
+        TableName: ADMINS_TABLE,
         Key: {
-            "email": { S: email},
+            "email": { S: email },
         },
     }
 
     try {
         const result = await dynamodb.getItem(params).promise();
-        const sha512Password = crypto.createHash('sha512').update(task.password).digest('hex');
-        if (result.Item.password.S === sha512Password) {
+        const hashedPassword = crypto.createHash(HASH_ALG).update(task.password).digest('hex');
+        if (result.Item.password.S === hashedPassword) {
             const id = result.Item.id.S;
             const token = jwt.sign({ id }, SECRET, {
               expiresIn: '24h'
@@ -42,7 +42,7 @@ const main = async (event) => {
             body: JSON.stringify("Email ou senha incorretos."),
             headers: {
                 "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-                "Content-Typ": "application/json"
+                "Content-Type": "application/json"
             },
             isBase64Encoded: false,
         }
@@ -53,7 +53,7 @@ const main = async (event) => {
         body: JSON.stringify("Email ou senha incorretos."),
         headers: {
             "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-            "Content-Typ": "application/json"
+            "Content-Type": "application/json"
         },
         isBase64Encoded: false,
     }

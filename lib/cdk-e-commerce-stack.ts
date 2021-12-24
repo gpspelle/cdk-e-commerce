@@ -9,7 +9,19 @@ import * as path from "path"
 import { HttpLambdaAuthorizer, HttpLambdaResponseType } from '@aws-cdk/aws-apigatewayv2-authorizers';
 import { HttpLambdaIntegration } from '@aws-cdk/aws-apigatewayv2-integrations';
 import { DynamoEventSource } from '@aws-cdk/aws-lambda-event-sources'
-import { SES_EMAIL_FROM, REGION, SECRET, ACCOUNT, STAGE, ADMINS_TABLE } from '../.env'
+import { 
+  SES_EMAIL_FROM, 
+  REGION, 
+  SECRET, 
+  ACCOUNT, 
+  STAGE, 
+  ADMINS_TABLE,
+  PRODUCT_TAGS_TABLE,
+  HASH_ALG,
+  IMAGES_BUCKET,
+  PRODUCTS_TABLE,
+  ACCESS_TOKEN_NAME,
+} from '../.env'
 import { AuthorizationType } from "@aws-cdk/aws-apigateway"
 import { StreamViewType } from '@aws-cdk/aws-dynamodb'
 
@@ -19,7 +31,7 @@ export class ECommerceStack extends cdk.Stack {
 
     // 👇 create Dynamodb table for products
     const productsTable = new dynamodb.Table(this, `${id}-products-table`, {
-      tableName: "products",
+      tableName: PRODUCTS_TABLE,
       billingMode: dynamodb.BillingMode.PROVISIONED,
       readCapacity: 1,
       writeCapacity: 1,
@@ -48,7 +60,7 @@ export class ECommerceStack extends cdk.Stack {
 
     // 👇 create Dynamodb table for product categories
     const productTagsTable = new dynamodb.Table(this, `${id}-product-tags-table`, {
-      tableName: "productTags",
+      tableName: PRODUCT_TAGS_TABLE,
       billingMode: dynamodb.BillingMode.PROVISIONED,
       readCapacity: 1,
       writeCapacity: 1,
@@ -68,7 +80,7 @@ export class ECommerceStack extends cdk.Stack {
       },
       // 👇 enable CORS
       defaultCorsPreflightOptions: {
-        allowHeaders: ["Content-Type", "X-Amz-Date", "Authorization", "X-Api-Key", "x-access-token"],
+        allowHeaders: ["Content-Type", "X-Amz-Date", "Authorization", "X-Api-Key", ACCESS_TOKEN_NAME],
         allowMethods: ["OPTIONS", "GET", "POST", "PUT", "PATCH", "DELETE"],
         allowCredentials: true,
         allowOrigins: ['*'],
@@ -94,7 +106,7 @@ export class ECommerceStack extends cdk.Stack {
 
     const adminAuth = new apigateway.TokenAuthorizer(this, "jwt-token-admin-auth", {
       handler: adminAuthLambdaFunction,
-      identitySource: "method.request.header.x-access-token"
+      identitySource: `method.request.header.${ACCESS_TOKEN_NAME}`
     })
 
     // 👇 create HTTP Api Gateway
@@ -126,11 +138,19 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 add a /customer-products resource
     const customerProducts = restApi.root.addResource("customer-products")
 
+    // 👇 add a /tags resource
+    const tags = restApi.root.addResource("tags")
+
     // 👇 define PUT account function
     const putAccountLambda = new lambda.Function(this, "put-account-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "index.main",
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/put-account")),
+      environment: {
+        REGION,
+        ADMINS_TABLE,
+        HASH_ALG,
+      }
     })
 
     // 👇 integrate PUT /account with putAccountLambda
@@ -147,6 +167,10 @@ export class ECommerceStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "index.main",
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-accounts")),
+      environment: {
+        REGION,
+        ADMINS_TABLE,
+      }
     })
 
     // 👇 integrate GET /accounts with getAccountsLambda
@@ -165,7 +189,9 @@ export class ECommerceStack extends cdk.Stack {
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/post-login")),
       environment: {
         SECRET,
-        REGION
+        REGION,
+        ADMINS_TABLE,
+        HASH_ALG
       }
     })
 
@@ -183,6 +209,10 @@ export class ECommerceStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "index.main",
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-products")),
+      environment: {
+        REGION,
+        PRODUCTS_TABLE
+      }
     })
 
     // 👇 integrate GET /products with getProductsLambda
@@ -203,6 +233,10 @@ export class ECommerceStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "index.main",
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-customer-product")),
+      environment: {
+        REGION,
+        PRODUCTS_TABLE
+      }
     })
 
     // 👇 integrate GET /customer-product with getCustomerProductLambda
@@ -219,6 +253,10 @@ export class ECommerceStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "index.main",
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-customer-products")),
+      environment: {
+        REGION,
+        PRODUCTS_TABLE
+      }
     })
 
     // 👇 integrate GET /customer-products with getCustomerProductsLambda
@@ -236,6 +274,12 @@ export class ECommerceStack extends cdk.Stack {
       handler: "index.main",
       timeout: cdk.Duration.seconds(100),
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/put-product")),
+      environment: {
+        REGION,
+        PRODUCTS_TABLE,
+        PRODUCT_TAGS_TABLE,
+        IMAGES_BUCKET,
+      }
     })
 
     // 👇 integrate PUT /product with putProductLambda
@@ -260,6 +304,12 @@ export class ECommerceStack extends cdk.Stack {
       handler: "index.main",
       timeout: cdk.Duration.seconds(100),
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/delete-product")),
+      environment: {
+        REGION,
+        PRODUCTS_TABLE,
+        PRODUCT_TAGS_TABLE,
+        IMAGES_BUCKET,
+      }
     })
 
     // 👇 integrate DELETE /product with deleteProductLambda
@@ -284,6 +334,12 @@ export class ECommerceStack extends cdk.Stack {
       handler: "index.main",
       timeout: cdk.Duration.seconds(100),
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/patch-product")),
+      environment: {
+        REGION,
+        PRODUCTS_TABLE,
+        PRODUCT_TAGS_TABLE,
+        IMAGES_BUCKET,
+      }
     })
 
     // 👇 integrate PATCH /product with patchProductLambda
@@ -302,15 +358,16 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 grant the lambda role write permissions to the product tags table
     productTagsTable.grantWriteData(patchProductLambda)
 
-    // 👇 add a /tags resource
-    const tags = restApi.root.addResource("tags")
-
     // 👇 define PUT tags function
     const putTagsLambda = new lambda.Function(this, "put-tags-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "index.main",
       timeout: cdk.Duration.seconds(100),
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/put-tags")),
+      environment: {
+        REGION,
+        PRODUCT_TAGS_TABLE,
+      }
     })
 
     // 👇 grant the lambda role write permissions to the product tags table
@@ -328,6 +385,10 @@ export class ECommerceStack extends cdk.Stack {
       handler: "index.main",
       timeout: cdk.Duration.seconds(100),
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-tags")),
+      environment: {
+        REGION,
+        PRODUCT_TAGS_TABLE
+      }
     })
 
     // 👇 integrate GET /tags with getTagsLambda
@@ -341,7 +402,7 @@ export class ECommerceStack extends cdk.Stack {
 
     // 👇 create bucket
     const s3Bucket = new s3.Bucket(this, "s3-bucket", {
-      bucketName: "e-commerce-images-bucket",
+      bucketName: IMAGES_BUCKET,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       autoDeleteObjects: true,
       versioned: false,
@@ -390,7 +451,8 @@ export class ECommerceStack extends cdk.Stack {
         SES_EMAIL_FROM,
         REGION,
         API_ENDPOINT: httpApi.apiEndpoint,
-        SECRET
+        SECRET,
+        ACCESS_TOKEN_NAME,
       }
     })
 
@@ -426,7 +488,8 @@ export class ECommerceStack extends cdk.Stack {
       handler: "index.main",
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/email-verification-auth")),
       environment: {
-        SECRET
+        SECRET,
+        ACCESS_TOKEN_NAME,
       }
     })
 
@@ -448,7 +511,7 @@ export class ECommerceStack extends cdk.Stack {
 
     const emailAuth = new HttpLambdaAuthorizer('EmailVerificationAuthorizer', emailAuthLambdaFunction, {
       responseTypes: [HttpLambdaResponseType.SIMPLE],
-      identitySource: ["$request.querystring.x-access-token"],
+      identitySource: [`$request.querystring.${ACCESS_TOKEN_NAME}`],
     });
 
     httpApi.addRoutes({

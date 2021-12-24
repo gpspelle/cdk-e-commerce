@@ -1,14 +1,13 @@
 // Load the AWS SDK for Node.js
 const AWS = require("aws-sdk")
 const { v4: uuidv4 } = require("uuid")
-const crypto = require('crypto');
+const crypto = require("crypto");
 // Set the region
-const REGION = "us-east-1"
+const { REGION, ADMINS_TABLE, HASH_ALG } = process.env;
 AWS.config.update({ region: REGION })
 
 // Create the DynamoDB service object
 const ddb = new AWS.DynamoDB({ apiVersion: "2012-08-10" })
-const adminsTable = "admins"
 
 const handleError = (callback, error) => {
     console.error(error);
@@ -63,17 +62,17 @@ const main = async (event, context, callback) => {
             isBase64Encoded: false
         });
     }
-    const sha512Password = crypto.createHash('sha512').update(password).digest('hex');
+    const hashedPassword = crypto.createHash(HASH_ALG).update(password).digest('hex');
 
     const dynamodbParams = {
-        TableName: adminsTable,
+        TableName: ADMINS_TABLE,
         Item: {
             email: { S: email.toLowerCase() },
             id: { S: id },
             name: { S: name },
             commercial_name: { S: commercialName },
             phone_number: { S: phoneNumber },
-            password: { S: sha512Password },
+            password: { S: hashedPassword },
             is_email_verified: { BOOL: false },
         },
         ConditionExpression: "attribute_not_exists(#unique)",

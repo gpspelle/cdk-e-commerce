@@ -1,12 +1,13 @@
 // Load the AWS SDK for Node.js
 var AWS = require("aws-sdk")
+const { REGION, PRODUCT_TAGS_TABLE } = process.env;
 // Set the region
-AWS.config.update({ region: "us-east-1" })
+AWS.config.update({ region: REGION })
 const docClient = new AWS.DynamoDB.DocumentClient()
 
 const main = async (event) => {
   const params = {
-    TableName: "productTags",
+    TableName: PRODUCT_TAGS_TABLE,
     ExclusiveStartKey: undefined,
   }
 

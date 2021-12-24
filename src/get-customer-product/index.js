@@ -1,7 +1,8 @@
 // Load the AWS SDK for Node.js
 var AWS = require("aws-sdk")
+const { REGION, PRODUCTS_TABLE } = process.env;
 // Set the region
-AWS.config.update({ region: "us-east-1" })
+AWS.config.update({ region: REGION })
 const ddb = new AWS.DynamoDB()
 
 const main = (event, context, callback) => {
@@ -9,7 +10,7 @@ const main = (event, context, callback) => {
   const id = task.id
 
   const params = {
-    TableName: "products",
+    TableName: PRODUCTS_TABLE,
     Key: {
       "id": {
         S: id

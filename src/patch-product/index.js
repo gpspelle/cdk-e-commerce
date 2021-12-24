@@ -1,14 +1,16 @@
 // Load the AWS SDK for Node.js
 const AWS = require("aws-sdk")
+const { 
+  REGION, 
+  PRODUCTS_TABLE, 
+  PRODUCT_TAGS_TABLE, 
+  IMAGES_BUCKET 
+} = process.env;
 // Set the region
-const REGION = "us-east-1"
 AWS.config.update({ region: REGION })
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 const S3Client = new AWS.S3()
-const productsTable = "products"
-const productTagsTable = "productTags"
-const bucketName = "e-commerce-images-bucket"
 
 const handleError = (callback, error) => {
   console.error(error);
@@ -26,7 +28,7 @@ const handleError = (callback, error) => {
 
 const removeProductFromTag = async (oldTag, id) => {
   const params = {
-    TableName: productTagsTable,
+    TableName: PRODUCT_TAGS_TABLE,
     Key: { TAG_NAME: oldTag },
     ExpressionAttributeNames: {
       "#p": "products"
@@ -42,7 +44,7 @@ const removeProductFromTag = async (oldTag, id) => {
 
 const addProductToTag = async (tag, id) => {
   const params = {
-    TableName: productTagsTable,
+    TableName: PRODUCT_TAGS_TABLE,
     Key: { TAG_NAME: tag },
     ExpressionAttributeNames: {
       "#p": "products"
@@ -59,7 +61,7 @@ const addProductToTag = async (tag, id) => {
 
 const getItemFromDynamoDB = async (id) => {
   const params = {
-    TableName: productsTable,
+    TableName: PRODUCTS_TABLE,
     Key: { id }
   }
 
@@ -68,7 +70,7 @@ const getItemFromDynamoDB = async (id) => {
 
 const updateItemOnDynamoDB = async (item, idAttributeName) => {
   const params = {
-      TableName: productsTable,
+      TableName: PRODUCTS_TABLE,
       Key: {},
       ExpressionAttributeValues: {},
       ExpressionAttributeNames: {},
@@ -86,7 +88,7 @@ const updateItemOnDynamoDB = async (item, idAttributeName) => {
 
   var productImages;
   if (item.PRODUCT_IMAGES) {
-    productImages = item.PRODUCT_IMAGES.map((image) => `https://${bucketName}.s3.${REGION}.amazonaws.com/${item[idAttributeName]}/${encodeS3URI(image.name.replace(/ /g, ""))}`);
+    productImages = item.PRODUCT_IMAGES.map((image) => `https://${IMAGES_BUCKET}.s3.${REGION}.amazonaws.com/${item[idAttributeName]}/${encodeS3URI(image.name.replace(/ /g, ""))}`);
   }
 
   for (let i = 0; i < attributes.length; i++) {
@@ -227,7 +229,7 @@ const main = async (event, context, callback) => {
   // if images is defined we remove all the old images
   if (images) {
     try {
-      await emptyS3Directory(bucketName, `${id}/`);
+      await emptyS3Directory(IMAGES_BUCKET, `${id}/`);
       console.log(`Successfuly deleted product ${id} from S3 bucket`);
     } catch (error) {
       handleError(callback, error);
@@ -273,7 +275,7 @@ const main = async (event, context, callback) => {
     body: JSON.stringify("Success"),
     headers: {
       "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json"
     },
     isBase64Encoded: false
   });

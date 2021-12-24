@@ -4,12 +4,13 @@ const {
     SES_EMAIL_FROM, 
     REGION,
     API_ENDPOINT,
-    SECRET
+    SECRET,
+    ACCESS_TOKEN_NAME,
 } = process.env;
 
-if (!SES_EMAIL_FROM || !REGION || !API_ENDPOINT || !SECRET) {
+if (!SES_EMAIL_FROM || !REGION || !API_ENDPOINT || !SECRET || !ACCESS_TOKEN_NAME) {
   throw new Error(
-    'Please add the API_ENDPOINT, SES_EMAIL_FROM, SECRET and REGION environment variables.',
+    'Please add the ACCESS_TOKEN_NAME, API_ENDPOINT, SES_EMAIL_FROM, SECRET and REGION environment variables.',
   );
 }
 
@@ -27,20 +28,20 @@ const main = async (event, context) => {
       if (!name || !email)
         throw new Error('Properties name and email are required');
   
-      return await sendEmail({name, email});
+      return await sendEmail({ name, email });
     } catch (error) {
-      console.log('ERROR is: ', error);
+      console.error(error);
       if (error instanceof Error) {
         return JSON.stringify({
             body: {
-                error: error.message
+              error: error.message
             },
             statusCode: 400
         });
       }
       return JSON.stringify({
         body: {
-            error: JSON.stringify(error)
+          error: JSON.stringify(error)
         },
         statusCode: 400,
       });
@@ -49,7 +50,7 @@ const main = async (event, context) => {
 
   return JSON.stringify({
     body: {
-        message: JSON.stringify("only insert on dynamodb relates to an email.")
+      message: JSON.stringify("Apenas mudanças do tipo inserção disparam um email.")
     },
     statusCode: 200,
   });
@@ -60,19 +61,18 @@ async function sendEmail({
   name,
   email,
 }) {
-  const message = "hello world";
-  const ses = new AWS.SES({region: REGION});
-  await ses.sendEmail(sendEmailParams({name, email, message})).promise();
+  const ses = new AWS.SES({ region: REGION });
+  await ses.sendEmail(sendEmailParams({ name, email })).promise();
 
   return JSON.stringify({
     body: {
-        message: 'Email sent successfully 🎉🎉🎉'
+      message: 'Email sent successfully 🎉🎉🎉'
     },
     statusCode: 200,
   });
 }
 
-function sendEmailParams({name, email, message}) {
+function sendEmailParams({ name, email }) {
   return {
     Destination: {
       ToAddresses: [email],
@@ -81,7 +81,7 @@ function sendEmailParams({name, email, message}) {
       Body: {
         Text: {
           Charset: 'UTF-8',
-          Data: getTextContent({name, email, message}),
+          Data: getTextContent({name, email}),
         },
       },
       Subject: {
@@ -93,12 +93,12 @@ function sendEmailParams({name, email, message}) {
   };
 }
 
-function getTextContent({name, email}) {
+function getTextContent({ name, email }) {
   const token = jwt.sign({ email }, SECRET, {
     expiresIn: '24h'
   });
 
-  const verificationLink = `${API_ENDPOINT}/email?x-access-token=${token}`
+  const verificationLink = `${API_ENDPOINT}/email?${ACCESS_TOKEN_NAME}=${token}`
 
   return `
     Prezado ${name},

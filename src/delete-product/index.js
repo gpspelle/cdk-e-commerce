@@ -1,15 +1,17 @@
 // Load the AWS SDK for Node.js
 const AWS = require("aws-sdk")
 // Set the region
-const REGION = "us-east-1"
+const { 
+  REGION, 
+  PRODUCTS_TABLE, 
+  PRODUCT_TAGS_TABLE, 
+  IMAGES_BUCKET 
+} = process.env;
 AWS.config.update({ region: REGION })
 
 const ddb = new AWS.DynamoDB({ apiVersion: "2012-08-10" })
 const docClient = new AWS.DynamoDB.DocumentClient();
 const S3Client = new AWS.S3()
-const productsTable = "products"
-const productTagsTable = "productTags"
-const bucketName = "e-commerce-images-bucket"
 
 const handleError = (callback, error) => {
   console.error(error);
@@ -27,7 +29,7 @@ const handleError = (callback, error) => {
 
 const getItemFromDynamoDB = async (id) => {
   const params = {
-    TableName: productsTable,
+    TableName: PRODUCTS_TABLE,
     Key: { id }
   }
 
@@ -36,7 +38,7 @@ const getItemFromDynamoDB = async (id) => {
 
 const removeProductFromTag = async (oldTag, id) => {
   const params = {
-    TableName: productTagsTable,
+    TableName: PRODUCT_TAGS_TABLE,
     Key: { TAG_NAME: oldTag },
     ExpressionAttributeNames: {
       "#p": "products"
@@ -116,19 +118,9 @@ const main = async (event, context, callback) => {
   }
 
   try {
-    await emptyS3Directory(bucketName, `${id}/`);
+    await emptyS3Directory(IMAGES_BUCKET, `${id}/`);
   } catch (error) {
-    console.error("Error", error);
-
-    callback({
-      statusCode: 400,
-      body: JSON.stringify(error),
-      headers: {
-        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-        'Content-Type': 'application/json'
-      },
-      isBase64Encoded: false
-    });
+    handleError(callback, error)
   }
 
   console.log(`Successfuly deleted product ${id} from S3 bucket`);
@@ -139,24 +131,14 @@ const main = async (event, context, callback) => {
         "S": id
       },
     }, 
-    TableName: productsTable
+    TableName: PRODUCTS_TABLE
   };
 
   try {
     await deleteItemFromDynamoDB(dynamodbParams);
     console.log("Successfuly deleted item from dynamodb");
   } catch(error) {
-    console.error("Error", error);
-
-    callback({
-      statusCode: 400,
-      body: JSON.stringify(error),
-      headers: {
-        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-        'Content-Type': 'application/json'
-      },
-      isBase64Encoded: false
-    });
+    handleError(callback, error)
   }
 
   callback(null, {

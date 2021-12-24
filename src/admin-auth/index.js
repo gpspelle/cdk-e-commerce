@@ -1,5 +1,11 @@
 const jwt = require("jsonwebtoken");
-const { SECRET, REGION, ACCOUNT, API_ID, STAGE } = process.env;
+const { 
+    SECRET, 
+    REGION, 
+    ACCOUNT, 
+    API_ID, 
+    STAGE 
+} = process.env;
 
 const main = async (event, context, callback) => {
     const token = event.authorizationToken;

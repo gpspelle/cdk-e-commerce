@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const {
-    SECRET
+    SECRET,
+    ACCESS_TOKEN_NAME
 } = process.env;
 
 const main = async (event) => {
@@ -8,9 +9,9 @@ const main = async (event) => {
         "isAuthorized": false
     };
 
-    const token = event.queryStringParameters["x-access-token"];
+    const token = event.queryStringParameters[ACCESS_TOKEN_NAME];
     if (!token) {
-        console.error("x-access-token not found", event)
+        console.error(`${ACCESS_TOKEN_NAME} not found`, event)
         return response;
     }
 

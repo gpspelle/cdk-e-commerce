@@ -1,17 +1,19 @@
 // Load the AWS SDK for Node.js
 const AWS = require("aws-sdk")
 const { v4: uuidv4 } = require("uuid")
+const { 
+  REGION, 
+  PRODUCTS_TABLE, 
+  PRODUCT_TAGS_TABLE, 
+  IMAGES_BUCKET 
+} = process.env;
 // Set the region
-const REGION = "us-east-1"
 AWS.config.update({ region: REGION })
 
 // Create the DynamoDB service object
 const ddb = new AWS.DynamoDB({ apiVersion: "2012-08-10" })
 var docClient = new AWS.DynamoDB.DocumentClient();
 const S3Client = new AWS.S3()
-const productsTable = "products"
-const productTagsTable = "productTags"
-const bucketName = "e-commerce-images-bucket"
 
 /*!
  * node-s3-url-encode - Because s3 urls are annoying
@@ -70,11 +72,11 @@ const main = async (event, context, callback) => {
   const id = uuidv4()
 
   const productImages = images.map((image) => ({
-      S: `https://${bucketName}.s3.${REGION}.amazonaws.com/${id}/${encodeS3URI(image.name.replace(/ /g, ""))}`
+      S: `https://${IMAGES_BUCKET}.s3.${REGION}.amazonaws.com/${id}/${encodeS3URI(image.name.replace(/ /g, ""))}`
   }))
 
   const dynamodbParams = {
-    TableName: productsTable,
+    TableName: PRODUCTS_TABLE,
     Item: {
       id: { S: id },
       PRODUCT_OWNER_ID: { S: productOwnerId },
@@ -98,7 +100,7 @@ const main = async (event, context, callback) => {
 
   tags.forEach((tag) => {
     const updateTagsParams = {
-      TableName: productTagsTable,
+      TableName: PRODUCT_TAGS_TABLE,
       Key: {
         "TAG_NAME": tag
       },
@@ -137,7 +139,7 @@ const main = async (event, context, callback) => {
     const type = image.content.split(';')[0].split('/')[1];
   
     const S3Params = {
-      Bucket: bucketName,
+      Bucket: IMAGES_BUCKET,
       Key: S3EncodedKey, // File name you want to save as in S3
       Body: base64Data,
       ContentEncoding: 'base64', // required

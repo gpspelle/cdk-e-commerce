@@ -1,7 +1,8 @@
 // Load the AWS SDK for Node.js
 var AWS = require("aws-sdk")
+const { REGION, ADMINS_TABLE } = process.env;
 // Set the region
-AWS.config.update({ region: "us-east-1" })
+AWS.config.update({ region: REGION })
 const docClient = new AWS.DynamoDB.DocumentClient()
 
 const main = async (event, context, callback) => {
@@ -16,10 +17,10 @@ const main = async (event, context, callback) => {
   });
 
   const params = {
-    TableName: "admins",
-    ProjectionExpression: "id, phone_number, commercial_name",
+    TableName: ADMINS_TABLE,
+    ProjectionExpression: "id, phone_number, commercial_name, is_verified_email",
     ExclusiveStartKey: undefined,
-    FilterExpression : "id IN ("+Object.keys(productOwnerIdsObject).toString()+ ")",
+    FilterExpression : "id IN (" + Object.keys(productOwnerIdsObject).toString() + ")",
     ExpressionAttributeValues : productOwnerIdsObject
   }
 

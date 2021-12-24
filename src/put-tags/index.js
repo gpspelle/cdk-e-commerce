@@ -1,12 +1,14 @@
 // Load the AWS SDK for Node.js
 const AWS = require("aws-sdk")
+const {
+  REGION,
+  PRODUCT_TAGS_TABLE
+} = process.env;
 // Set the region
-const REGION = "us-east-1"
 AWS.config.update({ region: REGION })
 
 // Create the DynamoDB service object
 const ddb = new AWS.DynamoDB({ apiVersion: "2012-08-10" })
-const tableName = "productTags"
 
 const main = (event, context, callback) => {
   const task = JSON.parse(event.body)
@@ -24,7 +26,7 @@ const main = (event, context, callback) => {
 
   const params = {
     RequestItems: {
-      [tableName]: requests
+      [PRODUCT_TAGS_TABLE]: requests
     }
   }
 
