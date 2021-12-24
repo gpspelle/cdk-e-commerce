@@ -14,6 +14,8 @@ import {
   REGION, 
   SECRET, 
   ACCOUNT, 
+} from '../.env'
+import {
   STAGE, 
   ADMINS_TABLE,
   PRODUCT_TAGS_TABLE,
@@ -26,7 +28,8 @@ import {
   PRODUCT_TAGS_TABLE_PARTITION_KEY,
   EMAIL_VERIFICATION_LINK_ENDPOINT,
   NO_TAGS_STRING,
-} from '../.env'
+} from "../constants";
+
 import { AuthorizationType } from "@aws-cdk/aws-apigateway"
 import { StreamViewType } from '@aws-cdk/aws-dynamodb'
 
