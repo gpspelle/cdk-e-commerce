@@ -25,6 +25,7 @@ import {
   ADMINS_TABLE_PARTITION_KEY,
   PRODUCT_TAGS_TABLE_PARTITION_KEY,
   EMAIL_VERIFICATION_LINK_ENDPOINT,
+  NO_TAGS_STRING,
 } from '../.env'
 import { AuthorizationType } from "@aws-cdk/aws-apigateway"
 import { StreamViewType } from '@aws-cdk/aws-dynamodb'
@@ -285,7 +286,9 @@ export class ECommerceStack extends cdk.Stack {
         PRODUCTS_TABLE,
         PRODUCTS_TABLE_PARTITION_KEY,
         PRODUCT_TAGS_TABLE,
+        PRODUCT_TAGS_TABLE_PARTITION_KEY,
         IMAGES_BUCKET,
+        NO_TAGS_STRING,
       }
     })
 
@@ -316,6 +319,7 @@ export class ECommerceStack extends cdk.Stack {
         PRODUCTS_TABLE,
         PRODUCTS_TABLE_PARTITION_KEY,
         PRODUCT_TAGS_TABLE,
+        PRODUCT_TAGS_TABLE_PARTITION_KEY,
         IMAGES_BUCKET,
       }
     })
@@ -347,7 +351,9 @@ export class ECommerceStack extends cdk.Stack {
         PRODUCTS_TABLE,
         PRODUCTS_TABLE_PARTITION_KEY,
         PRODUCT_TAGS_TABLE,
+        PRODUCT_TAGS_TABLE_PARTITION_KEY,
         IMAGES_BUCKET,
+        NO_TAGS_STRING,
       }
     })
 
@@ -376,6 +382,7 @@ export class ECommerceStack extends cdk.Stack {
       environment: {
         REGION,
         PRODUCT_TAGS_TABLE,
+        PRODUCT_TAGS_TABLE_PARTITION_KEY,
       }
     })
 
@@ -396,7 +403,9 @@ export class ECommerceStack extends cdk.Stack {
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-tags")),
       environment: {
         REGION,
-        PRODUCT_TAGS_TABLE
+        PRODUCT_TAGS_TABLE,
+        PRODUCT_TAGS_TABLE_PARTITION_KEY,
+        NO_TAGS_STRING,
       }
     })
 
