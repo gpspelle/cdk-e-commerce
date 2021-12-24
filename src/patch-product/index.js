@@ -203,7 +203,7 @@ const main = async (event, context, callback) => {
 
   if (oldTags) {
     for (const oldTag of oldTags) {
-      if (tags.includes(oldTag)) {
+      if (tags && tags.includes(oldTag)) {
         continue;
       }
 
@@ -215,15 +215,17 @@ const main = async (event, context, callback) => {
     }
   }
 
-  for (const tag of tags) {
-    if (oldTags && oldTags.includes(tag)) {
-      continue;
-    }
-
-    try {
-      await addProductToTag(tag, id)
-    } catch (error) {
-      handleError(callback, error)
+  if (tags) {
+    for (const tag of tags) {
+      if (oldTags && oldTags.includes(tag)) {
+        continue;
+      }
+  
+      try {
+        await addProductToTag(tag, id)
+      } catch (error) {
+        handleError(callback, error)
+      }
     }
   }
 
