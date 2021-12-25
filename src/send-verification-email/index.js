@@ -118,7 +118,7 @@ function getTextContent({ name, email }) {
 
     ${verificationLink}
 
-    O link expira em 24 horas, contate a administração após esse prazo.
+    O link expira em 24 horas, após esse prazo, solicite um outro email na seção minha conta do site de administração.
 
     Caso você não tenha feito esse pedido, não clique no link. Pedimos que você nos informe sobre esse evento, mandando uma mensagem para um de nossos administradores.
 
