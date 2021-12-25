@@ -10,6 +10,6 @@ export const IMAGES_BUCKET = "e-commerce-images-bucket";
 
 export const HASH_ALG = "sha512";
 export const ACCESS_TOKEN_NAME = "x-access-token";
-export const EMAIL_VERIFICATION_LINK_ENDPOINT = "email";
+export const EMAIL_VERIFICATION_LINK_ENDPOINT = "verify-email";
 export const NO_TAGS_STRING = "!@#$no-tag%^&*";
 export const STAGE = "dev";

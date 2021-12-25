@@ -1,6 +1,6 @@
 import * as dynamodb from "@aws-cdk/aws-dynamodb"
 import * as apigateway from "@aws-cdk/aws-apigateway"
-import * as apigatewayv2 from "@aws-cdk/aws-apigatewayv2"
+import { CorsHttpMethod, HttpMethod, HttpApi } from '@aws-cdk/aws-apigatewayv2'
 import * as lambda from "@aws-cdk/aws-lambda"
 import * as iam from "@aws-cdk/aws-iam"
 import * as s3 from "@aws-cdk/aws-s3"
@@ -117,9 +117,44 @@ export class ECommerceStack extends cdk.Stack {
       identitySource: `method.request.header.${ACCESS_TOKEN_NAME}`
     })
 
+
+    // 👇 define emailAuth lambda function
+    const emailAuthLambdaFunction = new lambda.Function(this, "email-auth-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "index.main",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/email-verification-auth")),
+      environment: {
+        SECRET,
+        ACCESS_TOKEN_NAME,
+      }
+    })
+
+    const emailAuth = new HttpLambdaAuthorizer('EmailVerificationAuthorizer', emailAuthLambdaFunction, {
+      responseTypes: [HttpLambdaResponseType.SIMPLE],
+      identitySource: [`$request.querystring.${ACCESS_TOKEN_NAME}`],
+    });
+
     // 👇 create HTTP Api Gateway
-    const httpApi = new apigatewayv2.HttpApi(this, "http-api", {
+    const httpApi = new HttpApi(this, "http-api", {
       description: "e-commerce http api gateway",
+      corsPreflight: {
+        allowHeaders: [
+          'Content-Type',
+          'X-Amz-Date',
+          'Authorization',
+          'X-Api-Key',
+        ],
+        allowMethods: [
+          CorsHttpMethod.OPTIONS,
+          CorsHttpMethod.GET,
+          CorsHttpMethod.POST,
+          CorsHttpMethod.PUT,
+          CorsHttpMethod.PATCH,
+          CorsHttpMethod.DELETE,
+        ],
+        allowCredentials: false,
+        allowOrigins: ['*'],
+      },
     })
 
     // 👇 create an Output for the API URL
@@ -180,6 +215,7 @@ export class ECommerceStack extends cdk.Stack {
         REGION,
         ADMINS_TABLE,
         ADMINS_TABLE_PARTITION_KEY,
+        HASH_ALG,
       }
     })
 
@@ -511,12 +547,12 @@ export class ECommerceStack extends cdk.Stack {
     s3Bucket.grantReadWrite(patchProductLambda)
 
     // 👇 create the lambda that sends emails
-    const mailerFunction = new lambda.Function(this, 'mailer-function', {
+    const sendVerificationEmailLambdaFunction = new lambda.Function(this, 'send-verification-email-lambda', {
       runtime: lambda.Runtime.NODEJS_14_X,
       memorySize: 128,
       timeout: cdk.Duration.seconds(3),
       handler: 'index.main',
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/email-verification")),
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/send-verification-email")),
       environment: {
         SES_EMAIL_FROM,
         REGION,
@@ -528,7 +564,7 @@ export class ECommerceStack extends cdk.Stack {
     })
 
     // 👇 Add permissions to the Lambda function to send Emails
-    mailerFunction.addToRolePolicy(
+    sendVerificationEmailLambdaFunction.addToRolePolicy(
       new iam.PolicyStatement({
         effect: iam.Effect.ALLOW,
         actions: [
@@ -544,7 +580,7 @@ export class ECommerceStack extends cdk.Stack {
       }),
     )
 
-    mailerFunction.addEventSource(
+    sendVerificationEmailLambdaFunction.addEventSource(
       new DynamoEventSource(adminsTable, {
         startingPosition: lambda.StartingPosition.TRIM_HORIZON,
         batchSize: 1,
@@ -553,16 +589,14 @@ export class ECommerceStack extends cdk.Stack {
       }),
     )
 
-    // 👇 define emailAuth lambda function
-    const emailAuthLambdaFunction = new lambda.Function(this, "email-auth-lambda", {
-      runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/email-verification-auth")),
-      environment: {
-        SECRET,
-        ACCESS_TOKEN_NAME,
-      }
-    })
+    const sendVerificationEmailIntegration = new HttpLambdaIntegration('SendVerificationEmailIntegration', sendVerificationEmailLambdaFunction);
+
+    httpApi.addRoutes({
+      path: `/send-verify-email`,
+      methods: [ HttpMethod.POST ],
+      integration: sendVerificationEmailIntegration,
+      authorizer: emailAuth,
+    });
 
     // 👇 create the lambda that sends emails
     const getVerificationEmailLambdaFunction = new lambda.Function(this, 'get-verification-email', {
@@ -581,14 +615,9 @@ export class ECommerceStack extends cdk.Stack {
 
     const emailVerificationIntegration = new HttpLambdaIntegration('EmailVerificationIntegration', getVerificationEmailLambdaFunction);
 
-    const emailAuth = new HttpLambdaAuthorizer('EmailVerificationAuthorizer', emailAuthLambdaFunction, {
-      responseTypes: [HttpLambdaResponseType.SIMPLE],
-      identitySource: [`$request.querystring.${ACCESS_TOKEN_NAME}`],
-    });
-
     httpApi.addRoutes({
       path: `/${EMAIL_VERIFICATION_LINK_ENDPOINT}`,
-      methods: [ apigatewayv2.HttpMethod.GET ],
+      methods: [ HttpMethod.GET ],
       integration: emailVerificationIntegration,
       authorizer: emailAuth,
     });

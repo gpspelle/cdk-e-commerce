@@ -3123,6 +3123,40 @@
                   "version": "1.137.0"
                 }
               },
+              "47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507": {
+                "id": "47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507",
+                "path": "ECommerceStack/AssetParameters/47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507",
+                "children": {
+                  "S3Bucket": {
+                    "id": "S3Bucket",
+                    "path": "ECommerceStack/AssetParameters/47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507/S3Bucket",
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/core.CfnParameter",
+                      "version": "1.137.0"
+                    }
+                  },
+                  "S3VersionKey": {
+                    "id": "S3VersionKey",
+                    "path": "ECommerceStack/AssetParameters/47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507/S3VersionKey",
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/core.CfnParameter",
+                      "version": "1.137.0"
+                    }
+                  },
+                  "ArtifactHash": {
+                    "id": "ArtifactHash",
+                    "path": "ECommerceStack/AssetParameters/47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507/ArtifactHash",
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/core.CfnParameter",
+                      "version": "1.137.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.Construct",
+                  "version": "1.137.0"
+                }
+              },
               "cbc3ca493f4479b4f916c0856d72add5908d5423a28b4e954cc5336af172dbff": {
                 "id": "cbc3ca493f4479b4f916c0856d72add5908d5423a28b4e954cc5336af172dbff",
                 "path": "ECommerceStack/AssetParameters/cbc3ca493f4479b4f916c0856d72add5908d5423a28b4e954cc5336af172dbff",
@@ -3157,13 +3191,13 @@
                   "version": "1.137.0"
                 }
               },
-              "e93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524": {
-                "id": "e93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524",
-                "path": "ECommerceStack/AssetParameters/e93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524",
+              "1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09": {
+                "id": "1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09",
+                "path": "ECommerceStack/AssetParameters/1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09",
                 "children": {
                   "S3Bucket": {
                     "id": "S3Bucket",
-                    "path": "ECommerceStack/AssetParameters/e93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524/S3Bucket",
+                    "path": "ECommerceStack/AssetParameters/1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09/S3Bucket",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
                       "version": "1.137.0"
@@ -3171,7 +3205,7 @@
                   },
                   "S3VersionKey": {
                     "id": "S3VersionKey",
-                    "path": "ECommerceStack/AssetParameters/e93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524/S3VersionKey",
+                    "path": "ECommerceStack/AssetParameters/1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09/S3VersionKey",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
                       "version": "1.137.0"
@@ -3179,7 +3213,7 @@
                   },
                   "ArtifactHash": {
                     "id": "ArtifactHash",
-                    "path": "ECommerceStack/AssetParameters/e93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524/ArtifactHash",
+                    "path": "ECommerceStack/AssetParameters/1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09/ArtifactHash",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
                       "version": "1.137.0"
@@ -3599,13 +3633,13 @@
                   "version": "1.137.0"
                 }
               },
-              "dff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425": {
-                "id": "dff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425",
-                "path": "ECommerceStack/AssetParameters/dff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425",
+              "3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2c": {
+                "id": "3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2c",
+                "path": "ECommerceStack/AssetParameters/3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2c",
                 "children": {
                   "S3Bucket": {
                     "id": "S3Bucket",
-                    "path": "ECommerceStack/AssetParameters/dff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425/S3Bucket",
+                    "path": "ECommerceStack/AssetParameters/3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2c/S3Bucket",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
                       "version": "1.137.0"
@@ -3613,7 +3647,7 @@
                   },
                   "S3VersionKey": {
                     "id": "S3VersionKey",
-                    "path": "ECommerceStack/AssetParameters/dff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425/S3VersionKey",
+                    "path": "ECommerceStack/AssetParameters/3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2c/S3VersionKey",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
                       "version": "1.137.0"
@@ -3621,41 +3655,7 @@
                   },
                   "ArtifactHash": {
                     "id": "ArtifactHash",
-                    "path": "ECommerceStack/AssetParameters/dff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425/ArtifactHash",
-                    "constructInfo": {
-                      "fqn": "@aws-cdk/core.CfnParameter",
-                      "version": "1.137.0"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "@aws-cdk/core.Construct",
-                  "version": "1.137.0"
-                }
-              },
-              "47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507": {
-                "id": "47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507",
-                "path": "ECommerceStack/AssetParameters/47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507",
-                "children": {
-                  "S3Bucket": {
-                    "id": "S3Bucket",
-                    "path": "ECommerceStack/AssetParameters/47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507/S3Bucket",
-                    "constructInfo": {
-                      "fqn": "@aws-cdk/core.CfnParameter",
-                      "version": "1.137.0"
-                    }
-                  },
-                  "S3VersionKey": {
-                    "id": "S3VersionKey",
-                    "path": "ECommerceStack/AssetParameters/47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507/S3VersionKey",
-                    "constructInfo": {
-                      "fqn": "@aws-cdk/core.CfnParameter",
-                      "version": "1.137.0"
-                    }
-                  },
-                  "ArtifactHash": {
-                    "id": "ArtifactHash",
-                    "path": "ECommerceStack/AssetParameters/47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507/ArtifactHash",
+                    "path": "ECommerceStack/AssetParameters/3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2c/ArtifactHash",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.CfnParameter",
                       "version": "1.137.0"
@@ -3755,6 +3755,166 @@
               "version": "1.137.0"
             }
           },
+          "email-auth-lambda": {
+            "id": "email-auth-lambda",
+            "path": "ECommerceStack/email-auth-lambda",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "ECommerceStack/email-auth-lambda/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ECommerceStack/email-auth-lambda/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-iam.CfnRole",
+                      "version": "1.137.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-iam.Role",
+                  "version": "1.137.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "ECommerceStack/email-auth-lambda/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "ECommerceStack/email-auth-lambda/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/core.AssetStaging",
+                      "version": "1.137.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "ECommerceStack/email-auth-lambda/Code/AssetBucket",
+                    "children": {
+                      "Notifications": {
+                        "id": "Notifications",
+                        "path": "ECommerceStack/email-auth-lambda/Code/AssetBucket/Notifications",
+                        "constructInfo": {
+                          "fqn": "@aws-cdk/core.Construct",
+                          "version": "1.137.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-s3.BucketBase",
+                      "version": "1.137.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-s3-assets.Asset",
+                  "version": "1.137.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "ECommerceStack/email-auth-lambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Ref": "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507S3BucketFDBC2747"
+                      },
+                      "s3Key": {
+                        "Fn::Join": [
+                          "",
+                          [
+                            {
+                              "Fn::Select": [
+                                0,
+                                {
+                                  "Fn::Split": [
+                                    "||",
+                                    {
+                                      "Ref": "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507S3VersionKey220AF157"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "Fn::Select": [
+                                1,
+                                {
+                                  "Fn::Split": [
+                                    "||",
+                                    {
+                                      "Ref": "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507S3VersionKey220AF157"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        ]
+                      }
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "emailauthlambdaServiceRole678A063B",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "SECRET": "e49Y1pFtBrorAwMduJTf08REXruydmUQ",
+                        "ACCESS_TOKEN_NAME": "x-access-token"
+                      }
+                    },
+                    "handler": "index.main",
+                    "runtime": "nodejs14.x"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-lambda.CfnFunction",
+                  "version": "1.137.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-lambda.Function",
+              "version": "1.137.0"
+            }
+          },
           "http-api": {
             "id": "http-api",
             "path": "ECommerceStack/http-api",
@@ -3765,6 +3925,26 @@
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::ApiGatewayV2::Api",
                   "aws:cdk:cloudformation:props": {
+                    "corsConfiguration": {
+                      "allowCredentials": false,
+                      "allowHeaders": [
+                        "Content-Type",
+                        "X-Amz-Date",
+                        "Authorization",
+                        "X-Api-Key"
+                      ],
+                      "allowMethods": [
+                        "OPTIONS",
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "PATCH",
+                        "DELETE"
+                      ],
+                      "allowOrigins": [
+                        "*"
+                      ]
+                    },
                     "description": "e-commerce http api gateway",
                     "name": "http-api",
                     "protocolType": "HTTP"
@@ -3803,20 +3983,20 @@
                   "version": "1.137.0"
                 }
               },
-              "GET--email": {
-                "id": "GET--email",
-                "path": "ECommerceStack/http-api/GET--email",
+              "POST--send-verify-email": {
+                "id": "POST--send-verify-email",
+                "path": "ECommerceStack/http-api/POST--send-verify-email",
                 "children": {
-                  "EmailVerificationIntegration-Permission": {
-                    "id": "EmailVerificationIntegration-Permission",
-                    "path": "ECommerceStack/http-api/GET--email/EmailVerificationIntegration-Permission",
+                  "SendVerificationEmailIntegration-Permission": {
+                    "id": "SendVerificationEmailIntegration-Permission",
+                    "path": "ECommerceStack/http-api/POST--send-verify-email/SendVerificationEmailIntegration-Permission",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
                       "aws:cdk:cloudformation:props": {
                         "action": "lambda:InvokeFunction",
                         "functionName": {
                           "Fn::GetAtt": [
-                            "getverificationemail6C977FFB",
+                            "sendverificationemaillambdaFC2DD3A6",
                             "Arn"
                           ]
                         },
@@ -3833,7 +4013,7 @@
                               {
                                 "Ref": "httpapiE8E4C45A"
                               },
-                              "/*/*/email"
+                              "/*/*/send-verify-email"
                             ]
                           ]
                         }
@@ -3844,13 +4024,13 @@
                       "version": "1.137.0"
                     }
                   },
-                  "EmailVerificationIntegration": {
-                    "id": "EmailVerificationIntegration",
-                    "path": "ECommerceStack/http-api/GET--email/EmailVerificationIntegration",
+                  "SendVerificationEmailIntegration": {
+                    "id": "SendVerificationEmailIntegration",
+                    "path": "ECommerceStack/http-api/POST--send-verify-email/SendVerificationEmailIntegration",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "ECommerceStack/http-api/GET--email/EmailVerificationIntegration/Resource",
+                        "path": "ECommerceStack/http-api/POST--send-verify-email/SendVerificationEmailIntegration/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::ApiGatewayV2::Integration",
                           "aws:cdk:cloudformation:props": {
@@ -3860,7 +4040,7 @@
                             "integrationType": "AWS_PROXY",
                             "integrationUri": {
                               "Fn::GetAtt": [
-                                "getverificationemail6C977FFB",
+                                "sendverificationemaillambdaFC2DD3A6",
                                 "Arn"
                               ]
                             },
@@ -3880,14 +4060,14 @@
                   },
                   "Resource": {
                     "id": "Resource",
-                    "path": "ECommerceStack/http-api/GET--email/Resource",
+                    "path": "ECommerceStack/http-api/POST--send-verify-email/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::ApiGatewayV2::Route",
                       "aws:cdk:cloudformation:props": {
                         "apiId": {
                           "Ref": "httpapiE8E4C45A"
                         },
-                        "routeKey": "GET /email",
+                        "routeKey": "POST /send-verify-email",
                         "authorizationType": "CUSTOM",
                         "authorizerId": {
                           "Ref": "httpapiEmailVerificationAuthorizer0BA5A02E"
@@ -3898,7 +4078,7 @@
                             [
                               "integrations/",
                               {
-                                "Ref": "httpapiGETemailEmailVerificationIntegrationB943AA3D"
+                                "Ref": "httpapiPOSTsendverifyemailSendVerificationEmailIntegration97ADF400"
                               }
                             ]
                           ]
@@ -4006,6 +4186,119 @@
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-lambda.CfnPermission",
+                  "version": "1.137.0"
+                }
+              },
+              "GET--verify-email": {
+                "id": "GET--verify-email",
+                "path": "ECommerceStack/http-api/GET--verify-email",
+                "children": {
+                  "EmailVerificationIntegration-Permission": {
+                    "id": "EmailVerificationIntegration-Permission",
+                    "path": "ECommerceStack/http-api/GET--verify-email/EmailVerificationIntegration-Permission",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                      "aws:cdk:cloudformation:props": {
+                        "action": "lambda:InvokeFunction",
+                        "functionName": {
+                          "Fn::GetAtt": [
+                            "getverificationemail6C977FFB",
+                            "Arn"
+                          ]
+                        },
+                        "principal": "apigateway.amazonaws.com",
+                        "sourceArn": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "arn:",
+                              {
+                                "Ref": "AWS::Partition"
+                              },
+                              ":execute-api:us-east-1:453299922179:",
+                              {
+                                "Ref": "httpapiE8E4C45A"
+                              },
+                              "/*/*/verify-email"
+                            ]
+                          ]
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-lambda.CfnPermission",
+                      "version": "1.137.0"
+                    }
+                  },
+                  "EmailVerificationIntegration": {
+                    "id": "EmailVerificationIntegration",
+                    "path": "ECommerceStack/http-api/GET--verify-email/EmailVerificationIntegration",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "ECommerceStack/http-api/GET--verify-email/EmailVerificationIntegration/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGatewayV2::Integration",
+                          "aws:cdk:cloudformation:props": {
+                            "apiId": {
+                              "Ref": "httpapiE8E4C45A"
+                            },
+                            "integrationType": "AWS_PROXY",
+                            "integrationUri": {
+                              "Fn::GetAtt": [
+                                "getverificationemail6C977FFB",
+                                "Arn"
+                              ]
+                            },
+                            "payloadFormatVersion": "2.0"
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "@aws-cdk/aws-apigatewayv2.CfnIntegration",
+                          "version": "1.137.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-apigatewayv2.HttpIntegration",
+                      "version": "1.137.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ECommerceStack/http-api/GET--verify-email/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGatewayV2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "apiId": {
+                          "Ref": "httpapiE8E4C45A"
+                        },
+                        "routeKey": "GET /verify-email",
+                        "authorizationType": "CUSTOM",
+                        "authorizerId": {
+                          "Ref": "httpapiEmailVerificationAuthorizer0BA5A02E"
+                        },
+                        "target": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "integrations/",
+                              {
+                                "Ref": "httpapiGETverifyemailEmailVerificationIntegrationB462BD01"
+                              }
+                            ]
+                          ]
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-apigatewayv2.CfnRoute",
+                      "version": "1.137.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-apigatewayv2.HttpRoute",
                   "version": "1.137.0"
                 }
               }
@@ -4397,7 +4690,7 @@
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": {
-                        "Ref": "AssetParameterse93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524S3Bucket873D6C5A"
+                        "Ref": "AssetParameters1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09S3Bucket3AE62A0E"
                       },
                       "s3Key": {
                         "Fn::Join": [
@@ -4410,7 +4703,7 @@
                                   "Fn::Split": [
                                     "||",
                                     {
-                                      "Ref": "AssetParameterse93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524S3VersionKeyBF425509"
+                                      "Ref": "AssetParameters1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09S3VersionKey470B1D9C"
                                     }
                                   ]
                                 }
@@ -4423,7 +4716,7 @@
                                   "Fn::Split": [
                                     "||",
                                     {
-                                      "Ref": "AssetParameterse93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524S3VersionKeyBF425509"
+                                      "Ref": "AssetParameters1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09S3VersionKey470B1D9C"
                                     }
                                   ]
                                 }
@@ -4443,7 +4736,8 @@
                       "variables": {
                         "REGION": "us-east-1",
                         "ADMINS_TABLE": "admins",
-                        "ADMINS_TABLE_PARTITION_KEY": "email"
+                        "ADMINS_TABLE_PARTITION_KEY": "email",
+                        "HASH_ALG": "sha512"
                       }
                     },
                     "handler": "index.main",
@@ -7254,17 +7548,17 @@
               "version": "1.137.0"
             }
           },
-          "mailer-function": {
-            "id": "mailer-function",
-            "path": "ECommerceStack/mailer-function",
+          "send-verification-email-lambda": {
+            "id": "send-verification-email-lambda",
+            "path": "ECommerceStack/send-verification-email-lambda",
             "children": {
               "ServiceRole": {
                 "id": "ServiceRole",
-                "path": "ECommerceStack/mailer-function/ServiceRole",
+                "path": "ECommerceStack/send-verification-email-lambda/ServiceRole",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "ECommerceStack/mailer-function/ServiceRole/Resource",
+                    "path": "ECommerceStack/send-verification-email-lambda/ServiceRole/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::IAM::Role",
                       "aws:cdk:cloudformation:props": {
@@ -7303,11 +7597,11 @@
                   },
                   "DefaultPolicy": {
                     "id": "DefaultPolicy",
-                    "path": "ECommerceStack/mailer-function/ServiceRole/DefaultPolicy",
+                    "path": "ECommerceStack/send-verification-email-lambda/ServiceRole/DefaultPolicy",
                     "children": {
                       "Resource": {
                         "id": "Resource",
-                        "path": "ECommerceStack/mailer-function/ServiceRole/DefaultPolicy/Resource",
+                        "path": "ECommerceStack/send-verification-email-lambda/ServiceRole/DefaultPolicy/Resource",
                         "attributes": {
                           "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
                           "aws:cdk:cloudformation:props": {
@@ -7344,10 +7638,10 @@
                               ],
                               "Version": "2012-10-17"
                             },
-                            "policyName": "mailerfunctionServiceRoleDefaultPolicy277D7D8B",
+                            "policyName": "sendverificationemaillambdaServiceRoleDefaultPolicy11B6C889",
                             "roles": [
                               {
-                                "Ref": "mailerfunctionServiceRole3352EDD5"
+                                "Ref": "sendverificationemaillambdaServiceRole20212DB5"
                               }
                             ]
                           }
@@ -7371,11 +7665,11 @@
               },
               "Code": {
                 "id": "Code",
-                "path": "ECommerceStack/mailer-function/Code",
+                "path": "ECommerceStack/send-verification-email-lambda/Code",
                 "children": {
                   "Stage": {
                     "id": "Stage",
-                    "path": "ECommerceStack/mailer-function/Code/Stage",
+                    "path": "ECommerceStack/send-verification-email-lambda/Code/Stage",
                     "constructInfo": {
                       "fqn": "@aws-cdk/core.AssetStaging",
                       "version": "1.137.0"
@@ -7383,11 +7677,11 @@
                   },
                   "AssetBucket": {
                     "id": "AssetBucket",
-                    "path": "ECommerceStack/mailer-function/Code/AssetBucket",
+                    "path": "ECommerceStack/send-verification-email-lambda/Code/AssetBucket",
                     "children": {
                       "Notifications": {
                         "id": "Notifications",
-                        "path": "ECommerceStack/mailer-function/Code/AssetBucket/Notifications",
+                        "path": "ECommerceStack/send-verification-email-lambda/Code/AssetBucket/Notifications",
                         "constructInfo": {
                           "fqn": "@aws-cdk/core.Construct",
                           "version": "1.137.0"
@@ -7407,13 +7701,13 @@
               },
               "Resource": {
                 "id": "Resource",
-                "path": "ECommerceStack/mailer-function/Resource",
+                "path": "ECommerceStack/send-verification-email-lambda/Resource",
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
                   "aws:cdk:cloudformation:props": {
                     "code": {
                       "s3Bucket": {
-                        "Ref": "AssetParametersdff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425S3BucketD845EDE1"
+                        "Ref": "AssetParameters3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2cS3BucketAA5C804F"
                       },
                       "s3Key": {
                         "Fn::Join": [
@@ -7426,7 +7720,7 @@
                                   "Fn::Split": [
                                     "||",
                                     {
-                                      "Ref": "AssetParametersdff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425S3VersionKey532B9E55"
+                                      "Ref": "AssetParameters3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2cS3VersionKeyCE88C27F"
                                     }
                                   ]
                                 }
@@ -7439,7 +7733,7 @@
                                   "Fn::Split": [
                                     "||",
                                     {
-                                      "Ref": "AssetParametersdff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425S3VersionKey532B9E55"
+                                      "Ref": "AssetParameters3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2cS3VersionKeyCE88C27F"
                                     }
                                   ]
                                 }
@@ -7451,7 +7745,7 @@
                     },
                     "role": {
                       "Fn::GetAtt": [
-                        "mailerfunctionServiceRole3352EDD5",
+                        "sendverificationemaillambdaServiceRole20212DB5",
                         "Arn"
                       ]
                     },
@@ -7467,7 +7761,7 @@
                         },
                         "SECRET": "e49Y1pFtBrorAwMduJTf08REXruydmUQ",
                         "ACCESS_TOKEN_NAME": "x-access-token",
-                        "EMAIL_VERIFICATION_LINK_ENDPOINT": "email"
+                        "EMAIL_VERIFICATION_LINK_ENDPOINT": "verify-email"
                       }
                     },
                     "handler": "index.main",
@@ -7483,16 +7777,16 @@
               },
               "DynamoDBEventSource:ECommerceStackECommerceStackadminstableBF436AFE": {
                 "id": "DynamoDBEventSource:ECommerceStackECommerceStackadminstableBF436AFE",
-                "path": "ECommerceStack/mailer-function/DynamoDBEventSource:ECommerceStackECommerceStackadminstableBF436AFE",
+                "path": "ECommerceStack/send-verification-email-lambda/DynamoDBEventSource:ECommerceStackECommerceStackadminstableBF436AFE",
                 "children": {
                   "Resource": {
                     "id": "Resource",
-                    "path": "ECommerceStack/mailer-function/DynamoDBEventSource:ECommerceStackECommerceStackadminstableBF436AFE/Resource",
+                    "path": "ECommerceStack/send-verification-email-lambda/DynamoDBEventSource:ECommerceStackECommerceStackadminstableBF436AFE/Resource",
                     "attributes": {
                       "aws:cdk:cloudformation:type": "AWS::Lambda::EventSourceMapping",
                       "aws:cdk:cloudformation:props": {
                         "functionName": {
-                          "Ref": "mailerfunction0BFEF8E7"
+                          "Ref": "sendverificationemaillambdaFC2DD3A6"
                         },
                         "batchSize": 1,
                         "bisectBatchOnFunctionError": true,
@@ -7514,166 +7808,6 @@
                 },
                 "constructInfo": {
                   "fqn": "@aws-cdk/aws-lambda.EventSourceMapping",
-                  "version": "1.137.0"
-                }
-              }
-            },
-            "constructInfo": {
-              "fqn": "@aws-cdk/aws-lambda.Function",
-              "version": "1.137.0"
-            }
-          },
-          "email-auth-lambda": {
-            "id": "email-auth-lambda",
-            "path": "ECommerceStack/email-auth-lambda",
-            "children": {
-              "ServiceRole": {
-                "id": "ServiceRole",
-                "path": "ECommerceStack/email-auth-lambda/ServiceRole",
-                "children": {
-                  "Resource": {
-                    "id": "Resource",
-                    "path": "ECommerceStack/email-auth-lambda/ServiceRole/Resource",
-                    "attributes": {
-                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
-                      "aws:cdk:cloudformation:props": {
-                        "assumeRolePolicyDocument": {
-                          "Statement": [
-                            {
-                              "Action": "sts:AssumeRole",
-                              "Effect": "Allow",
-                              "Principal": {
-                                "Service": "lambda.amazonaws.com"
-                              }
-                            }
-                          ],
-                          "Version": "2012-10-17"
-                        },
-                        "managedPolicyArns": [
-                          {
-                            "Fn::Join": [
-                              "",
-                              [
-                                "arn:",
-                                {
-                                  "Ref": "AWS::Partition"
-                                },
-                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
-                              ]
-                            ]
-                          }
-                        ]
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "@aws-cdk/aws-iam.CfnRole",
-                      "version": "1.137.0"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "@aws-cdk/aws-iam.Role",
-                  "version": "1.137.0"
-                }
-              },
-              "Code": {
-                "id": "Code",
-                "path": "ECommerceStack/email-auth-lambda/Code",
-                "children": {
-                  "Stage": {
-                    "id": "Stage",
-                    "path": "ECommerceStack/email-auth-lambda/Code/Stage",
-                    "constructInfo": {
-                      "fqn": "@aws-cdk/core.AssetStaging",
-                      "version": "1.137.0"
-                    }
-                  },
-                  "AssetBucket": {
-                    "id": "AssetBucket",
-                    "path": "ECommerceStack/email-auth-lambda/Code/AssetBucket",
-                    "children": {
-                      "Notifications": {
-                        "id": "Notifications",
-                        "path": "ECommerceStack/email-auth-lambda/Code/AssetBucket/Notifications",
-                        "constructInfo": {
-                          "fqn": "@aws-cdk/core.Construct",
-                          "version": "1.137.0"
-                        }
-                      }
-                    },
-                    "constructInfo": {
-                      "fqn": "@aws-cdk/aws-s3.BucketBase",
-                      "version": "1.137.0"
-                    }
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "@aws-cdk/aws-s3-assets.Asset",
-                  "version": "1.137.0"
-                }
-              },
-              "Resource": {
-                "id": "Resource",
-                "path": "ECommerceStack/email-auth-lambda/Resource",
-                "attributes": {
-                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
-                  "aws:cdk:cloudformation:props": {
-                    "code": {
-                      "s3Bucket": {
-                        "Ref": "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507S3BucketFDBC2747"
-                      },
-                      "s3Key": {
-                        "Fn::Join": [
-                          "",
-                          [
-                            {
-                              "Fn::Select": [
-                                0,
-                                {
-                                  "Fn::Split": [
-                                    "||",
-                                    {
-                                      "Ref": "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507S3VersionKey220AF157"
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "Fn::Select": [
-                                1,
-                                {
-                                  "Fn::Split": [
-                                    "||",
-                                    {
-                                      "Ref": "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507S3VersionKey220AF157"
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        ]
-                      }
-                    },
-                    "role": {
-                      "Fn::GetAtt": [
-                        "emailauthlambdaServiceRole678A063B",
-                        "Arn"
-                      ]
-                    },
-                    "environment": {
-                      "variables": {
-                        "SECRET": "e49Y1pFtBrorAwMduJTf08REXruydmUQ",
-                        "ACCESS_TOKEN_NAME": "x-access-token"
-                      }
-                    },
-                    "handler": "index.main",
-                    "runtime": "nodejs14.x"
-                  }
-                },
-                "constructInfo": {
-                  "fqn": "@aws-cdk/aws-lambda.CfnFunction",
                   "version": "1.137.0"
                 }
               }

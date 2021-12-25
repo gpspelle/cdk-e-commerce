@@ -2341,9 +2341,129 @@
         "aws:cdk:path": "ECommerceStack/jwt-token-admin-auth/Resource"
       }
     },
+    "emailauthlambdaServiceRole678A063B": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/email-auth-lambda/ServiceRole/Resource"
+      }
+    },
+    "emailauthlambda1EBD14F9": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507S3BucketFDBC2747"
+          },
+          "S3Key": {
+            "Fn::Join": [
+              "",
+              [
+                {
+                  "Fn::Select": [
+                    0,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507S3VersionKey220AF157"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Fn::Select": [
+                    1,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507S3VersionKey220AF157"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "emailauthlambdaServiceRole678A063B",
+            "Arn"
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "SECRET": "e49Y1pFtBrorAwMduJTf08REXruydmUQ",
+            "ACCESS_TOKEN_NAME": "x-access-token"
+          }
+        },
+        "Handler": "index.main",
+        "Runtime": "nodejs14.x"
+      },
+      "DependsOn": [
+        "emailauthlambdaServiceRole678A063B"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/email-auth-lambda/Resource",
+        "aws:asset:path": "asset.47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
     "httpapiE8E4C45A": {
       "Type": "AWS::ApiGatewayV2::Api",
       "Properties": {
+        "CorsConfiguration": {
+          "AllowCredentials": false,
+          "AllowHeaders": [
+            "Content-Type",
+            "X-Amz-Date",
+            "Authorization",
+            "X-Api-Key"
+          ],
+          "AllowMethods": [
+            "OPTIONS",
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE"
+          ],
+          "AllowOrigins": [
+            "*"
+          ]
+        },
         "Description": "e-commerce http api gateway",
         "Name": "http-api",
         "ProtocolType": "HTTP"
@@ -2365,13 +2485,13 @@
         "aws:cdk:path": "ECommerceStack/http-api/DefaultStage/Resource"
       }
     },
-    "httpapiGETemailEmailVerificationIntegrationPermission23A8361B": {
+    "httpapiPOSTsendverifyemailSendVerificationEmailIntegrationPermission1AA6FA81": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
         "FunctionName": {
           "Fn::GetAtt": [
-            "getverificationemail6C977FFB",
+            "sendverificationemaillambdaFC2DD3A6",
             "Arn"
           ]
         },
@@ -2388,16 +2508,16 @@
               {
                 "Ref": "httpapiE8E4C45A"
               },
-              "/*/*/email"
+              "/*/*/send-verify-email"
             ]
           ]
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/http-api/GET--email/EmailVerificationIntegration-Permission"
+        "aws:cdk:path": "ECommerceStack/http-api/POST--send-verify-email/SendVerificationEmailIntegration-Permission"
       }
     },
-    "httpapiGETemailEmailVerificationIntegrationB943AA3D": {
+    "httpapiPOSTsendverifyemailSendVerificationEmailIntegration97ADF400": {
       "Type": "AWS::ApiGatewayV2::Integration",
       "Properties": {
         "ApiId": {
@@ -2406,23 +2526,23 @@
         "IntegrationType": "AWS_PROXY",
         "IntegrationUri": {
           "Fn::GetAtt": [
-            "getverificationemail6C977FFB",
+            "sendverificationemaillambdaFC2DD3A6",
             "Arn"
           ]
         },
         "PayloadFormatVersion": "2.0"
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/http-api/GET--email/EmailVerificationIntegration/Resource"
+        "aws:cdk:path": "ECommerceStack/http-api/POST--send-verify-email/SendVerificationEmailIntegration/Resource"
       }
     },
-    "httpapiGETemailD72F8619": {
+    "httpapiPOSTsendverifyemailC6D01FCD": {
       "Type": "AWS::ApiGatewayV2::Route",
       "Properties": {
         "ApiId": {
           "Ref": "httpapiE8E4C45A"
         },
-        "RouteKey": "GET /email",
+        "RouteKey": "POST /send-verify-email",
         "AuthorizationType": "CUSTOM",
         "AuthorizerId": {
           "Ref": "httpapiEmailVerificationAuthorizer0BA5A02E"
@@ -2433,14 +2553,14 @@
             [
               "integrations/",
               {
-                "Ref": "httpapiGETemailEmailVerificationIntegrationB943AA3D"
+                "Ref": "httpapiPOSTsendverifyemailSendVerificationEmailIntegration97ADF400"
               }
             ]
           ]
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/http-api/GET--email/Resource"
+        "aws:cdk:path": "ECommerceStack/http-api/POST--send-verify-email/Resource"
       }
     },
     "httpapiEmailVerificationAuthorizer0BA5A02E": {
@@ -2514,6 +2634,84 @@
       },
       "Metadata": {
         "aws:cdk:path": "ECommerceStack/http-api/ECommerceStackhttpapiEmailVerificationAuthorizer2867C041-Permission"
+      }
+    },
+    "httpapiGETverifyemailEmailVerificationIntegrationPermissionFAF45894": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "getverificationemail6C977FFB",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:us-east-1:453299922179:",
+              {
+                "Ref": "httpapiE8E4C45A"
+              },
+              "/*/*/verify-email"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/http-api/GET--verify-email/EmailVerificationIntegration-Permission"
+      }
+    },
+    "httpapiGETverifyemailEmailVerificationIntegrationB462BD01": {
+      "Type": "AWS::ApiGatewayV2::Integration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "httpapiE8E4C45A"
+        },
+        "IntegrationType": "AWS_PROXY",
+        "IntegrationUri": {
+          "Fn::GetAtt": [
+            "getverificationemail6C977FFB",
+            "Arn"
+          ]
+        },
+        "PayloadFormatVersion": "2.0"
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/http-api/GET--verify-email/EmailVerificationIntegration/Resource"
+      }
+    },
+    "httpapiGETverifyemailDD0CBD29": {
+      "Type": "AWS::ApiGatewayV2::Route",
+      "Properties": {
+        "ApiId": {
+          "Ref": "httpapiE8E4C45A"
+        },
+        "RouteKey": "GET /verify-email",
+        "AuthorizationType": "CUSTOM",
+        "AuthorizerId": {
+          "Ref": "httpapiEmailVerificationAuthorizer0BA5A02E"
+        },
+        "Target": {
+          "Fn::Join": [
+            "",
+            [
+              "integrations/",
+              {
+                "Ref": "httpapiGETverifyemailEmailVerificationIntegrationB462BD01"
+              }
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/http-api/GET--verify-email/Resource"
       }
     },
     "putaccountlambdaServiceRoleA8C81C5B": {
@@ -2743,7 +2941,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": {
-            "Ref": "AssetParameterse93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524S3Bucket873D6C5A"
+            "Ref": "AssetParameters1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09S3Bucket3AE62A0E"
           },
           "S3Key": {
             "Fn::Join": [
@@ -2756,7 +2954,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParameterse93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524S3VersionKeyBF425509"
+                          "Ref": "AssetParameters1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09S3VersionKey470B1D9C"
                         }
                       ]
                     }
@@ -2769,7 +2967,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParameterse93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524S3VersionKeyBF425509"
+                          "Ref": "AssetParameters1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09S3VersionKey470B1D9C"
                         }
                       ]
                     }
@@ -2789,7 +2987,8 @@
           "Variables": {
             "REGION": "us-east-1",
             "ADMINS_TABLE": "admins",
-            "ADMINS_TABLE_PARTITION_KEY": "email"
+            "ADMINS_TABLE_PARTITION_KEY": "email",
+            "HASH_ALG": "sha512"
           }
         },
         "Handler": "index.main",
@@ -2801,7 +3000,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "ECommerceStack/patch-account-lambda/Resource",
-        "aws:asset:path": "asset.e93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524",
+        "aws:asset:path": "asset.1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -4817,7 +5016,7 @@
         "aws:asset:property": "Code"
       }
     },
-    "mailerfunctionServiceRole3352EDD5": {
+    "sendverificationemaillambdaServiceRole20212DB5": {
       "Type": "AWS::IAM::Role",
       "Properties": {
         "AssumeRolePolicyDocument": {
@@ -4848,10 +5047,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/mailer-function/ServiceRole/Resource"
+        "aws:cdk:path": "ECommerceStack/send-verification-email-lambda/ServiceRole/Resource"
       }
     },
-    "mailerfunctionServiceRoleDefaultPolicy277D7D8B": {
+    "sendverificationemaillambdaServiceRoleDefaultPolicy11B6C889": {
       "Type": "AWS::IAM::Policy",
       "Properties": {
         "PolicyDocument": {
@@ -4887,23 +5086,23 @@
           ],
           "Version": "2012-10-17"
         },
-        "PolicyName": "mailerfunctionServiceRoleDefaultPolicy277D7D8B",
+        "PolicyName": "sendverificationemaillambdaServiceRoleDefaultPolicy11B6C889",
         "Roles": [
           {
-            "Ref": "mailerfunctionServiceRole3352EDD5"
+            "Ref": "sendverificationemaillambdaServiceRole20212DB5"
           }
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/mailer-function/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "ECommerceStack/send-verification-email-lambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
-    "mailerfunction0BFEF8E7": {
+    "sendverificationemaillambdaFC2DD3A6": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": {
-            "Ref": "AssetParametersdff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425S3BucketD845EDE1"
+            "Ref": "AssetParameters3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2cS3BucketAA5C804F"
           },
           "S3Key": {
             "Fn::Join": [
@@ -4916,7 +5115,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParametersdff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425S3VersionKey532B9E55"
+                          "Ref": "AssetParameters3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2cS3VersionKeyCE88C27F"
                         }
                       ]
                     }
@@ -4929,7 +5128,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParametersdff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425S3VersionKey532B9E55"
+                          "Ref": "AssetParameters3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2cS3VersionKeyCE88C27F"
                         }
                       ]
                     }
@@ -4941,7 +5140,7 @@
         },
         "Role": {
           "Fn::GetAtt": [
-            "mailerfunctionServiceRole3352EDD5",
+            "sendverificationemaillambdaServiceRole20212DB5",
             "Arn"
           ]
         },
@@ -4957,7 +5156,7 @@
             },
             "SECRET": "e49Y1pFtBrorAwMduJTf08REXruydmUQ",
             "ACCESS_TOKEN_NAME": "x-access-token",
-            "EMAIL_VERIFICATION_LINK_ENDPOINT": "email"
+            "EMAIL_VERIFICATION_LINK_ENDPOINT": "verify-email"
           }
         },
         "Handler": "index.main",
@@ -4966,21 +5165,21 @@
         "Timeout": 3
       },
       "DependsOn": [
-        "mailerfunctionServiceRoleDefaultPolicy277D7D8B",
-        "mailerfunctionServiceRole3352EDD5"
+        "sendverificationemaillambdaServiceRoleDefaultPolicy11B6C889",
+        "sendverificationemaillambdaServiceRole20212DB5"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/mailer-function/Resource",
-        "aws:asset:path": "asset.dff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425",
+        "aws:cdk:path": "ECommerceStack/send-verification-email-lambda/Resource",
+        "aws:asset:path": "asset.3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2c",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
     },
-    "mailerfunctionDynamoDBEventSourceECommerceStackECommerceStackadminstableBF436AFE3287D58E": {
+    "sendverificationemaillambdaDynamoDBEventSourceECommerceStackECommerceStackadminstableBF436AFED767A543": {
       "Type": "AWS::Lambda::EventSourceMapping",
       "Properties": {
         "FunctionName": {
-          "Ref": "mailerfunction0BFEF8E7"
+          "Ref": "sendverificationemaillambdaFC2DD3A6"
         },
         "BatchSize": 1,
         "BisectBatchOnFunctionError": true,
@@ -4994,107 +5193,7 @@
         "StartingPosition": "TRIM_HORIZON"
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/mailer-function/DynamoDBEventSource:ECommerceStackECommerceStackadminstableBF436AFE/Resource"
-      }
-    },
-    "emailauthlambdaServiceRole678A063B": {
-      "Type": "AWS::IAM::Role",
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "lambda.amazonaws.com"
-              }
-            }
-          ],
-          "Version": "2012-10-17"
-        },
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition"
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
-              ]
-            ]
-          }
-        ]
-      },
-      "Metadata": {
-        "aws:cdk:path": "ECommerceStack/email-auth-lambda/ServiceRole/Resource"
-      }
-    },
-    "emailauthlambda1EBD14F9": {
-      "Type": "AWS::Lambda::Function",
-      "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Ref": "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507S3BucketFDBC2747"
-          },
-          "S3Key": {
-            "Fn::Join": [
-              "",
-              [
-                {
-                  "Fn::Select": [
-                    0,
-                    {
-                      "Fn::Split": [
-                        "||",
-                        {
-                          "Ref": "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507S3VersionKey220AF157"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "Fn::Select": [
-                    1,
-                    {
-                      "Fn::Split": [
-                        "||",
-                        {
-                          "Ref": "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507S3VersionKey220AF157"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            ]
-          }
-        },
-        "Role": {
-          "Fn::GetAtt": [
-            "emailauthlambdaServiceRole678A063B",
-            "Arn"
-          ]
-        },
-        "Environment": {
-          "Variables": {
-            "SECRET": "e49Y1pFtBrorAwMduJTf08REXruydmUQ",
-            "ACCESS_TOKEN_NAME": "x-access-token"
-          }
-        },
-        "Handler": "index.main",
-        "Runtime": "nodejs14.x"
-      },
-      "DependsOn": [
-        "emailauthlambdaServiceRole678A063B"
-      ],
-      "Metadata": {
-        "aws:cdk:path": "ECommerceStack/email-auth-lambda/Resource",
-        "aws:asset:path": "asset.47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507",
-        "aws:asset:is-bundled": false,
-        "aws:asset:property": "Code"
+        "aws:cdk:path": "ECommerceStack/send-verification-email-lambda/DynamoDBEventSource:ECommerceStackECommerceStackadminstableBF436AFE/Resource"
       }
     },
     "getverificationemailServiceRole3B5CD231": {
@@ -5316,6 +5415,18 @@
       "Type": "String",
       "Description": "Artifact hash for asset \"05b873ec3965eb574288b1e7eb17e5d50a140ba7226c31f44a367d79380fafc3\""
     },
+    "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507S3BucketFDBC2747": {
+      "Type": "String",
+      "Description": "S3 bucket for asset \"47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507\""
+    },
+    "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507S3VersionKey220AF157": {
+      "Type": "String",
+      "Description": "S3 key for asset version \"47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507\""
+    },
+    "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507ArtifactHash62E775A0": {
+      "Type": "String",
+      "Description": "Artifact hash for asset \"47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507\""
+    },
     "AssetParameterscbc3ca493f4479b4f916c0856d72add5908d5423a28b4e954cc5336af172dbffS3BucketAD4FA71D": {
       "Type": "String",
       "Description": "S3 bucket for asset \"cbc3ca493f4479b4f916c0856d72add5908d5423a28b4e954cc5336af172dbff\""
@@ -5328,17 +5439,17 @@
       "Type": "String",
       "Description": "Artifact hash for asset \"cbc3ca493f4479b4f916c0856d72add5908d5423a28b4e954cc5336af172dbff\""
     },
-    "AssetParameterse93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524S3Bucket873D6C5A": {
+    "AssetParameters1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09S3Bucket3AE62A0E": {
       "Type": "String",
-      "Description": "S3 bucket for asset \"e93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524\""
+      "Description": "S3 bucket for asset \"1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09\""
     },
-    "AssetParameterse93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524S3VersionKeyBF425509": {
+    "AssetParameters1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09S3VersionKey470B1D9C": {
       "Type": "String",
-      "Description": "S3 key for asset version \"e93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524\""
+      "Description": "S3 key for asset version \"1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09\""
     },
-    "AssetParameterse93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524ArtifactHash9FBBDC1D": {
+    "AssetParameters1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09ArtifactHash9A69B936": {
       "Type": "String",
-      "Description": "Artifact hash for asset \"e93807d722763ba91a87d8f1c328efcb1de5768175852b446ea0d6c9c3edc524\""
+      "Description": "Artifact hash for asset \"1b770a8f5086e8a11f10d6d897c28f33b4af4bba16688c86ea5b5a9af617eb09\""
     },
     "AssetParameters8475503b6d6c0b301035990ee1639c1828dc2bdec4f3f95594927bd9861f6140S3BucketA60428C3": {
       "Type": "String",
@@ -5484,29 +5595,17 @@
       "Type": "String",
       "Description": "Artifact hash for asset \"1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1\""
     },
-    "AssetParametersdff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425S3BucketD845EDE1": {
+    "AssetParameters3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2cS3BucketAA5C804F": {
       "Type": "String",
-      "Description": "S3 bucket for asset \"dff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425\""
+      "Description": "S3 bucket for asset \"3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2c\""
     },
-    "AssetParametersdff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425S3VersionKey532B9E55": {
+    "AssetParameters3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2cS3VersionKeyCE88C27F": {
       "Type": "String",
-      "Description": "S3 key for asset version \"dff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425\""
+      "Description": "S3 key for asset version \"3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2c\""
     },
-    "AssetParametersdff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425ArtifactHashCD9237E9": {
+    "AssetParameters3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2cArtifactHash588402A4": {
       "Type": "String",
-      "Description": "Artifact hash for asset \"dff919b43a76c866587b3245a01503a658cae88b17c5ba155d4507b46e350425\""
-    },
-    "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507S3BucketFDBC2747": {
-      "Type": "String",
-      "Description": "S3 bucket for asset \"47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507\""
-    },
-    "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507S3VersionKey220AF157": {
-      "Type": "String",
-      "Description": "S3 key for asset version \"47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507\""
-    },
-    "AssetParameters47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507ArtifactHash62E775A0": {
-      "Type": "String",
-      "Description": "Artifact hash for asset \"47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507\""
+      "Description": "Artifact hash for asset \"3af1920aa75b87eace955084fb07f9bf44c7f61ede75a7aad9fb0185e44f8f2c\""
     },
     "AssetParametersb867f788928f60aa13b16c0d5286d86757ba6b79e7b2184cc71e6084f882ce93S3Bucket47057369": {
       "Type": "String",
