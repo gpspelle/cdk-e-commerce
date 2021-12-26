@@ -575,7 +575,7 @@ export class ECommerceStack extends cdk.Stack {
         resources: [
           `arn:aws:ses:${REGION}:${
             ACCOUNT
-          }:identity/${SES_EMAIL_FROM}`,
+          }:identity/*`,
         ],
       }),
     )
