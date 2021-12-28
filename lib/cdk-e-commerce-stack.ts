@@ -330,7 +330,8 @@ export class ECommerceStack extends cdk.Stack {
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-customer-product")),
       environment: {
         REGION,
-        PRODUCTS_TABLE
+        PRODUCTS_TABLE,
+        PRODUCTS_TABLE_PARTITION_KEY,
       }
     })
 

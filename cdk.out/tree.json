@@ -5825,7 +5825,8 @@
                     "environment": {
                       "variables": {
                         "REGION": "us-east-1",
-                        "PRODUCTS_TABLE": "products"
+                        "PRODUCTS_TABLE": "products",
+                        "PRODUCTS_TABLE_PARTITION_KEY": "id"
                       }
                     },
                     "handler": "index.main",
