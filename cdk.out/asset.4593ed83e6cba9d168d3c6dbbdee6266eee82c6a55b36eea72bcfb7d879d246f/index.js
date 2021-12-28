@@ -1,24 +1,16 @@
 // Load the AWS SDK for Node.js
 var AWS = require("aws-sdk")
-// Set the region
 const { REGION, PRODUCTS_TABLE } = process.env;
+// Set the region
 AWS.config.update({ region: REGION })
 const docClient = new AWS.DynamoDB.DocumentClient()
 
-const main = async (event) => {
-  const productOwnerId = event.requestContext.authorizer.id
+const main = async (event, context, callback) => {
   const lastEvaluatedKey = event.queryStringParameters.key
 
   const params = {
     TableName: PRODUCTS_TABLE,
     ExclusiveStartKey: lastEvaluatedKey,
-    FilterExpression: "#owner = :id",
-    ExpressionAttributeNames: {
-        "#owner": "PRODUCT_OWNER_ID",
-    },
-    ExpressionAttributeValues: {
-         ":id": productOwnerId 
-    }
   }
 
   const items = await docClient.scan(params).promise()
