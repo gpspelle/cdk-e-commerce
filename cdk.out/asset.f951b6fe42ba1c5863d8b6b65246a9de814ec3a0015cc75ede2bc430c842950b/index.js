@@ -83,7 +83,7 @@ const updateItemOnDynamoDB = async (item, idAttributeName) => {
   params["Key"][idAttributeName] = item[idAttributeName];
 
   var setPrefix = "set ";
-  var removePrefix = " remove ";
+  var removePrefix = "remove ";
 
   const attributes = Object.keys(item);
   
@@ -121,7 +121,8 @@ const updateItemOnDynamoDB = async (item, idAttributeName) => {
 
   if (item[removeAttributes]) {
     item.removeAttributes.forEach((removeAttribute) => {
-      params["UpdateExpression"] += removePrefix + "#" + removeAttribute
+      params["UpdateExpression"] += removePrefix + "#" + removeAttribute + " = :" + removeAttribute;
+      params["ExpressionAttributeValues"][":" + removeAttribute] = item[removeAttribute]
       params["ExpressionAttributeNames"]["#" + removeAttribute] = removeAttribute;
       removePrefix = ", ";
     })

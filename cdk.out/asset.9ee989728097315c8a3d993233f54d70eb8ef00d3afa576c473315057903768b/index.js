@@ -47,6 +47,7 @@ const updateItemOnDynamoDB = async (task, item) => {
   params["Key"][ADMINS_TABLE_PARTITION_KEY] = item[ADMINS_TABLE_PARTITION_KEY];
 
   var setPrefix = "set ";
+  var removePrefix = "remove ";
   const attributes = Object.keys(task);
   
   if(attributes.length == 1) {
@@ -55,12 +56,24 @@ const updateItemOnDynamoDB = async (task, item) => {
 
   for (let i = 0; i < attributes.length; i++) {
     const attribute = attributes[i];
-    if (attribute != ADMINS_TABLE_PARTITION_KEY) {
+
+    if (attribute == "removeAttributes") {
+      continue;
+    } else if (attribute != ADMINS_TABLE_PARTITION_KEY) {
       params["UpdateExpression"] += setPrefix + "#" + attribute + " = :" + attribute;
       params["ExpressionAttributeValues"][":" + attribute] = task[attribute]
       params["ExpressionAttributeNames"]["#" + attribute] = attribute;
       setPrefix = ", ";
     }
+  }
+
+  if (task.removeAttributes) {
+    task.removeAttributes.forEach((removeAttribute) => {
+      params["UpdateExpression"] += removePrefix + "#" + removeAttribute + " = :" + removeAttribute;
+      params["ExpressionAttributeValues"][":" + removeAttribute] = task[removeAttribute]
+      params["ExpressionAttributeNames"]["#" + removeAttribute] = removeAttribute;
+      removePrefix = ", ";
+    })
   }
 
   await docClient.update(params).promise();
