@@ -4406,7 +4406,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": {
-            "Ref": "AssetParametersf951b6fe42ba1c5863d8b6b65246a9de814ec3a0015cc75ede2bc430c842950bS3BucketBCD89964"
+            "Ref": "AssetParameters4d89bcff1543b655011ead4d4b786a7fa9e90e1b280c5708d236d65871fee757S3Bucket7119E387"
           },
           "S3Key": {
             "Fn::Join": [
@@ -4419,7 +4419,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParametersf951b6fe42ba1c5863d8b6b65246a9de814ec3a0015cc75ede2bc430c842950bS3VersionKeyFA55EC1D"
+                          "Ref": "AssetParameters4d89bcff1543b655011ead4d4b786a7fa9e90e1b280c5708d236d65871fee757S3VersionKeyC9B1E3D9"
                         }
                       ]
                     }
@@ -4432,7 +4432,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParametersf951b6fe42ba1c5863d8b6b65246a9de814ec3a0015cc75ede2bc430c842950bS3VersionKeyFA55EC1D"
+                          "Ref": "AssetParameters4d89bcff1543b655011ead4d4b786a7fa9e90e1b280c5708d236d65871fee757S3VersionKeyC9B1E3D9"
                         }
                       ]
                     }
@@ -4469,7 +4469,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "ECommerceStack/patch-product-lambda/Resource",
-        "aws:asset:path": "asset.f951b6fe42ba1c5863d8b6b65246a9de814ec3a0015cc75ede2bc430c842950b",
+        "aws:asset:path": "asset.4d89bcff1543b655011ead4d4b786a7fa9e90e1b280c5708d236d65871fee757",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -5740,17 +5740,17 @@
       "Type": "String",
       "Description": "Artifact hash for asset \"23fcc45dd6bc9b16df6e5fff3a1e26470cae5318838ddd48381eed606bf982df\""
     },
-    "AssetParametersf951b6fe42ba1c5863d8b6b65246a9de814ec3a0015cc75ede2bc430c842950bS3BucketBCD89964": {
+    "AssetParameters4d89bcff1543b655011ead4d4b786a7fa9e90e1b280c5708d236d65871fee757S3Bucket7119E387": {
       "Type": "String",
-      "Description": "S3 bucket for asset \"f951b6fe42ba1c5863d8b6b65246a9de814ec3a0015cc75ede2bc430c842950b\""
+      "Description": "S3 bucket for asset \"4d89bcff1543b655011ead4d4b786a7fa9e90e1b280c5708d236d65871fee757\""
     },
-    "AssetParametersf951b6fe42ba1c5863d8b6b65246a9de814ec3a0015cc75ede2bc430c842950bS3VersionKeyFA55EC1D": {
+    "AssetParameters4d89bcff1543b655011ead4d4b786a7fa9e90e1b280c5708d236d65871fee757S3VersionKeyC9B1E3D9": {
       "Type": "String",
-      "Description": "S3 key for asset version \"f951b6fe42ba1c5863d8b6b65246a9de814ec3a0015cc75ede2bc430c842950b\""
+      "Description": "S3 key for asset version \"4d89bcff1543b655011ead4d4b786a7fa9e90e1b280c5708d236d65871fee757\""
     },
-    "AssetParametersf951b6fe42ba1c5863d8b6b65246a9de814ec3a0015cc75ede2bc430c842950bArtifactHash7DB653A5": {
+    "AssetParameters4d89bcff1543b655011ead4d4b786a7fa9e90e1b280c5708d236d65871fee757ArtifactHashF8FB6951": {
       "Type": "String",
-      "Description": "Artifact hash for asset \"f951b6fe42ba1c5863d8b6b65246a9de814ec3a0015cc75ede2bc430c842950b\""
+      "Description": "Artifact hash for asset \"4d89bcff1543b655011ead4d4b786a7fa9e90e1b280c5708d236d65871fee757\""
     },
     "AssetParameters614da993ceac8ff700f702954da38ea6efc4e0e0bb113b0e30621deffc03e4ebS3Bucket79820830": {
       "Type": "String",
