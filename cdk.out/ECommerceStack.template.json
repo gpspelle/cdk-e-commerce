@@ -3995,7 +3995,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": {
-            "Ref": "AssetParametersa325cfdc96a90d71db9c57cdc4e566fbe2d33a3ad6b2996d00bf713d934b0911S3BucketADF4E3A6"
+            "Ref": "AssetParameterscff7386796cd3e64615813d1ea0e1fbe8c0457d5cf08397d33ce0b9f9f5c0e93S3Bucket1101719A"
           },
           "S3Key": {
             "Fn::Join": [
@@ -4008,7 +4008,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParametersa325cfdc96a90d71db9c57cdc4e566fbe2d33a3ad6b2996d00bf713d934b0911S3VersionKey636685B4"
+                          "Ref": "AssetParameterscff7386796cd3e64615813d1ea0e1fbe8c0457d5cf08397d33ce0b9f9f5c0e93S3VersionKey564B52FD"
                         }
                       ]
                     }
@@ -4021,7 +4021,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParametersa325cfdc96a90d71db9c57cdc4e566fbe2d33a3ad6b2996d00bf713d934b0911S3VersionKey636685B4"
+                          "Ref": "AssetParameterscff7386796cd3e64615813d1ea0e1fbe8c0457d5cf08397d33ce0b9f9f5c0e93S3VersionKey564B52FD"
                         }
                       ]
                     }
@@ -4058,7 +4058,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "ECommerceStack/put-product-lambda/Resource",
-        "aws:asset:path": "asset.a325cfdc96a90d71db9c57cdc4e566fbe2d33a3ad6b2996d00bf713d934b0911",
+        "aws:asset:path": "asset.cff7386796cd3e64615813d1ea0e1fbe8c0457d5cf08397d33ce0b9f9f5c0e93",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -5339,10 +5339,202 @@
         "aws:asset:property": "Code"
       }
     },
+    "processexpiredlightningdealsServiceRole32753C51": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/process-expired-lightning-deals/ServiceRole/Resource"
+      }
+    },
+    "processexpiredlightningdealsServiceRoleDefaultPolicyDE7B59EF": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "dynamodb:ConditionCheckItem",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem"
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "ECommerceStackproductstable86592532",
+                    "Arn"
+                  ]
+                },
+                {
+                  "Ref": "AWS::NoValue"
+                }
+              ]
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "processexpiredlightningdealsServiceRoleDefaultPolicyDE7B59EF",
+        "Roles": [
+          {
+            "Ref": "processexpiredlightningdealsServiceRole32753C51"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/process-expired-lightning-deals/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
+    "processexpiredlightningdeals27B7096B": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "AssetParameters84e26f362de411b8ba3094343d33d4acd984051c1fe3392f7fe86d5802f44778S3Bucket119FD257"
+          },
+          "S3Key": {
+            "Fn::Join": [
+              "",
+              [
+                {
+                  "Fn::Select": [
+                    0,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParameters84e26f362de411b8ba3094343d33d4acd984051c1fe3392f7fe86d5802f44778S3VersionKeyBFE6A80D"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Fn::Select": [
+                    1,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParameters84e26f362de411b8ba3094343d33d4acd984051c1fe3392f7fe86d5802f44778S3VersionKeyBFE6A80D"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "processexpiredlightningdealsServiceRole32753C51",
+            "Arn"
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "REGION": "us-east-1",
+            "PRODUCTS_TABLE": "products",
+            "PRODUCTS_TABLE_PARTITION_KEY": "id"
+          }
+        },
+        "Handler": "index.main",
+        "Runtime": "nodejs14.x",
+        "Timeout": 5
+      },
+      "DependsOn": [
+        "processexpiredlightningdealsServiceRoleDefaultPolicyDE7B59EF",
+        "processexpiredlightningdealsServiceRole32753C51"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/process-expired-lightning-deals/Resource",
+        "aws:asset:path": "asset.84e26f362de411b8ba3094343d33d4acd984051c1fe3392f7fe86d5802f44778",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
+    "cronevery5minutes7E81515A": {
+      "Type": "AWS::Events::Rule",
+      "Properties": {
+        "ScheduleExpression": "rate(5 minutes)",
+        "State": "ENABLED",
+        "Targets": [
+          {
+            "Arn": {
+              "Fn::GetAtt": [
+                "processexpiredlightningdeals27B7096B",
+                "Arn"
+              ]
+            },
+            "Id": "Target0"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/cron-every-5-minutes/Resource"
+      }
+    },
+    "cronevery5minutesAllowEventRuleECommerceStackprocessexpiredlightningdeals6B464042A1E9FA08": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "processexpiredlightningdeals27B7096B",
+            "Arn"
+          ]
+        },
+        "Principal": "events.amazonaws.com",
+        "SourceArn": {
+          "Fn::GetAtt": [
+            "cronevery5minutes7E81515A",
+            "Arn"
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStack/cron-every-5-minutes/AllowEventRuleECommerceStackprocessexpiredlightningdeals6B464042"
+      }
+    },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/3VSwXLCIBD9Fu+ITT302mjbaQ9OHfUHkKwpJkAGFp2Uyb8XiKmpbU/73i4Lb9+S0Wz+QO8mj+xsp7yoZp5rA9RvkfGKbMBqZziQ5UG9O2wcktxawFAthSrJUiuLxnGMB9bMMAkIhiydRS3HzVf8o7Q2+iQKMB2Jz/uiVUzqYk/9ju3r1JhAKDeiZAhn1lIfmjFvxOXaAeaca6eQPEFT61aCSppGLGpOV/ZgkLBgFsgK8EMXsXhBf2rf6QpU7sIBIz7jmIcR64hgMojTve4U17oWvE3eJNSRmsl9waiPKTBSWCu0Ii9OcYwgpL/x8ymo3qaXV6xpkt0H9TvbETufsrgVS9NyAqd+4XgFmIbrYWy+oD5cxY352OrTPfWviM3gcAiR3hgZUxvtsEdvCqE0bJjmhl7P/Wtj1xGlC6BHOztl4WfSbHK0QkxNWK6QQDd9/AIhVkVYuAIAAA=="
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/3VSwVLDIBD9lt4pNfbg1bTq6KFjp+0PULKNNAlkYEknMvl3gSQ2Vj3te7ssvH1LQpPlA72bPbKLmfOsWDiuNFC3R8YLsgOjrOZA1if5brG2SFJjAH01FzInayUNassxHNgyzSpA0GRtDapq2nzFP0pbrRqRge5IeN5lrWSVyo7UHdixjI0R+HItcoZwYS11vhnTWgzXjjDlXFmJ5AnqUrUVyKhpwoLmeGUPRgkrZoBsAD9UFooD+lP7QRUgU+sPaPEZxjxNWEcEq7w41euOcatKwdvoTUQdKVl1zBh1IQW6EsYIJcmLlRwD8Olv/Nx41fv48obVdbT7JH9nO2KWcxa2YmhcjufUrSwvAONwPQzNA+rDVdyUT61u7ql7RaxHh30I9MbIkNopiz16kwi5ZuM0N/R67n8bIUxovJN2cNLHruuIVBnQs1k0if+vNJmdjRBz7VcuKqC7Pn4BOUp1uc4CAAA="
       },
       "Metadata": {
         "aws:cdk:path": "ECommerceStack/CDKMetadata/Default"
@@ -5524,17 +5716,17 @@
       "Type": "String",
       "Description": "Artifact hash for asset \"f68623d5b7ba7743014a06eb4452a9675524f40051fd6f23f441c7a0f4a83de7\""
     },
-    "AssetParametersa325cfdc96a90d71db9c57cdc4e566fbe2d33a3ad6b2996d00bf713d934b0911S3BucketADF4E3A6": {
+    "AssetParameterscff7386796cd3e64615813d1ea0e1fbe8c0457d5cf08397d33ce0b9f9f5c0e93S3Bucket1101719A": {
       "Type": "String",
-      "Description": "S3 bucket for asset \"a325cfdc96a90d71db9c57cdc4e566fbe2d33a3ad6b2996d00bf713d934b0911\""
+      "Description": "S3 bucket for asset \"cff7386796cd3e64615813d1ea0e1fbe8c0457d5cf08397d33ce0b9f9f5c0e93\""
     },
-    "AssetParametersa325cfdc96a90d71db9c57cdc4e566fbe2d33a3ad6b2996d00bf713d934b0911S3VersionKey636685B4": {
+    "AssetParameterscff7386796cd3e64615813d1ea0e1fbe8c0457d5cf08397d33ce0b9f9f5c0e93S3VersionKey564B52FD": {
       "Type": "String",
-      "Description": "S3 key for asset version \"a325cfdc96a90d71db9c57cdc4e566fbe2d33a3ad6b2996d00bf713d934b0911\""
+      "Description": "S3 key for asset version \"cff7386796cd3e64615813d1ea0e1fbe8c0457d5cf08397d33ce0b9f9f5c0e93\""
     },
-    "AssetParametersa325cfdc96a90d71db9c57cdc4e566fbe2d33a3ad6b2996d00bf713d934b0911ArtifactHash1EF76E4D": {
+    "AssetParameterscff7386796cd3e64615813d1ea0e1fbe8c0457d5cf08397d33ce0b9f9f5c0e93ArtifactHash1AC17FFA": {
       "Type": "String",
-      "Description": "Artifact hash for asset \"a325cfdc96a90d71db9c57cdc4e566fbe2d33a3ad6b2996d00bf713d934b0911\""
+      "Description": "Artifact hash for asset \"cff7386796cd3e64615813d1ea0e1fbe8c0457d5cf08397d33ce0b9f9f5c0e93\""
     },
     "AssetParameters23fcc45dd6bc9b16df6e5fff3a1e26470cae5318838ddd48381eed606bf982dfS3BucketA1767E6A": {
       "Type": "String",
@@ -5619,6 +5811,18 @@
     "AssetParametersb867f788928f60aa13b16c0d5286d86757ba6b79e7b2184cc71e6084f882ce93ArtifactHash92EB699D": {
       "Type": "String",
       "Description": "Artifact hash for asset \"b867f788928f60aa13b16c0d5286d86757ba6b79e7b2184cc71e6084f882ce93\""
+    },
+    "AssetParameters84e26f362de411b8ba3094343d33d4acd984051c1fe3392f7fe86d5802f44778S3Bucket119FD257": {
+      "Type": "String",
+      "Description": "S3 bucket for asset \"84e26f362de411b8ba3094343d33d4acd984051c1fe3392f7fe86d5802f44778\""
+    },
+    "AssetParameters84e26f362de411b8ba3094343d33d4acd984051c1fe3392f7fe86d5802f44778S3VersionKeyBFE6A80D": {
+      "Type": "String",
+      "Description": "S3 key for asset version \"84e26f362de411b8ba3094343d33d4acd984051c1fe3392f7fe86d5802f44778\""
+    },
+    "AssetParameters84e26f362de411b8ba3094343d33d4acd984051c1fe3392f7fe86d5802f44778ArtifactHash706F310A": {
+      "Type": "String",
+      "Description": "Artifact hash for asset \"84e26f362de411b8ba3094343d33d4acd984051c1fe3392f7fe86d5802f44778\""
     }
   }
 }

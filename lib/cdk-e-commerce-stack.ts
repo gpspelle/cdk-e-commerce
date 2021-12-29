@@ -8,7 +8,11 @@ import * as cdk from "@aws-cdk/core"
 import * as path from "path"
 import { HttpLambdaAuthorizer, HttpLambdaResponseType } from '@aws-cdk/aws-apigatewayv2-authorizers';
 import { HttpLambdaIntegration } from '@aws-cdk/aws-apigatewayv2-integrations';
-import { DynamoEventSource } from '@aws-cdk/aws-lambda-event-sources'
+import { DynamoEventSource } from '@aws-cdk/aws-lambda-event-sources';
+import { AuthorizationType } from "@aws-cdk/aws-apigateway";
+import { StreamViewType } from '@aws-cdk/aws-dynamodb';
+import * as events from "@aws-cdk/aws-events"
+import * as targets from "@aws-cdk/aws-events-targets"
 import { 
   SES_EMAIL_FROM, 
   REGION, 
@@ -29,9 +33,6 @@ import {
   EMAIL_VERIFICATION_LINK_ENDPOINT,
   NO_TAGS_STRING,
 } from "../constants";
-
-import { AuthorizationType } from "@aws-cdk/aws-apigateway"
-import { StreamViewType } from '@aws-cdk/aws-dynamodb'
 
 export class ECommerceStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
@@ -622,5 +623,26 @@ export class ECommerceStack extends cdk.Stack {
       integration: emailVerificationIntegration,
       authorizer: emailAuth,
     });
+
+    // 👇 create the transform expired lighting deals into normal products
+    const processExpiredLightingDealsLambdaFunction = new lambda.Function(this, 'process-expired-lightning-deals', {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      timeout: cdk.Duration.seconds(5),
+      handler: 'index.main',
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/process-expired-lightning-deals")),
+      environment: {
+        REGION,
+        PRODUCTS_TABLE,
+        PRODUCTS_TABLE_PARTITION_KEY,
+      }
+    })
+
+    productsTable.grantReadWriteData(processExpiredLightingDealsLambdaFunction)
+
+    const rule = new events.Rule(this, 'cron-every-5-minutes', {
+      schedule: events.Schedule.expression('rate(5 minutes)')
+    })
+
+    rule.addTarget(new targets.LambdaFunction(processExpiredLightingDealsLambdaFunction))
   }
 }
