@@ -304,6 +304,7 @@ export class ECommerceStack extends cdk.Stack {
     const getProductsLambda = new lambda.Function(this, "get-products-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "index.main",
+      timeout: cdk.Duration.seconds(100),
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-products")),
       environment: {
         REGION,
@@ -349,6 +350,7 @@ export class ECommerceStack extends cdk.Stack {
     const getCustomerProductsLambda = new lambda.Function(this, "get-customer-products-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "index.main",
+      timeout: cdk.Duration.seconds(100),
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-customer-products")),
       environment: {
         REGION,
