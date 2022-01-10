@@ -14,17 +14,13 @@ import { StreamViewType } from '@aws-cdk/aws-dynamodb';
 import * as events from "@aws-cdk/aws-events"
 import * as targets from "@aws-cdk/aws-events-targets"
 import { 
-  SES_EMAIL_FROM, 
-  REGION, 
   SECRET, 
-  ACCOUNT, 
 } from '../.env'
 import {
   STAGE, 
   ADMINS_TABLE,
   PRODUCT_TAGS_TABLE,
   HASH_ALG,
-  IMAGES_BUCKET,
   PRODUCTS_TABLE,
   ACCESS_TOKEN_NAME,
   PRODUCTS_TABLE_PARTITION_KEY,
@@ -33,10 +29,23 @@ import {
   EMAIL_VERIFICATION_LINK_ENDPOINT,
   NO_TAGS_STRING,
 } from "../constants";
+import * as amplify from '@aws-cdk/aws-amplify';
+import * as codebuild from '@aws-cdk/aws-codebuild';
+
+interface CustomizableStack extends cdk.StackProps {
+  sesEmailFrom: string;
+  imagesBucket: string;
+}
 
 export class ECommerceStack extends cdk.Stack {
-  constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
+  constructor(scope: cdk.App, id: string, props?: CustomizableStack) {
     super(scope, id, props)
+
+    // this as string causes an error at compile time if it is not a string
+    const ACCOUNT = props?.env?.account as string
+    const REGION = props?.env?.region as string
+    const SES_EMAIL_FROM = props?.sesEmailFrom as string
+    const IMAGES_BUCKET = props?.imagesBucket as string
 
     // 👇 create Dynamodb table for products
     const productsTable = new dynamodb.Table(this, `${id}-products-table`, {
@@ -646,5 +655,84 @@ export class ECommerceStack extends cdk.Stack {
     })
 
     rule.addTarget(new targets.LambdaFunction(processExpiredLightingDealsLambdaFunction))
+
+    const eCommerceAmplifyApp = new amplify.App(this, 'eCommerceAmplifyApp', {
+      sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
+        owner: 'gpspelle',
+        repository: 'e-commerce',
+        oauthToken: cdk.SecretValue.secretsManager('github-access-token'),
+      }),
+      buildSpec: codebuild.BuildSpec.fromObjectToYaml({ // Alternatively add a `amplify.yml` to the repo
+        version: '1.0',
+        frontend: {
+          phases: {
+            preBuild: {
+              commands: [
+                'npm install'
+              ]
+            },
+            build: {
+              commands: [
+                `REACT_APP_REST_API=${restApi.url}`, // insert here CDK output
+                'npm run build'
+              ]
+            }
+          },
+          artifacts: {
+            baseDirectory: 'build',
+            files: [
+              '**/*'
+            ]
+          },
+          cache: {
+            paths: [
+              'node_modules/**/*'
+            ]
+          }
+        }
+      })
+    });
+
+    eCommerceAmplifyApp.addBranch("master");
+
+    const eCommerceAdminAmplifyApp = new amplify.App(this, 'eCommerceAdminAmplifyApp', {
+      sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
+        owner: 'gpspelle',
+        repository: 'admin-e-commerce',
+        oauthToken: cdk.SecretValue.secretsManager('github-access-token'),
+      }),
+      buildSpec: codebuild.BuildSpec.fromObjectToYaml({ // Alternatively add a `amplify.yml` to the repo
+        version: '1.0',
+        frontend: {
+          phases: {
+            preBuild: {
+              commands: [
+                'npm install'
+              ]
+            },
+            build: {
+              commands: [
+                `REACT_APP_REST_API=${restApi.url}`, // insert here CDK output
+                `REACT_APP_HTTP_API=${httpApi.apiEndpoint}`, // insert here CDK output
+                'npm run build'
+              ]
+            }
+          },
+          artifacts: {
+            baseDirectory: 'build',
+            files: [
+              '**/*'
+            ]
+          },
+          cache: {
+            paths: [
+              'node_modules/**/*'
+            ]
+          }
+        }
+      })
+    });
+
+    eCommerceAdminAmplifyApp.addBranch("master");
   }
 }
