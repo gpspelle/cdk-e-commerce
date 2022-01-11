@@ -695,6 +695,14 @@ export class ECommerceStack extends cdk.Stack {
       }
     });
 
+    // fixes https://github.com/aws-amplify/amplify-cli/issues/3606
+    const fixReactRouterDom403CloudFrontIssueCustomRule = new amplify.CustomRule({
+      source: '</^[^.]+$|\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>',
+      target: '/index.html',
+      status: amplify.RedirectStatus.REWRITE,
+    })
+
+    eCommerceAmplifyApp.addCustomRule(fixReactRouterDom403CloudFrontIssueCustomRule)
     const eCommerceBranch = eCommerceAmplifyApp.addBranch("master");
     const eCommerceDomain = new amplify.Domain(this, "e-commerce-domain", {
       app: eCommerceAmplifyApp,
@@ -742,6 +750,8 @@ export class ECommerceStack extends cdk.Stack {
         "REACT_APP_HTTP_API": httpApi.apiEndpoint,
       }
     });
+
+    eCommerceAdminAmplifyApp.addCustomRule(fixReactRouterDom403CloudFrontIssueCustomRule)
 
     const eCommerceAdminBranch = eCommerceAdminAmplifyApp.addBranch("master");
     const eCommerceAdminDomain = new amplify.Domain(this, "e-commerce-admin-domain", {

@@ -5561,6 +5561,13 @@
           "EnableBasicAuth": false
         },
         "BuildSpec": "version: \"1.0\"\nfrontend:\n  phases:\n    preBuild:\n      commands:\n        - npm install\n    build:\n      commands:\n        - npm run build\n  artifacts:\n    baseDirectory: build\n    files:\n      - \"**/*\"\n  cache:\n    paths:\n      - node_modules/**/*\n",
+        "CustomRules": [
+          {
+            "Source": "</^[^.]+$|\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>",
+            "Status": "200",
+            "Target": "/index.html"
+          }
+        ],
         "EnvironmentVariables": [
           {
             "Name": "REACT_APP_REST_API",
@@ -5675,6 +5682,13 @@
           "EnableBasicAuth": false
         },
         "BuildSpec": "version: \"1.0\"\nfrontend:\n  phases:\n    preBuild:\n      commands:\n        - npm install\n    build:\n      commands:\n        - npm run build\n  artifacts:\n    baseDirectory: build\n    files:\n      - \"**/*\"\n  cache:\n    paths:\n      - node_modules/**/*\n",
+        "CustomRules": [
+          {
+            "Source": "</^[^.]+$|\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>",
+            "Status": "200",
+            "Target": "/index.html"
+          }
+        ],
         "EnvironmentVariables": [
           {
             "Name": "REACT_APP_REST_API",

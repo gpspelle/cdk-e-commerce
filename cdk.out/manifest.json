@@ -6608,7 +6608,7 @@
             "trace": [
               "new Branch (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-amplify/lib/branch.ts:91:20)",
               "App.addBranch (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-amplify/lib/app.ts:171:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:698:49)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:706:49)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:11:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -6634,7 +6634,7 @@
             "data": "ecommercedomainCBB36F34",
             "trace": [
               "new Domain (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-amplify/lib/domain.ts:67:20)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:699:29)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:707:29)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:11:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -6661,7 +6661,7 @@
             "trace": [
               "new Role (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-iam/lib/role.ts:201:18)",
               "new App (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-amplify/lib/app.ts:108:32)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:706:38)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:714:38)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:11:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -6687,7 +6687,7 @@
             "data": "eCommerceAdminAmplifyAppF8F89BE8",
             "trace": [
               "new App (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-amplify/lib/app.ts:115:17)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:706:38)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:714:38)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:11:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -6714,7 +6714,7 @@
             "trace": [
               "new Branch (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-amplify/lib/branch.ts:91:20)",
               "App.addBranch (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-amplify/lib/app.ts:171:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:746:59)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:756:59)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:11:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -6740,7 +6740,7 @@
             "data": "ecommerceadmindomain10A1D5C6",
             "trace": [
               "new Domain (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-amplify/lib/domain.ts:67:20)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:747:34)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:757:34)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:11:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -13384,7 +13384,7 @@
             "trace": [
               "new Branch (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-amplify/lib/branch.ts:91:20)",
               "App.addBranch (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-amplify/lib/app.ts:171:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:698:49)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:706:49)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:12:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -13410,7 +13410,7 @@
             "data": "ecommercedomainCBB36F34",
             "trace": [
               "new Domain (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-amplify/lib/domain.ts:67:20)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:699:29)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:707:29)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:12:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -13437,7 +13437,7 @@
             "trace": [
               "new Role (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-iam/lib/role.ts:201:18)",
               "new App (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-amplify/lib/app.ts:108:32)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:706:38)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:714:38)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:12:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -13463,7 +13463,7 @@
             "data": "eCommerceAdminAmplifyAppF8F89BE8",
             "trace": [
               "new App (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-amplify/lib/app.ts:115:17)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:706:38)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:714:38)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:12:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -13490,7 +13490,7 @@
             "trace": [
               "new Branch (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-amplify/lib/branch.ts:91:20)",
               "App.addBranch (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-amplify/lib/app.ts:171:12)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:746:59)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:756:59)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:12:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
@@ -13516,7 +13516,7 @@
             "data": "ecommerceadmindomain10A1D5C6",
             "trace": [
               "new Domain (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/@aws-cdk/aws-amplify/lib/domain.ts:67:20)",
-              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:747:34)",
+              "new ECommerceStack (/Users/gpspelle/Documents/cdk-e-commerce/lib/cdk-e-commerce-stack.ts:757:34)",
               "Object.<anonymous> (/Users/gpspelle/Documents/cdk-e-commerce/bin/cdk.ts:12:1)",
               "Module._compile (node:internal/modules/cjs/loader:1095:14)",
               "Module.m._compile (/Users/gpspelle/Documents/cdk-e-commerce/node_modules/ts-node/src/index.ts:1056:23)",
