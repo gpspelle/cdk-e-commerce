@@ -693,7 +693,13 @@ export class ECommerceStack extends cdk.Stack {
       })
     });
 
-    eCommerceAmplifyApp.addBranch("master");
+    const eCommerceBranch = eCommerceAmplifyApp.addBranch("master");
+    const eCommerceDomain = new amplify.Domain(this, "e-commerce-domain", {
+      app: eCommerceAmplifyApp,
+      domainName: "alojinha.click",
+    });
+
+    eCommerceDomain.mapRoot(eCommerceBranch)
 
     const eCommerceAdminAmplifyApp = new amplify.App(this, 'eCommerceAdminAmplifyApp', {
       sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
@@ -733,6 +739,11 @@ export class ECommerceStack extends cdk.Stack {
       })
     });
 
-    eCommerceAdminAmplifyApp.addBranch("master");
+    const eCommerceAdminBranch = eCommerceAdminAmplifyApp.addBranch("master");
+    const eCommerceAdminDomain = new amplify.Domain(this, "e-commerce-admin-domain", {
+      app: eCommerceAdminAmplifyApp,
+      domainName: "alojinha.click",
+    });
+    eCommerceAdminDomain.mapSubDomain(eCommerceAdminBranch, "admin")
   }
 }

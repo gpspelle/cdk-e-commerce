@@ -5610,6 +5610,37 @@
         "aws:cdk:path": "ECommerceStackBeta/eCommerceAmplifyApp/master/Resource"
       }
     },
+    "ecommercedomainCBB36F34": {
+      "Type": "AWS::Amplify::Domain",
+      "Properties": {
+        "AppId": {
+          "Fn::GetAtt": [
+            "eCommerceAmplifyApp2D763A71",
+            "AppId"
+          ]
+        },
+        "DomainName": "alojinha.click",
+        "SubDomainSettings": [
+          {
+            "BranchName": {
+              "Fn::GetAtt": [
+                "eCommerceAmplifyAppmaster50213BEE",
+                "BranchName"
+              ]
+            },
+            "Prefix": ""
+          }
+        ],
+        "AutoSubDomainCreationPatterns": [
+          "*",
+          "pr*"
+        ],
+        "EnableAutoSubDomain": false
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStackBeta/e-commerce-domain/Resource"
+      }
+    },
     "eCommerceAdminAmplifyAppRoleD08EF328": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -5694,10 +5725,41 @@
         "aws:cdk:path": "ECommerceStackBeta/eCommerceAdminAmplifyApp/master/Resource"
       }
     },
+    "ecommerceadmindomain10A1D5C6": {
+      "Type": "AWS::Amplify::Domain",
+      "Properties": {
+        "AppId": {
+          "Fn::GetAtt": [
+            "eCommerceAdminAmplifyAppF8F89BE8",
+            "AppId"
+          ]
+        },
+        "DomainName": "alojinha.click",
+        "SubDomainSettings": [
+          {
+            "BranchName": {
+              "Fn::GetAtt": [
+                "eCommerceAdminAmplifyAppmasterC3195E9C",
+                "BranchName"
+              ]
+            },
+            "Prefix": "admin"
+          }
+        ],
+        "AutoSubDomainCreationPatterns": [
+          "*",
+          "pr*"
+        ],
+        "EnableAutoSubDomain": false
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStackBeta/e-commerce-admin-domain/Resource"
+      }
+    },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/3VS21LCMBD9Ft5DEHnw1YI6+sDIAD8Q0gVDm8skmzI10383SUEq6tOevSVnz+6UTmcP9G70yE5uzMtqEri2QMMGGa/IGpz2lgNZ7NW7R+ORFM4BxuxBqANZaOXQeo6pYMUsk4BgycI71HLYfMU/UiurG1GC7Uj6PpStYlKXOxq2bFfnxgxi2ogDQzixlobYjIUR52cvsOBce4XkCUytWwkqcxp4iXN+sgcXCnPmgCwBP3SZkmf0J/etrkAVPhZY8ZnG3A+8jggmIznd8852pWvB26xNRh2pmdyVjIYUAiuFc0Ir8uIVxwRi+Bs/N5H1Jv+8ZMZkuffqd7QjbjZmaSuO5uVEn4a55xVgHq6HqfmMenMlN/SHUjf3NLwimovC0ST3RsgUWmuPPXpTCAfLLtPcuNe6/2WENKGLSvqzkj4fgDS12MftF8b0ZAyZW6b4R54go67riNIl0KObNNN41XQ6OjohxjYehpBA1739Aqkib130AgAA"
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/3VSyVICMRD9Fu4hiB68OoCWHiwp9AeaTAOByVJJBwqn5t/NAjKinvr1ln79OmM+vrvnN4MHOPihqHejVhiHvH0nEDu2QG+CE8imK/0WyAZilfdIMbuWes2mRntyQVAqmIMDhYSOTYMno/rNF/wjNXdmL2t0HUvj2/qoQZl6ydsPWDa5MYOYtnINhAc48jY2U2Xl6dkzrIQwQROboW3MUaHOnHpe4pyfLOBMYQIe2SvSxtQpeUJ/cv8wO9RViAVOfqY1Vz2vYxJUJGcK72znppHimLXJqGMNqGUNvE0hdEp6L41mT0ELSiCGv/HjPrJ+z5Nfwdos90r/jnbM3w0hXcXzfJzo83YSxA4pL1dgaj6hYi7k+n5f6v0tb5+J7FnhaJJ7JWQKLUyggl404drBeZsr91L3v4yYNvRRyXBSMuQPoGwjV/H6lbWFjGUTB1ps8gYFzYwCmQcV1HUd06ZGvvWj/Th+cz4ebL2UQxd/ilTIF8V+AfgQVmoFAwAA"
       },
       "Metadata": {
         "aws:cdk:path": "ECommerceStackBeta/CDKMetadata/Default"

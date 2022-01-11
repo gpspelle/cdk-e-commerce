@@ -8478,6 +8478,52 @@
               "version": "1.137.0"
             }
           },
+          "e-commerce-domain": {
+            "id": "e-commerce-domain",
+            "path": "ECommerceStackBeta/e-commerce-domain",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "ECommerceStackBeta/e-commerce-domain/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Amplify::Domain",
+                  "aws:cdk:cloudformation:props": {
+                    "appId": {
+                      "Fn::GetAtt": [
+                        "eCommerceAmplifyApp2D763A71",
+                        "AppId"
+                      ]
+                    },
+                    "domainName": "alojinha.click",
+                    "subDomainSettings": [
+                      {
+                        "branchName": {
+                          "Fn::GetAtt": [
+                            "eCommerceAmplifyAppmaster50213BEE",
+                            "BranchName"
+                          ]
+                        },
+                        "prefix": ""
+                      }
+                    ],
+                    "autoSubDomainCreationPatterns": [
+                      "*",
+                      "pr*"
+                    ],
+                    "enableAutoSubDomain": false
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-amplify.CfnDomain",
+                  "version": "1.137.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-amplify.Domain",
+              "version": "1.137.0"
+            }
+          },
           "eCommerceAdminAmplifyApp": {
             "id": "eCommerceAdminAmplifyApp",
             "path": "ECommerceStackBeta/eCommerceAdminAmplifyApp",
@@ -8604,6 +8650,52 @@
             },
             "constructInfo": {
               "fqn": "@aws-cdk/aws-amplify.App",
+              "version": "1.137.0"
+            }
+          },
+          "e-commerce-admin-domain": {
+            "id": "e-commerce-admin-domain",
+            "path": "ECommerceStackBeta/e-commerce-admin-domain",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "ECommerceStackBeta/e-commerce-admin-domain/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Amplify::Domain",
+                  "aws:cdk:cloudformation:props": {
+                    "appId": {
+                      "Fn::GetAtt": [
+                        "eCommerceAdminAmplifyAppF8F89BE8",
+                        "AppId"
+                      ]
+                    },
+                    "domainName": "alojinha.click",
+                    "subDomainSettings": [
+                      {
+                        "branchName": {
+                          "Fn::GetAtt": [
+                            "eCommerceAdminAmplifyAppmasterC3195E9C",
+                            "BranchName"
+                          ]
+                        },
+                        "prefix": "admin"
+                      }
+                    ],
+                    "autoSubDomainCreationPatterns": [
+                      "*",
+                      "pr*"
+                    ],
+                    "enableAutoSubDomain": false
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-amplify.CfnDomain",
+                  "version": "1.137.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-amplify.Domain",
               "version": "1.137.0"
             }
           },
@@ -17097,6 +17189,52 @@
               "version": "1.137.0"
             }
           },
+          "e-commerce-domain": {
+            "id": "e-commerce-domain",
+            "path": "ECommerceStack/e-commerce-domain",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "ECommerceStack/e-commerce-domain/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Amplify::Domain",
+                  "aws:cdk:cloudformation:props": {
+                    "appId": {
+                      "Fn::GetAtt": [
+                        "eCommerceAmplifyApp2D763A71",
+                        "AppId"
+                      ]
+                    },
+                    "domainName": "alojinha.click",
+                    "subDomainSettings": [
+                      {
+                        "branchName": {
+                          "Fn::GetAtt": [
+                            "eCommerceAmplifyAppmaster50213BEE",
+                            "BranchName"
+                          ]
+                        },
+                        "prefix": ""
+                      }
+                    ],
+                    "autoSubDomainCreationPatterns": [
+                      "*",
+                      "pr*"
+                    ],
+                    "enableAutoSubDomain": false
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-amplify.CfnDomain",
+                  "version": "1.137.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-amplify.Domain",
+              "version": "1.137.0"
+            }
+          },
           "eCommerceAdminAmplifyApp": {
             "id": "eCommerceAdminAmplifyApp",
             "path": "ECommerceStack/eCommerceAdminAmplifyApp",
@@ -17223,6 +17361,52 @@
             },
             "constructInfo": {
               "fqn": "@aws-cdk/aws-amplify.App",
+              "version": "1.137.0"
+            }
+          },
+          "e-commerce-admin-domain": {
+            "id": "e-commerce-admin-domain",
+            "path": "ECommerceStack/e-commerce-admin-domain",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "ECommerceStack/e-commerce-admin-domain/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Amplify::Domain",
+                  "aws:cdk:cloudformation:props": {
+                    "appId": {
+                      "Fn::GetAtt": [
+                        "eCommerceAdminAmplifyAppF8F89BE8",
+                        "AppId"
+                      ]
+                    },
+                    "domainName": "alojinha.click",
+                    "subDomainSettings": [
+                      {
+                        "branchName": {
+                          "Fn::GetAtt": [
+                            "eCommerceAdminAmplifyAppmasterC3195E9C",
+                            "BranchName"
+                          ]
+                        },
+                        "prefix": "admin"
+                      }
+                    ],
+                    "autoSubDomainCreationPatterns": [
+                      "*",
+                      "pr*"
+                    ],
+                    "enableAutoSubDomain": false
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-amplify.CfnDomain",
+                  "version": "1.137.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-amplify.Domain",
               "version": "1.137.0"
             }
           },
