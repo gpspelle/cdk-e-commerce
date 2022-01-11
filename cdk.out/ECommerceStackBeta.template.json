@@ -5560,26 +5560,32 @@
         "BasicAuthConfig": {
           "EnableBasicAuth": false
         },
-        "BuildSpec": {
-          "Fn::Join": [
-            "",
-            [
-              "version: \"1.0\"\nfrontend:\n  phases:\n    preBuild:\n      commands:\n        - npm install\n    build:\n      commands:\n        - REACT_APP_REST_API=https://",
-              {
-                "Ref": "apiC8550315"
-              },
-              ".execute-api.us-east-1.",
-              {
-                "Ref": "AWS::URLSuffix"
-              },
-              "/",
-              {
-                "Ref": "apiDeploymentStagedev96712F43"
-              },
-              "/\n        - npm run build\n  artifacts:\n    baseDirectory: build\n    files:\n      - \"**/*\"\n  cache:\n    paths:\n      - node_modules/**/*\n"
-            ]
-          ]
-        },
+        "BuildSpec": "version: \"1.0\"\nfrontend:\n  phases:\n    preBuild:\n      commands:\n        - npm install\n    build:\n      commands:\n        - npm run build\n  artifacts:\n    baseDirectory: build\n    files:\n      - \"**/*\"\n  cache:\n    paths:\n      - node_modules/**/*\n",
+        "EnvironmentVariables": [
+          {
+            "Name": "REACT_APP_REST_API",
+            "Value": {
+              "Fn::Join": [
+                "",
+                [
+                  "https://",
+                  {
+                    "Ref": "apiC8550315"
+                  },
+                  ".execute-api.us-east-1.",
+                  {
+                    "Ref": "AWS::URLSuffix"
+                  },
+                  "/",
+                  {
+                    "Ref": "apiDeploymentStagedev96712F43"
+                  },
+                  "/"
+                ]
+              ]
+            }
+          }
+        ],
         "IAMServiceRole": {
           "Fn::GetAtt": [
             "eCommerceAmplifyAppRoleC40BBB51",
@@ -5668,33 +5674,41 @@
         "BasicAuthConfig": {
           "EnableBasicAuth": false
         },
-        "BuildSpec": {
-          "Fn::Join": [
-            "",
-            [
-              "version: \"1.0\"\nfrontend:\n  phases:\n    preBuild:\n      commands:\n        - npm install\n    build:\n      commands:\n        - REACT_APP_REST_API=https://",
-              {
-                "Ref": "apiC8550315"
-              },
-              ".execute-api.us-east-1.",
-              {
-                "Ref": "AWS::URLSuffix"
-              },
-              "/",
-              {
-                "Ref": "apiDeploymentStagedev96712F43"
-              },
-              "/\n        - REACT_APP_HTTP_API=",
-              {
-                "Fn::GetAtt": [
-                  "httpapiE8E4C45A",
-                  "ApiEndpoint"
+        "BuildSpec": "version: \"1.0\"\nfrontend:\n  phases:\n    preBuild:\n      commands:\n        - npm install\n    build:\n      commands:\n        - npm run build\n  artifacts:\n    baseDirectory: build\n    files:\n      - \"**/*\"\n  cache:\n    paths:\n      - node_modules/**/*\n",
+        "EnvironmentVariables": [
+          {
+            "Name": "REACT_APP_REST_API",
+            "Value": {
+              "Fn::Join": [
+                "",
+                [
+                  "https://",
+                  {
+                    "Ref": "apiC8550315"
+                  },
+                  ".execute-api.us-east-1.",
+                  {
+                    "Ref": "AWS::URLSuffix"
+                  },
+                  "/",
+                  {
+                    "Ref": "apiDeploymentStagedev96712F43"
+                  },
+                  "/"
                 ]
-              },
-              "\n        - npm run build\n  artifacts:\n    baseDirectory: build\n    files:\n      - \"**/*\"\n  cache:\n    paths:\n      - node_modules/**/*\n"
-            ]
-          ]
-        },
+              ]
+            }
+          },
+          {
+            "Name": "REACT_APP_HTTP_API",
+            "Value": {
+              "Fn::GetAtt": [
+                "httpapiE8E4C45A",
+                "ApiEndpoint"
+              ]
+            }
+          }
+        ],
         "IAMServiceRole": {
           "Fn::GetAtt": [
             "eCommerceAdminAmplifyAppRoleD08EF328",

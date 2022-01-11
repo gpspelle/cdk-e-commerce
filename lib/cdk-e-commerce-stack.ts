@@ -673,7 +673,6 @@ export class ECommerceStack extends cdk.Stack {
             },
             build: {
               commands: [
-                `REACT_APP_REST_API=${restApi.url}`, // insert here CDK output
                 'npm run build'
               ]
             }
@@ -690,7 +689,10 @@ export class ECommerceStack extends cdk.Stack {
             ]
           }
         }
-      })
+      }),
+      environmentVariables: {
+        "REACT_APP_REST_API": restApi.url,
+      }
     });
 
     const eCommerceBranch = eCommerceAmplifyApp.addBranch("master");
@@ -718,8 +720,6 @@ export class ECommerceStack extends cdk.Stack {
             },
             build: {
               commands: [
-                `REACT_APP_REST_API=${restApi.url}`, // insert here CDK output
-                `REACT_APP_HTTP_API=${httpApi.apiEndpoint}`, // insert here CDK output
                 'npm run build'
               ]
             }
@@ -736,7 +736,11 @@ export class ECommerceStack extends cdk.Stack {
             ]
           }
         }
-      })
+      }),
+      environmentVariables: {
+        "REACT_APP_REST_API": restApi.url,
+        "REACT_APP_HTTP_API": httpApi.apiEndpoint,
+      }
     });
 
     const eCommerceAdminBranch = eCommerceAdminAmplifyApp.addBranch("master");
