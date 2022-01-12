@@ -35,6 +35,7 @@ import * as codebuild from '@aws-cdk/aws-codebuild';
 interface CustomizableStack extends cdk.StackProps {
   sesEmailFrom: string;
   imagesBucket: string;
+  customDomain?: string;
 }
 
 export class ECommerceStack extends cdk.Stack {
@@ -46,6 +47,7 @@ export class ECommerceStack extends cdk.Stack {
     const REGION = props?.env?.region as string
     const SES_EMAIL_FROM = props?.sesEmailFrom as string
     const IMAGES_BUCKET = props?.imagesBucket as string
+    const CUSTOM_DOMAIN = props?.customDomain
 
     // 👇 create Dynamodb table for products
     const productsTable = new dynamodb.Table(this, `${id}-products-table`, {
@@ -704,12 +706,14 @@ export class ECommerceStack extends cdk.Stack {
 
     eCommerceAmplifyApp.addCustomRule(fixReactRouterDom403CloudFrontIssueCustomRule)
     const eCommerceBranch = eCommerceAmplifyApp.addBranch("master");
-    const eCommerceDomain = new amplify.Domain(this, "e-commerce-domain", {
-      app: eCommerceAmplifyApp,
-      domainName: "alojinha.click",
-    });
 
-    eCommerceDomain.mapRoot(eCommerceBranch)
+    if (CUSTOM_DOMAIN !== undefined) {
+        const eCommerceDomain = new amplify.Domain(this, "e-commerce-domain", {
+            app: eCommerceAmplifyApp,
+            domainName: CUSTOM_DOMAIN,
+          });
+        eCommerceDomain.mapRoot(eCommerceBranch)
+    }
 
     const eCommerceAdminAmplifyApp = new amplify.App(this, 'eCommerceAdminAmplifyApp', {
       sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
@@ -752,12 +756,14 @@ export class ECommerceStack extends cdk.Stack {
     });
 
     eCommerceAdminAmplifyApp.addCustomRule(fixReactRouterDom403CloudFrontIssueCustomRule)
-
     const eCommerceAdminBranch = eCommerceAdminAmplifyApp.addBranch("master");
-    const eCommerceAdminDomain = new amplify.Domain(this, "e-commerce-admin-domain", {
-      app: eCommerceAdminAmplifyApp,
-      domainName: "alojinha.click",
-    });
-    eCommerceAdminDomain.mapSubDomain(eCommerceAdminBranch, "admin")
+
+    if (CUSTOM_DOMAIN !== undefined) {
+        const eCommerceAdminDomain = new amplify.Domain(this, "e-commerce-admin-domain", {
+            app: eCommerceAdminAmplifyApp,
+            domainName: CUSTOM_DOMAIN,
+        });
+        eCommerceAdminDomain.mapSubDomain(eCommerceAdminBranch, "admin")
+    }
   }
 }

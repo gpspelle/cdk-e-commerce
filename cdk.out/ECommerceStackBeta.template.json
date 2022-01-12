@@ -3997,7 +3997,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": {
-            "Ref": "AssetParameters59b0d0623c4d4a5c3d76b74353e6b7457ef0d1052beb1dbb6119ef398ff7ca72S3BucketED85EDD7"
+            "Ref": "AssetParameters9c918708dd3b53d151731ca1a6fe43d051d582a1e74647ca48c7613f36bd33adS3BucketEB24476D"
           },
           "S3Key": {
             "Fn::Join": [
@@ -4010,7 +4010,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParameters59b0d0623c4d4a5c3d76b74353e6b7457ef0d1052beb1dbb6119ef398ff7ca72S3VersionKeyA52821A8"
+                          "Ref": "AssetParameters9c918708dd3b53d151731ca1a6fe43d051d582a1e74647ca48c7613f36bd33adS3VersionKey453C2A5C"
                         }
                       ]
                     }
@@ -4023,7 +4023,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParameters59b0d0623c4d4a5c3d76b74353e6b7457ef0d1052beb1dbb6119ef398ff7ca72S3VersionKeyA52821A8"
+                          "Ref": "AssetParameters9c918708dd3b53d151731ca1a6fe43d051d582a1e74647ca48c7613f36bd33adS3VersionKey453C2A5C"
                         }
                       ]
                     }
@@ -4060,7 +4060,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "ECommerceStackBeta/put-product-lambda/Resource",
-        "aws:asset:path": "asset.59b0d0623c4d4a5c3d76b74353e6b7457ef0d1052beb1dbb6119ef398ff7ca72",
+        "aws:asset:path": "asset.9c918708dd3b53d151731ca1a6fe43d051d582a1e74647ca48c7613f36bd33ad",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -4408,7 +4408,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": {
-            "Ref": "AssetParameters0c6867d13ce303db2f25c2f0df7bb2ec9c3e66d91a9d5819e5fbaa21625c7315S3BucketFD364FF1"
+            "Ref": "AssetParametersfae44080790e74e2001b1ed039da4ec43ab8e56509f4d869f960afd875ebaeacS3Bucket8917829F"
           },
           "S3Key": {
             "Fn::Join": [
@@ -4421,7 +4421,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParameters0c6867d13ce303db2f25c2f0df7bb2ec9c3e66d91a9d5819e5fbaa21625c7315S3VersionKeyE7D747D4"
+                          "Ref": "AssetParametersfae44080790e74e2001b1ed039da4ec43ab8e56509f4d869f960afd875ebaeacS3VersionKey4BB50FD9"
                         }
                       ]
                     }
@@ -4434,7 +4434,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParameters0c6867d13ce303db2f25c2f0df7bb2ec9c3e66d91a9d5819e5fbaa21625c7315S3VersionKeyE7D747D4"
+                          "Ref": "AssetParametersfae44080790e74e2001b1ed039da4ec43ab8e56509f4d869f960afd875ebaeacS3VersionKey4BB50FD9"
                         }
                       ]
                     }
@@ -4471,7 +4471,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "ECommerceStackBeta/patch-product-lambda/Resource",
-        "aws:asset:path": "asset.0c6867d13ce303db2f25c2f0df7bb2ec9c3e66d91a9d5819e5fbaa21625c7315",
+        "aws:asset:path": "asset.fae44080790e74e2001b1ed039da4ec43ab8e56509f4d869f960afd875ebaeac",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -5623,37 +5623,6 @@
         "aws:cdk:path": "ECommerceStackBeta/eCommerceAmplifyApp/master/Resource"
       }
     },
-    "ecommercedomainCBB36F34": {
-      "Type": "AWS::Amplify::Domain",
-      "Properties": {
-        "AppId": {
-          "Fn::GetAtt": [
-            "eCommerceAmplifyApp2D763A71",
-            "AppId"
-          ]
-        },
-        "DomainName": "alojinha.click",
-        "SubDomainSettings": [
-          {
-            "BranchName": {
-              "Fn::GetAtt": [
-                "eCommerceAmplifyAppmaster50213BEE",
-                "BranchName"
-              ]
-            },
-            "Prefix": ""
-          }
-        ],
-        "AutoSubDomainCreationPatterns": [
-          "*",
-          "pr*"
-        ],
-        "EnableAutoSubDomain": false
-      },
-      "Metadata": {
-        "aws:cdk:path": "ECommerceStackBeta/e-commerce-domain/Resource"
-      }
-    },
     "eCommerceAdminAmplifyAppRoleD08EF328": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -5753,41 +5722,10 @@
         "aws:cdk:path": "ECommerceStackBeta/eCommerceAdminAmplifyApp/master/Resource"
       }
     },
-    "ecommerceadmindomain10A1D5C6": {
-      "Type": "AWS::Amplify::Domain",
-      "Properties": {
-        "AppId": {
-          "Fn::GetAtt": [
-            "eCommerceAdminAmplifyAppF8F89BE8",
-            "AppId"
-          ]
-        },
-        "DomainName": "alojinha.click",
-        "SubDomainSettings": [
-          {
-            "BranchName": {
-              "Fn::GetAtt": [
-                "eCommerceAdminAmplifyAppmasterC3195E9C",
-                "BranchName"
-              ]
-            },
-            "Prefix": "admin"
-          }
-        ],
-        "AutoSubDomainCreationPatterns": [
-          "*",
-          "pr*"
-        ],
-        "EnableAutoSubDomain": false
-      },
-      "Metadata": {
-        "aws:cdk:path": "ECommerceStackBeta/e-commerce-admin-domain/Resource"
-      }
-    },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/3VSyVICMRD9Fu4hiB68OoCWHiwp9AeaTAOByVJJBwqn5t/NAjKinvr1ln79OmM+vrvnN4MHOPihqHejVhiHvH0nEDu2QG+CE8imK/0WyAZilfdIMbuWes2mRntyQVAqmIMDhYSOTYMno/rNF/wjNXdmL2t0HUvj2/qoQZl6ydsPWDa5MYOYtnINhAc48jY2U2Xl6dkzrIQwQROboW3MUaHOnHpe4pyfLOBMYQIe2SvSxtQpeUJ/cv8wO9RViAVOfqY1Vz2vYxJUJGcK72znppHimLXJqGMNqGUNvE0hdEp6L41mT0ELSiCGv/HjPrJ+z5Nfwdos90r/jnbM3w0hXcXzfJzo83YSxA4pL1dgaj6hYi7k+n5f6v0tb5+J7FnhaJJ7JWQKLUyggl404drBeZsr91L3v4yYNvRRyXBSMuQPoGwjV/H6lbWFjGUTB1ps8gYFzYwCmQcV1HUd06ZGvvWj/Th+cz4ebL2UQxd/ilTIF8V+AfgQVmoFAwAA"
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/3VS21LCMBD9Ft5DEHnw1YI6+sDIAD8Q0gVDm8skmzI10383SUEq6tOevSVnz+6UTmcP9G70yE5uzMtqEri2QMMGGa/IGpz2lgNZ7NW7R+ORFM4BxuxBqANZaOXQeo6pYMUsk4BgycI71HLYfMU/UiurG1GC7Uj6PpStYlKXOxq2bFfnxgxi2ogDQzixlobYjIUR52cvsOBce4XkCUytWwkqcxp4iXN+sgcXCnPmgCwBP3SZkmf0J/etrkAVPhZY8ZnG3A+8jggmIznd8852pWvB26xNRh2pmdyVjIYUAiuFc0Ir8uIVxwRi+Bs/N5H1Jv+8ZMZkuffqd7QjbjZmaSuO5uVEn4a55xVgHq6HqfmMenMlN/SHUjf3NLwimovC0ST3RsgUWmuPPXpTCAfLLtPcuNe6/2WENKGLSvqzkj4fgDS12MftF8b0ZAyZW6b4R54go67riNIl0KObNNN41XQ6OjohxjYehpBA1739Aqkib130AgAA"
       },
       "Metadata": {
         "aws:cdk:path": "ECommerceStackBeta/CDKMetadata/Default"
@@ -5969,17 +5907,17 @@
       "Type": "String",
       "Description": "Artifact hash for asset \"1b8a324440371d1fcfddd9a86f1fba3a334ec9117132d61d8fff65fb7f758881\""
     },
-    "AssetParameters59b0d0623c4d4a5c3d76b74353e6b7457ef0d1052beb1dbb6119ef398ff7ca72S3BucketED85EDD7": {
+    "AssetParameters9c918708dd3b53d151731ca1a6fe43d051d582a1e74647ca48c7613f36bd33adS3BucketEB24476D": {
       "Type": "String",
-      "Description": "S3 bucket for asset \"59b0d0623c4d4a5c3d76b74353e6b7457ef0d1052beb1dbb6119ef398ff7ca72\""
+      "Description": "S3 bucket for asset \"9c918708dd3b53d151731ca1a6fe43d051d582a1e74647ca48c7613f36bd33ad\""
     },
-    "AssetParameters59b0d0623c4d4a5c3d76b74353e6b7457ef0d1052beb1dbb6119ef398ff7ca72S3VersionKeyA52821A8": {
+    "AssetParameters9c918708dd3b53d151731ca1a6fe43d051d582a1e74647ca48c7613f36bd33adS3VersionKey453C2A5C": {
       "Type": "String",
-      "Description": "S3 key for asset version \"59b0d0623c4d4a5c3d76b74353e6b7457ef0d1052beb1dbb6119ef398ff7ca72\""
+      "Description": "S3 key for asset version \"9c918708dd3b53d151731ca1a6fe43d051d582a1e74647ca48c7613f36bd33ad\""
     },
-    "AssetParameters59b0d0623c4d4a5c3d76b74353e6b7457ef0d1052beb1dbb6119ef398ff7ca72ArtifactHash65FD387A": {
+    "AssetParameters9c918708dd3b53d151731ca1a6fe43d051d582a1e74647ca48c7613f36bd33adArtifactHash2F512A03": {
       "Type": "String",
-      "Description": "Artifact hash for asset \"59b0d0623c4d4a5c3d76b74353e6b7457ef0d1052beb1dbb6119ef398ff7ca72\""
+      "Description": "Artifact hash for asset \"9c918708dd3b53d151731ca1a6fe43d051d582a1e74647ca48c7613f36bd33ad\""
     },
     "AssetParameters23fcc45dd6bc9b16df6e5fff3a1e26470cae5318838ddd48381eed606bf982dfS3BucketA1767E6A": {
       "Type": "String",
@@ -5993,17 +5931,17 @@
       "Type": "String",
       "Description": "Artifact hash for asset \"23fcc45dd6bc9b16df6e5fff3a1e26470cae5318838ddd48381eed606bf982df\""
     },
-    "AssetParameters0c6867d13ce303db2f25c2f0df7bb2ec9c3e66d91a9d5819e5fbaa21625c7315S3BucketFD364FF1": {
+    "AssetParametersfae44080790e74e2001b1ed039da4ec43ab8e56509f4d869f960afd875ebaeacS3Bucket8917829F": {
       "Type": "String",
-      "Description": "S3 bucket for asset \"0c6867d13ce303db2f25c2f0df7bb2ec9c3e66d91a9d5819e5fbaa21625c7315\""
+      "Description": "S3 bucket for asset \"fae44080790e74e2001b1ed039da4ec43ab8e56509f4d869f960afd875ebaeac\""
     },
-    "AssetParameters0c6867d13ce303db2f25c2f0df7bb2ec9c3e66d91a9d5819e5fbaa21625c7315S3VersionKeyE7D747D4": {
+    "AssetParametersfae44080790e74e2001b1ed039da4ec43ab8e56509f4d869f960afd875ebaeacS3VersionKey4BB50FD9": {
       "Type": "String",
-      "Description": "S3 key for asset version \"0c6867d13ce303db2f25c2f0df7bb2ec9c3e66d91a9d5819e5fbaa21625c7315\""
+      "Description": "S3 key for asset version \"fae44080790e74e2001b1ed039da4ec43ab8e56509f4d869f960afd875ebaeac\""
     },
-    "AssetParameters0c6867d13ce303db2f25c2f0df7bb2ec9c3e66d91a9d5819e5fbaa21625c7315ArtifactHash2FAF66DF": {
+    "AssetParametersfae44080790e74e2001b1ed039da4ec43ab8e56509f4d869f960afd875ebaeacArtifactHash4AEC1D70": {
       "Type": "String",
-      "Description": "Artifact hash for asset \"0c6867d13ce303db2f25c2f0df7bb2ec9c3e66d91a9d5819e5fbaa21625c7315\""
+      "Description": "Artifact hash for asset \"fae44080790e74e2001b1ed039da4ec43ab8e56509f4d869f960afd875ebaeac\""
     },
     "AssetParameters614da993ceac8ff700f702954da38ea6efc4e0e0bb113b0e30621deffc03e4ebS3Bucket79820830": {
       "Type": "String",
