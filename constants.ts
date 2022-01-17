@@ -9,5 +9,7 @@ export const PRODUCTS_TABLE_PARTITION_KEY = "id";
 export const HASH_ALG = "sha512";
 export const ACCESS_TOKEN_NAME = "x-access-token";
 export const EMAIL_VERIFICATION_LINK_ENDPOINT = "verify-email";
+export const CHANGE_FORGOT_PASSWORD_LINK = "alterar-senha";
 export const NO_TAGS_STRING = "!@#$no-tag%^&*";
 export const STAGE = "dev";
+export const EMAIL_SIGNATURE = "Loja das Artes";

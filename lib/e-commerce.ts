@@ -27,7 +27,9 @@ import {
   ADMINS_TABLE_PARTITION_KEY,
   PRODUCT_TAGS_TABLE_PARTITION_KEY,
   EMAIL_VERIFICATION_LINK_ENDPOINT,
+  CHANGE_FORGOT_PASSWORD_LINK,
   NO_TAGS_STRING,
+  EMAIL_SIGNATURE,
 } from "../constants";
 import * as amplify from '@aws-cdk/aws-amplify';
 import * as codebuild from '@aws-cdk/aws-codebuild';
@@ -129,12 +131,11 @@ export class ECommerceStack extends cdk.Stack {
       identitySource: `method.request.header.${ACCESS_TOKEN_NAME}`
     })
 
-
     // 👇 define emailAuth lambda function
     const emailAuthLambdaFunction = new lambda.Function(this, "email-auth-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "index.main",
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/email-verification-auth")),
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/email-auth")),
       environment: {
         SECRET,
         ACCESS_TOKEN_NAME,
@@ -168,6 +169,114 @@ export class ECommerceStack extends cdk.Stack {
         allowOrigins: ['*'],
       },
     })
+
+    const eCommerceAmplifyApp = new amplify.App(this, 'eCommerceAmplifyApp', {
+      sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
+        owner: 'gpspelle',
+        repository: 'e-commerce',
+        oauthToken: cdk.SecretValue.secretsManager('github-access-token'),
+      }),
+      buildSpec: codebuild.BuildSpec.fromObjectToYaml({ // Alternatively add a `amplify.yml` to the repo
+        version: '1.0',
+        frontend: {
+          phases: {
+            preBuild: {
+              commands: [
+                'npm install'
+              ]
+            },
+            build: {
+              commands: [
+                'npm run build'
+              ]
+            }
+          },
+          artifacts: {
+            baseDirectory: 'build',
+            files: [
+              '**/*'
+            ]
+          },
+          cache: {
+            paths: [
+              'node_modules/**/*'
+            ]
+          }
+        }
+      }),
+      environmentVariables: {
+        "REACT_APP_REST_API": restApi.url,
+      }
+    });
+
+    // fixes https://github.com/aws-amplify/amplify-cli/issues/3606
+    const fixReactRouterDom403CloudFrontIssueCustomRule = new amplify.CustomRule({
+      source: '</^[^.]+$|\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>',
+      target: '/index.html',
+      status: amplify.RedirectStatus.REWRITE,
+    })
+
+    eCommerceAmplifyApp.addCustomRule(fixReactRouterDom403CloudFrontIssueCustomRule)
+    const eCommerceBranch = eCommerceAmplifyApp.addBranch("master");
+
+    if (CUSTOM_DOMAIN !== undefined) {
+        const eCommerceDomain = new amplify.Domain(this, "e-commerce-domain", {
+            app: eCommerceAmplifyApp,
+            domainName: CUSTOM_DOMAIN,
+          });
+        eCommerceDomain.mapRoot(eCommerceBranch)
+    }
+
+    const eCommerceAdminAmplifyApp = new amplify.App(this, 'eCommerceAdminAmplifyApp', {
+      sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
+        owner: 'gpspelle',
+        repository: 'admin-e-commerce',
+        oauthToken: cdk.SecretValue.secretsManager('github-access-token'),
+      }),
+      buildSpec: codebuild.BuildSpec.fromObjectToYaml({ // Alternatively add a `amplify.yml` to the repo
+        version: '1.0',
+        frontend: {
+          phases: {
+            preBuild: {
+              commands: [
+                'npm install'
+              ]
+            },
+            build: {
+              commands: [
+                'npm run build'
+              ]
+            }
+          },
+          artifacts: {
+            baseDirectory: 'build',
+            files: [
+              '**/*'
+            ]
+          },
+          cache: {
+            paths: [
+              'node_modules/**/*'
+            ]
+          }
+        }
+      }),
+      environmentVariables: {
+        "REACT_APP_REST_API": restApi.url,
+        "REACT_APP_HTTP_API": httpApi.apiEndpoint,
+      }
+    });
+
+    eCommerceAdminAmplifyApp.addCustomRule(fixReactRouterDom403CloudFrontIssueCustomRule)
+    const eCommerceAdminBranch = eCommerceAdminAmplifyApp.addBranch("master");
+
+    if (CUSTOM_DOMAIN !== undefined) {
+        const eCommerceAdminDomain = new amplify.Domain(this, "e-commerce-admin-domain", {
+            app: eCommerceAdminAmplifyApp,
+            domainName: CUSTOM_DOMAIN,
+        });
+        eCommerceAdminDomain.mapSubDomain(eCommerceAdminBranch, "admin")
+    }
 
     // 👇 create an Output for the API URL
     new cdk.CfnOutput(this, "httpApiUrl", { value: httpApi.apiEndpoint })
@@ -561,7 +670,7 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 grant read and write access to bucket
     s3Bucket.grantReadWrite(patchProductLambda)
 
-    // 👇 create the lambda that sends emails
+    // 👇 create the lambda that sends verification emails
     const sendVerificationEmailLambdaFunction = new lambda.Function(this, 'send-verification-email-lambda', {
       runtime: lambda.Runtime.NODEJS_14_X,
       memorySize: 128,
@@ -575,10 +684,11 @@ export class ECommerceStack extends cdk.Stack {
         SECRET,
         ACCESS_TOKEN_NAME,
         EMAIL_VERIFICATION_LINK_ENDPOINT,
+        EMAIL_SIGNATURE,
       }
     })
 
-    // 👇 Add permissions to the Lambda function to send Emails
+    // 👇 Add permissions to the Lambda function to send verification emails
     sendVerificationEmailLambdaFunction.addToRolePolicy(
       new iam.PolicyStatement({
         effect: iam.Effect.ALLOW,
@@ -613,7 +723,7 @@ export class ECommerceStack extends cdk.Stack {
       authorizer: emailAuth,
     });
 
-    // 👇 create the lambda that sends emails
+    // 👇 create the lambda that apply email verification
     const getVerificationEmailLambdaFunction = new lambda.Function(this, 'get-verification-email', {
       runtime: lambda.Runtime.NODEJS_14_X,
       timeout: cdk.Duration.seconds(5),
@@ -637,6 +747,50 @@ export class ECommerceStack extends cdk.Stack {
       authorizer: emailAuth,
     });
 
+    // 👇 create the lambda that sends forgot password emails
+    const sendForgotPasswordEmailLambdaFunction = new lambda.Function(this, 'send-forgot-password-email-lambda', {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      memorySize: 128,
+      timeout: cdk.Duration.seconds(3),
+      handler: 'index.main',
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/send-forgot-password-email")),
+      environment: {
+        SES_EMAIL_FROM,
+        REGION,
+        SECRET,
+        ACCESS_TOKEN_NAME,
+        CHANGE_FORGOT_PASSWORD_LINK,
+        EMAIL_SIGNATURE,
+        ADMIN_CUSTOM_DOMAIN: CUSTOM_DOMAIN ? `https://admin.${CUSTOM_DOMAIN}` : "localhost:3000",
+        ADMINS_TABLE_PARTITION_KEY,
+      }
+    })
+    
+    // 👇 Add permissions to the Lambda function to send forgot password emails
+    sendForgotPasswordEmailLambdaFunction.addToRolePolicy(
+      new iam.PolicyStatement({
+        effect: iam.Effect.ALLOW,
+        actions: [
+          'ses:SendEmail',
+          'ses:SendRawEmail',
+          'ses:SendTemplatedEmail',
+        ],
+        resources: [
+          `arn:aws:ses:${REGION}:${
+            ACCOUNT
+          }:identity/*`,
+        ],
+      }),
+    )
+
+    const sendForgotPasswordEmailIntegration = new HttpLambdaIntegration('SendForgotPasswordEmailIntegration', sendForgotPasswordEmailLambdaFunction);
+
+    httpApi.addRoutes({
+      path: `/send-forgot-password-email`,
+      methods: [ HttpMethod.POST ],
+      integration: sendForgotPasswordEmailIntegration,
+    });
+
     // 👇 create the transform expired lighting deals into normal products
     const processExpiredLightingDealsLambdaFunction = new lambda.Function(this, 'process-expired-lightning-deals', {
       runtime: lambda.Runtime.NODEJS_14_X,
@@ -657,113 +811,5 @@ export class ECommerceStack extends cdk.Stack {
     })
 
     rule.addTarget(new targets.LambdaFunction(processExpiredLightingDealsLambdaFunction))
-
-    const eCommerceAmplifyApp = new amplify.App(this, 'eCommerceAmplifyApp', {
-      sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
-        owner: 'gpspelle',
-        repository: 'e-commerce',
-        oauthToken: cdk.SecretValue.secretsManager('github-access-token'),
-      }),
-      buildSpec: codebuild.BuildSpec.fromObjectToYaml({ // Alternatively add a `amplify.yml` to the repo
-        version: '1.0',
-        frontend: {
-          phases: {
-            preBuild: {
-              commands: [
-                'npm install'
-              ]
-            },
-            build: {
-              commands: [
-                'npm run build'
-              ]
-            }
-          },
-          artifacts: {
-            baseDirectory: 'build',
-            files: [
-              '**/*'
-            ]
-          },
-          cache: {
-            paths: [
-              'node_modules/**/*'
-            ]
-          }
-        }
-      }),
-      environmentVariables: {
-        "REACT_APP_REST_API": restApi.url,
-      }
-    });
-
-    // fixes https://github.com/aws-amplify/amplify-cli/issues/3606
-    const fixReactRouterDom403CloudFrontIssueCustomRule = new amplify.CustomRule({
-      source: '</^[^.]+$|\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>',
-      target: '/index.html',
-      status: amplify.RedirectStatus.REWRITE,
-    })
-
-    eCommerceAmplifyApp.addCustomRule(fixReactRouterDom403CloudFrontIssueCustomRule)
-    const eCommerceBranch = eCommerceAmplifyApp.addBranch("master");
-
-    if (CUSTOM_DOMAIN !== undefined) {
-        const eCommerceDomain = new amplify.Domain(this, "e-commerce-domain", {
-            app: eCommerceAmplifyApp,
-            domainName: CUSTOM_DOMAIN,
-          });
-        eCommerceDomain.mapRoot(eCommerceBranch)
-    }
-
-    const eCommerceAdminAmplifyApp = new amplify.App(this, 'eCommerceAdminAmplifyApp', {
-      sourceCodeProvider: new amplify.GitHubSourceCodeProvider({
-        owner: 'gpspelle',
-        repository: 'admin-e-commerce',
-        oauthToken: cdk.SecretValue.secretsManager('github-access-token'),
-      }),
-      buildSpec: codebuild.BuildSpec.fromObjectToYaml({ // Alternatively add a `amplify.yml` to the repo
-        version: '1.0',
-        frontend: {
-          phases: {
-            preBuild: {
-              commands: [
-                'npm install'
-              ]
-            },
-            build: {
-              commands: [
-                'npm run build'
-              ]
-            }
-          },
-          artifacts: {
-            baseDirectory: 'build',
-            files: [
-              '**/*'
-            ]
-          },
-          cache: {
-            paths: [
-              'node_modules/**/*'
-            ]
-          }
-        }
-      }),
-      environmentVariables: {
-        "REACT_APP_REST_API": restApi.url,
-        "REACT_APP_HTTP_API": httpApi.apiEndpoint,
-      }
-    });
-
-    eCommerceAdminAmplifyApp.addCustomRule(fixReactRouterDom403CloudFrontIssueCustomRule)
-    const eCommerceAdminBranch = eCommerceAdminAmplifyApp.addBranch("master");
-
-    if (CUSTOM_DOMAIN !== undefined) {
-        const eCommerceAdminDomain = new amplify.Domain(this, "e-commerce-admin-domain", {
-            app: eCommerceAdminAmplifyApp,
-            domainName: CUSTOM_DOMAIN,
-        });
-        eCommerceAdminDomain.mapSubDomain(eCommerceAdminBranch, "admin")
-    }
   }
 }

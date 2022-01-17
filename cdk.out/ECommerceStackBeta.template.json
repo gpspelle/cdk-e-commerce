@@ -2714,6 +2714,270 @@
         "aws:cdk:path": "ECommerceStackBeta/http-api/GET--verify-email/Resource"
       }
     },
+    "httpapiPOSTsendforgotpasswordemailSendForgotPasswordEmailIntegrationPermission7201964C": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "sendforgotpasswordemaillambda73B2C8A0",
+            "Arn"
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:us-east-1:774004686218:",
+              {
+                "Ref": "httpapiE8E4C45A"
+              },
+              "/*/*/send-forgot-password-email"
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStackBeta/http-api/POST--send-forgot-password-email/SendForgotPasswordEmailIntegration-Permission"
+      }
+    },
+    "httpapiPOSTsendforgotpasswordemailSendForgotPasswordEmailIntegrationC11B5857": {
+      "Type": "AWS::ApiGatewayV2::Integration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "httpapiE8E4C45A"
+        },
+        "IntegrationType": "AWS_PROXY",
+        "IntegrationUri": {
+          "Fn::GetAtt": [
+            "sendforgotpasswordemaillambda73B2C8A0",
+            "Arn"
+          ]
+        },
+        "PayloadFormatVersion": "2.0"
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStackBeta/http-api/POST--send-forgot-password-email/SendForgotPasswordEmailIntegration/Resource"
+      }
+    },
+    "httpapiPOSTsendforgotpasswordemailAA2B2381": {
+      "Type": "AWS::ApiGatewayV2::Route",
+      "Properties": {
+        "ApiId": {
+          "Ref": "httpapiE8E4C45A"
+        },
+        "RouteKey": "POST /send-forgot-password-email",
+        "AuthorizationType": "NONE",
+        "Target": {
+          "Fn::Join": [
+            "",
+            [
+              "integrations/",
+              {
+                "Ref": "httpapiPOSTsendforgotpasswordemailSendForgotPasswordEmailIntegrationC11B5857"
+              }
+            ]
+          ]
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStackBeta/http-api/POST--send-forgot-password-email/Resource"
+      }
+    },
+    "eCommerceAmplifyAppRoleC40BBB51": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "amplify.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStackBeta/eCommerceAmplifyApp/Role/Resource"
+      }
+    },
+    "eCommerceAmplifyApp2D763A71": {
+      "Type": "AWS::Amplify::App",
+      "Properties": {
+        "Name": "eCommerceAmplifyApp",
+        "BasicAuthConfig": {
+          "EnableBasicAuth": false
+        },
+        "BuildSpec": "version: \"1.0\"\nfrontend:\n  phases:\n    preBuild:\n      commands:\n        - npm install\n    build:\n      commands:\n        - npm run build\n  artifacts:\n    baseDirectory: build\n    files:\n      - \"**/*\"\n  cache:\n    paths:\n      - node_modules/**/*\n",
+        "CustomRules": [
+          {
+            "Source": "</^[^.]+$|\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>",
+            "Status": "200",
+            "Target": "/index.html"
+          }
+        ],
+        "EnvironmentVariables": [
+          {
+            "Name": "REACT_APP_REST_API",
+            "Value": {
+              "Fn::Join": [
+                "",
+                [
+                  "https://",
+                  {
+                    "Ref": "apiC8550315"
+                  },
+                  ".execute-api.us-east-1.",
+                  {
+                    "Ref": "AWS::URLSuffix"
+                  },
+                  "/",
+                  {
+                    "Ref": "apiDeploymentStagedev96712F43"
+                  },
+                  "/"
+                ]
+              ]
+            }
+          }
+        ],
+        "IAMServiceRole": {
+          "Fn::GetAtt": [
+            "eCommerceAmplifyAppRoleC40BBB51",
+            "Arn"
+          ]
+        },
+        "OauthToken": "{{resolve:secretsmanager:github-access-token:SecretString:::}}",
+        "Repository": "https://github.com/gpspelle/e-commerce"
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStackBeta/eCommerceAmplifyApp/Resource"
+      }
+    },
+    "eCommerceAmplifyAppmaster50213BEE": {
+      "Type": "AWS::Amplify::Branch",
+      "Properties": {
+        "AppId": {
+          "Fn::GetAtt": [
+            "eCommerceAmplifyApp2D763A71",
+            "AppId"
+          ]
+        },
+        "BranchName": "master",
+        "EnableAutoBuild": true,
+        "EnablePullRequestPreview": true
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStackBeta/eCommerceAmplifyApp/master/Resource"
+      }
+    },
+    "eCommerceAdminAmplifyAppRoleD08EF328": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "amplify.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        }
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStackBeta/eCommerceAdminAmplifyApp/Role/Resource"
+      }
+    },
+    "eCommerceAdminAmplifyAppF8F89BE8": {
+      "Type": "AWS::Amplify::App",
+      "Properties": {
+        "Name": "eCommerceAdminAmplifyApp",
+        "BasicAuthConfig": {
+          "EnableBasicAuth": false
+        },
+        "BuildSpec": "version: \"1.0\"\nfrontend:\n  phases:\n    preBuild:\n      commands:\n        - npm install\n    build:\n      commands:\n        - npm run build\n  artifacts:\n    baseDirectory: build\n    files:\n      - \"**/*\"\n  cache:\n    paths:\n      - node_modules/**/*\n",
+        "CustomRules": [
+          {
+            "Source": "</^[^.]+$|\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>",
+            "Status": "200",
+            "Target": "/index.html"
+          }
+        ],
+        "EnvironmentVariables": [
+          {
+            "Name": "REACT_APP_REST_API",
+            "Value": {
+              "Fn::Join": [
+                "",
+                [
+                  "https://",
+                  {
+                    "Ref": "apiC8550315"
+                  },
+                  ".execute-api.us-east-1.",
+                  {
+                    "Ref": "AWS::URLSuffix"
+                  },
+                  "/",
+                  {
+                    "Ref": "apiDeploymentStagedev96712F43"
+                  },
+                  "/"
+                ]
+              ]
+            }
+          },
+          {
+            "Name": "REACT_APP_HTTP_API",
+            "Value": {
+              "Fn::GetAtt": [
+                "httpapiE8E4C45A",
+                "ApiEndpoint"
+              ]
+            }
+          }
+        ],
+        "IAMServiceRole": {
+          "Fn::GetAtt": [
+            "eCommerceAdminAmplifyAppRoleD08EF328",
+            "Arn"
+          ]
+        },
+        "OauthToken": "{{resolve:secretsmanager:github-access-token:SecretString:::}}",
+        "Repository": "https://github.com/gpspelle/admin-e-commerce"
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStackBeta/eCommerceAdminAmplifyApp/Resource"
+      }
+    },
+    "eCommerceAdminAmplifyAppmasterC3195E9C": {
+      "Type": "AWS::Amplify::Branch",
+      "Properties": {
+        "AppId": {
+          "Fn::GetAtt": [
+            "eCommerceAdminAmplifyAppF8F89BE8",
+            "AppId"
+          ]
+        },
+        "BranchName": "master",
+        "EnableAutoBuild": true,
+        "EnablePullRequestPreview": true
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStackBeta/eCommerceAdminAmplifyApp/master/Resource"
+      }
+    },
     "putaccountlambdaServiceRoleA8C81C5B": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -2792,7 +3056,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": {
-            "Ref": "AssetParameterscbc3ca493f4479b4f916c0856d72add5908d5423a28b4e954cc5336af172dbffS3BucketAD4FA71D"
+            "Ref": "AssetParameters1faeea13bb6d32cb9df5bf29231e65de91a8e8a524eb47c68f9684db17cbd85bS3BucketCF9C4803"
           },
           "S3Key": {
             "Fn::Join": [
@@ -2805,7 +3069,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParameterscbc3ca493f4479b4f916c0856d72add5908d5423a28b4e954cc5336af172dbffS3VersionKey28293F29"
+                          "Ref": "AssetParameters1faeea13bb6d32cb9df5bf29231e65de91a8e8a524eb47c68f9684db17cbd85bS3VersionKeyB0E2D711"
                         }
                       ]
                     }
@@ -2818,7 +3082,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParameterscbc3ca493f4479b4f916c0856d72add5908d5423a28b4e954cc5336af172dbffS3VersionKey28293F29"
+                          "Ref": "AssetParameters1faeea13bb6d32cb9df5bf29231e65de91a8e8a524eb47c68f9684db17cbd85bS3VersionKeyB0E2D711"
                         }
                       ]
                     }
@@ -2851,7 +3115,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "ECommerceStackBeta/put-account-lambda/Resource",
-        "aws:asset:path": "asset.cbc3ca493f4479b4f916c0856d72add5908d5423a28b4e954cc5336af172dbff",
+        "aws:asset:path": "asset.1faeea13bb6d32cb9df5bf29231e65de91a8e8a524eb47c68f9684db17cbd85b",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -2941,7 +3205,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": {
-            "Ref": "AssetParameters8a817790036ad2180872781032be9218e84df61887b1d7e91caff581b03f6c6bS3Bucket12FAC6E0"
+            "Ref": "AssetParametersaa68553426475facf16920eb3c9a54ca26becaf2a600ecea71b7594743df75b5S3Bucket50FECE18"
           },
           "S3Key": {
             "Fn::Join": [
@@ -2954,7 +3218,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParameters8a817790036ad2180872781032be9218e84df61887b1d7e91caff581b03f6c6bS3VersionKey9B822E76"
+                          "Ref": "AssetParametersaa68553426475facf16920eb3c9a54ca26becaf2a600ecea71b7594743df75b5S3VersionKey9BE91454"
                         }
                       ]
                     }
@@ -2967,7 +3231,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParameters8a817790036ad2180872781032be9218e84df61887b1d7e91caff581b03f6c6bS3VersionKey9B822E76"
+                          "Ref": "AssetParametersaa68553426475facf16920eb3c9a54ca26becaf2a600ecea71b7594743df75b5S3VersionKey9BE91454"
                         }
                       ]
                     }
@@ -3000,7 +3264,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "ECommerceStackBeta/patch-account-lambda/Resource",
-        "aws:asset:path": "asset.8a817790036ad2180872781032be9218e84df61887b1d7e91caff581b03f6c6b",
+        "aws:asset:path": "asset.aa68553426475facf16920eb3c9a54ca26becaf2a600ecea71b7594743df75b5",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -5105,7 +5369,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": {
-            "Ref": "AssetParameters8c2e1ea0284601b6e87ed81c918df5d2d41431509e146e5ae40796b05ab2945fS3Bucket3F63BABD"
+            "Ref": "AssetParametersfe6a06cc89d3081e5abc52e3f935eb72bb370cd6fe7e679c2c76ef9c8dc4422fS3Bucket88A83760"
           },
           "S3Key": {
             "Fn::Join": [
@@ -5118,7 +5382,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParameters8c2e1ea0284601b6e87ed81c918df5d2d41431509e146e5ae40796b05ab2945fS3VersionKey61E36AC8"
+                          "Ref": "AssetParametersfe6a06cc89d3081e5abc52e3f935eb72bb370cd6fe7e679c2c76ef9c8dc4422fS3VersionKeyEAB439B4"
                         }
                       ]
                     }
@@ -5131,7 +5395,7 @@
                       "Fn::Split": [
                         "||",
                         {
-                          "Ref": "AssetParameters8c2e1ea0284601b6e87ed81c918df5d2d41431509e146e5ae40796b05ab2945fS3VersionKey61E36AC8"
+                          "Ref": "AssetParametersfe6a06cc89d3081e5abc52e3f935eb72bb370cd6fe7e679c2c76ef9c8dc4422fS3VersionKeyEAB439B4"
                         }
                       ]
                     }
@@ -5159,7 +5423,8 @@
             },
             "SECRET": "e49Y1pFtBrorAwMduJTf08REXruydmUQ",
             "ACCESS_TOKEN_NAME": "x-access-token",
-            "EMAIL_VERIFICATION_LINK_ENDPOINT": "verify-email"
+            "EMAIL_VERIFICATION_LINK_ENDPOINT": "verify-email",
+            "EMAIL_SIGNATURE": "Loja das Artes"
           }
         },
         "Handler": "index.main",
@@ -5173,7 +5438,7 @@
       ],
       "Metadata": {
         "aws:cdk:path": "ECommerceStackBeta/send-verification-email-lambda/Resource",
-        "aws:asset:path": "asset.8c2e1ea0284601b6e87ed81c918df5d2d41431509e146e5ae40796b05ab2945f",
+        "aws:asset:path": "asset.fe6a06cc89d3081e5abc52e3f935eb72bb370cd6fe7e679c2c76ef9c8dc4422f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -5337,6 +5602,143 @@
       "Metadata": {
         "aws:cdk:path": "ECommerceStackBeta/get-verification-email/Resource",
         "aws:asset:path": "asset.b867f788928f60aa13b16c0d5286d86757ba6b79e7b2184cc71e6084f882ce93",
+        "aws:asset:is-bundled": false,
+        "aws:asset:property": "Code"
+      }
+    },
+    "sendforgotpasswordemaillambdaServiceRole17FE743F": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              }
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition"
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+              ]
+            ]
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStackBeta/send-forgot-password-email-lambda/ServiceRole/Resource"
+      }
+    },
+    "sendforgotpasswordemaillambdaServiceRoleDefaultPolicy3880CD2F": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "ses:SendEmail",
+                "ses:SendRawEmail",
+                "ses:SendTemplatedEmail"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:ses:us-east-1:774004686218:identity/*"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "sendforgotpasswordemaillambdaServiceRoleDefaultPolicy3880CD2F",
+        "Roles": [
+          {
+            "Ref": "sendforgotpasswordemaillambdaServiceRole17FE743F"
+          }
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStackBeta/send-forgot-password-email-lambda/ServiceRole/DefaultPolicy/Resource"
+      }
+    },
+    "sendforgotpasswordemaillambda73B2C8A0": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "AssetParametersca391005a1bb9a8e692ec595df7a42fe582a5222a78ff9e1f6d79e4dc1bb8cacS3Bucket4B2A7F19"
+          },
+          "S3Key": {
+            "Fn::Join": [
+              "",
+              [
+                {
+                  "Fn::Select": [
+                    0,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParametersca391005a1bb9a8e692ec595df7a42fe582a5222a78ff9e1f6d79e4dc1bb8cacS3VersionKey075E1B5D"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Fn::Select": [
+                    1,
+                    {
+                      "Fn::Split": [
+                        "||",
+                        {
+                          "Ref": "AssetParametersca391005a1bb9a8e692ec595df7a42fe582a5222a78ff9e1f6d79e4dc1bb8cacS3VersionKey075E1B5D"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "sendforgotpasswordemaillambdaServiceRole17FE743F",
+            "Arn"
+          ]
+        },
+        "Environment": {
+          "Variables": {
+            "SES_EMAIL_FROM": "araras.lojinha@gmail.com",
+            "REGION": "us-east-1",
+            "SECRET": "e49Y1pFtBrorAwMduJTf08REXruydmUQ",
+            "ACCESS_TOKEN_NAME": "x-access-token",
+            "CHANGE_FORGOT_PASSWORD_LINK": "alterar-senha",
+            "EMAIL_SIGNATURE": "Loja das Artes",
+            "ADMIN_CUSTOM_DOMAIN": "localhost:3000",
+            "ADMINS_TABLE_PARTITION_KEY": "email"
+          }
+        },
+        "Handler": "index.main",
+        "MemorySize": 128,
+        "Runtime": "nodejs14.x",
+        "Timeout": 3
+      },
+      "DependsOn": [
+        "sendforgotpasswordemaillambdaServiceRoleDefaultPolicy3880CD2F",
+        "sendforgotpasswordemaillambdaServiceRole17FE743F"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "ECommerceStackBeta/send-forgot-password-email-lambda/Resource",
+        "aws:asset:path": "asset.ca391005a1bb9a8e692ec595df7a42fe582a5222a78ff9e1f6d79e4dc1bb8cac",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
@@ -5533,199 +5935,10 @@
         "aws:cdk:path": "ECommerceStackBeta/cron-every-5-minutes/AllowEventRuleECommerceStackBetaprocessexpiredlightningdeals8601B19B"
       }
     },
-    "eCommerceAmplifyAppRoleC40BBB51": {
-      "Type": "AWS::IAM::Role",
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "amplify.amazonaws.com"
-              }
-            }
-          ],
-          "Version": "2012-10-17"
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "ECommerceStackBeta/eCommerceAmplifyApp/Role/Resource"
-      }
-    },
-    "eCommerceAmplifyApp2D763A71": {
-      "Type": "AWS::Amplify::App",
-      "Properties": {
-        "Name": "eCommerceAmplifyApp",
-        "BasicAuthConfig": {
-          "EnableBasicAuth": false
-        },
-        "BuildSpec": "version: \"1.0\"\nfrontend:\n  phases:\n    preBuild:\n      commands:\n        - npm install\n    build:\n      commands:\n        - npm run build\n  artifacts:\n    baseDirectory: build\n    files:\n      - \"**/*\"\n  cache:\n    paths:\n      - node_modules/**/*\n",
-        "CustomRules": [
-          {
-            "Source": "</^[^.]+$|\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>",
-            "Status": "200",
-            "Target": "/index.html"
-          }
-        ],
-        "EnvironmentVariables": [
-          {
-            "Name": "REACT_APP_REST_API",
-            "Value": {
-              "Fn::Join": [
-                "",
-                [
-                  "https://",
-                  {
-                    "Ref": "apiC8550315"
-                  },
-                  ".execute-api.us-east-1.",
-                  {
-                    "Ref": "AWS::URLSuffix"
-                  },
-                  "/",
-                  {
-                    "Ref": "apiDeploymentStagedev96712F43"
-                  },
-                  "/"
-                ]
-              ]
-            }
-          }
-        ],
-        "IAMServiceRole": {
-          "Fn::GetAtt": [
-            "eCommerceAmplifyAppRoleC40BBB51",
-            "Arn"
-          ]
-        },
-        "OauthToken": "{{resolve:secretsmanager:github-access-token:SecretString:::}}",
-        "Repository": "https://github.com/gpspelle/e-commerce"
-      },
-      "Metadata": {
-        "aws:cdk:path": "ECommerceStackBeta/eCommerceAmplifyApp/Resource"
-      }
-    },
-    "eCommerceAmplifyAppmaster50213BEE": {
-      "Type": "AWS::Amplify::Branch",
-      "Properties": {
-        "AppId": {
-          "Fn::GetAtt": [
-            "eCommerceAmplifyApp2D763A71",
-            "AppId"
-          ]
-        },
-        "BranchName": "master",
-        "EnableAutoBuild": true,
-        "EnablePullRequestPreview": true
-      },
-      "Metadata": {
-        "aws:cdk:path": "ECommerceStackBeta/eCommerceAmplifyApp/master/Resource"
-      }
-    },
-    "eCommerceAdminAmplifyAppRoleD08EF328": {
-      "Type": "AWS::IAM::Role",
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "amplify.amazonaws.com"
-              }
-            }
-          ],
-          "Version": "2012-10-17"
-        }
-      },
-      "Metadata": {
-        "aws:cdk:path": "ECommerceStackBeta/eCommerceAdminAmplifyApp/Role/Resource"
-      }
-    },
-    "eCommerceAdminAmplifyAppF8F89BE8": {
-      "Type": "AWS::Amplify::App",
-      "Properties": {
-        "Name": "eCommerceAdminAmplifyApp",
-        "BasicAuthConfig": {
-          "EnableBasicAuth": false
-        },
-        "BuildSpec": "version: \"1.0\"\nfrontend:\n  phases:\n    preBuild:\n      commands:\n        - npm install\n    build:\n      commands:\n        - npm run build\n  artifacts:\n    baseDirectory: build\n    files:\n      - \"**/*\"\n  cache:\n    paths:\n      - node_modules/**/*\n",
-        "CustomRules": [
-          {
-            "Source": "</^[^.]+$|\\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>",
-            "Status": "200",
-            "Target": "/index.html"
-          }
-        ],
-        "EnvironmentVariables": [
-          {
-            "Name": "REACT_APP_REST_API",
-            "Value": {
-              "Fn::Join": [
-                "",
-                [
-                  "https://",
-                  {
-                    "Ref": "apiC8550315"
-                  },
-                  ".execute-api.us-east-1.",
-                  {
-                    "Ref": "AWS::URLSuffix"
-                  },
-                  "/",
-                  {
-                    "Ref": "apiDeploymentStagedev96712F43"
-                  },
-                  "/"
-                ]
-              ]
-            }
-          },
-          {
-            "Name": "REACT_APP_HTTP_API",
-            "Value": {
-              "Fn::GetAtt": [
-                "httpapiE8E4C45A",
-                "ApiEndpoint"
-              ]
-            }
-          }
-        ],
-        "IAMServiceRole": {
-          "Fn::GetAtt": [
-            "eCommerceAdminAmplifyAppRoleD08EF328",
-            "Arn"
-          ]
-        },
-        "OauthToken": "{{resolve:secretsmanager:github-access-token:SecretString:::}}",
-        "Repository": "https://github.com/gpspelle/admin-e-commerce"
-      },
-      "Metadata": {
-        "aws:cdk:path": "ECommerceStackBeta/eCommerceAdminAmplifyApp/Resource"
-      }
-    },
-    "eCommerceAdminAmplifyAppmasterC3195E9C": {
-      "Type": "AWS::Amplify::Branch",
-      "Properties": {
-        "AppId": {
-          "Fn::GetAtt": [
-            "eCommerceAdminAmplifyAppF8F89BE8",
-            "AppId"
-          ]
-        },
-        "BranchName": "master",
-        "EnableAutoBuild": true,
-        "EnablePullRequestPreview": true
-      },
-      "Metadata": {
-        "aws:cdk:path": "ECommerceStackBeta/eCommerceAdminAmplifyApp/master/Resource"
-      }
-    },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/3VS21LCMBD9Ft5DEHnw1YI6+sDIAD8Q0gVDm8skmzI10383SUEq6tOevSVnz+6UTmcP9G70yE5uzMtqEri2QMMGGa/IGpz2lgNZ7NW7R+ORFM4BxuxBqANZaOXQeo6pYMUsk4BgycI71HLYfMU/UiurG1GC7Uj6PpStYlKXOxq2bFfnxgxi2ogDQzixlobYjIUR52cvsOBce4XkCUytWwkqcxp4iXN+sgcXCnPmgCwBP3SZkmf0J/etrkAVPhZY8ZnG3A+8jggmIznd8852pWvB26xNRh2pmdyVjIYUAiuFc0Ir8uIVxwRi+Bs/N5H1Jv+8ZMZkuffqd7QjbjZmaSuO5uVEn4a55xVgHq6HqfmMenMlN/SHUjf3NLwimovC0ST3RsgUWmuPPXpTCAfLLtPcuNe6/2WENKGLSvqzkj4fgDS12MftF8b0ZAyZW6b4R54go67riNIl0KObNNN41XQ6OjohxjYehpBA1739Aqkib130AgAA"
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/3VSy1ICMRD8Fu4hiBy8uqCWHigp4AeG7IBhN49KJlC4tf9ukgVZUU/T88r09GTMx5MHfjd4hKMfirIaNcI45M2KQFRsid4EJ5DNtvo9kA3ECu+RYnYn9Y7NjPbkgqBUsAAHCgkdmwVPRvWbr/hHauHMQZboWpbGN+VJgzLlhjdr2NS5MYOYtnIHhEc48SY2U2Hl+dkLLIQwQRN7Qlubk0KdOfW8xDk/2YELhSl4ZHOkD1Om5Bn9yX1tKtRFiAVOfqY1tz2vZRJUJGc63tkuTC3FKWuTUctqUJsSeJNC6JT0XhrNXoIWlEAMf+PnQ2S9ypPnYG2We6t/R1vmJ0NIV/E8Hyf6vJkGUSHl5TqYms+oM1dyfb8v9eGeN69E9qJwNMm9ETKFliZQh9404c7BZZsb91r3v4ygbC238c6Ftd1Yy6YOtPjIXDNqGSYdfNQ7nPWOtm1bpk2JfO9Hh3H81Xw82Hsphy5+DKmQLzv7BenMqgD0AgAA"
       },
       "Metadata": {
         "aws:cdk:path": "ECommerceStackBeta/CDKMetadata/Default"
@@ -5811,29 +6024,29 @@
       "Type": "String",
       "Description": "Artifact hash for asset \"47bf3d9509bed13a313f3595bc4d7aa00ffa157a57901e5209bc2784d09d7507\""
     },
-    "AssetParameterscbc3ca493f4479b4f916c0856d72add5908d5423a28b4e954cc5336af172dbffS3BucketAD4FA71D": {
+    "AssetParameters1faeea13bb6d32cb9df5bf29231e65de91a8e8a524eb47c68f9684db17cbd85bS3BucketCF9C4803": {
       "Type": "String",
-      "Description": "S3 bucket for asset \"cbc3ca493f4479b4f916c0856d72add5908d5423a28b4e954cc5336af172dbff\""
+      "Description": "S3 bucket for asset \"1faeea13bb6d32cb9df5bf29231e65de91a8e8a524eb47c68f9684db17cbd85b\""
     },
-    "AssetParameterscbc3ca493f4479b4f916c0856d72add5908d5423a28b4e954cc5336af172dbffS3VersionKey28293F29": {
+    "AssetParameters1faeea13bb6d32cb9df5bf29231e65de91a8e8a524eb47c68f9684db17cbd85bS3VersionKeyB0E2D711": {
       "Type": "String",
-      "Description": "S3 key for asset version \"cbc3ca493f4479b4f916c0856d72add5908d5423a28b4e954cc5336af172dbff\""
+      "Description": "S3 key for asset version \"1faeea13bb6d32cb9df5bf29231e65de91a8e8a524eb47c68f9684db17cbd85b\""
     },
-    "AssetParameterscbc3ca493f4479b4f916c0856d72add5908d5423a28b4e954cc5336af172dbffArtifactHashCA6A9997": {
+    "AssetParameters1faeea13bb6d32cb9df5bf29231e65de91a8e8a524eb47c68f9684db17cbd85bArtifactHashB73BAA3A": {
       "Type": "String",
-      "Description": "Artifact hash for asset \"cbc3ca493f4479b4f916c0856d72add5908d5423a28b4e954cc5336af172dbff\""
+      "Description": "Artifact hash for asset \"1faeea13bb6d32cb9df5bf29231e65de91a8e8a524eb47c68f9684db17cbd85b\""
     },
-    "AssetParameters8a817790036ad2180872781032be9218e84df61887b1d7e91caff581b03f6c6bS3Bucket12FAC6E0": {
+    "AssetParametersaa68553426475facf16920eb3c9a54ca26becaf2a600ecea71b7594743df75b5S3Bucket50FECE18": {
       "Type": "String",
-      "Description": "S3 bucket for asset \"8a817790036ad2180872781032be9218e84df61887b1d7e91caff581b03f6c6b\""
+      "Description": "S3 bucket for asset \"aa68553426475facf16920eb3c9a54ca26becaf2a600ecea71b7594743df75b5\""
     },
-    "AssetParameters8a817790036ad2180872781032be9218e84df61887b1d7e91caff581b03f6c6bS3VersionKey9B822E76": {
+    "AssetParametersaa68553426475facf16920eb3c9a54ca26becaf2a600ecea71b7594743df75b5S3VersionKey9BE91454": {
       "Type": "String",
-      "Description": "S3 key for asset version \"8a817790036ad2180872781032be9218e84df61887b1d7e91caff581b03f6c6b\""
+      "Description": "S3 key for asset version \"aa68553426475facf16920eb3c9a54ca26becaf2a600ecea71b7594743df75b5\""
     },
-    "AssetParameters8a817790036ad2180872781032be9218e84df61887b1d7e91caff581b03f6c6bArtifactHashE3DAF0F8": {
+    "AssetParametersaa68553426475facf16920eb3c9a54ca26becaf2a600ecea71b7594743df75b5ArtifactHash01A51D32": {
       "Type": "String",
-      "Description": "Artifact hash for asset \"8a817790036ad2180872781032be9218e84df61887b1d7e91caff581b03f6c6b\""
+      "Description": "Artifact hash for asset \"aa68553426475facf16920eb3c9a54ca26becaf2a600ecea71b7594743df75b5\""
     },
     "AssetParameters8475503b6d6c0b301035990ee1639c1828dc2bdec4f3f95594927bd9861f6140S3BucketA60428C3": {
       "Type": "String",
@@ -5979,17 +6192,17 @@
       "Type": "String",
       "Description": "Artifact hash for asset \"1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1\""
     },
-    "AssetParameters8c2e1ea0284601b6e87ed81c918df5d2d41431509e146e5ae40796b05ab2945fS3Bucket3F63BABD": {
+    "AssetParametersfe6a06cc89d3081e5abc52e3f935eb72bb370cd6fe7e679c2c76ef9c8dc4422fS3Bucket88A83760": {
       "Type": "String",
-      "Description": "S3 bucket for asset \"8c2e1ea0284601b6e87ed81c918df5d2d41431509e146e5ae40796b05ab2945f\""
+      "Description": "S3 bucket for asset \"fe6a06cc89d3081e5abc52e3f935eb72bb370cd6fe7e679c2c76ef9c8dc4422f\""
     },
-    "AssetParameters8c2e1ea0284601b6e87ed81c918df5d2d41431509e146e5ae40796b05ab2945fS3VersionKey61E36AC8": {
+    "AssetParametersfe6a06cc89d3081e5abc52e3f935eb72bb370cd6fe7e679c2c76ef9c8dc4422fS3VersionKeyEAB439B4": {
       "Type": "String",
-      "Description": "S3 key for asset version \"8c2e1ea0284601b6e87ed81c918df5d2d41431509e146e5ae40796b05ab2945f\""
+      "Description": "S3 key for asset version \"fe6a06cc89d3081e5abc52e3f935eb72bb370cd6fe7e679c2c76ef9c8dc4422f\""
     },
-    "AssetParameters8c2e1ea0284601b6e87ed81c918df5d2d41431509e146e5ae40796b05ab2945fArtifactHash638DEE7C": {
+    "AssetParametersfe6a06cc89d3081e5abc52e3f935eb72bb370cd6fe7e679c2c76ef9c8dc4422fArtifactHash5E7EE5BF": {
       "Type": "String",
-      "Description": "Artifact hash for asset \"8c2e1ea0284601b6e87ed81c918df5d2d41431509e146e5ae40796b05ab2945f\""
+      "Description": "Artifact hash for asset \"fe6a06cc89d3081e5abc52e3f935eb72bb370cd6fe7e679c2c76ef9c8dc4422f\""
     },
     "AssetParametersb867f788928f60aa13b16c0d5286d86757ba6b79e7b2184cc71e6084f882ce93S3Bucket47057369": {
       "Type": "String",
@@ -6002,6 +6215,18 @@
     "AssetParametersb867f788928f60aa13b16c0d5286d86757ba6b79e7b2184cc71e6084f882ce93ArtifactHash92EB699D": {
       "Type": "String",
       "Description": "Artifact hash for asset \"b867f788928f60aa13b16c0d5286d86757ba6b79e7b2184cc71e6084f882ce93\""
+    },
+    "AssetParametersca391005a1bb9a8e692ec595df7a42fe582a5222a78ff9e1f6d79e4dc1bb8cacS3Bucket4B2A7F19": {
+      "Type": "String",
+      "Description": "S3 bucket for asset \"ca391005a1bb9a8e692ec595df7a42fe582a5222a78ff9e1f6d79e4dc1bb8cac\""
+    },
+    "AssetParametersca391005a1bb9a8e692ec595df7a42fe582a5222a78ff9e1f6d79e4dc1bb8cacS3VersionKey075E1B5D": {
+      "Type": "String",
+      "Description": "S3 key for asset version \"ca391005a1bb9a8e692ec595df7a42fe582a5222a78ff9e1f6d79e4dc1bb8cac\""
+    },
+    "AssetParametersca391005a1bb9a8e692ec595df7a42fe582a5222a78ff9e1f6d79e4dc1bb8cacArtifactHash66F407CA": {
+      "Type": "String",
+      "Description": "Artifact hash for asset \"ca391005a1bb9a8e692ec595df7a42fe582a5222a78ff9e1f6d79e4dc1bb8cac\""
     },
     "AssetParametersd173e4aebf465c1577899f34f0ca883c4ee555db192b7958952e45c140cbfe1fS3Bucket1B53B79C": {
       "Type": "String",
