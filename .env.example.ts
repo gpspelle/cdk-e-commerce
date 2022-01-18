@@ -1,5 +1,2 @@
-// do not commit to repo
-export const REGION = "";
-export const ACCOUNT = "";
-export const SES_EMAIL_FROM = "";
+// commit to repo
 export const SECRET = "";

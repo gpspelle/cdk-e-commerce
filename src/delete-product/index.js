@@ -1,5 +1,5 @@
-// Load the AWS SDK for Node.js
-const AWS = require("aws-sdk")
+const DynamoDB = require("aws-sdk/clients/dynamodb")
+const S3 = require("aws-sdk/clients/s3")
 // Set the region
 const { 
   REGION, 
@@ -9,13 +9,12 @@ const {
   PRODUCT_TAGS_TABLE_PARTITION_KEY,
   IMAGES_BUCKET 
 } = process.env;
-AWS.config.update({ region: REGION })
 
-const ddb = new AWS.DynamoDB({ apiVersion: "2012-08-10" })
-const docClient = new AWS.DynamoDB.DocumentClient();
-const S3Client = new AWS.S3()
+const ddb = new DynamoDB({ apiVersion: "2012-08-10", region: REGION })
+const docClient = new DynamoDB.DocumentClient({ region: REGION });
+const S3Client = new S3({ region: REGION })
 
-const handleError = (callback, error) => {
+exports.handler = (callback, error) => {
   console.error(error);
 
   callback(null, {
@@ -83,7 +82,7 @@ async function emptyS3Directory(bucket, dir) {
 }
 
 
-const main = async (event, context, callback) => {
+exports.handler = async (event, context, callback) => {
   const task = JSON.parse(event.body)
   const id = task.id
   const productOwnerId = event.requestContext.authorizer.id
@@ -153,5 +152,3 @@ const main = async (event, context, callback) => {
     isBase64Encoded: false
   });
 }
-
-module.exports = { main }

@@ -1,5 +1,4 @@
-// Load the AWS SDK for Node.js
-const AWS = require("aws-sdk")
+const DynamoDB = require("aws-sdk/clients/dynamodb")
 const crypto = require("crypto");
 const { 
   REGION, 
@@ -7,10 +6,8 @@ const {
   ADMINS_TABLE_PARTITION_KEY,
   HASH_ALG,
 } = process.env;
-// Set the region
-AWS.config.update({ region: REGION })
 
-const docClient = new AWS.DynamoDB.DocumentClient();
+const docClient = new DynamoDB.DocumentClient({ region: REGION });
 
 const handleError = (error) => {
   console.error(error);
@@ -69,7 +66,7 @@ const updateItemOnDynamoDB = async (task, item) => {
 var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
 const isValidPassword = (password) => strongRegex.test(password)
 
-const main = async (event) => {
+exports.handler = async (event) => {
   var task = JSON.parse(event.body)
   const accountId = event.requestContext.authorizer.id
   
@@ -156,5 +153,3 @@ const main = async (event) => {
     isBase64Encoded: false
   };
 }
-
-module.exports = { main }

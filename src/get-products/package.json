@@ -1,0 +1,19 @@
+{
+    "name": "get-products",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "author": "",
+    "license": "ISC",
+    "scripts": {
+        "build": "webpack --mode=production",
+        "build:dev": "webpack --mode=development"
+    },
+    "devDependencies": {
+        "webpack": "^5.66.0",
+        "webpack-cli": "^4.9.1"
+    },
+    "dependencies": {
+        "aws-sdk": "^2.1058.0"
+    }
+}

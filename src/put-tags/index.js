@@ -1,17 +1,14 @@
-// Load the AWS SDK for Node.js
-const AWS = require("aws-sdk")
+const DynamoDB = require("aws-sdk/clients/dynamodb")
 const {
   REGION,
   PRODUCT_TAGS_TABLE,
   PRODUCT_TAGS_TABLE_PARTITION_KEY
 } = process.env;
-// Set the region
-AWS.config.update({ region: REGION })
 
 // Create the DynamoDB service object
-const ddb = new AWS.DynamoDB({ apiVersion: "2012-08-10" })
+const ddb = new DynamoDB({ apiVersion: "2012-08-10", region: REGION })
 
-const main = (event, context, callback) => {
+exports.handler = (event, context, callback) => {
   const task = JSON.parse(event.body)
   const names = task.names
 
@@ -58,5 +55,3 @@ const main = (event, context, callback) => {
   });
 
 }
-
-module.exports = { main }

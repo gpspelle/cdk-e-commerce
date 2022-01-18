@@ -1,7 +1,7 @@
 // Load the AWS SDK for Node.js
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
-var AWS = require("aws-sdk");
+const DynamoDB = require("aws-sdk/clients/dynamodb");
 const { 
     SECRET,
     REGION,
@@ -9,11 +9,10 @@ const {
     ADMINS_TABLE_PARTITION_KEY, 
     HASH_ALG
 } = process.env;
-// Set the region
-AWS.config.update({ region: REGION });
-const dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
 
-const main = async (event) => {
+const dynamodb = new DynamoDB({ apiVersion: '2012-08-10', region: REGION });
+
+exports.handler = async (event) => {
     const task = JSON.parse(event.body)
     const email = task.email
     const params = {
@@ -64,5 +63,3 @@ const main = async (event) => {
         isBase64Encoded: false,
     }
 }
-
-module.exports = { main };

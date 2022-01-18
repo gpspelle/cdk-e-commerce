@@ -1,4 +1,4 @@
-const AWS = require('aws-sdk');
+const SES = require('aws-sdk/clients/ses');
 const jwt = require("jsonwebtoken");
 const { 
     SES_EMAIL_FROM, 
@@ -11,10 +11,7 @@ const {
     ADMINS_TABLE_PARTITION_KEY,
 } = process.env;
 
-// Set the region
-AWS.config.update({ region: REGION })
-
-const main = async (event) => {
+exports.handler = async (event) => {
   const task = JSON.parse(event.body);
 	const email = task.email
 
@@ -54,7 +51,7 @@ const main = async (event) => {
 async function sendEmail({
   email,
 }) {
-  const ses = new AWS.SES({ region: REGION });
+  const ses = new SES({ region: REGION });
   return ses.sendEmail(sendEmailParams({ email })).promise();
 }
 
@@ -102,5 +99,3 @@ function getTextContent({ email }) {
     ${EMAIL_SIGNATURE}
   `;
 }
-
-module.exports = { main }

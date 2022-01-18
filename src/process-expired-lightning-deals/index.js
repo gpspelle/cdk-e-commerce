@@ -1,19 +1,18 @@
-var AWS = require("aws-sdk");
+const DynamoDB = require("aws-sdk/clients/dynamodb");
 const { 
     REGION,
     PRODUCTS_TABLE,
     PRODUCTS_TABLE_PARTITION_KEY, 
 } = process.env;
 // Set the region
-AWS.config.update({ region: REGION });
-const docClient = new AWS.DynamoDB.DocumentClient()
+const docClient = new DynamoDB.DocumentClient({ region: REGION})
 
 const updateExpiredLightningDeal = async (params, key) => {
     params.Key = { [PRODUCTS_TABLE_PARTITION_KEY]: key }
     await docClient.update(params).promise()
 }
 
-const main = async () => {
+exports.handler = async () => {
   const now = new Date()
   const nowISOString = now.toISOString()
 
@@ -70,5 +69,3 @@ const main = async () => {
     isBase64Encoded: false
   }
 }
-
-module.exports = { main };

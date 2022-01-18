@@ -1,16 +1,15 @@
 // Load the AWS SDK for Node.js
-var AWS = require("aws-sdk")
+const DynamoDB = require("aws-sdk/clients/dynamodb")
 const { 
   REGION,
   PRODUCT_TAGS_TABLE,
   PRODUCT_TAGS_TABLE_PARTITION_KEY,
   NO_TAGS_STRING,
 } = process.env;
-// Set the region
-AWS.config.update({ region: REGION })
-const docClient = new AWS.DynamoDB.DocumentClient()
 
-const main = async (event) => {
+const docClient = new DynamoDB.DocumentClient({ region: REGION })
+
+exports.handler = async () => {
   const params = {
     TableName: PRODUCT_TAGS_TABLE,
     ExclusiveStartKey: undefined,
@@ -42,5 +41,3 @@ const main = async (event) => {
     isBase64Encoded: false,
   }
 }
-
-module.exports = { main }

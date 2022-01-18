@@ -1,14 +1,12 @@
 // Load the AWS SDK for Node.js
-var AWS = require("aws-sdk");
+const DynamoDB = require("aws-sdk/clients/dynamodb");
 const { 
     REGION,
     ADMINS_TABLE,
     ADMINS_TABLE_PARTITION_KEY,
 } = process.env;
-// Set the region
-AWS.config.update({ region: REGION });
 
-const docClient = new AWS.DynamoDB.DocumentClient();
+const docClient = new DynamoDB.DocumentClient({ region: REGION });
 
 const handleError = (callback, error) => {
     console.error(error);
@@ -51,7 +49,7 @@ const html = '\
         </body>\
     </html>';
 
-const main = async (event, context, callback) => {
+exports.handler = async (event, context, callback) => {
     const email = event.requestContext.authorizer.lambda.email
     // update parameters on dynamodb
     try {
@@ -71,5 +69,3 @@ const main = async (event, context, callback) => {
         isBase64Encoded: false,
     }
 }
-
-module.exports = { main };

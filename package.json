@@ -5,7 +5,8 @@
     "cdk": "bin/cdk.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run build:webpack",
+    "build:webpack": "for file in ./src/*; do (cd $file && npm i && npm run build); done",
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk"

@@ -1,11 +1,8 @@
-// Load the AWS SDK for Node.js
-var AWS = require("aws-sdk")
-// Set the region
+const DynamoDB = require("aws-sdk/clients/dynamodb")
 const { REGION, PRODUCTS_TABLE } = process.env;
-AWS.config.update({ region: REGION })
-const docClient = new AWS.DynamoDB.DocumentClient()
+const docClient = new DynamoDB.DocumentClient({ region: REGION })
 
-const main = async (event) => {
+exports.handler = async (event) => {
   const productOwnerId = event.requestContext.authorizer.id
   const lastEvaluatedKey = event.queryStringParameters.key
 
@@ -40,5 +37,3 @@ const main = async (event) => {
     isBase64Encoded: false,
   }
 }
-
-module.exports = { main }

@@ -1,11 +1,8 @@
-// Load the AWS SDK for Node.js
-var AWS = require("aws-sdk")
+const DynamoDB = require("aws-sdk/clients/dynamodb")
 const { REGION, ADMINS_TABLE } = process.env;
-// Set the region
-AWS.config.update({ region: REGION })
-const docClient = new AWS.DynamoDB.DocumentClient()
+const docClient = new DynamoDB.DocumentClient({ region: REGION })
 
-const main = async (event) => {
+exports.handler = async (event) => {
   const accountId = event.requestContext.authorizer.id
 
   const params = {
@@ -45,5 +42,3 @@ const main = async (event) => {
     }
   }
 }
-
-module.exports = { main }

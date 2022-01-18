@@ -115,8 +115,8 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 define adminAuth lambda function
     const adminAuthLambdaFunction = new lambda.Function(this, "admin-auth-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/admin-auth")),
+      handler: "main.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/admin-auth/dist")),
       environment: {
         SECRET,
         REGION,
@@ -134,8 +134,8 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 define emailAuth lambda function
     const emailAuthLambdaFunction = new lambda.Function(this, "email-auth-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/email-auth")),
+      handler: "main.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/email-auth/dist")),
       environment: {
         SECRET,
         ACCESS_TOKEN_NAME,
@@ -308,8 +308,8 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 define PUT account function
     const putAccountLambda = new lambda.Function(this, "put-account-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/put-account")),
+      handler: "main.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/put-account/dist")),
       environment: {
         REGION,
         ADMINS_TABLE,
@@ -330,8 +330,8 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 define PATCH account function
     const patchAccountLambda = new lambda.Function(this, "patch-account-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/patch-account")),
+      handler: "main.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/patch-account/dist")),
       environment: {
         REGION,
         ADMINS_TABLE,
@@ -356,8 +356,8 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 define GET account function
     const getAccountLambda = new lambda.Function(this, "get-account-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-account")),
+      handler: "main.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-account/dist")),
       environment: {
         REGION,
         ADMINS_TABLE,
@@ -380,8 +380,8 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 define PUT account function
     const getAccountsLambda = new lambda.Function(this, "get-accounts-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-accounts")),
+      handler: "main.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-accounts/dist")),
       environment: {
         REGION,
         ADMINS_TABLE,
@@ -400,8 +400,8 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 define POST login function
     const postLoginLambda = new lambda.Function(this, "post-login-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/post-login")),
+      handler: "main.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/post-login/dist")),
       environment: {
         SECRET,
         REGION,
@@ -423,9 +423,9 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 define GET products function
     const getProductsLambda = new lambda.Function(this, "get-products-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
+      handler: "main.handler",
       timeout: cdk.Duration.seconds(100),
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-products")),
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-products/dist")),
       environment: {
         REGION,
         PRODUCTS_TABLE
@@ -448,8 +448,8 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 define GET customer product function
     const getCustomerProductLambda = new lambda.Function(this, "get-customer-product-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-customer-product")),
+      handler: "main.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-customer-product/dist")),
       environment: {
         REGION,
         PRODUCTS_TABLE,
@@ -469,9 +469,9 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 define GET customer products function
     const getCustomerProductsLambda = new lambda.Function(this, "get-customer-products-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
+      handler: "main.handler",
       timeout: cdk.Duration.seconds(100),
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-customer-products")),
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-customer-products/dist")),
       environment: {
         REGION,
         PRODUCTS_TABLE
@@ -490,9 +490,9 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 define PUT product function
     const putProductLambda = new lambda.Function(this, "put-product-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
+      handler: "main.handler",
       timeout: cdk.Duration.seconds(100),
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/put-product")),
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/put-product/dist")),
       environment: {
         REGION,
         PRODUCTS_TABLE,
@@ -523,9 +523,9 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 define DELETE product function
     const deleteProductLambda = new lambda.Function(this, "delete-product-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
+      handler: "main.handler",
       timeout: cdk.Duration.seconds(100),
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/delete-product")),
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/delete-product/dist")),
       environment: {
         REGION,
         PRODUCTS_TABLE,
@@ -555,9 +555,9 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 define PATCH product function
     const patchProductLambda = new lambda.Function(this, "patch-product-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
+      handler: "main.handler",
       timeout: cdk.Duration.seconds(100),
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/patch-product")),
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/patch-product/dist")),
       environment: {
         REGION,
         PRODUCTS_TABLE,
@@ -588,9 +588,9 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 define PUT tags function
     const putTagsLambda = new lambda.Function(this, "put-tags-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
+      handler: "main.handler",
       timeout: cdk.Duration.seconds(100),
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/put-tags")),
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/put-tags/dist")),
       environment: {
         REGION,
         PRODUCT_TAGS_TABLE,
@@ -610,9 +610,9 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 define GET tags function
     const getTagsLambda = new lambda.Function(this, "get-tags-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "index.main",
+      handler: "main.handler",
       timeout: cdk.Duration.seconds(100),
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-tags")),
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-tags/dist")),
       environment: {
         REGION,
         PRODUCT_TAGS_TABLE,
@@ -675,8 +675,8 @@ export class ECommerceStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_14_X,
       memorySize: 128,
       timeout: cdk.Duration.seconds(3),
-      handler: 'index.main',
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/send-verification-email")),
+      handler: "main.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/send-verification-email/dist")),
       environment: {
         SES_EMAIL_FROM,
         REGION,
@@ -727,8 +727,8 @@ export class ECommerceStack extends cdk.Stack {
     const getVerificationEmailLambdaFunction = new lambda.Function(this, 'get-verification-email', {
       runtime: lambda.Runtime.NODEJS_14_X,
       timeout: cdk.Duration.seconds(5),
-      handler: 'index.main',
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-verification-email")),
+      handler: "main.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-verification-email/dist")),
       environment: {
         REGION,
         ADMINS_TABLE,
@@ -752,8 +752,8 @@ export class ECommerceStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_14_X,
       memorySize: 128,
       timeout: cdk.Duration.seconds(3),
-      handler: 'index.main',
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/send-forgot-password-email")),
+      handler: "main.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/send-forgot-password-email/dist")),
       environment: {
         SES_EMAIL_FROM,
         REGION,
@@ -795,8 +795,8 @@ export class ECommerceStack extends cdk.Stack {
     const processExpiredLightingDealsLambdaFunction = new lambda.Function(this, 'process-expired-lightning-deals', {
       runtime: lambda.Runtime.NODEJS_14_X,
       timeout: cdk.Duration.seconds(5),
-      handler: 'index.main',
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/process-expired-lightning-deals")),
+      handler: "main.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/process-expired-lightning-deals/dist")),
       environment: {
         REGION,
         PRODUCTS_TABLE,

@@ -1,5 +1,5 @@
-// Load the AWS SDK for Node.js
-const AWS = require("aws-sdk")
+const DynamoDB = require("aws-sdk/clients/dynamodb")
+const S3 = require("aws-sdk/clients/s3")
 const { 
   REGION, 
   PRODUCTS_TABLE,
@@ -9,11 +9,9 @@ const {
   IMAGES_BUCKET,
   NO_TAGS_STRING,
 } = process.env;
-// Set the region
-AWS.config.update({ region: REGION })
 
-const docClient = new AWS.DynamoDB.DocumentClient();
-const S3Client = new AWS.S3()
+const docClient = new DynamoDB.DocumentClient({ region: REGION });
+const S3Client = new S3({ region: REGION })
 
 const handleError = (error) => {
   console.error(error);
@@ -198,7 +196,7 @@ const dealPriceIsHigherThanPrice = "O preço promocional deve ser menor do que o
 const priceShouldbePositive = "O preço do produto deve ser maior do que zero"
 const dealPriceShouldBePositive = "O preço promocional do produto deve ser maior do que zero"
 
-const main = async (event) => {
+exports.handler = async (event) => {
   const task = JSON.parse(event.body)
   const id = task.id
   const tags = task.PRODUCT_TAGS
@@ -393,5 +391,3 @@ const main = async (event) => {
     isBase64Encoded: false
   };
 }
-
-module.exports = { main }

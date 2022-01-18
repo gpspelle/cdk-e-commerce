@@ -7,7 +7,7 @@ const {
     STAGE 
 } = process.env;
 
-const main = async (event, context, callback) => {
+exports.handler = async (event, context, callback) => {
     const token = event.authorizationToken;
     if (!token) {
         callback("O token de autenticação não está presente no header de acesso, x-access-token.");
@@ -45,5 +45,3 @@ const generatePolicy = function(principalId, effect, resource, id) {
 
     return authResponse;
 }
-
-module.exports = { main }

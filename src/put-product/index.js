@@ -1,5 +1,5 @@
-// Load the AWS SDK for Node.js
-const AWS = require("aws-sdk")
+const DynamoDB = require("aws-sdk/clients/dynamodb")
+const S3 = require("aws-sdk/clients/s3")
 const { v4: uuidv4 } = require("uuid")
 const { 
   REGION, 
@@ -10,13 +10,11 @@ const {
   IMAGES_BUCKET,
   NO_TAGS_STRING
 } = process.env;
-// Set the region
-AWS.config.update({ region: REGION })
 
 // Create the DynamoDB service object
-const ddb = new AWS.DynamoDB({ apiVersion: "2012-08-10" })
-var docClient = new AWS.DynamoDB.DocumentClient();
-const S3Client = new AWS.S3()
+const ddb = new DynamoDB({ apiVersion: "2012-08-10", region: REGION })
+var docClient = new DynamoDB.DocumentClient({ region: REGION });
+const S3Client = new S3({ region: REGION })
 
 /*!
  * node-s3-url-encode - Because s3 urls are annoying
@@ -68,7 +66,7 @@ const dealPriceIsHigherThanPrice = "O preço promocional deve ser menor do que o
 const priceShouldbePositive = "O preço do produto deve ser maior do que zero"
 const dealPriceShouldBePositive = "O preço promocional do produto deve ser maior do que zero"
 
-const main = async (event) => {
+exports.handler = async (event) => {
   const task = JSON.parse(event.body)
   const name = task.name
   const description = task.description
@@ -248,5 +246,3 @@ const main = async (event) => {
     isBase64Encoded: false
   };
 }
-
-module.exports = { main }

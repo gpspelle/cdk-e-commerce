@@ -1,5 +1,4 @@
-// Load the AWS SDK for Node.js
-const AWS = require("aws-sdk")
+const DynamoDB = require("aws-sdk/clients/dynamodb")
 const { v4: uuidv4 } = require("uuid")
 const crypto = require("crypto");
 // Set the region
@@ -9,10 +8,9 @@ const {
     ADMINS_TABLE_PARTITION_KEY,
     HASH_ALG 
 } = process.env;
-AWS.config.update({ region: REGION })
 
 // Create the DynamoDB service object
-const ddb = new AWS.DynamoDB({ apiVersion: "2012-08-10" })
+const ddb = new DynamoDB({ apiVersion: "2012-08-10", region: REGION })
 
 const handleError = (error) => {
     console.error(error);
@@ -49,7 +47,7 @@ const isValidEmail = (email) =>
 var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
 const isValidPassword = (password) => strongRegex.test(password)
 
-const main = async (event) => {
+exports.handler = async (event) => {
     const task = JSON.parse(event.body)
     const { email, name, commercialName, phoneNumber, password} = task
     const id = uuidv4()
@@ -99,5 +97,3 @@ const main = async (event) => {
     };
 
 }
-
-module.exports = { main }

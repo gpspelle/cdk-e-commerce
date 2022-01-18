@@ -4,7 +4,7 @@ const {
     ACCESS_TOKEN_NAME
 } = process.env;
 
-const main = async (event) => {
+exports.handler = async (event) => {
     const response = {
         "isAuthorized": false
     };
@@ -29,5 +29,3 @@ const main = async (event) => {
         return response;
     }
 }
-
-module.exports = { main }

@@ -14,6 +14,7 @@
 # misc
 .DS_Store
 .env.ts
+.env.js
 .env
 .env.local
 .env.development.local
@@ -23,3 +24,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#build .d files
+*.d.ts
+

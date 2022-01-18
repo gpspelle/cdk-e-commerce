@@ -1,11 +1,8 @@
-// Load the AWS SDK for Node.js
-var AWS = require("aws-sdk")
+const DynamoDB = require("aws-sdk/clients/dynamodb")
 const { REGION, PRODUCTS_TABLE, PRODUCTS_TABLE_PARTITION_KEY } = process.env;
-// Set the region
-AWS.config.update({ region: REGION })
-const ddb = new AWS.DynamoDB()
+const ddb = new DynamoDB({ region: REGION })
 
-const main = (event, context, callback) => {
+exports.handler = (event, context, callback) => {
   const task = event.queryStringParameters
   const id = task.id
 
@@ -42,5 +39,3 @@ const main = (event, context, callback) => {
     });
   });
 }
-
-module.exports = { main }
