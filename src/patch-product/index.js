@@ -95,8 +95,8 @@ const updateItemOnDynamoDB = async (item, idAttributeName) => {
     productImages = item.PRODUCT_IMAGES
     productImagesResized = item.PRODUCT_IMAGES_RESIZED
   } else if (item.PRODUCT_IMAGES) {
-    productImages = item.PRODUCT_IMAGES.map((image) => `https://${IMAGES_BUCKET}.s3.${REGION}.amazonaws.com/${item[idAttributeName]}/${encodeS3URI(image.name.replace(/ /g, ""))}`);
-    productImagesResized = item.PRODUCT_IMAGES.map((image) => `https://${IMAGES_BUCKET}.s3.${REGION}.amazonaws.com/${item[idAttributeName]}/resized-${encodeS3URI(image.name.replace(/ /g, ""))}`);
+    productImages = item.PRODUCT_IMAGES.map((image) => `http://${IMAGES_BUCKET}.s3.${REGION}.amazonaws.com/${item[idAttributeName]}/${encodeS3URI(image.name.replace(/ /g, ""))}`);
+    productImagesResized = item.PRODUCT_IMAGES.map((image) => `http://${IMAGES_BUCKET}.s3.${REGION}.amazonaws.com/${item[idAttributeName]}/resized-${encodeS3URI(image.name.replace(/ /g, ""))}`);
   }
 
   const removeAttributes = "removeAttributes"

@@ -79,11 +79,11 @@ exports.handler = async (event) => {
   const id = uuidv4()
 
   const productImages = images.map((image) => ({
-      S: `https://${IMAGES_BUCKET}.s3.${REGION}.amazonaws.com/${id}/${encodeS3URI(image.name.replace(/ /g, ""))}`
+      S: `http://${IMAGES_BUCKET}.s3.${REGION}.amazonaws.com/${id}/${encodeS3URI(image.name.replace(/ /g, ""))}`
   }))
 
   const productImagesResized = images.map((image) => ({
-    S: `https://${IMAGES_BUCKET}.s3.${REGION}.amazonaws.com/${id}/resized-${encodeS3URI(image.name.replace(/ /g, ""))}`
+    S: `http://${IMAGES_BUCKET}.s3.${REGION}.amazonaws.com/${id}/resized-${encodeS3URI(image.name.replace(/ /g, ""))}`
   }))
 
   const dynamodbParams = {
