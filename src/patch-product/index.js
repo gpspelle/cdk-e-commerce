@@ -271,22 +271,23 @@ exports.handler = async (event) => {
 
   const oldTags = response.Item?.PRODUCT_TAGS?.values
 
-  if (oldTags) {
-    for (const oldTag of oldTags) {
-      if (tags && tags.includes(oldTag)) {
-        continue;
-      }
-
-      try {
-        await removeProductFromTag(oldTag, id)
-      } catch (error) {
-        console.error(error)
-        return handleError({ message: "Erro ao remover produto de uma tag", statusCode: 400 })
+  if (tags) {
+    // remove old tags only if new tags are defined
+    if (oldTags) {
+      for (const oldTag of oldTags) {
+        if (tags.includes(oldTag)) {
+          continue;
+        }
+  
+        try {
+          await removeProductFromTag(oldTag, id)
+        } catch (error) {
+          console.error(error)
+          return handleError({ message: "Erro ao remover produto de uma tag", statusCode: 400 })
+        }
       }
     }
-  }
 
-  if (tags) {
     for (const tag of tags) {
       if (oldTags && oldTags.includes(tag)) {
         continue;

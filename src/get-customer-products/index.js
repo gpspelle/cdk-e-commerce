@@ -1,6 +1,6 @@
-const DynamoDB = require("aws-sdk/clients/dynamodb")
+const { DynamoDBClient, ScanCommand } = require("@aws-sdk/client-dynamodb");
 const { REGION, PRODUCTS_TABLE } = process.env;
-const docClient = new DynamoDB.DocumentClient({ region: REGION })
+const ddbClient = new DynamoDBClient({ region: REGION })
 
 exports.handler = async (event) => {
   const lastEvaluatedKey = event.queryStringParameters.key
@@ -14,7 +14,7 @@ exports.handler = async (event) => {
   var items
 
   do {
-    items = await docClient.scan(params).promise()
+    items = await ddbClient.send(new ScanCommand(params))
     items.Items.forEach((item) => scanResults.push(item))
     params.ExclusiveStartKey = items.LastEvaluatedKey
   } while (typeof items.LastEvaluatedKey !== "undefined")
