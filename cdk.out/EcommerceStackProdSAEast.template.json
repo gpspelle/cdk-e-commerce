@@ -1,6 +1,6 @@
 {
   "Resources": {
-    "ECommerceStackproductstable86592532": {
+    "EcommerceStackProdSAEastproductstableDC6C6768": {
       "Type": "AWS::DynamoDB::Table",
       "Properties": {
         "KeySchema": [
@@ -27,10 +27,10 @@
       "UpdateReplacePolicy": "Delete",
       "DeletionPolicy": "Delete",
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/ECommerceStack-products-table/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/EcommerceStackProdSAEast-products-table/Resource"
       }
     },
-    "ECommerceStackadminstable6CC65C3E": {
+    "EcommerceStackProdSAEastadminstable2199AAE8": {
       "Type": "AWS::DynamoDB::Table",
       "Properties": {
         "KeySchema": [
@@ -60,10 +60,10 @@
       "UpdateReplacePolicy": "Delete",
       "DeletionPolicy": "Delete",
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/ECommerceStack-admins-table/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/EcommerceStackProdSAEast-admins-table/Resource"
       }
     },
-    "ECommerceStackproducttagstableE266D4EB": {
+    "EcommerceStackProdSAEastproducttagstable55800756": {
       "Type": "AWS::DynamoDB::Table",
       "Properties": {
         "KeySchema": [
@@ -90,7 +90,7 @@
       "UpdateReplacePolicy": "Delete",
       "DeletionPolicy": "Delete",
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/ECommerceStack-product-tags-table/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/EcommerceStackProdSAEast-product-tags-table/Resource"
       }
     },
     "apiC8550315": {
@@ -100,7 +100,7 @@
         "Name": "api"
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Resource"
       }
     },
     "apiCloudWatchRoleAC81D93E": {
@@ -134,7 +134,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/CloudWatchRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/CloudWatchRole/Resource"
       }
     },
     "apiAccount57E28B43": {
@@ -151,10 +151,10 @@
         "apiC8550315"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Account"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Account"
       }
     },
-    "apiDeployment149F129405e3f083b948d17172602dd972282091": {
+    "apiDeployment149F1294db278b5366e8c580f276101c07f6a68f": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -195,7 +195,7 @@
         "apitagsCCC680EE"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Deployment/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Deployment/Resource"
       }
     },
     "apiDeploymentStagedev96712F43": {
@@ -205,7 +205,7 @@
           "Ref": "apiC8550315"
         },
         "DeploymentId": {
-          "Ref": "apiDeployment149F129405e3f083b948d17172602dd972282091"
+          "Ref": "apiDeployment149F1294db278b5366e8c580f276101c07f6a68f"
         },
         "StageName": "dev"
       },
@@ -213,7 +213,7 @@
         "apiAccount57E28B43"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/DeploymentStage.dev/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/DeploymentStage.dev/Resource"
       }
     },
     "apiOPTIONS5A1027A6": {
@@ -260,7 +260,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/OPTIONS/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/OPTIONS/Resource"
       }
     },
     "apiaccount7E8D5771": {
@@ -278,7 +278,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/account/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/account/Resource"
       }
     },
     "apiaccountOPTIONS8E2572AD": {
@@ -322,10 +322,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/account/OPTIONS/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/account/OPTIONS/Resource"
       }
     },
-    "apiaccountPUTApiPermissionECommerceStackapi77EDABDFPUTaccountEA0C3714": {
+    "apiaccountPUTApiPermissionEcommerceStackProdSAEastapi8C8BBF4APUTaccount8364E1DB": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -344,7 +344,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -358,10 +358,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/account/PUT/ApiPermission.ECommerceStackapi77EDABDF.PUT..account"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/account/PUT/ApiPermission.EcommerceStackProdSAEastapi8C8BBF4A.PUT..account"
       }
     },
-    "apiaccountPUTApiPermissionTestECommerceStackapi77EDABDFPUTaccountED1D67CB": {
+    "apiaccountPUTApiPermissionTestEcommerceStackProdSAEastapi8C8BBF4APUTaccount2662E668": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -380,7 +380,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -390,7 +390,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/account/PUT/ApiPermission.Test.ECommerceStackapi77EDABDF.PUT..account"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/account/PUT/ApiPermission.Test.EcommerceStackProdSAEastapi8C8BBF4A.PUT..account"
       }
     },
     "apiaccountPUTDA39F327": {
@@ -415,7 +415,7 @@
                 {
                   "Ref": "AWS::Partition"
                 },
-                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                ":apigateway:sa-east-1:lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
                     "putaccountlambdaA0802262",
@@ -429,10 +429,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/account/PUT/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/account/PUT/Resource"
       }
     },
-    "apiaccountPATCHApiPermissionECommerceStackapi77EDABDFPATCHaccount726EE492": {
+    "apiaccountPATCHApiPermissionEcommerceStackProdSAEastapi8C8BBF4APATCHaccount9E5AAFBA": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -451,7 +451,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -465,10 +465,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/account/PATCH/ApiPermission.ECommerceStackapi77EDABDF.PATCH..account"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/account/PATCH/ApiPermission.EcommerceStackProdSAEastapi8C8BBF4A.PATCH..account"
       }
     },
-    "apiaccountPATCHApiPermissionTestECommerceStackapi77EDABDFPATCHaccountCDA610B8": {
+    "apiaccountPATCHApiPermissionTestEcommerceStackProdSAEastapi8C8BBF4APATCHaccountF874CD8A": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -487,7 +487,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -497,7 +497,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/account/PATCH/ApiPermission.Test.ECommerceStackapi77EDABDF.PATCH..account"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/account/PATCH/ApiPermission.Test.EcommerceStackProdSAEastapi8C8BBF4A.PATCH..account"
       }
     },
     "apiaccountPATCHAE20C7C9": {
@@ -525,7 +525,7 @@
                 {
                   "Ref": "AWS::Partition"
                 },
-                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                ":apigateway:sa-east-1:lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
                     "patchaccountlambda837DB17F",
@@ -539,10 +539,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/account/PATCH/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/account/PATCH/Resource"
       }
     },
-    "apiaccountGETApiPermissionECommerceStackapi77EDABDFGETaccount4C934018": {
+    "apiaccountGETApiPermissionEcommerceStackProdSAEastapi8C8BBF4AGETaccountC7DD7906": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -561,7 +561,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -575,10 +575,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/account/GET/ApiPermission.ECommerceStackapi77EDABDF.GET..account"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/account/GET/ApiPermission.EcommerceStackProdSAEastapi8C8BBF4A.GET..account"
       }
     },
-    "apiaccountGETApiPermissionTestECommerceStackapi77EDABDFGETaccount71EA60C3": {
+    "apiaccountGETApiPermissionTestEcommerceStackProdSAEastapi8C8BBF4AGETaccountE76D4BA0": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -597,7 +597,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -607,7 +607,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/account/GET/ApiPermission.Test.ECommerceStackapi77EDABDF.GET..account"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/account/GET/ApiPermission.Test.EcommerceStackProdSAEastapi8C8BBF4A.GET..account"
       }
     },
     "apiaccountGET43DD0EB2": {
@@ -635,7 +635,7 @@
                 {
                   "Ref": "AWS::Partition"
                 },
-                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                ":apigateway:sa-east-1:lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
                     "getaccountlambdaAF349061",
@@ -649,7 +649,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/account/GET/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/account/GET/Resource"
       }
     },
     "apiaccounts738F8F89": {
@@ -667,7 +667,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/accounts/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/accounts/Resource"
       }
     },
     "apiaccountsOPTIONS4256F313": {
@@ -711,10 +711,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/accounts/OPTIONS/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/accounts/OPTIONS/Resource"
       }
     },
-    "apiaccountsGETApiPermissionECommerceStackapi77EDABDFGETaccountsA21D79B5": {
+    "apiaccountsGETApiPermissionEcommerceStackProdSAEastapi8C8BBF4AGETaccountsB63122CA": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -733,7 +733,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -747,10 +747,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/accounts/GET/ApiPermission.ECommerceStackapi77EDABDF.GET..accounts"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/accounts/GET/ApiPermission.EcommerceStackProdSAEastapi8C8BBF4A.GET..accounts"
       }
     },
-    "apiaccountsGETApiPermissionTestECommerceStackapi77EDABDFGETaccountsEF2E405D": {
+    "apiaccountsGETApiPermissionTestEcommerceStackProdSAEastapi8C8BBF4AGETaccounts172EDE40": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -769,7 +769,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -779,7 +779,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/accounts/GET/ApiPermission.Test.ECommerceStackapi77EDABDF.GET..accounts"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/accounts/GET/ApiPermission.Test.EcommerceStackProdSAEastapi8C8BBF4A.GET..accounts"
       }
     },
     "apiaccountsGETB86617AD": {
@@ -804,7 +804,7 @@
                 {
                   "Ref": "AWS::Partition"
                 },
-                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                ":apigateway:sa-east-1:lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
                     "getaccountslambda902DEA8D",
@@ -818,7 +818,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/accounts/GET/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/accounts/GET/Resource"
       }
     },
     "apilogin14037FF2": {
@@ -836,7 +836,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/login/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/login/Resource"
       }
     },
     "apiloginOPTIONS7404BF99": {
@@ -880,10 +880,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/login/OPTIONS/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/login/OPTIONS/Resource"
       }
     },
-    "apiloginPOSTApiPermissionECommerceStackapi77EDABDFPOSTlogin36FBB4F4": {
+    "apiloginPOSTApiPermissionEcommerceStackProdSAEastapi8C8BBF4APOSTlogin8CA6EBB9": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -902,7 +902,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -916,10 +916,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/login/POST/ApiPermission.ECommerceStackapi77EDABDF.POST..login"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/login/POST/ApiPermission.EcommerceStackProdSAEastapi8C8BBF4A.POST..login"
       }
     },
-    "apiloginPOSTApiPermissionTestECommerceStackapi77EDABDFPOSTloginDFFB840A": {
+    "apiloginPOSTApiPermissionTestEcommerceStackProdSAEastapi8C8BBF4APOSTloginC62140E8": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -938,7 +938,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -948,7 +948,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/login/POST/ApiPermission.Test.ECommerceStackapi77EDABDF.POST..login"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/login/POST/ApiPermission.Test.EcommerceStackProdSAEastapi8C8BBF4A.POST..login"
       }
     },
     "apiloginPOSTAD6F9831": {
@@ -973,7 +973,7 @@
                 {
                   "Ref": "AWS::Partition"
                 },
-                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                ":apigateway:sa-east-1:lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
                     "postloginlambdaC7BFFE1D",
@@ -987,7 +987,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/login/POST/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/login/POST/Resource"
       }
     },
     "apiproduct211E8A85": {
@@ -1005,7 +1005,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/product/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/product/Resource"
       }
     },
     "apiproductOPTIONS4D2F1755": {
@@ -1049,10 +1049,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/product/OPTIONS/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/product/OPTIONS/Resource"
       }
     },
-    "apiproductPUTApiPermissionECommerceStackapi77EDABDFPUTproduct673860CA": {
+    "apiproductPUTApiPermissionEcommerceStackProdSAEastapi8C8BBF4APUTproduct55E8EBBA": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -1071,7 +1071,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -1085,10 +1085,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/product/PUT/ApiPermission.ECommerceStackapi77EDABDF.PUT..product"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/product/PUT/ApiPermission.EcommerceStackProdSAEastapi8C8BBF4A.PUT..product"
       }
     },
-    "apiproductPUTApiPermissionTestECommerceStackapi77EDABDFPUTproduct9A89C9FD": {
+    "apiproductPUTApiPermissionTestEcommerceStackProdSAEastapi8C8BBF4APUTproduct744CD91E": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -1107,7 +1107,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -1117,7 +1117,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/product/PUT/ApiPermission.Test.ECommerceStackapi77EDABDF.PUT..product"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/product/PUT/ApiPermission.Test.EcommerceStackProdSAEastapi8C8BBF4A.PUT..product"
       }
     },
     "apiproductPUTAA3394CE": {
@@ -1145,7 +1145,7 @@
                 {
                   "Ref": "AWS::Partition"
                 },
-                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                ":apigateway:sa-east-1:lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
                     "putproductlambda887F64D5",
@@ -1159,10 +1159,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/product/PUT/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/product/PUT/Resource"
       }
     },
-    "apiproductDELETEApiPermissionECommerceStackapi77EDABDFDELETEproduct2079F831": {
+    "apiproductDELETEApiPermissionEcommerceStackProdSAEastapi8C8BBF4ADELETEproductD8D0F570": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -1181,7 +1181,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -1195,10 +1195,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/product/DELETE/ApiPermission.ECommerceStackapi77EDABDF.DELETE..product"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/product/DELETE/ApiPermission.EcommerceStackProdSAEastapi8C8BBF4A.DELETE..product"
       }
     },
-    "apiproductDELETEApiPermissionTestECommerceStackapi77EDABDFDELETEproduct977D39AF": {
+    "apiproductDELETEApiPermissionTestEcommerceStackProdSAEastapi8C8BBF4ADELETEproduct67DF4B88": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -1217,7 +1217,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -1227,7 +1227,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/product/DELETE/ApiPermission.Test.ECommerceStackapi77EDABDF.DELETE..product"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/product/DELETE/ApiPermission.Test.EcommerceStackProdSAEastapi8C8BBF4A.DELETE..product"
       }
     },
     "apiproductDELETEE4DDDF9A": {
@@ -1255,7 +1255,7 @@
                 {
                   "Ref": "AWS::Partition"
                 },
-                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                ":apigateway:sa-east-1:lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
                     "deleteproductlambdaEA497826",
@@ -1269,10 +1269,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/product/DELETE/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/product/DELETE/Resource"
       }
     },
-    "apiproductPATCHApiPermissionECommerceStackapi77EDABDFPATCHproduct48DFD604": {
+    "apiproductPATCHApiPermissionEcommerceStackProdSAEastapi8C8BBF4APATCHproductDFCFCFD4": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -1291,7 +1291,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -1305,10 +1305,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/product/PATCH/ApiPermission.ECommerceStackapi77EDABDF.PATCH..product"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/product/PATCH/ApiPermission.EcommerceStackProdSAEastapi8C8BBF4A.PATCH..product"
       }
     },
-    "apiproductPATCHApiPermissionTestECommerceStackapi77EDABDFPATCHproductC767036C": {
+    "apiproductPATCHApiPermissionTestEcommerceStackProdSAEastapi8C8BBF4APATCHproduct3B25EC32": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -1327,7 +1327,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -1337,7 +1337,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/product/PATCH/ApiPermission.Test.ECommerceStackapi77EDABDF.PATCH..product"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/product/PATCH/ApiPermission.Test.EcommerceStackProdSAEastapi8C8BBF4A.PATCH..product"
       }
     },
     "apiproductPATCHAAB8AB93": {
@@ -1365,7 +1365,7 @@
                 {
                   "Ref": "AWS::Partition"
                 },
-                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                ":apigateway:sa-east-1:lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
                     "patchproductlambdaB9500F3A",
@@ -1379,7 +1379,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/product/PATCH/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/product/PATCH/Resource"
       }
     },
     "apiproductsA7D90674": {
@@ -1397,7 +1397,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/products/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/products/Resource"
       }
     },
     "apiproductsOPTIONS054C0992": {
@@ -1441,10 +1441,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/products/OPTIONS/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/products/OPTIONS/Resource"
       }
     },
-    "apiproductsGETApiPermissionECommerceStackapi77EDABDFGETproducts0D1F88F0": {
+    "apiproductsGETApiPermissionEcommerceStackProdSAEastapi8C8BBF4AGETproductsF0BD8FEB": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -1463,7 +1463,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -1477,10 +1477,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/products/GET/ApiPermission.ECommerceStackapi77EDABDF.GET..products"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/products/GET/ApiPermission.EcommerceStackProdSAEastapi8C8BBF4A.GET..products"
       }
     },
-    "apiproductsGETApiPermissionTestECommerceStackapi77EDABDFGETproducts72C7BC39": {
+    "apiproductsGETApiPermissionTestEcommerceStackProdSAEastapi8C8BBF4AGETproducts68D4EF9D": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -1499,7 +1499,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -1509,7 +1509,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/products/GET/ApiPermission.Test.ECommerceStackapi77EDABDF.GET..products"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/products/GET/ApiPermission.Test.EcommerceStackProdSAEastapi8C8BBF4A.GET..products"
       }
     },
     "apiproductsGETCE98977B": {
@@ -1537,7 +1537,7 @@
                 {
                   "Ref": "AWS::Partition"
                 },
-                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                ":apigateway:sa-east-1:lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
                     "getproductslambda0220F63B",
@@ -1551,7 +1551,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/products/GET/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/products/GET/Resource"
       }
     },
     "apicustomerproductDCCB8D74": {
@@ -1569,7 +1569,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/customer-product/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/customer-product/Resource"
       }
     },
     "apicustomerproductOPTIONS53EA1F03": {
@@ -1613,10 +1613,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/customer-product/OPTIONS/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/customer-product/OPTIONS/Resource"
       }
     },
-    "apicustomerproductGETApiPermissionECommerceStackapi77EDABDFGETcustomerproductBDE2F2F6": {
+    "apicustomerproductGETApiPermissionEcommerceStackProdSAEastapi8C8BBF4AGETcustomerproduct2ADD00DC": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -1635,7 +1635,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -1649,10 +1649,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/customer-product/GET/ApiPermission.ECommerceStackapi77EDABDF.GET..customer-product"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/customer-product/GET/ApiPermission.EcommerceStackProdSAEastapi8C8BBF4A.GET..customer-product"
       }
     },
-    "apicustomerproductGETApiPermissionTestECommerceStackapi77EDABDFGETcustomerproductB0638D29": {
+    "apicustomerproductGETApiPermissionTestEcommerceStackProdSAEastapi8C8BBF4AGETcustomerproduct2047D736": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -1671,7 +1671,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -1681,7 +1681,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/customer-product/GET/ApiPermission.Test.ECommerceStackapi77EDABDF.GET..customer-product"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/customer-product/GET/ApiPermission.Test.EcommerceStackProdSAEastapi8C8BBF4A.GET..customer-product"
       }
     },
     "apicustomerproductGET896F0605": {
@@ -1706,7 +1706,7 @@
                 {
                   "Ref": "AWS::Partition"
                 },
-                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                ":apigateway:sa-east-1:lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
                     "getcustomerproductlambda7E8DD103",
@@ -1720,7 +1720,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/customer-product/GET/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/customer-product/GET/Resource"
       }
     },
     "apicustomerproducts9CD518B6": {
@@ -1738,7 +1738,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/customer-products/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/customer-products/Resource"
       }
     },
     "apicustomerproductsOPTIONS7DC47F66": {
@@ -1782,10 +1782,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/customer-products/OPTIONS/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/customer-products/OPTIONS/Resource"
       }
     },
-    "apicustomerproductsGETApiPermissionECommerceStackapi77EDABDFGETcustomerproducts095834DA": {
+    "apicustomerproductsGETApiPermissionEcommerceStackProdSAEastapi8C8BBF4AGETcustomerproducts09C3806E": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -1804,7 +1804,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -1818,10 +1818,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/customer-products/GET/ApiPermission.ECommerceStackapi77EDABDF.GET..customer-products"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/customer-products/GET/ApiPermission.EcommerceStackProdSAEastapi8C8BBF4A.GET..customer-products"
       }
     },
-    "apicustomerproductsGETApiPermissionTestECommerceStackapi77EDABDFGETcustomerproducts458DEC18": {
+    "apicustomerproductsGETApiPermissionTestEcommerceStackProdSAEastapi8C8BBF4AGETcustomerproductsF21F5657": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -1840,7 +1840,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -1850,7 +1850,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/customer-products/GET/ApiPermission.Test.ECommerceStackapi77EDABDF.GET..customer-products"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/customer-products/GET/ApiPermission.Test.EcommerceStackProdSAEastapi8C8BBF4A.GET..customer-products"
       }
     },
     "apicustomerproductsGET6E9158BC": {
@@ -1875,7 +1875,7 @@
                 {
                   "Ref": "AWS::Partition"
                 },
-                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                ":apigateway:sa-east-1:lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
                     "getcustomerproductslambda79C12DA3",
@@ -1889,7 +1889,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/customer-products/GET/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/customer-products/GET/Resource"
       }
     },
     "apitagsCCC680EE": {
@@ -1907,7 +1907,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/tags/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/tags/Resource"
       }
     },
     "apitagsOPTIONSF0140192": {
@@ -1951,10 +1951,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/tags/OPTIONS/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/tags/OPTIONS/Resource"
       }
     },
-    "apitagsPUTApiPermissionECommerceStackapi77EDABDFPUTtagsB3FEEB30": {
+    "apitagsPUTApiPermissionEcommerceStackProdSAEastapi8C8BBF4APUTtagsAD3B122F": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -1973,7 +1973,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -1987,10 +1987,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/tags/PUT/ApiPermission.ECommerceStackapi77EDABDF.PUT..tags"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/tags/PUT/ApiPermission.EcommerceStackProdSAEastapi8C8BBF4A.PUT..tags"
       }
     },
-    "apitagsPUTApiPermissionTestECommerceStackapi77EDABDFPUTtags977F69B1": {
+    "apitagsPUTApiPermissionTestEcommerceStackProdSAEastapi8C8BBF4APUTtags5920E432": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -2009,7 +2009,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -2019,7 +2019,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/tags/PUT/ApiPermission.Test.ECommerceStackapi77EDABDF.PUT..tags"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/tags/PUT/ApiPermission.Test.EcommerceStackProdSAEastapi8C8BBF4A.PUT..tags"
       }
     },
     "apitagsPUTD8DBD01F": {
@@ -2044,7 +2044,7 @@
                 {
                   "Ref": "AWS::Partition"
                 },
-                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                ":apigateway:sa-east-1:lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
                     "puttagslambda852785DE",
@@ -2058,10 +2058,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/tags/PUT/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/tags/PUT/Resource"
       }
     },
-    "apitagsGETApiPermissionECommerceStackapi77EDABDFGETtagsA338D85B": {
+    "apitagsGETApiPermissionEcommerceStackProdSAEastapi8C8BBF4AGETtags62CB687A": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -2080,7 +2080,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -2094,10 +2094,10 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/tags/GET/ApiPermission.ECommerceStackapi77EDABDF.GET..tags"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/tags/GET/ApiPermission.EcommerceStackProdSAEastapi8C8BBF4A.GET..tags"
       }
     },
-    "apitagsGETApiPermissionTestECommerceStackapi77EDABDFGETtags3F5AD55A": {
+    "apitagsGETApiPermissionTestEcommerceStackProdSAEastapi8C8BBF4AGETtagsB0B8F36E": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -2116,7 +2116,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -2126,7 +2126,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/tags/GET/ApiPermission.Test.ECommerceStackapi77EDABDF.GET..tags"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/tags/GET/ApiPermission.Test.EcommerceStackProdSAEastapi8C8BBF4A.GET..tags"
       }
     },
     "apitagsGETBF6CB0C9": {
@@ -2151,7 +2151,7 @@
                 {
                   "Ref": "AWS::Partition"
                 },
-                ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+                ":apigateway:sa-east-1:lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
                     "gettagslambda917EA6B4",
@@ -2165,7 +2165,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/api/Default/tags/GET/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/api/Default/tags/GET/Resource"
       }
     },
     "adminauthlambdaServiceRole16E8F46B": {
@@ -2199,7 +2199,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/admin-auth-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/admin-auth-lambda/ServiceRole/Resource"
       }
     },
     "adminauthlambda5ADA16C5": {
@@ -2252,7 +2252,7 @@
         "Environment": {
           "Variables": {
             "SECRET": "e49Y1pFtBrorAwMduJTf08REXruydmUQ",
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "ACCOUNT": "453299922179",
             "STAGE": "dev",
             "API_ID": {
@@ -2267,13 +2267,13 @@
         "adminauthlambdaServiceRole16E8F46B"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/admin-auth-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/admin-auth-lambda/Resource",
         "aws:asset:path": "asset.4cc790085ba68569e3ed58bd72d846ae8f25d40b837a069dcaa6fc5d0df8c3d5",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
     },
-    "adminauthlambdaECommerceStackjwttokenadminauth4F279A61Permissions4F3A57EC": {
+    "adminauthlambdaEcommerceStackProdSAEastjwttokenadminauth7C8B44B2Permissions98609120": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -2292,7 +2292,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "apiC8550315"
               },
@@ -2305,13 +2305,13 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/admin-auth-lambda/ECommerceStackjwttokenadminauth4F279A61:Permissions"
+        "aws:cdk:path": "EcommerceStackProdSAEast/admin-auth-lambda/EcommerceStackProdSAEastjwttokenadminauth7C8B44B2:Permissions"
       }
     },
     "jwttokenadminauth00C9E0A9": {
       "Type": "AWS::ApiGateway::Authorizer",
       "Properties": {
-        "Name": "ECommerceStackjwttokenadminauth4F279A61",
+        "Name": "EcommerceStackProdSAEastjwttokenadminauth7C8B44B2",
         "RestApiId": {
           "Ref": "apiC8550315"
         },
@@ -2324,7 +2324,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+              ":apigateway:sa-east-1:lambda:path/2015-03-31/functions/",
               {
                 "Fn::GetAtt": [
                   "adminauthlambda5ADA16C5",
@@ -2338,7 +2338,7 @@
         "IdentitySource": "method.request.header.x-access-token"
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/jwt-token-admin-auth/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/jwt-token-admin-auth/Resource"
       }
     },
     "emailauthlambdaServiceRole678A063B": {
@@ -2372,7 +2372,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/email-auth-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/email-auth-lambda/ServiceRole/Resource"
       }
     },
     "emailauthlambda1EBD14F9": {
@@ -2435,7 +2435,7 @@
         "emailauthlambdaServiceRole678A063B"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/email-auth-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/email-auth-lambda/Resource",
         "aws:asset:path": "asset.93ee2463720da782fa83bf6824f36c9c2cdb0a66ee78b0e59d6175adef69eeed",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -2469,7 +2469,7 @@
         "ProtocolType": "HTTP"
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/http-api/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/http-api/Resource"
       }
     },
     "httpapiDefaultStage7AF19DCA": {
@@ -2482,7 +2482,7 @@
         "AutoDeploy": true
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/http-api/DefaultStage/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/http-api/DefaultStage/Resource"
       }
     },
     "httpapiPOSTsendverifyemailSendVerificationEmailIntegrationPermission1AA6FA81": {
@@ -2504,7 +2504,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "httpapiE8E4C45A"
               },
@@ -2514,7 +2514,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/http-api/POST--send-verify-email/SendVerificationEmailIntegration-Permission"
+        "aws:cdk:path": "EcommerceStackProdSAEast/http-api/POST--send-verify-email/SendVerificationEmailIntegration-Permission"
       }
     },
     "httpapiPOSTsendverifyemailSendVerificationEmailIntegration97ADF400": {
@@ -2533,7 +2533,7 @@
         "PayloadFormatVersion": "2.0"
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/http-api/POST--send-verify-email/SendVerificationEmailIntegration/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/http-api/POST--send-verify-email/SendVerificationEmailIntegration/Resource"
       }
     },
     "httpapiPOSTsendverifyemailC6D01FCD": {
@@ -2560,7 +2560,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/http-api/POST--send-verify-email/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/http-api/POST--send-verify-email/Resource"
       }
     },
     "httpapiEmailVerificationAuthorizer0BA5A02E": {
@@ -2581,7 +2581,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+              ":apigateway:sa-east-1:lambda:path/2015-03-31/functions/",
               {
                 "Fn::GetAtt": [
                   "emailauthlambda1EBD14F9",
@@ -2598,10 +2598,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/http-api/EmailVerificationAuthorizer/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/http-api/EmailVerificationAuthorizer/Resource"
       }
     },
-    "httpapiECommerceStackhttpapiEmailVerificationAuthorizer2867C041Permission54B2590D": {
+    "httpapiEcommerceStackProdSAEasthttpapiEmailVerificationAuthorizerD9E8CCC5PermissionED0F9E5A": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -2620,7 +2620,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "httpapiE8E4C45A"
               },
@@ -2633,7 +2633,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/http-api/ECommerceStackhttpapiEmailVerificationAuthorizer2867C041-Permission"
+        "aws:cdk:path": "EcommerceStackProdSAEast/http-api/EcommerceStackProdSAEasthttpapiEmailVerificationAuthorizerD9E8CCC5-Permission"
       }
     },
     "httpapiGETverifyemailEmailVerificationIntegrationPermissionFAF45894": {
@@ -2655,7 +2655,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "httpapiE8E4C45A"
               },
@@ -2665,7 +2665,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/http-api/GET--verify-email/EmailVerificationIntegration-Permission"
+        "aws:cdk:path": "EcommerceStackProdSAEast/http-api/GET--verify-email/EmailVerificationIntegration-Permission"
       }
     },
     "httpapiGETverifyemailEmailVerificationIntegrationB462BD01": {
@@ -2684,7 +2684,7 @@
         "PayloadFormatVersion": "2.0"
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/http-api/GET--verify-email/EmailVerificationIntegration/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/http-api/GET--verify-email/EmailVerificationIntegration/Resource"
       }
     },
     "httpapiGETverifyemailDD0CBD29": {
@@ -2711,7 +2711,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/http-api/GET--verify-email/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/http-api/GET--verify-email/Resource"
       }
     },
     "httpapiPOSTsendforgotpasswordemailSendForgotPasswordEmailIntegrationPermission7201964C": {
@@ -2733,7 +2733,7 @@
               {
                 "Ref": "AWS::Partition"
               },
-              ":execute-api:us-east-1:453299922179:",
+              ":execute-api:sa-east-1:453299922179:",
               {
                 "Ref": "httpapiE8E4C45A"
               },
@@ -2743,7 +2743,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/http-api/POST--send-forgot-password-email/SendForgotPasswordEmailIntegration-Permission"
+        "aws:cdk:path": "EcommerceStackProdSAEast/http-api/POST--send-forgot-password-email/SendForgotPasswordEmailIntegration-Permission"
       }
     },
     "httpapiPOSTsendforgotpasswordemailSendForgotPasswordEmailIntegrationC11B5857": {
@@ -2762,7 +2762,7 @@
         "PayloadFormatVersion": "2.0"
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/http-api/POST--send-forgot-password-email/SendForgotPasswordEmailIntegration/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/http-api/POST--send-forgot-password-email/SendForgotPasswordEmailIntegration/Resource"
       }
     },
     "httpapiPOSTsendforgotpasswordemailAA2B2381": {
@@ -2786,7 +2786,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/http-api/POST--send-forgot-password-email/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/http-api/POST--send-forgot-password-email/Resource"
       }
     },
     "eCommerceAmplifyAppRoleC40BBB51": {
@@ -2806,7 +2806,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/eCommerceAmplifyApp/Role/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/eCommerceAmplifyApp/Role/Resource"
       }
     },
     "eCommerceAmplifyApp2D763A71": {
@@ -2835,7 +2835,7 @@
                   {
                     "Ref": "apiC8550315"
                   },
-                  ".execute-api.us-east-1.",
+                  ".execute-api.sa-east-1.",
                   {
                     "Ref": "AWS::URLSuffix"
                   },
@@ -2859,7 +2859,7 @@
         "Repository": "https://github.com/gpspelle/e-commerce"
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/eCommerceAmplifyApp/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/eCommerceAmplifyApp/Resource"
       }
     },
     "eCommerceAmplifyAppmaster50213BEE": {
@@ -2876,7 +2876,38 @@
         "EnablePullRequestPreview": true
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/eCommerceAmplifyApp/master/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/eCommerceAmplifyApp/master/Resource"
+      }
+    },
+    "ecommercedomainCBB36F34": {
+      "Type": "AWS::Amplify::Domain",
+      "Properties": {
+        "AppId": {
+          "Fn::GetAtt": [
+            "eCommerceAmplifyApp2D763A71",
+            "AppId"
+          ]
+        },
+        "DomainName": "alojinha.click",
+        "SubDomainSettings": [
+          {
+            "BranchName": {
+              "Fn::GetAtt": [
+                "eCommerceAmplifyAppmaster50213BEE",
+                "BranchName"
+              ]
+            },
+            "Prefix": ""
+          }
+        ],
+        "AutoSubDomainCreationPatterns": [
+          "*",
+          "pr*"
+        ],
+        "EnableAutoSubDomain": false
+      },
+      "Metadata": {
+        "aws:cdk:path": "EcommerceStackProdSAEast/e-commerce-domain/Resource"
       }
     },
     "eCommerceAdminAmplifyAppRoleD08EF328": {
@@ -2896,7 +2927,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/eCommerceAdminAmplifyApp/Role/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/eCommerceAdminAmplifyApp/Role/Resource"
       }
     },
     "eCommerceAdminAmplifyAppF8F89BE8": {
@@ -2925,7 +2956,7 @@
                   {
                     "Ref": "apiC8550315"
                   },
-                  ".execute-api.us-east-1.",
+                  ".execute-api.sa-east-1.",
                   {
                     "Ref": "AWS::URLSuffix"
                   },
@@ -2958,7 +2989,7 @@
         "Repository": "https://github.com/gpspelle/admin-e-commerce"
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/eCommerceAdminAmplifyApp/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/eCommerceAdminAmplifyApp/Resource"
       }
     },
     "eCommerceAdminAmplifyAppmasterC3195E9C": {
@@ -2975,7 +3006,38 @@
         "EnablePullRequestPreview": true
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/eCommerceAdminAmplifyApp/master/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/eCommerceAdminAmplifyApp/master/Resource"
+      }
+    },
+    "ecommerceadmindomain10A1D5C6": {
+      "Type": "AWS::Amplify::Domain",
+      "Properties": {
+        "AppId": {
+          "Fn::GetAtt": [
+            "eCommerceAdminAmplifyAppF8F89BE8",
+            "AppId"
+          ]
+        },
+        "DomainName": "alojinha.click",
+        "SubDomainSettings": [
+          {
+            "BranchName": {
+              "Fn::GetAtt": [
+                "eCommerceAdminAmplifyAppmasterC3195E9C",
+                "BranchName"
+              ]
+            },
+            "Prefix": "admin"
+          }
+        ],
+        "AutoSubDomainCreationPatterns": [
+          "*",
+          "pr*"
+        ],
+        "EnableAutoSubDomain": false
+      },
+      "Metadata": {
+        "aws:cdk:path": "EcommerceStackProdSAEast/e-commerce-admin-domain/Resource"
       }
     },
     "putaccountlambdaServiceRoleA8C81C5B": {
@@ -3009,7 +3071,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/put-account-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/put-account-lambda/ServiceRole/Resource"
       }
     },
     "putaccountlambdaServiceRoleDefaultPolicy8B416564": {
@@ -3028,7 +3090,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackadminstable6CC65C3E",
+                    "EcommerceStackProdSAEastadminstable2199AAE8",
                     "Arn"
                   ]
                 },
@@ -3048,7 +3110,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/put-account-lambda/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/put-account-lambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "putaccountlambdaA0802262": {
@@ -3100,7 +3162,7 @@
         },
         "Environment": {
           "Variables": {
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "ADMINS_TABLE": "admins",
             "ADMINS_TABLE_PARTITION_KEY": "email",
             "HASH_ALG": "sha512"
@@ -3114,7 +3176,7 @@
         "putaccountlambdaServiceRoleA8C81C5B"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/put-account-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/put-account-lambda/Resource",
         "aws:asset:path": "asset.2c44378578145369dad33dd1ec39a6a7e9bc63a3fc985cd14ae4a20ce06edf21",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -3151,7 +3213,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/patch-account-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/patch-account-lambda/ServiceRole/Resource"
       }
     },
     "patchaccountlambdaServiceRoleDefaultPolicy8E18B8B9": {
@@ -3177,7 +3239,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackadminstable6CC65C3E",
+                    "EcommerceStackProdSAEastadminstable2199AAE8",
                     "Arn"
                   ]
                 },
@@ -3197,7 +3259,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/patch-account-lambda/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/patch-account-lambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "patchaccountlambda837DB17F": {
@@ -3249,7 +3311,7 @@
         },
         "Environment": {
           "Variables": {
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "ADMINS_TABLE": "admins",
             "ADMINS_TABLE_PARTITION_KEY": "email",
             "HASH_ALG": "sha512"
@@ -3263,7 +3325,7 @@
         "patchaccountlambdaServiceRole3527FE65"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/patch-account-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/patch-account-lambda/Resource",
         "aws:asset:path": "asset.9d49e36f8e65978de0a9e7ced41be7081a7c77880d3f9e496659d3298d90d9ba",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -3300,7 +3362,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-account-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-account-lambda/ServiceRole/Resource"
       }
     },
     "getaccountlambdaServiceRoleDefaultPolicyAD873E92": {
@@ -3322,7 +3384,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackadminstable6CC65C3E",
+                    "EcommerceStackProdSAEastadminstable2199AAE8",
                     "Arn"
                   ]
                 },
@@ -3342,7 +3404,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-account-lambda/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-account-lambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "getaccountlambdaAF349061": {
@@ -3394,7 +3456,7 @@
         },
         "Environment": {
           "Variables": {
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "ADMINS_TABLE": "admins"
           }
         },
@@ -3406,7 +3468,7 @@
         "getaccountlambdaServiceRoleF2B2CA18"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-account-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-account-lambda/Resource",
         "aws:asset:path": "asset.21d2d90f6409e429503b61f129027ad549425ae8fc06e6d2561448259ee988a8",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -3443,7 +3505,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-accounts-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-accounts-lambda/ServiceRole/Resource"
       }
     },
     "getaccountslambdaServiceRoleDefaultPolicyF14E7A9E": {
@@ -3465,7 +3527,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackadminstable6CC65C3E",
+                    "EcommerceStackProdSAEastadminstable2199AAE8",
                     "Arn"
                   ]
                 },
@@ -3485,7 +3547,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-accounts-lambda/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-accounts-lambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "getaccountslambda902DEA8D": {
@@ -3537,7 +3599,7 @@
         },
         "Environment": {
           "Variables": {
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "ADMINS_TABLE": "admins"
           }
         },
@@ -3549,7 +3611,7 @@
         "getaccountslambdaServiceRoleCF9DA346"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-accounts-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-accounts-lambda/Resource",
         "aws:asset:path": "asset.5468130e3eaf9ac83014c5c0e462bf7cab173255850e8faebb8e5a59152f8b04",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -3586,7 +3648,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/post-login-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/post-login-lambda/ServiceRole/Resource"
       }
     },
     "postloginlambdaServiceRoleDefaultPolicyA9899A24": {
@@ -3608,7 +3670,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackadminstable6CC65C3E",
+                    "EcommerceStackProdSAEastadminstable2199AAE8",
                     "Arn"
                   ]
                 },
@@ -3628,7 +3690,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/post-login-lambda/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/post-login-lambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "postloginlambdaC7BFFE1D": {
@@ -3681,7 +3743,7 @@
         "Environment": {
           "Variables": {
             "SECRET": "e49Y1pFtBrorAwMduJTf08REXruydmUQ",
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "ADMINS_TABLE": "admins",
             "ADMINS_TABLE_PARTITION_KEY": "email",
             "HASH_ALG": "sha512"
@@ -3695,7 +3757,7 @@
         "postloginlambdaServiceRole5FBE01F4"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/post-login-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/post-login-lambda/Resource",
         "aws:asset:path": "asset.d853cb71e1e43754b2e9117dad5552e398c187008d846462b5335c1fa6dee67d",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -3732,7 +3794,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-products-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-products-lambda/ServiceRole/Resource"
       }
     },
     "getproductslambdaServiceRoleDefaultPolicyE01DE73D": {
@@ -3754,7 +3816,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackproductstable86592532",
+                    "EcommerceStackProdSAEastproductstableDC6C6768",
                     "Arn"
                   ]
                 },
@@ -3774,7 +3836,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-products-lambda/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-products-lambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "getproductslambda0220F63B": {
@@ -3826,7 +3888,7 @@
         },
         "Environment": {
           "Variables": {
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "PRODUCTS_TABLE": "products"
           }
         },
@@ -3839,7 +3901,7 @@
         "getproductslambdaServiceRoleEDEF75F9"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-products-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-products-lambda/Resource",
         "aws:asset:path": "asset.f616df0f8f9c6cafaf736bd76e704eb8540e146262d7af4fcecfde035b2f6cec",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -3876,7 +3938,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-customer-product-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-customer-product-lambda/ServiceRole/Resource"
       }
     },
     "getcustomerproductlambdaServiceRoleDefaultPolicyAB8C18AB": {
@@ -3898,7 +3960,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackproductstable86592532",
+                    "EcommerceStackProdSAEastproductstableDC6C6768",
                     "Arn"
                   ]
                 },
@@ -3918,7 +3980,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-customer-product-lambda/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-customer-product-lambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "getcustomerproductlambda7E8DD103": {
@@ -3970,7 +4032,7 @@
         },
         "Environment": {
           "Variables": {
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "PRODUCTS_TABLE": "products",
             "PRODUCTS_TABLE_PARTITION_KEY": "id"
           }
@@ -3983,7 +4045,7 @@
         "getcustomerproductlambdaServiceRoleF7F7DF3F"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-customer-product-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-customer-product-lambda/Resource",
         "aws:asset:path": "asset.22691235f757b7ccae5f55bc79f9ca25ba9b65af457c0bd5bf497e9f34761c6c",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -4020,7 +4082,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-customer-products-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-customer-products-lambda/ServiceRole/Resource"
       }
     },
     "getcustomerproductslambdaServiceRoleDefaultPolicy717367D1": {
@@ -4042,7 +4104,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackproductstable86592532",
+                    "EcommerceStackProdSAEastproductstableDC6C6768",
                     "Arn"
                   ]
                 },
@@ -4062,7 +4124,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-customer-products-lambda/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-customer-products-lambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "getcustomerproductslambda79C12DA3": {
@@ -4114,7 +4176,7 @@
         },
         "Environment": {
           "Variables": {
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "PRODUCTS_TABLE": "products"
           }
         },
@@ -4127,7 +4189,7 @@
         "getcustomerproductslambdaServiceRoleBBAD3B7C"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-customer-products-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-customer-products-lambda/Resource",
         "aws:asset:path": "asset.8522a2befd4c34e1479b5bd5bf02e0350fac112667d0b32b707e605c6828549a",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -4164,7 +4226,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/put-product-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/put-product-lambda/ServiceRole/Resource"
       }
     },
     "putproductlambdaServiceRoleDefaultPolicy54F4655F": {
@@ -4183,7 +4245,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackproductstable86592532",
+                    "EcommerceStackProdSAEastproductstableDC6C6768",
                     "Arn"
                   ]
                 },
@@ -4203,7 +4265,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackproducttagstableE266D4EB",
+                    "EcommerceStackProdSAEastproducttagstable55800756",
                     "Arn"
                   ]
                 },
@@ -4253,7 +4315,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/put-product-lambda/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/put-product-lambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "putproductlambda887F64D5": {
@@ -4305,12 +4367,12 @@
         },
         "Environment": {
           "Variables": {
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "PRODUCTS_TABLE": "products",
             "PRODUCTS_TABLE_PARTITION_KEY": "id",
             "PRODUCT_TAGS_TABLE": "productTags",
             "PRODUCT_TAGS_TABLE_PARTITION_KEY": "TAG_NAME",
-            "IMAGES_BUCKET": "e-commerce-images-bucket",
+            "IMAGES_BUCKET": "sa-e-commerce-images-bucket",
             "NO_TAGS_STRING": "!@#$no-tag%^&*"
           }
         },
@@ -4323,7 +4385,7 @@
         "putproductlambdaServiceRole2AB129BC"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/put-product-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/put-product-lambda/Resource",
         "aws:asset:path": "asset.7f3a68aefef0ef3a3191d6220d6da795758f651376e348f1b4c93acf0341e18f",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -4360,7 +4422,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/delete-product-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/delete-product-lambda/ServiceRole/Resource"
       }
     },
     "deleteproductlambdaServiceRoleDefaultPolicy34BA7ED0": {
@@ -4386,7 +4448,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackproductstable86592532",
+                    "EcommerceStackProdSAEastproductstableDC6C6768",
                     "Arn"
                   ]
                 },
@@ -4406,7 +4468,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackproducttagstableE266D4EB",
+                    "EcommerceStackProdSAEastproducttagstable55800756",
                     "Arn"
                   ]
                 },
@@ -4459,7 +4521,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/delete-product-lambda/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/delete-product-lambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "deleteproductlambdaEA497826": {
@@ -4511,12 +4573,12 @@
         },
         "Environment": {
           "Variables": {
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "PRODUCTS_TABLE": "products",
             "PRODUCTS_TABLE_PARTITION_KEY": "id",
             "PRODUCT_TAGS_TABLE": "productTags",
             "PRODUCT_TAGS_TABLE_PARTITION_KEY": "TAG_NAME",
-            "IMAGES_BUCKET": "e-commerce-images-bucket"
+            "IMAGES_BUCKET": "sa-e-commerce-images-bucket"
           }
         },
         "Handler": "main.handler",
@@ -4528,7 +4590,7 @@
         "deleteproductlambdaServiceRole807E7403"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/delete-product-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/delete-product-lambda/Resource",
         "aws:asset:path": "asset.5658d9985192c74d9affc26642a5ad0bdface4ad40d170235fd9a5a2c65e7afc",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -4565,7 +4627,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/patch-product-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/patch-product-lambda/ServiceRole/Resource"
       }
     },
     "patchproductlambdaServiceRoleDefaultPolicy3AC750CB": {
@@ -4591,7 +4653,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackproductstable86592532",
+                    "EcommerceStackProdSAEastproductstableDC6C6768",
                     "Arn"
                   ]
                 },
@@ -4611,7 +4673,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackproducttagstableE266D4EB",
+                    "EcommerceStackProdSAEastproducttagstable55800756",
                     "Arn"
                   ]
                 },
@@ -4664,7 +4726,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/patch-product-lambda/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/patch-product-lambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "patchproductlambdaB9500F3A": {
@@ -4716,12 +4778,12 @@
         },
         "Environment": {
           "Variables": {
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "PRODUCTS_TABLE": "products",
             "PRODUCTS_TABLE_PARTITION_KEY": "id",
             "PRODUCT_TAGS_TABLE": "productTags",
             "PRODUCT_TAGS_TABLE_PARTITION_KEY": "TAG_NAME",
-            "IMAGES_BUCKET": "e-commerce-images-bucket",
+            "IMAGES_BUCKET": "sa-e-commerce-images-bucket",
             "NO_TAGS_STRING": "!@#$no-tag%^&*"
           }
         },
@@ -4734,7 +4796,7 @@
         "patchproductlambdaServiceRole0B5E1A11"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/patch-product-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/patch-product-lambda/Resource",
         "aws:asset:path": "asset.e5fc65f1906b174ae8dca1bac1c555bb0faac1badec58728843485de0b6686bb",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -4771,7 +4833,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/put-tags-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/put-tags-lambda/ServiceRole/Resource"
       }
     },
     "puttagslambdaServiceRoleDefaultPolicy4EA0C565": {
@@ -4790,7 +4852,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackproducttagstableE266D4EB",
+                    "EcommerceStackProdSAEastproducttagstable55800756",
                     "Arn"
                   ]
                 },
@@ -4810,7 +4872,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/put-tags-lambda/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/put-tags-lambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "puttagslambda852785DE": {
@@ -4862,7 +4924,7 @@
         },
         "Environment": {
           "Variables": {
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "PRODUCT_TAGS_TABLE": "productTags",
             "PRODUCT_TAGS_TABLE_PARTITION_KEY": "TAG_NAME"
           }
@@ -4876,7 +4938,7 @@
         "puttagslambdaServiceRole37F6000D"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/put-tags-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/put-tags-lambda/Resource",
         "aws:asset:path": "asset.68591845232d8f220a70b504909ef064262f5e0b1fc2bc5c3ba86f47964ec9a5",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -4913,7 +4975,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-tags-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-tags-lambda/ServiceRole/Resource"
       }
     },
     "gettagslambdaServiceRoleDefaultPolicy40148E85": {
@@ -4935,7 +4997,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackproducttagstableE266D4EB",
+                    "EcommerceStackProdSAEastproducttagstable55800756",
                     "Arn"
                   ]
                 },
@@ -4955,7 +5017,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-tags-lambda/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-tags-lambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "gettagslambda917EA6B4": {
@@ -5007,7 +5069,7 @@
         },
         "Environment": {
           "Variables": {
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "PRODUCT_TAGS_TABLE": "productTags",
             "PRODUCT_TAGS_TABLE_PARTITION_KEY": "TAG_NAME",
             "NO_TAGS_STRING": "!@#$no-tag%^&*"
@@ -5022,7 +5084,7 @@
         "gettagslambdaServiceRole2F6F5683"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-tags-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-tags-lambda/Resource",
         "aws:asset:path": "asset.f926bba58455ddecfa9f7bdf364c5ab6a234c08a7939178606e8613aa391a018",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -5040,7 +5102,7 @@
             }
           ]
         },
-        "BucketName": "e-commerce-images-bucket",
+        "BucketName": "sa-e-commerce-images-bucket",
         "CorsConfiguration": {
           "CorsRules": [
             {
@@ -5085,7 +5147,7 @@
       "UpdateReplacePolicy": "Delete",
       "DeletionPolicy": "Delete",
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/s3-bucket/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/s3-bucket/Resource"
       }
     },
     "s3bucketPolicyF7E91061": {
@@ -5160,7 +5222,7 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/s3-bucket/Policy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/s3-bucket/Policy/Resource"
       }
     },
     "s3bucketAutoDeleteObjectsCustomResource839C6F53": {
@@ -5182,7 +5244,7 @@
       "UpdateReplacePolicy": "Delete",
       "DeletionPolicy": "Delete",
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/s3-bucket/AutoDeleteObjectsCustomResource/Default"
+        "aws:cdk:path": "EcommerceStackProdSAEast/s3-bucket/AutoDeleteObjectsCustomResource/Default"
       }
     },
     "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092": {
@@ -5207,7 +5269,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role"
+        "aws:cdk:path": "EcommerceStackProdSAEast/Custom::S3AutoDeleteObjectsCustomResourceProvider/Role"
       }
     },
     "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F": {
@@ -5278,7 +5340,7 @@
         "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler",
+        "aws:cdk:path": "EcommerceStackProdSAEast/Custom::S3AutoDeleteObjectsCustomResourceProvider/Handler",
         "aws:asset:path": "asset.1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1",
         "aws:asset:property": "Code"
       }
@@ -5314,7 +5376,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/send-verification-email-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/send-verification-email-lambda/ServiceRole/Resource"
       }
     },
     "sendverificationemaillambdaServiceRoleDefaultPolicy11B6C889": {
@@ -5329,7 +5391,7 @@
                 "ses:SendTemplatedEmail"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:ses:us-east-1:453299922179:identity/*"
+              "Resource": "arn:aws:ses:sa-east-1:453299922179:identity/*"
             },
             {
               "Action": "dynamodb:ListStreams",
@@ -5345,7 +5407,7 @@
               "Effect": "Allow",
               "Resource": {
                 "Fn::GetAtt": [
-                  "ECommerceStackadminstable6CC65C3E",
+                  "EcommerceStackProdSAEastadminstable2199AAE8",
                   "StreamArn"
                 ]
               }
@@ -5361,7 +5423,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/send-verification-email-lambda/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/send-verification-email-lambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "sendverificationemaillambdaFC2DD3A6": {
@@ -5414,7 +5476,7 @@
         "Environment": {
           "Variables": {
             "SES_EMAIL_FROM": "gpsunicamp016@gmail.com",
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "API_ENDPOINT": {
               "Fn::GetAtt": [
                 "httpapiE8E4C45A",
@@ -5437,13 +5499,13 @@
         "sendverificationemaillambdaServiceRole20212DB5"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/send-verification-email-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/send-verification-email-lambda/Resource",
         "aws:asset:path": "asset.de307f4ba32a5436b1b9460c9d77adbb6c6699415e90502133b4153c44864ac5",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
       }
     },
-    "sendverificationemaillambdaDynamoDBEventSourceECommerceStackECommerceStackadminstableBF436AFED767A543": {
+    "sendverificationemaillambdaDynamoDBEventSourceEcommerceStackProdSAEastEcommerceStackProdSAEastadminstableBE559D54B0FE1F7E": {
       "Type": "AWS::Lambda::EventSourceMapping",
       "Properties": {
         "FunctionName": {
@@ -5453,7 +5515,7 @@
         "BisectBatchOnFunctionError": true,
         "EventSourceArn": {
           "Fn::GetAtt": [
-            "ECommerceStackadminstable6CC65C3E",
+            "EcommerceStackProdSAEastadminstable2199AAE8",
             "StreamArn"
           ]
         },
@@ -5461,7 +5523,7 @@
         "StartingPosition": "TRIM_HORIZON"
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/send-verification-email-lambda/DynamoDBEventSource:ECommerceStackECommerceStackadminstableBF436AFE/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/send-verification-email-lambda/DynamoDBEventSource:EcommerceStackProdSAEastEcommerceStackProdSAEastadminstableBE559D54/Resource"
       }
     },
     "getverificationemailServiceRole3B5CD231": {
@@ -5495,7 +5557,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-verification-email/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-verification-email/ServiceRole/Resource"
       }
     },
     "getverificationemailServiceRoleDefaultPolicy9E3555C5": {
@@ -5514,7 +5576,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackadminstable6CC65C3E",
+                    "EcommerceStackProdSAEastadminstable2199AAE8",
                     "Arn"
                   ]
                 },
@@ -5534,7 +5596,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-verification-email/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-verification-email/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "getverificationemail6C977FFB": {
@@ -5586,7 +5648,7 @@
         },
         "Environment": {
           "Variables": {
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "ADMINS_TABLE": "admins",
             "ADMINS_TABLE_PARTITION_KEY": "email"
           }
@@ -5600,7 +5662,7 @@
         "getverificationemailServiceRole3B5CD231"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/get-verification-email/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/get-verification-email/Resource",
         "aws:asset:path": "asset.12dfca49764e569d4b78fab3a30c75a8555633016d4325e0bc24b38e0c72146e",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -5637,7 +5699,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/send-forgot-password-email-lambda/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/send-forgot-password-email-lambda/ServiceRole/Resource"
       }
     },
     "sendforgotpasswordemaillambdaServiceRoleDefaultPolicy3880CD2F": {
@@ -5652,7 +5714,7 @@
                 "ses:SendTemplatedEmail"
               ],
               "Effect": "Allow",
-              "Resource": "arn:aws:ses:us-east-1:453299922179:identity/*"
+              "Resource": "arn:aws:ses:sa-east-1:453299922179:identity/*"
             }
           ],
           "Version": "2012-10-17"
@@ -5665,7 +5727,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/send-forgot-password-email-lambda/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/send-forgot-password-email-lambda/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "sendforgotpasswordemaillambda73B2C8A0": {
@@ -5718,12 +5780,12 @@
         "Environment": {
           "Variables": {
             "SES_EMAIL_FROM": "gpsunicamp016@gmail.com",
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "SECRET": "e49Y1pFtBrorAwMduJTf08REXruydmUQ",
             "ACCESS_TOKEN_NAME": "x-access-token",
             "CHANGE_FORGOT_PASSWORD_LINK": "alterar-senha",
             "EMAIL_SIGNATURE": "Loja das Artes",
-            "ADMIN_CUSTOM_DOMAIN": "localhost:3000",
+            "ADMIN_CUSTOM_DOMAIN": "https://admin.alojinha.click",
             "ADMINS_TABLE_PARTITION_KEY": "email"
           }
         },
@@ -5737,7 +5799,7 @@
         "sendforgotpasswordemaillambdaServiceRole17FE743F"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/send-forgot-password-email-lambda/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/send-forgot-password-email-lambda/Resource",
         "aws:asset:path": "asset.04136686f54e2b0b8a1b2e214f338e1c4cd01cde72fb15e883cdacdd198e695e",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -5774,7 +5836,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/process-expired-lightning-deals/ServiceRole/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/process-expired-lightning-deals/ServiceRole/Resource"
       }
     },
     "processexpiredlightningdealsServiceRoleDefaultPolicyDE7B59EF": {
@@ -5800,7 +5862,7 @@
               "Resource": [
                 {
                   "Fn::GetAtt": [
-                    "ECommerceStackproductstable86592532",
+                    "EcommerceStackProdSAEastproductstableDC6C6768",
                     "Arn"
                   ]
                 },
@@ -5820,7 +5882,7 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/process-expired-lightning-deals/ServiceRole/DefaultPolicy/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/process-expired-lightning-deals/ServiceRole/DefaultPolicy/Resource"
       }
     },
     "processexpiredlightningdeals27B7096B": {
@@ -5872,7 +5934,7 @@
         },
         "Environment": {
           "Variables": {
-            "REGION": "us-east-1",
+            "REGION": "sa-east-1",
             "PRODUCTS_TABLE": "products",
             "PRODUCTS_TABLE_PARTITION_KEY": "id"
           }
@@ -5886,7 +5948,7 @@
         "processexpiredlightningdealsServiceRole32753C51"
       ],
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/process-expired-lightning-deals/Resource",
+        "aws:cdk:path": "EcommerceStackProdSAEast/process-expired-lightning-deals/Resource",
         "aws:asset:path": "asset.9bb6f54e2ab4f253c703e3422ca43d76401ecd665d8c658f8c96c126fce5af1e",
         "aws:asset:is-bundled": false,
         "aws:asset:property": "Code"
@@ -5910,10 +5972,10 @@
         ]
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/cron-every-5-minutes/Resource"
+        "aws:cdk:path": "EcommerceStackProdSAEast/cron-every-5-minutes/Resource"
       }
     },
-    "cronevery5minutesAllowEventRuleECommerceStackprocessexpiredlightningdeals6B464042A1E9FA08": {
+    "cronevery5minutesAllowEventRuleEcommerceStackProdSAEastprocessexpiredlightningdeals67C9CE6995F56BA7": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "Action": "lambda:InvokeFunction",
@@ -5932,16 +5994,16 @@
         }
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/cron-every-5-minutes/AllowEventRuleECommerceStackprocessexpiredlightningdeals6B464042"
+        "aws:cdk:path": "EcommerceStackProdSAEast/cron-every-5-minutes/AllowEventRuleEcommerceStackProdSAEastprocessexpiredlightningdeals67C9CE69"
       }
     },
     "CDKMetadata": {
       "Type": "AWS::CDK::Metadata",
       "Properties": {
-        "Analytics": "v2:deflate64:H4sIAAAAAAAA/3VSy1ICMRD8Fu4hiBy8uqCWHigp4AeG7IBhN49KJlC4tf9ukgVZUU/T88r09GTMx5MHfjd4hKMfirIaNcI45M2KQFRsid4EJ5DNtvo9kA3ECu+RYnYn9Y7NjPbkgqBUsAAHCgkdmwVPRvWbr/hHauHMQZboWpbGN+VJgzLlhjdr2NS5MYOYtnIHhEc48SY2U2Hl+dkLLIQwQRN7Qlubk0KdOfW8xDk/2YELhSl4ZHOkD1Om5Bn9yX1tKtRFiAVOfqY1tz2vZRJUJGc63tkuTC3FKWuTUctqUJsSeJNC6JT0XhrNXoIWlEAMf+PnQ2S9ypPnYG2We6t/R1vmJ0NIV/E8Hyf6vJkGUSHl5TqYms+oM1dyfb8v9eGeN69E9qJwNMm9ETKFliZQh9404c7BZZsb91r3v4ygbC238c6Ftd1Yy6YOtPjIXDNqGSYdfNQ7nPWOtm1bpk2JfO9Hh3H81Xw82Hsphy5+DKmQLzv7BenMqgD0AgAA"
+        "Analytics": "v2:deflate64:H4sIAAAAAAAA/3VS21ICMQz9Ft5LEX3w1QV09MGRQX8gdAMUtpdpUxjc2X+3F5AV9SknSZOcnHTMx3f3/GbwAAc/FPVu1ArjkLfvBGLHFuhNcALZdKXfAtlArPIeKWbXUq/Z1GhPLghKD+bgQCGhY9Pgyah+8QX/SM2d2csaXcfS+LY+alCmXvL2A5ZNLswgpq1cA+EBjryNxVRZeWp7hpUQJmhiM7SNOSrUmVPPS5xzywLOFCbgkb0ibUydkif0J/cPs0NdhfjAyc+05qrndUyCiuRM4Z3t3DRSHLM2GXWsAbWsgbcphE5J76XR7CloQQnE8Dd+3EfW73nyK1ib5V7p39GO+bshpKt4no8Tfd5Ogtgh5eUKTMUnVMyFXN/vS72/5e0zkT0rHE1yr4RMoYUJVNCLJlw7OG9z5V7e/S8jKNvIVbxzZW0Za9nEgRabzLWgmVEgc8uCOoZJGB8PEE4HiLbrOqZNjXzrR/tx/OZ8PNh6KYcu/hSpkC+K/QI9RScPBQMAAA=="
       },
       "Metadata": {
-        "aws:cdk:path": "ECommerceStack/CDKMetadata/Default"
+        "aws:cdk:path": "EcommerceStackProdSAEast/CDKMetadata/Default"
       }
     }
   },
@@ -5955,7 +6017,7 @@
             {
               "Ref": "apiC8550315"
             },
-            ".execute-api.us-east-1.",
+            ".execute-api.sa-east-1.",
             {
               "Ref": "AWS::URLSuffix"
             },
@@ -5977,7 +6039,7 @@
             {
               "Ref": "apiC8550315"
             },
-            ".execute-api.us-east-1.",
+            ".execute-api.sa-east-1.",
             {
               "Ref": "AWS::URLSuffix"
             },
