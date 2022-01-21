@@ -1,18 +1,16 @@
 import * as dynamodb from "@aws-cdk/aws-dynamodb"
 import * as apigateway from "@aws-cdk/aws-apigateway"
-import { CorsHttpMethod, HttpMethod, HttpApi } from '@aws-cdk/aws-apigatewayv2'
 import * as lambda from "@aws-cdk/aws-lambda"
 import * as iam from "@aws-cdk/aws-iam"
 import * as s3 from "@aws-cdk/aws-s3"
 import * as cdk from "@aws-cdk/core"
-import * as path from "path"
+import * as events from "@aws-cdk/aws-events"
+import * as targets from "@aws-cdk/aws-events-targets"
+import { CorsHttpMethod, HttpMethod, HttpApi } from '@aws-cdk/aws-apigatewayv2'
 import { HttpLambdaAuthorizer, HttpLambdaResponseType } from '@aws-cdk/aws-apigatewayv2-authorizers';
 import { HttpLambdaIntegration } from '@aws-cdk/aws-apigatewayv2-integrations';
 import { DynamoEventSource } from '@aws-cdk/aws-lambda-event-sources';
-import { AuthorizationType } from "@aws-cdk/aws-apigateway";
-import { StreamViewType } from '@aws-cdk/aws-dynamodb';
-import * as events from "@aws-cdk/aws-events"
-import * as targets from "@aws-cdk/aws-events-targets"
+import * as path from "path"
 import { 
   SECRET, 
 } from '../.env'
@@ -74,7 +72,7 @@ export class ECommerceStack extends cdk.Stack {
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       partitionKey: { name: ADMINS_TABLE_PARTITION_KEY, type: dynamodb.AttributeType.STRING },
       pointInTimeRecovery: true,
-      stream: StreamViewType.NEW_IMAGE,
+      stream: dynamodb.StreamViewType.NEW_IMAGE,
     })
 
     console.log("admins table name 👉", adminsTable.tableName)
@@ -107,6 +105,7 @@ export class ECommerceStack extends cdk.Stack {
         allowCredentials: true,
         allowOrigins: ['*'],
       },
+      minimumCompressionSize: 3500, // 3.5kb
     })
 
     // 👇 create an Output for the API URL
@@ -123,6 +122,7 @@ export class ECommerceStack extends cdk.Stack {
         ACCOUNT,
         STAGE,
         API_ID: restApi.restApiId,
+        ACCESS_TOKEN_NAME,
       }
     })
 
@@ -264,6 +264,8 @@ export class ECommerceStack extends cdk.Stack {
       environmentVariables: {
         "REACT_APP_REST_API": restApi.url,
         "REACT_APP_HTTP_API": httpApi.apiEndpoint,
+        "REACT_APP_ACCESS_TOKEN_NAME": ACCESS_TOKEN_NAME, 
+        "REACT_APP_NO_TAGS_STRING": NO_TAGS_STRING,
       }
     });
 
@@ -345,7 +347,7 @@ export class ECommerceStack extends cdk.Stack {
       "PATCH",
       new apigateway.LambdaIntegration(patchAccountLambda),
       {
-        authorizationType: AuthorizationType.CUSTOM,
+        authorizationType: apigateway.AuthorizationType.CUSTOM,
         authorizer: adminAuth,
       }
     )
@@ -369,7 +371,7 @@ export class ECommerceStack extends cdk.Stack {
       "GET",
       new apigateway.LambdaIntegration(getAccountLambda),
       {
-        authorizationType: AuthorizationType.CUSTOM,
+        authorizationType: apigateway.AuthorizationType.CUSTOM,
         authorizer: adminAuth,
       }
     )
@@ -437,7 +439,7 @@ export class ECommerceStack extends cdk.Stack {
       "GET",
       new apigateway.LambdaIntegration(getProductsLambda),
       {
-        authorizationType: AuthorizationType.CUSTOM,
+        authorizationType: apigateway.AuthorizationType.CUSTOM,
         authorizer: adminAuth,
       }
     )
@@ -509,7 +511,7 @@ export class ECommerceStack extends cdk.Stack {
       "PUT",
       new apigateway.LambdaIntegration(putProductLambda),
       {
-        authorizationType: AuthorizationType.CUSTOM,
+        authorizationType: apigateway.AuthorizationType.CUSTOM,
         authorizer: adminAuth,
       }
     )
@@ -541,7 +543,7 @@ export class ECommerceStack extends cdk.Stack {
       "DELETE",
       new apigateway.LambdaIntegration(deleteProductLambda),
       {
-        authorizationType: AuthorizationType.CUSTOM,
+        authorizationType: apigateway.AuthorizationType.CUSTOM,
         authorizer: adminAuth,
       }
     )
@@ -574,7 +576,7 @@ export class ECommerceStack extends cdk.Stack {
       "PATCH",
       new apigateway.LambdaIntegration(patchProductLambda),
       {
-        authorizationType: AuthorizationType.CUSTOM,
+        authorizationType: apigateway.AuthorizationType.CUSTOM,
         authorizer: adminAuth,
       }
     )

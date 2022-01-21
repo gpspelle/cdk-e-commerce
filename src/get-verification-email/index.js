@@ -8,10 +8,10 @@ const {
 
 const docClient = new DynamoDB.DocumentClient({ region: REGION });
 
-const handleError = (callback, error) => {
+const handleError = (error) => {
     console.error(error);
   
-    callback(null, {
+    return {
         statusCode: error.statusCode,
         body: JSON.stringify({ message: "Erro desconhecido, tente novamente." }),
         headers: {
@@ -19,7 +19,7 @@ const handleError = (callback, error) => {
             "Content-Type": "application/json"
         },
         isBase64Encoded: false
-    });
+    };
 }
 
 const addEmailVerificationToAccount = async (email) => {
@@ -49,14 +49,14 @@ const html = '\
         </body>\
     </html>';
 
-exports.handler = async (event, context, callback) => {
+exports.handler = async (event) => {
     const email = event.requestContext.authorizer.lambda.email
     // update parameters on dynamodb
     try {
         await addEmailVerificationToAccount(email);
         console.log("Successfully updated item on dynamodb");
     } catch(error) {
-        handleError(callback, error);
+        return handleError(error);
     }
 
     return {

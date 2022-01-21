@@ -14,10 +14,10 @@ const ddb = new DynamoDB({ apiVersion: "2012-08-10", region: REGION })
 const docClient = new DynamoDB.DocumentClient({ region: REGION });
 const S3Client = new S3({ region: REGION })
 
-exports.handler = (callback, error) => {
+exports.handler = (error) => {
   console.error(error);
 
-  callback(null, {
+  return {
     statusCode: error.statusCode,
     body: JSON.stringify({ message: "Erro desconhecido, tente novamente." }),
     headers: {
@@ -25,7 +25,7 @@ exports.handler = (callback, error) => {
       "Content-Type": "application/json"
     },
     isBase64Encoded: false
-  });
+  };
 }
 
 const getItemFromDynamoDB = async (id) => {
@@ -82,7 +82,7 @@ async function emptyS3Directory(bucket, dir) {
 }
 
 
-exports.handler = async (event, context, callback) => {
+exports.handler = async (event) => {
   const task = JSON.parse(event.body)
   const id = task.id
   const productOwnerId = event.requestContext.authorizer.id
@@ -90,13 +90,13 @@ exports.handler = async (event, context, callback) => {
   var response;
   try {
     response = await getItemFromDynamoDB(id)
-    console.log(`Successfully retrieved item ${id} from dynamodb`);
+    console.log(`Item recuperado com sucesso do dynamodb, ${id}`);
   } catch (error) {
-    handleError(callback, error)
+    return handleError(error)
   }
 
   if (response.Item.PRODUCT_OWNER_ID !== productOwnerId) {
-    callback(null, {
+    return {
       statusCode: 403,
       body: JSON.stringify({ message: "Permissão de alterar o item negada." }),
       headers: {
@@ -104,7 +104,7 @@ exports.handler = async (event, context, callback) => {
         "Content-Type": "application/json"
       },
       isBase64Encoded: false
-    });
+    };
   }
 
   const oldTags = response.Item?.PRODUCT_TAGS?.values
@@ -113,18 +113,18 @@ exports.handler = async (event, context, callback) => {
       try {
         await removeProductFromTag(oldTag, id)
       } catch (error) {
-        handleError(callback, error)
+        return handleError(error)
       }
     }
   }
 
   try {
     await emptyS3Directory(IMAGES_BUCKET, `${id}/`);
+    console.log(`Item deletado com sucesso do s3 bucket, ${id}`);
   } catch (error) {
-    handleError(callback, error)
+    return handleError(error)
   }
 
-  console.log(`Successfully deleted product ${id} from S3 bucket`);
 
   const dynamodbParams = {
     Key: {
@@ -137,12 +137,12 @@ exports.handler = async (event, context, callback) => {
 
   try {
     await deleteItemFromDynamoDB(dynamodbParams);
-    console.log("Successfully deleted item from dynamodb");
+    console.log("Item deletado com sucesso do dynamodb");
   } catch(error) {
-    handleError(callback, error)
+    return handleError(error)
   }
 
-  callback(null, {
+  return {
     statusCode: 200,
     body: JSON.stringify("Success"),
     headers: {
@@ -150,5 +150,5 @@ exports.handler = async (event, context, callback) => {
       'Content-Type': 'application/json'
     },
     isBase64Encoded: false
-  });
+  };
 }

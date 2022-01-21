@@ -4,13 +4,14 @@ const {
     REGION, 
     ACCOUNT, 
     API_ID, 
-    STAGE 
+    STAGE,
+    ACCESS_TOKEN_NAME,
 } = process.env;
 
 exports.handler = async (event, context, callback) => {
     const token = event.authorizationToken;
     if (!token) {
-        callback("O token de autenticação não está presente no header de acesso, x-access-token.");
+        callback(`O token de autenticação não está presente no header de acesso, ${ACCESS_TOKEN_NAME}.`);
     }
 
     try {
