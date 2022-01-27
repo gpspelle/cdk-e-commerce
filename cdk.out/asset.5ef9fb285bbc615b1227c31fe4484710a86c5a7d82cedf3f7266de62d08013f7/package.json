@@ -6,8 +6,8 @@
     "author": "",
     "license": "ISC",
     "scripts": {
-        "build": "webpack --mode=production",
-        "build:dev": "webpack --mode=development"
+        "build": "webpack --mode=production --env env=prod",
+        "build:dev": "webpack --mode=development --env env=dev"
     },
     "devDependencies": {
         "webpack": "^5.66.0",

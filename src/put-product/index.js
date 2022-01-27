@@ -65,6 +65,7 @@ const handleError = (error) => {
 const dealPriceIsHigherThanPrice = "O preço promocional deve ser menor do que o preço padrão do produto"
 const priceShouldbePositive = "O preço do produto deve ser maior do que zero"
 const dealPriceShouldBePositive = "O preço promocional do produto deve ser maior do que zero"
+const productStockCantBeNegative = "O estoque não pode ser negativo"
 
 exports.handler = async (event) => {
   const task = JSON.parse(event.body)
@@ -75,6 +76,7 @@ exports.handler = async (event) => {
   const images = task.images
   const coverImage = task.coverImage
   const productType = task.productType
+  const productStock = task.productStock
   const productOwnerId = event.requestContext.authorizer.id
   const id = uuidv4()
 
@@ -99,7 +101,14 @@ exports.handler = async (event) => {
       PRODUCT_COVER_IMAGE: { S: coverImage },
       PRODUCT_TAGS: { SS: tags.length > 0 ? tags : [NO_TAGS_STRING] },
       PRODUCT_TYPE: { S: productType },
+      PRODUCT_STOCK: { N: productStock },
     },
+  }
+
+  const productStockInt = parseInt(productStock, 10)
+
+  if (productStockInt < 0) {
+    return handleError({ message: productStockCantBeNegative, statusCode: 500 })
   }
 
   const priceInt = parseInt(price, 10)
@@ -148,7 +157,7 @@ exports.handler = async (event) => {
     await ddb.putItem(dynamodbParams).promise()
   } catch (error) {
     console.error(error)
-    return handleError({ message: "Erro ao inserir item no dynamodb", statusCode: error.statusCode })
+    return handleError({ message: "Erro ao inserir item no dynamodb", statusCode: 400 })
   }
 
   var promises = [];

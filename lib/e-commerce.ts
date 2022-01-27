@@ -28,6 +28,7 @@ import {
   CHANGE_FORGOT_PASSWORD_LINK,
   NO_TAGS_STRING,
   EMAIL_SIGNATURE,
+  SAME_ORIGINAL_PROFILE_PHOTO_STRING,
 } from "../constants";
 import * as amplify from '@aws-cdk/aws-amplify';
 import * as codebuild from '@aws-cdk/aws-codebuild';
@@ -35,6 +36,7 @@ import * as codebuild from '@aws-cdk/aws-codebuild';
 interface CustomizableStack extends cdk.StackProps {
   sesEmailFrom: string;
   imagesBucket: string;
+  adminsBucket: string;
   customDomain?: string;
 }
 
@@ -48,6 +50,7 @@ export class ECommerceStack extends cdk.Stack {
     const SES_EMAIL_FROM = props?.sesEmailFrom as string
     const IMAGES_BUCKET = props?.imagesBucket as string
     const CUSTOM_DOMAIN = props?.customDomain
+    const ADMINS_BUCKET = props?.adminsBucket as string
 
     // 👇 create Dynamodb table for products
     const productsTable = new dynamodb.Table(this, `${id}-products-table`, {
@@ -339,6 +342,8 @@ export class ECommerceStack extends cdk.Stack {
         ADMINS_TABLE,
         ADMINS_TABLE_PARTITION_KEY,
         HASH_ALG,
+        ADMINS_BUCKET,
+        SAME_ORIGINAL_PROFILE_PHOTO_STRING,
       }
     })
 
@@ -632,8 +637,8 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 grant the lambda role read permissions to the product tags table
     productTagsTable.grantReadData(getTagsLambda)
 
-    // 👇 create bucket
-    const s3Bucket = new s3.Bucket(this, "s3-bucket", {
+    // 👇 create images bucket
+    const imagesS3Bucket = new s3.Bucket(this, "s3-bucket", {
       bucketName: IMAGES_BUCKET,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       autoDeleteObjects: true,
@@ -666,11 +671,47 @@ export class ECommerceStack extends cdk.Stack {
     })
 
     // 👇 grant write access to bucket
-    s3Bucket.grantWrite(putProductLambda)
+    imagesS3Bucket.grantWrite(putProductLambda)
     // 👇 grant read and write access to bucket
-    s3Bucket.grantReadWrite(deleteProductLambda)
+    imagesS3Bucket.grantReadWrite(deleteProductLambda)
     // 👇 grant read and write access to bucket
-    s3Bucket.grantReadWrite(patchProductLambda)
+    imagesS3Bucket.grantReadWrite(patchProductLambda)
+
+    // 👇 create admins bucket
+    const adminsS3Bucket = new s3.Bucket(this, "s3-admins-bucket", {
+      bucketName: ADMINS_BUCKET,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      autoDeleteObjects: true,
+      versioned: false,
+      publicReadAccess: true,
+      encryption: s3.BucketEncryption.S3_MANAGED,
+      cors: [
+        {
+          allowedMethods: [
+            s3.HttpMethods.GET,
+            s3.HttpMethods.POST,
+            s3.HttpMethods.PUT,
+          ],
+          allowedOrigins: ["*"],
+          allowedHeaders: ["*"],
+        },
+      ],
+      lifecycleRules: [
+        {
+          abortIncompleteMultipartUploadAfter: cdk.Duration.days(90),
+          expiration: cdk.Duration.days(365),
+          transitions: [
+            {
+              storageClass: s3.StorageClass.INFREQUENT_ACCESS,
+              transitionAfter: cdk.Duration.days(30),
+            },
+          ],
+        },
+      ],
+    })
+
+    // 👇 grant read and write access to bucket
+    adminsS3Bucket.grantReadWrite(patchAccountLambda)
 
     // 👇 create the lambda that sends verification emails
     const sendVerificationEmailLambdaFunction = new lambda.Function(this, 'send-verification-email-lambda', {

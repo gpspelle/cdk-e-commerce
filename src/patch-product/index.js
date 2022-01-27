@@ -116,6 +116,8 @@ const updateItemOnDynamoDB = async (item, idAttributeName) => {
         params["ExpressionAttributeValues"][":" + attribute] = productImagesResized;
       } else if (attribute === "PRODUCT_TAGS") {
         params["ExpressionAttributeValues"][":" + attribute] = item[attribute].length > 0 ? docClient.createSet(item[attribute]) : docClient.createSet([NO_TAGS_STRING]);
+      } else if (attribute === "PRODUCT_STOCK") {
+        params["ExpressionAttributeValues"][":" + attribute] = parseInt(item[attribute], 10);
       } else {
         params["ExpressionAttributeValues"][":" + attribute] = item[attribute]
       }

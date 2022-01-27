@@ -6,11 +6,13 @@
   },
   "scripts": {
     "build": "tsc && npm run build:webpack",
-    "build:webpack": "for file in ./src/*; do (cd $file && npm i && npm run build); done",
+    "build:webpack": "for file in ./src/*; do (cd $file && npm i && npm run build) & done",
+    "build:beta": "tsc && npm run build:webpack:beta",
+    "build:webpack:beta": "for file in ./src/*; do (cd $file && npm i && npm run build:dev) & done",
     "watch": "tsc -w",
     "test": "jest",
     "cdk-deploy:prod": "npm run build && cdk deploy EcommerceStackProdSAEast --profile prod",
-    "cdk-deploy:beta": "npm run build && cdk deploy ECommerceStackBeta --profile beta"
+    "cdk-deploy:beta": "npm run build:beta && cdk deploy ECommerceStackBeta --profile beta"
   },
   "devDependencies": {
     "@aws-cdk/assertions": "1.137.0",
