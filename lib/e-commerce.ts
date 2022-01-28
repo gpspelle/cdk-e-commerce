@@ -38,6 +38,9 @@ interface CustomizableStack extends cdk.StackProps {
   imagesBucket: string;
   adminsBucket: string;
   customDomain?: string;
+  pageTitle?: string;
+  pageDescription?: string;
+  appName?: string;
 }
 
 export class ECommerceStack extends cdk.Stack {
@@ -51,6 +54,9 @@ export class ECommerceStack extends cdk.Stack {
     const IMAGES_BUCKET = props?.imagesBucket as string
     const CUSTOM_DOMAIN = props?.customDomain
     const ADMINS_BUCKET = props?.adminsBucket as string
+    const PAGE_TITLE = props?.pageTitle || ''
+    const PAGE_DESCRIPTION = props?.pageDescription || ''
+    const APP_NAME = props?.appName || ''
 
     // 👇 create Dynamodb table for products
     const productsTable = new dynamodb.Table(this, `${id}-products-table`, {
@@ -209,6 +215,9 @@ export class ECommerceStack extends cdk.Stack {
       }),
       environmentVariables: {
         "REACT_APP_REST_API": restApi.url,
+        "REACT_APP_PAGE_TITLE": PAGE_TITLE,
+        "REACT_APP_PAGE_DESCRIPTION": PAGE_DESCRIPTION,
+        "REACT_APP_APP_NAME": APP_NAME,
       }
     });
 

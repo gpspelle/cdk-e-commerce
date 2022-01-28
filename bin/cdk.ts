@@ -22,7 +22,10 @@ const SAEastProd = {
     sesEmailFrom: "gpsunicamp016@gmail.com", 
     imagesBucket: "sa-e-commerce-images-bucket",
     adminsBucket: "sa-east-1-prod-e-commerce-images-bucket",
-    customDomain: "alojinha.click" 
+    customDomain: "alojinha.click",
+    pageTitle: "Loja das Artes",
+    pageDescription: "A loja virtual de Araras",
+    appName: "Loja das Artes",
 };
 
 const app = new cdk.App();
