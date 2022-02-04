@@ -62,7 +62,7 @@ export class ECommerceStack extends cdk.Stack {
     const productsTable = new dynamodb.Table(this, `${id}-products-table`, {
       tableName: PRODUCTS_TABLE,
       billingMode: dynamodb.BillingMode.PROVISIONED,
-      readCapacity: 1,
+      readCapacity: 5,
       writeCapacity: 1,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       partitionKey: { name: PRODUCTS_TABLE_PARTITION_KEY, type: dynamodb.AttributeType.STRING },

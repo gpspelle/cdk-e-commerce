@@ -252,11 +252,11 @@ exports.handler = async (event) => {
     delete task.profilePhotoCropData
     delete task.originalProfilePhoto
 
-    const profilePhotoCropDataS3Path = `http://${ADMINS_BUCKET}.s3.${REGION}.amazonaws.com/${accountId}/${profilePhotoCropDataName}`;
+    const profilePhotoCropDataS3Path = `https://${ADMINS_BUCKET}.s3.${REGION}.amazonaws.com/${accountId}/${profilePhotoCropDataName}`;
     task.crop_profile_photo = profilePhotoCropDataS3Path
 
     if (!keepOriginalProfilePhoto) {
-      const originalProfilePhotoS3Path = `http://${ADMINS_BUCKET}.s3.${REGION}.amazonaws.com/${accountId}/${originalProfilePhotoName}`;
+      const originalProfilePhotoS3Path = `https://${ADMINS_BUCKET}.s3.${REGION}.amazonaws.com/${accountId}/${originalProfilePhotoName}`;
       task.original_profile_photo = originalProfilePhotoS3Path
     }
   }

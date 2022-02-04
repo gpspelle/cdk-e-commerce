@@ -4,22 +4,32 @@ const docClient = new DynamoDB.DocumentClient({ region: REGION })
 
 exports.handler = async (event) => {
   const task = event.multiValueQueryStringParameters
-  const productOwnerIds = task['productOwnerIds[]'];
-  const productOwnerIdsObject = {};
-  var index = 0;
-  productOwnerIds.forEach((productOwnerId) => {
-      index++;
-      const key = ":product_owner_id" + index;
-      productOwnerIdsObject[key] = productOwnerId;
-  });
 
   const params = {
     TableName: ADMINS_TABLE,
-    ProjectionExpression: "id, phone_number, commercial_name, is_verified_email",
+    ProjectionExpression: "id, phone_number, commercial_name, is_verified_email, #n, email, crop_profile_photo, about_me, about_products",
     ExclusiveStartKey: undefined,
-    FilterExpression : "id IN (" + Object.keys(productOwnerIdsObject).toString() + ")",
-    ExpressionAttributeValues : productOwnerIdsObject
+    ExpressionAttributeNames: {
+      "#n": "name"
+    },
+    FilterExpression: undefined,
+    ExpressionAttributeValues: undefined,
   }
+
+  if (task) {
+    const productOwnerIds = task['productOwnerIds[]'];
+    const productOwnerIdsObject = {};
+    var index = 0;
+    productOwnerIds.forEach((productOwnerId) => {
+        index++;
+        const key = ":product_owner_id" + index;
+        productOwnerIdsObject[key] = productOwnerId;
+    });
+  
+    params.FilterExpression = "id IN (" + Object.keys(productOwnerIdsObject).toString() + ")";
+    params.ExpressionAttributeValues = productOwnerIdsObject;
+  }
+
 
   const scanResults = []
   var items
