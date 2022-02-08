@@ -49,7 +49,7 @@ const isValidPassword = (password) => strongRegex.test(password)
 
 exports.handler = async (event) => {
     const task = JSON.parse(event.body)
-    const { email, name, commercialName, phoneNumber, password} = task
+    const { email, name, commercial_name, phone_number, password } = task
     const id = uuidv4()
 
     if (!isValidEmail(email)) {
@@ -68,8 +68,8 @@ exports.handler = async (event) => {
             [ADMINS_TABLE_PARTITION_KEY]: { S: email.toLowerCase() },
             id: { S: id },
             name: { S: name },
-            commercial_name: { S: commercialName },
-            phone_number: { S: phoneNumber },
+            commercial_name: { S: commercial_name },
+            phone_number: { S: phone_number },
             password: { S: hashedPassword },
             is_email_verified: { BOOL: false },
             is_active: { BOOL: true },
