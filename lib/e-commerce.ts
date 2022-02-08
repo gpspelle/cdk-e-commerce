@@ -29,6 +29,7 @@ import {
   NO_TAGS_STRING,
   EMAIL_SIGNATURE,
   SAME_ORIGINAL_PROFILE_PHOTO_STRING,
+  PRODUCTS_DUMP,
 } from "../constants";
 import * as amplify from '@aws-cdk/aws-amplify';
 import * as codebuild from '@aws-cdk/aws-codebuild';
@@ -278,6 +279,8 @@ export class ECommerceStack extends cdk.Stack {
         "REACT_APP_HTTP_API": httpApi.apiEndpoint,
         "REACT_APP_ACCESS_TOKEN_NAME": ACCESS_TOKEN_NAME, 
         "REACT_APP_NO_TAGS_STRING": NO_TAGS_STRING,
+        "REACT_APP_PRODUCTS_DUMP_FILE_NAME": PRODUCTS_DUMP,
+        "REACT_APP_ADMINS_BUCKET": ADMINS_BUCKET,
       }
     });
 
@@ -318,6 +321,12 @@ export class ECommerceStack extends cdk.Stack {
 
     // 👇 add a /tags resource
     const tags = restApi.root.addResource("tags")
+    
+    // 👇 add a /dump-products resource
+    const dumpProducts = restApi.root.addResource("dump-products")
+
+    // 👇 add a /batch-products resource
+    const batchProducts = restApi.root.addResource("batch-products")
 
     // 👇 define PUT account function
     const putAccountLambda = new lambda.Function(this, "put-account-lambda", {
@@ -353,6 +362,7 @@ export class ECommerceStack extends cdk.Stack {
         HASH_ALG,
         ADMINS_BUCKET,
         SAME_ORIGINAL_PROFILE_PHOTO_STRING,
+        SECRET,
       }
     })
 
@@ -601,28 +611,6 @@ export class ECommerceStack extends cdk.Stack {
     // 👇 grant the lambda role write permissions to the product tags table
     productTagsTable.grantWriteData(patchProductLambda)
 
-    // 👇 define PUT tags function
-    const putTagsLambda = new lambda.Function(this, "put-tags-lambda", {
-      runtime: lambda.Runtime.NODEJS_14_X,
-      handler: "main.handler",
-      timeout: cdk.Duration.seconds(100),
-      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/put-tags/dist")),
-      environment: {
-        REGION,
-        PRODUCT_TAGS_TABLE,
-        PRODUCT_TAGS_TABLE_PARTITION_KEY,
-      }
-    })
-
-    // 👇 grant the lambda role write permissions to the product tags table
-    productTagsTable.grantWriteData(putTagsLambda)
-
-    // 👇 integrate PUT /tags with putTagsLambda
-    tags.addMethod(
-      "PUT",
-      new apigateway.LambdaIntegration(putTagsLambda)
-    )
-
     // 👇 define GET tags function
     const getTagsLambda = new lambda.Function(this, "get-tags-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
@@ -645,6 +633,77 @@ export class ECommerceStack extends cdk.Stack {
 
     // 👇 grant the lambda role read permissions to the product tags table
     productTagsTable.grantReadData(getTagsLambda)
+
+    // 👇 define PUT dump products function
+    const putDumpProductsLambda = new lambda.Function(this, "put-dump-products-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "main.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/put-dump-products/dist")),
+      environment: {
+        REGION,
+        ADMINS_BUCKET,
+        PRODUCTS_DUMP,
+      }
+    })
+
+    // 👇 integrate GET /dumpProducts with putDumpProductsLambda
+    dumpProducts.addMethod(
+      "PUT",
+      new apigateway.LambdaIntegration(putDumpProductsLambda),
+      {
+        authorizationType: apigateway.AuthorizationType.CUSTOM,
+        authorizer: adminAuth,
+      }
+    )
+
+    // 👇 define delete batch products products function
+    const deleteBatchProductsLambda = new lambda.Function(this, "batch-delete-products-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "main.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/batch-delete-products/dist")),
+      environment: {
+        REGION,
+        PRODUCTS_TABLE,
+        PRODUCTS_TABLE_PARTITION_KEY,
+      }
+    })
+
+    // 👇 integrate DELETE /batch-products with deleteBatchProductsLambda
+    batchProducts.addMethod(
+      "DELETE",
+      new apigateway.LambdaIntegration(deleteBatchProductsLambda),
+      {
+        authorizationType: apigateway.AuthorizationType.CUSTOM,
+        authorizer: adminAuth,
+      }
+    )
+
+    // 👇 grant the lambda role read and write permissions to the products table
+    productsTable.grantReadWriteData(deleteBatchProductsLambda)
+
+    // 👇 define put batch products products function
+    const putBatchProductsLambda = new lambda.Function(this, "batch-put-products-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "main.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/batch-put-products/dist")),
+      environment: {
+        REGION,
+        PRODUCTS_TABLE,
+      }
+    })
+
+    // 👇 integrate PUT /batch-products with putBatchProductsLambda
+    batchProducts.addMethod(
+      "PUT",
+      new apigateway.LambdaIntegration(putBatchProductsLambda),
+      {
+        authorizationType: apigateway.AuthorizationType.CUSTOM,
+        authorizer: adminAuth,
+      }
+    )
+
+    // 👇 grant the lambda role write permissions to the products table
+    productsTable.grantWriteData(putBatchProductsLambda)
 
     // 👇 create images bucket
     const imagesS3Bucket = new s3.Bucket(this, "s3-bucket", {
@@ -721,6 +780,9 @@ export class ECommerceStack extends cdk.Stack {
 
     // 👇 grant read and write access to bucket
     adminsS3Bucket.grantReadWrite(patchAccountLambda)
+
+    // 👇 grant write access to bucket
+    adminsS3Bucket.grantWrite(putDumpProductsLambda)
 
     // 👇 create the lambda that sends verification emails
     const sendVerificationEmailLambdaFunction = new lambda.Function(this, 'send-verification-email-lambda', {

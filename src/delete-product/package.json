@@ -15,7 +15,6 @@
         "webpack-merge": "^5.8.0"
     },
     "dependencies": {
-        "aws-sdk": "^2.1058.0",
-        "jsonwebtoken": "^8.5.1"
+        "aws-sdk": "^2.1058.0"
     }
 }

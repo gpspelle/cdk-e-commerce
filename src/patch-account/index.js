@@ -2,6 +2,7 @@ const DynamoDB = require("aws-sdk/clients/dynamodb")
 const S3 = require("aws-sdk/clients/s3")
 const { v4: uuidv4 } = require("uuid")
 const crypto = require("crypto");
+const jwt = require("jsonwebtoken");
 const { 
   REGION, 
   ADMINS_TABLE,
@@ -9,34 +10,11 @@ const {
   HASH_ALG,
   ADMINS_BUCKET,
   SAME_ORIGINAL_PROFILE_PHOTO_STRING,
+  SECRET,
 } = process.env;
 
 const docClient = new DynamoDB.DocumentClient({ region: REGION });
 const S3Client = new S3({ region: REGION })
-
-async function emptyS3Directory(bucket, dir) {
-  const listParams = {
-      Bucket: bucket,
-      Prefix: dir
-  };
-
-  const listedObjects = await S3Client.listObjectsV2(listParams).promise();
-
-  if (listedObjects.Contents.length === 0) return;
-
-  const deleteParams = {
-      Bucket: bucket,
-      Delete: { Objects: [] }
-  };
-
-  listedObjects.Contents.forEach(({ Key }) => {
-      deleteParams.Delete.Objects.push({ Key });
-  });
-
-  await S3Client.deleteObjects(deleteParams).promise();
-
-  if (listedObjects.IsTruncated) await emptyS3Directory(bucket, dir);
-}
 
 async function emptyS3Directory(bucket, dir, keepOriginalProfilePhoto) {
   const listParams = {
@@ -267,6 +245,25 @@ exports.handler = async (event) => {
     console.log("Item atualizado no dynamodb com sucesso");
   } catch(error) {
     return handleError(error);
+  }
+
+
+  if (task.is_active !== undefined) {
+    const id = accountId;
+    const is_active = task.is_active;
+    const token = jwt.sign({ id, is_active }, SECRET, {
+      expiresIn: '24h'
+    });
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: "Conta modificada com sucesso.", token }),
+      headers: {
+        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+        "Content-Type": "application/json"
+      },
+      isBase64Encoded: false
+    };
   }
 
   return {

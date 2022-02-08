@@ -12,11 +12,13 @@ exports.handler = async (event) => {
     ExpressionAttributeNames: {
       "#n": "name"
     },
-    FilterExpression: undefined,
-    ExpressionAttributeValues: undefined,
+    FilterExpression: "is_active = :true",
+    ExpressionAttributeValues: {
+      ":true": true,
+    },
   }
 
-  if (task) {
+  if (task && task['productOwnerIds[]']) {
     const productOwnerIds = task['productOwnerIds[]'];
     const productOwnerIdsObject = {};
     var index = 0;
@@ -26,10 +28,9 @@ exports.handler = async (event) => {
         productOwnerIdsObject[key] = productOwnerId;
     });
   
-    params.FilterExpression = "id IN (" + Object.keys(productOwnerIdsObject).toString() + ")";
-    params.ExpressionAttributeValues = productOwnerIdsObject;
+    params.FilterExpression += " AND id IN (" + Object.keys(productOwnerIdsObject).toString() + ")";
+    params.ExpressionAttributeValues = { ...params.ExpressionAttributeValues, ...productOwnerIdsObject };
   }
-
 
   const scanResults = []
   var items

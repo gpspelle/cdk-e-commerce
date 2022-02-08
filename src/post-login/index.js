@@ -27,7 +27,8 @@ exports.handler = async (event) => {
         const hashedPassword = crypto.createHash(HASH_ALG).update(task.password).digest('hex');
         if (result.Item.password.S === hashedPassword) {
             const id = result.Item.id.S;
-            const token = jwt.sign({ id }, SECRET, {
+            const is_active = result.Item.is_active.BOOL;
+            const token = jwt.sign({ id, is_active }, SECRET, {
               expiresIn: '24h'
             });
 

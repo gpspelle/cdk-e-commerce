@@ -17,14 +17,15 @@ exports.handler = async (event, context, callback) => {
     try {
         const payload = jwt.verify(token, SECRET);
         const allowAllApiGWResources = `arn:aws:execute-api:${REGION}:${ACCOUNT}:${API_ID}/${STAGE}/*`;
-        callback(null, generatePolicy("user", "Allow", allowAllApiGWResources, payload.id));
+        callback(null, generatePolicy("user", "Allow", allowAllApiGWResources, payload.id, payload.is_active));
     } catch (error) {
-        callback("Falha ao autorizar o token jwt.");
+        console.error("Falha ao autorizar o token jwt")
+        callback("Falha ao autorizar o token jwt");
     }
 }
 
 // Help function to generate an IAM policy
-const generatePolicy = function(principalId, effect, resource, id) {
+const generatePolicy = function(principalId, effect, resource, id, is_active) {
     const authResponse = {};
     
     authResponse.principalId = principalId;
@@ -41,8 +42,10 @@ const generatePolicy = function(principalId, effect, resource, id) {
     }
     
     authResponse.context = {
-        id
+        id,
+        is_active,
     };
 
+    console.log("Token jwt autorizado com sucesso")
     return authResponse;
 }

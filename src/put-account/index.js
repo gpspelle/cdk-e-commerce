@@ -72,6 +72,7 @@ exports.handler = async (event) => {
             phone_number: { S: phoneNumber },
             password: { S: hashedPassword },
             is_email_verified: { BOOL: false },
+            is_active: { BOOL: true },
         },
         ConditionExpression: "attribute_not_exists(#unique)",
         ExpressionAttributeNames : {

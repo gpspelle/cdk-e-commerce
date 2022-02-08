@@ -199,6 +199,19 @@ const priceShouldbePositive = "O preço do produto deve ser maior do que zero"
 const dealPriceShouldBePositive = "O preço promocional do produto deve ser maior do que zero"
 
 exports.handler = async (event) => {
+  const isActive = event.requestContext.authorizer.is_active
+  if (isActive === "false" || isActive === undefined || isActive === false) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: "Não é permitido alterar produtos se a conta estiver desativada." }),
+      headers: {
+        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+        "Content-Type": "application/json"
+      },
+      isBase64Encoded: false
+    };
+  }
+
   const task = JSON.parse(event.body)
   const id = task.id
   const tags = task.PRODUCT_TAGS

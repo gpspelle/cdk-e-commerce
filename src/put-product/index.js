@@ -68,6 +68,19 @@ const dealPriceShouldBePositive = "O preço promocional do produto deve ser maio
 const productStockCantBeNegative = "O estoque não pode ser negativo"
 
 exports.handler = async (event) => {
+  const isActive = event.requestContext.authorizer.is_active
+  if (isActive === "false" || isActive === undefined || isActive === false) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: "Não é permitido adicionar produtos se a conta estiver desativada." }),
+      headers: {
+        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+        "Content-Type": "application/json"
+      },
+      isBase64Encoded: false
+    };
+  }
+
   const task = JSON.parse(event.body)
   const name = task.name
   const description = task.description
@@ -78,6 +91,7 @@ exports.handler = async (event) => {
   const productType = task.productType
   const productStock = task.productStock
   const productOwnerId = event.requestContext.authorizer.id
+
   const id = uuidv4()
 
   const productImages = images.map((image) => ({

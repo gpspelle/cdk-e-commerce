@@ -14,15 +14,15 @@ const ddb = new DynamoDB({ apiVersion: "2012-08-10", region: REGION })
 const docClient = new DynamoDB.DocumentClient({ region: REGION });
 const S3Client = new S3({ region: REGION })
 
-exports.handler = (error) => {
+const handleError = (error) => {
   console.error(error);
 
   return {
     statusCode: error.statusCode,
-    body: JSON.stringify({ message: "Erro desconhecido, tente novamente." }),
+    body: JSON.stringify({ message: error.message }),
     headers: {
       "Access-Control-Allow-Origin": "*", // Required for CORS support to work
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     },
     isBase64Encoded: false
   };
@@ -83,6 +83,19 @@ async function emptyS3Directory(bucket, dir) {
 
 
 exports.handler = async (event) => {
+  const isActive = event.requestContext.authorizer.is_active
+  if (isActive === "false" || isActive === undefined || isActive === false) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: "Não é permitido deletar produtos se a conta estiver desativada." }),
+      headers: {
+        "Access-Control-Allow-Origin": "*", // Required for CORS support to work
+        "Content-Type": "application/json"
+      },
+      isBase64Encoded: false
+    };
+  }
+
   const task = JSON.parse(event.body)
   const id = task.id
   const productOwnerId = event.requestContext.authorizer.id
