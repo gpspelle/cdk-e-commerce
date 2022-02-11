@@ -21,10 +21,10 @@ exports.handler = async () => {
     ExclusiveStartKey: undefined,
     ExpressionAttributeNames: {
         "#pt": "PRODUCT_TYPE",
-        "#et": "LIGHTING_DEAL_END_TIME"
+        "#et": "LIGHTNING_DEAL_END_TIME"
     },
     ExpressionAttributeValues: {
-        ":ld": "LIGHTING_DEAL",
+        ":ld": "LIGHTNING_DEAL",
         ":now": nowISOString
     },
     FilterExpression: "#pt = :ld AND #et <= :now",
@@ -44,9 +44,9 @@ exports.handler = async () => {
     ExpressionAttributeNames: {
         "#pt": "PRODUCT_TYPE",
         "#dp": "DEAL_PRICE",
-        "#ldp": "LIGHTING_DEAL_DURATION",
-        "#ldst": "LIGHTING_DEAL_START_TIME",
-        "#et": "LIGHTING_DEAL_END_TIME"
+        "#ldp": "LIGHTNING_DEAL_DURATION",
+        "#ldst": "LIGHTNING_DEAL_START_TIME",
+        "#et": "LIGHTNING_DEAL_END_TIME"
     },
     ExpressionAttributeValues: {
         ":n": "NORMAL",

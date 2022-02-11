@@ -66,6 +66,7 @@ const dealPriceIsHigherThanPrice = "O preço promocional deve ser menor do que o
 const priceShouldbePositive = "O preço do produto deve ser maior do que zero"
 const dealPriceShouldBePositive = "O preço promocional do produto deve ser maior do que zero"
 const productStockCantBeNegative = "O estoque não pode ser negativo"
+const atLeastOneProductSellTypeIsRequired = "Pelo menos um tipo de venda é necessário para o produto"
 
 exports.handler = async (event) => {
   const isActive = event.requestContext.authorizer.is_active
@@ -90,6 +91,7 @@ exports.handler = async (event) => {
   const coverImage = task.coverImage
   const productType = task.productType
   const productStock = task.productStock
+  const productSellTypes = task.productSellTypes
   const productOwnerId = event.requestContext.authorizer.id
 
   const id = uuidv4()
@@ -116,7 +118,12 @@ exports.handler = async (event) => {
       PRODUCT_TAGS: { SS: tags.length > 0 ? tags : [NO_TAGS_STRING] },
       PRODUCT_TYPE: { S: productType },
       PRODUCT_STOCK: { N: productStock },
+      PRODUCT_SELL_TYPES: { L: productSellTypes },
     },
+  }
+
+  if (productSellTypes === undefined || productSellTypes.length === undefined || productSellTypes.length === 0) {
+    return handleError({ message: atLeastOneProductSellTypeIsRequired, statusCode: 500 })
   }
 
   const productStockInt = parseInt(productStock, 10)
@@ -144,10 +151,10 @@ exports.handler = async (event) => {
     if (dealPriceInt >= priceInt) {
       return handleError({ message: dealPriceIsHigherThanPrice, statusCode: 500 })
     }
-  } else if (productType === "LIGHTING_DEAL") {
-    const lightingDealStartTime = task.lightingDealStartTime
-    const lightingDealDuration = task.lightingDealDuration
-    const lightingDealEndTime = task.lightingDealEndTime
+  } else if (productType === "LIGHTNING_DEAL") {
+    const lightningDealStartTime = task.lightningDealStartTime
+    const lightningDealDuration = task.lightningDealDuration
+    const lightningDealEndTime = task.lightningDealEndTime
     const dealPrice = task.dealPrice
 
     const dealPriceInt = parseInt(dealPrice, 10)
@@ -160,9 +167,9 @@ exports.handler = async (event) => {
       return handleError({ message: dealPriceIsHigherThanPrice, statusCode: 500 })
     }
 
-    dynamodbParams.Item.LIGHTING_DEAL_START_TIME = { S: lightingDealStartTime }
-    dynamodbParams.Item.LIGHTING_DEAL_END_TIME = { S: lightingDealEndTime }
-    dynamodbParams.Item.LIGHTING_DEAL_DURATION = { S: lightingDealDuration }
+    dynamodbParams.Item.LIGHTNING_DEAL_START_TIME = { S: lightningDealStartTime }
+    dynamodbParams.Item.LIGHTNING_DEAL_END_TIME = { S: lightningDealEndTime }
+    dynamodbParams.Item.LIGHTNING_DEAL_DURATION = { S: lightningDealDuration }
     dynamodbParams.Item.DEAL_PRICE = { N: dealPrice }
   }
 

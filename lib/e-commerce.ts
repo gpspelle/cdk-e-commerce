@@ -905,8 +905,8 @@ export class ECommerceStack extends cdk.Stack {
       integration: sendForgotPasswordEmailIntegration,
     });
 
-    // 👇 create the transform expired lighting deals into normal products
-    const processExpiredLightingDealsLambdaFunction = new lambda.Function(this, 'process-expired-lightning-deals', {
+    // 👇 create the transform expired lightning deals into normal products
+    const processExpiredLightningDealsLambdaFunction = new lambda.Function(this, 'process-expired-lightning-deals', {
       runtime: lambda.Runtime.NODEJS_14_X,
       timeout: cdk.Duration.seconds(5),
       handler: "main.handler",
@@ -918,12 +918,12 @@ export class ECommerceStack extends cdk.Stack {
       }
     })
 
-    productsTable.grantReadWriteData(processExpiredLightingDealsLambdaFunction)
+    productsTable.grantReadWriteData(processExpiredLightningDealsLambdaFunction)
 
     const rule = new events.Rule(this, 'cron-every-5-minutes', {
       schedule: events.Schedule.expression('rate(5 minutes)')
     })
 
-    rule.addTarget(new targets.LambdaFunction(processExpiredLightingDealsLambdaFunction))
+    rule.addTarget(new targets.LambdaFunction(processExpiredLightningDealsLambdaFunction))
   }
 }
