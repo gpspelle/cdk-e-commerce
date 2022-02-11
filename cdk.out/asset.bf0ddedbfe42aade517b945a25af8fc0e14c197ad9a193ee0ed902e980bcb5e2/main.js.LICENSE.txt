@@ -1,0 +1,5 @@
+/*!
+ * node-s3-url-encode - Because s3 urls are annoying
+ */
+
+/*! http://mths.be/fromcodepoint v0.1.0 by @mathias */

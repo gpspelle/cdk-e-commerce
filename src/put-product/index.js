@@ -65,7 +65,7 @@ const handleError = (error) => {
 const dealPriceIsHigherThanPrice = "O preço promocional deve ser menor do que o preço padrão do produto"
 const priceShouldbePositive = "O preço do produto deve ser maior do que zero"
 const dealPriceShouldBePositive = "O preço promocional do produto deve ser maior do que zero"
-const productStockCantBeNegative = "O estoque não pode ser negativo"
+const productStockCantBeNegativeOrZero = "O estoque não pode ser negativo ou zero"
 const atLeastOneProductSellTypeIsRequired = "Pelo menos um tipo de venda é necessário para o produto"
 
 exports.handler = async (event) => {
@@ -104,6 +104,10 @@ exports.handler = async (event) => {
     S: `http://${IMAGES_BUCKET}.s3.${REGION}.amazonaws.com/${id}/resized-${encodeS3URI(image.name.replace(/ /g, ""))}`
   }))
 
+  const productSellTypesInDynamodbNotation = productSellTypes.map((productSellType) => ({
+    S: productSellType
+  }))
+
   const dynamodbParams = {
     TableName: PRODUCTS_TABLE,
     Item: {
@@ -118,7 +122,7 @@ exports.handler = async (event) => {
       PRODUCT_TAGS: { SS: tags.length > 0 ? tags : [NO_TAGS_STRING] },
       PRODUCT_TYPE: { S: productType },
       PRODUCT_STOCK: { N: productStock },
-      PRODUCT_SELL_TYPES: { L: productSellTypes },
+      PRODUCT_SELL_TYPES: { L: productSellTypesInDynamodbNotation },
     },
   }
 
@@ -128,8 +132,8 @@ exports.handler = async (event) => {
 
   const productStockInt = parseInt(productStock, 10)
 
-  if (productStockInt < 0) {
-    return handleError({ message: productStockCantBeNegative, statusCode: 500 })
+  if (productStockInt <= 0) {
+    return handleError({ message: productStockCantBeNegativeOrZero, statusCode: 500 })
   }
 
   const priceInt = parseInt(price, 10)
