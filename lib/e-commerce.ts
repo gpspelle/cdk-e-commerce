@@ -30,6 +30,8 @@ import {
   EMAIL_SIGNATURE,
   SAME_ORIGINAL_PROFILE_PHOTO_STRING,
   PRODUCTS_DUMP,
+  PRODUCT_ORDER,
+  PRODUCT_STOCK,
 } from "../constants";
 import * as amplify from '@aws-cdk/aws-amplify';
 import * as codebuild from '@aws-cdk/aws-codebuild';
@@ -219,6 +221,8 @@ export class ECommerceStack extends cdk.Stack {
         "REACT_APP_PAGE_TITLE": PAGE_TITLE,
         "REACT_APP_PAGE_DESCRIPTION": PAGE_DESCRIPTION,
         "REACT_APP_APP_NAME": APP_NAME,
+        "REACT_APP_PRODUCT_ORDER": PRODUCT_ORDER,
+        "REACT_APP_PRODUCT_STOCK": PRODUCT_STOCK,
       }
     });
 
@@ -281,6 +285,8 @@ export class ECommerceStack extends cdk.Stack {
         "REACT_APP_NO_TAGS_STRING": NO_TAGS_STRING,
         "REACT_APP_PRODUCTS_DUMP_FILE_NAME": PRODUCTS_DUMP,
         "REACT_APP_ADMINS_BUCKET": ADMINS_BUCKET,
+        "REACT_APP_PRODUCT_ORDER": PRODUCT_ORDER,
+        "REACT_APP_PRODUCT_STOCK": PRODUCT_STOCK,
       }
     });
 
