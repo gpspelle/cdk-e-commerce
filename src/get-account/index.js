@@ -9,7 +9,7 @@ exports.handler = async (event) => {
     TableName: ADMINS_TABLE,
     ExclusiveStartKey: undefined,
     FilterExpression: `id = :id`,
-    ProjectionExpression: "email, id, #n, commercial_name, phone_number, is_email_verified, original_profile_photo, image_position, image_zoom, image_rotate, about_me, about_products",
+    ProjectionExpression: "email, id, #n, commercial_name, phone_number, is_email_verified, original_profile_photo, image_position, image_zoom, image_rotate, about_me, about_products, facebook_link, instagram_link",
     ExpressionAttributeValues: {
       ":id": accountId,
     },
