@@ -44,6 +44,11 @@ interface CustomizableStack extends cdk.StackProps {
   pageTitle?: string;
   pageDescription?: string;
   appName?: string;
+  appCity?: string;
+  appState?: string;
+  heroHeaderText?: string;
+  advantages?: string;
+  aboutUsDescription?: string;
 }
 
 export class ECommerceStack extends cdk.Stack {
@@ -60,6 +65,11 @@ export class ECommerceStack extends cdk.Stack {
     const PAGE_TITLE = props?.pageTitle || ''
     const PAGE_DESCRIPTION = props?.pageDescription || ''
     const APP_NAME = props?.appName || ''
+    const APP_CITY = props?.appCity || ''
+    const APP_STATE = props?.appState || ''
+    const HERO_HEADER_TEXT = props?.heroHeaderText || ''
+    const ADVANTAGES = props?.advantages || ''
+    const ABOUT_US_DESCRIPTION = props?.aboutUsDescription || ''
 
     // 👇 create Dynamodb table for products
     const productsTable = new dynamodb.Table(this, `${id}-products-table`, {
@@ -223,6 +233,11 @@ export class ECommerceStack extends cdk.Stack {
         "REACT_APP_APP_NAME": APP_NAME,
         "REACT_APP_PRODUCT_ORDER": PRODUCT_ORDER,
         "REACT_APP_PRODUCT_STOCK": PRODUCT_STOCK,
+        "REACT_APP_APP_CITY": APP_CITY,
+        "REACT_APP_APP_STATE": APP_STATE,
+        "REACT_APP_HERO_HEADER_TEXT": HERO_HEADER_TEXT,
+        "REACT_APP_ADVANTAGES": ADVANTAGES,
+        "REACT_APP_ABOUT_US_DESCRIPTION": ABOUT_US_DESCRIPTION,
       }
     });
 
