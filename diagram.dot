@@ -1,0 +1,1832 @@
+digraph "Diagram" {
+  splines = "ortho";
+  pad = "1.0";
+  nodesep = "0.60";
+  ranksep = "0.75";
+  fontname = "Sans-Serif";
+  fontsize = "15";
+  dpi = "200";
+  rankdir = "BT";
+  compound = "true";
+  fontcolor = "#222222";
+  edge [
+    color = "#D5871488",
+    penwidth = 2,
+    arrowhead = "dot",
+    arrowtail = "dot",
+  ];
+  node [
+    shape = "box",
+    style = "rounded",
+    fixedsize = true,
+    width = 1.7,
+    height = 1.7,
+    labelloc = "c",
+    imagescale = true,
+    fontname = "Sans-Serif",
+    fontsize = 8,
+    margin = 8,
+  ];
+  subgraph "App" {
+    subgraph "cluster-SubGraph.App" {
+      graph [
+        label = "App",
+        labelloc = "b",
+        labeljust = "l",
+        margin = "10",
+        fontsize = "16",
+        penwidth = "2",
+        pencolor = "#888888",
+        style = "filled,rounded",
+        fillcolor = "#f3f3f3",
+      ];
+      subgraph "cluster-SubGraph.ECommerceStackBeta" {
+        graph [
+          label = "ECommerceStackBeta",
+          labelloc = "b",
+          labeljust = "l",
+          margin = "10",
+          fontsize = "16",
+          penwidth = "2",
+          pencolor = "#888888",
+          style = "filled,rounded",
+          fillcolor = "#e4e4e4",
+        ];
+        "ECommerceStackBeta/ECommerceStackBeta-products-table" [
+          label = " ECommerceStackBeta\nproducts table",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Database/64/Arch_Amazon-DynamoDB_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.682,
+        ];
+        "ECommerceStackBeta/ECommerceStackBeta-admins-table" [
+          label = " ECommerceStackBeta\nadmins table",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Database/64/Arch_Amazon-DynamoDB_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.682,
+        ];
+        "ECommerceStackBeta/ECommerceStackBeta-product-tags-table" [
+          label = " ECommerceStackBeta\nproduct tags table",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Database/64/Arch_Amazon-DynamoDB_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.682,
+        ];
+        "ECommerceStackBeta/api" [
+          label = " api",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Networking-Content/64/Arch_Amazon-API-Gateway_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "ECommerceStackBeta/admin-auth-lambda" [
+          label = " admin-auth-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStackBeta/jwt-token-admin-auth" [
+          label = " jwt-token-admin-auth",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Networking-Content/64/Arch_Amazon-API-Gateway_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "ECommerceStackBeta/email-auth-lambda" [
+          label = " email-auth-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStackBeta/http-api" [
+          label = " http-api",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Networking-Content/64/Arch_Amazon-API-Gateway_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "ECommerceStackBeta/eCommerceAmplifyApp" [
+          label = " eCommerceAmplifyApp",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Mobile/64/Arch_AWS-Amplify-Console_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStackBeta/eCommerceAdminAmplifyApp" [
+          label = "\neCommerceAdminAmplify",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Mobile/64/Arch_AWS-Amplify-Console_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStackBeta/put-account-lambda" [
+          label = " put-account-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStackBeta/patch-account-lambda" [
+          label = " patch-account-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStackBeta/get-account-lambda" [
+          label = " get-account-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStackBeta/get-accounts-lambda" [
+          label = " get-accounts-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStackBeta/post-login-lambda" [
+          label = " post-login-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStackBeta/get-products-lambda" [
+          label = " get-products-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStackBeta/get-customer-product-lambda" [
+          label = " get customer product\nlambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStackBeta/get-customer-products-lambda" [
+          label = " get customer\nproducts lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStackBeta/put-product-lambda" [
+          label = " put-product-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStackBeta/delete-product-lambda" [
+          label = "\ndelete-product-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStackBeta/patch-product-lambda" [
+          label = " patch-product-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStackBeta/get-tags-lambda" [
+          label = " get-tags-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStackBeta/put-dump-products-lambda" [
+          label = " put dump products\nlambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStackBeta/batch-delete-products-lambda" [
+          label = " batch delete\nproducts lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStackBeta/batch-put-products-lambda" [
+          label = " batch put products\nlambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStackBeta/s3-bucket" [
+          label = " s3-bucket",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Storage/64/Arch_Amazon-S3-Standard_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStackBeta/s3-admins-bucket" [
+          label = " s3-admins-bucket",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Storage/64/Arch_Amazon-S3-Standard_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStackBeta/send-verification-email-lambda" [
+          label = " send verification\nemail lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStackBeta/get-verification-email" [
+          label = " get verification\nemail",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStackBeta/send-forgot-password-email-lambda" [
+          label = " send forgot password\nemail lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStackBeta/process-expired-lightning-deals" [
+          label = " process expired\nlightning deals",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStackBeta/cron-every-5-minutes" [
+          label = " cron-every-5-minutes",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_Amazon-EventBridge_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+      }
+      subgraph "cluster-SubGraph.ECommerceStack" {
+        graph [
+          label = "ECommerceStack",
+          labelloc = "b",
+          labeljust = "l",
+          margin = "10",
+          fontsize = "16",
+          penwidth = "2",
+          pencolor = "#888888",
+          style = "filled,rounded",
+          fillcolor = "#e4e4e4",
+        ];
+        "ECommerceStack/ECommerceStack-products-table" [
+          label = " ECommerceStack\nproducts table",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Database/64/Arch_Amazon-DynamoDB_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.682,
+        ];
+        "ECommerceStack/ECommerceStack-admins-table" [
+          label = " ECommerceStack\nadmins table",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Database/64/Arch_Amazon-DynamoDB_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.682,
+        ];
+        "ECommerceStack/ECommerceStack-product-tags-table" [
+          label = " ECommerceStack\nproduct tags table",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Database/64/Arch_Amazon-DynamoDB_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.682,
+        ];
+        "ECommerceStack/api" [
+          label = " api",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Networking-Content/64/Arch_Amazon-API-Gateway_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "ECommerceStack/admin-auth-lambda" [
+          label = " admin-auth-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStack/jwt-token-admin-auth" [
+          label = " jwt-token-admin-auth",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Networking-Content/64/Arch_Amazon-API-Gateway_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "ECommerceStack/email-auth-lambda" [
+          label = " email-auth-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStack/http-api" [
+          label = " http-api",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Networking-Content/64/Arch_Amazon-API-Gateway_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "ECommerceStack/eCommerceAmplifyApp" [
+          label = " eCommerceAmplifyApp",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Mobile/64/Arch_AWS-Amplify-Console_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStack/eCommerceAdminAmplifyApp" [
+          label = "\neCommerceAdminAmplify",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Mobile/64/Arch_AWS-Amplify-Console_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStack/put-account-lambda" [
+          label = " put-account-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStack/patch-account-lambda" [
+          label = " patch-account-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStack/get-account-lambda" [
+          label = " get-account-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStack/get-accounts-lambda" [
+          label = " get-accounts-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStack/post-login-lambda" [
+          label = " post-login-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStack/get-products-lambda" [
+          label = " get-products-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStack/get-customer-product-lambda" [
+          label = " get customer product\nlambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStack/get-customer-products-lambda" [
+          label = " get customer\nproducts lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStack/put-product-lambda" [
+          label = " put-product-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStack/delete-product-lambda" [
+          label = "\ndelete-product-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStack/patch-product-lambda" [
+          label = " patch-product-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStack/get-tags-lambda" [
+          label = " get-tags-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStack/put-dump-products-lambda" [
+          label = " put dump products\nlambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStack/batch-delete-products-lambda" [
+          label = " batch delete\nproducts lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStack/batch-put-products-lambda" [
+          label = " batch put products\nlambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStack/s3-bucket" [
+          label = " s3-bucket",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Storage/64/Arch_Amazon-S3-Standard_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStack/s3-admins-bucket" [
+          label = " s3-admins-bucket",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Storage/64/Arch_Amazon-S3-Standard_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "ECommerceStack/send-verification-email-lambda" [
+          label = " send verification\nemail lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStack/get-verification-email" [
+          label = " get verification\nemail",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStack/send-forgot-password-email-lambda" [
+          label = " send forgot password\nemail lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStack/process-expired-lightning-deals" [
+          label = " process expired\nlightning deals",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "ECommerceStack/cron-every-5-minutes" [
+          label = " cron-every-5-minutes",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_Amazon-EventBridge_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+      }
+      subgraph "cluster-SubGraph.EcommerceStackProdSAEast" {
+        graph [
+          label = "EcommerceStackProdSAEast",
+          labelloc = "b",
+          labeljust = "l",
+          margin = "10",
+          fontsize = "16",
+          penwidth = "2",
+          pencolor = "#888888",
+          style = "filled,rounded",
+          fillcolor = "#e4e4e4",
+        ];
+        "EcommerceStackProdSAEast/EcommerceStackProdSAEast-products-table" [
+          label = "\nEcommerceStackProdSAE\nproducts table",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Database/64/Arch_Amazon-DynamoDB_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.898,
+        ];
+        "EcommerceStackProdSAEast/EcommerceStackProdSAEast-admins-table" [
+          label = "\nEcommerceStackProdSAE\nadmins table",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Database/64/Arch_Amazon-DynamoDB_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.898,
+        ];
+        "EcommerceStackProdSAEast/EcommerceStackProdSAEast-product-tags-table" [
+          label = "\nEcommerceStackProdSAE\nproduct tags table",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Database/64/Arch_Amazon-DynamoDB_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.898,
+        ];
+        "EcommerceStackProdSAEast/api" [
+          label = " api",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Networking-Content/64/Arch_Amazon-API-Gateway_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "EcommerceStackProdSAEast/admin-auth-lambda" [
+          label = " admin-auth-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "EcommerceStackProdSAEast/jwt-token-admin-auth" [
+          label = " jwt-token-admin-auth",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Networking-Content/64/Arch_Amazon-API-Gateway_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "EcommerceStackProdSAEast/email-auth-lambda" [
+          label = " email-auth-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "EcommerceStackProdSAEast/http-api" [
+          label = " http-api",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Networking-Content/64/Arch_Amazon-API-Gateway_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "EcommerceStackProdSAEast/eCommerceAmplifyApp" [
+          label = " eCommerceAmplifyApp",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Mobile/64/Arch_AWS-Amplify-Console_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "EcommerceStackProdSAEast/e-commerce-domain" [
+          label = " e-commerce-domain",
+          fontsize = 12,
+        ];
+        "EcommerceStackProdSAEast/eCommerceAdminAmplifyApp" [
+          label = "\neCommerceAdminAmplify",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Mobile/64/Arch_AWS-Amplify-Console_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "EcommerceStackProdSAEast/e-commerce-admin-domain" [
+          label = " e commerce admin\ndomain",
+          fontsize = 12,
+        ];
+        "EcommerceStackProdSAEast/put-account-lambda" [
+          label = " put-account-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "EcommerceStackProdSAEast/patch-account-lambda" [
+          label = " patch-account-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "EcommerceStackProdSAEast/get-account-lambda" [
+          label = " get-account-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "EcommerceStackProdSAEast/get-accounts-lambda" [
+          label = " get-accounts-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "EcommerceStackProdSAEast/post-login-lambda" [
+          label = " post-login-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "EcommerceStackProdSAEast/get-products-lambda" [
+          label = " get-products-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "EcommerceStackProdSAEast/get-customer-product-lambda" [
+          label = " get customer product\nlambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "EcommerceStackProdSAEast/get-customer-products-lambda" [
+          label = " get customer\nproducts lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "EcommerceStackProdSAEast/put-product-lambda" [
+          label = " put-product-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "EcommerceStackProdSAEast/delete-product-lambda" [
+          label = "\ndelete-product-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "EcommerceStackProdSAEast/patch-product-lambda" [
+          label = " patch-product-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "EcommerceStackProdSAEast/get-tags-lambda" [
+          label = " get-tags-lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "EcommerceStackProdSAEast/put-dump-products-lambda" [
+          label = " put dump products\nlambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "EcommerceStackProdSAEast/batch-delete-products-lambda" [
+          label = " batch delete\nproducts lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "EcommerceStackProdSAEast/batch-put-products-lambda" [
+          label = " batch put products\nlambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "EcommerceStackProdSAEast/s3-bucket" [
+          label = " s3-bucket",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Storage/64/Arch_Amazon-S3-Standard_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "EcommerceStackProdSAEast/s3-admins-bucket" [
+          label = " s3-admins-bucket",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Storage/64/Arch_Amazon-S3-Standard_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "EcommerceStackProdSAEast/send-verification-email-lambda" [
+          label = " send verification\nemail lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "EcommerceStackProdSAEast/get-verification-email" [
+          label = " get verification\nemail",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "EcommerceStackProdSAEast/send-forgot-password-email-lambda" [
+          label = " send forgot password\nemail lambda",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "EcommerceStackProdSAEast/process-expired-lightning-deals" [
+          label = " process expired\nlightning deals",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.4819999999999998,
+        ];
+        "EcommerceStackProdSAEast/cron-every-5-minutes" [
+          label = " cron-every-5-minutes",
+          fontsize = 12,
+          image = "/Users/gpspelle/Documents/cdk-e-commerce/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_Amazon-EventBridge_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+      }
+    }
+  }
+  "ECommerceStackBeta/api" -> "ECommerceStackBeta/jwt-token-admin-auth" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/api" -> "ECommerceStackBeta/put-account-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/api" -> "ECommerceStackBeta/patch-account-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/api" -> "ECommerceStackBeta/get-account-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/api" -> "ECommerceStackBeta/get-accounts-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/api" -> "ECommerceStackBeta/post-login-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/api" -> "ECommerceStackBeta/get-products-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/api" -> "ECommerceStackBeta/get-customer-product-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/api" -> "ECommerceStackBeta/get-customer-products-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/api" -> "ECommerceStackBeta/put-product-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/api" -> "ECommerceStackBeta/delete-product-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/api" -> "ECommerceStackBeta/patch-product-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/api" -> "ECommerceStackBeta/get-tags-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/api" -> "ECommerceStackBeta/put-dump-products-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/api" -> "ECommerceStackBeta/batch-delete-products-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/api" -> "ECommerceStackBeta/batch-put-products-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/admin-auth-lambda" -> "ECommerceStackBeta/api" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/admin-auth-lambda" -> "ECommerceStackBeta/jwt-token-admin-auth" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/jwt-token-admin-auth" -> "ECommerceStackBeta/api" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/jwt-token-admin-auth" -> "ECommerceStackBeta/admin-auth-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/http-api" -> "ECommerceStackBeta/email-auth-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/http-api" -> "ECommerceStackBeta/send-verification-email-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/http-api" -> "ECommerceStackBeta/get-verification-email" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/http-api" -> "ECommerceStackBeta/send-forgot-password-email-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/eCommerceAmplifyApp" -> "ECommerceStackBeta/api" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/eCommerceAdminAmplifyApp" -> "ECommerceStackBeta/api" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/eCommerceAdminAmplifyApp" -> "ECommerceStackBeta/http-api" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/put-account-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-admins-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/patch-account-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-admins-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/patch-account-lambda" -> "ECommerceStackBeta/s3-admins-bucket" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/get-account-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-admins-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/get-accounts-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-admins-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/post-login-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-admins-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/get-products-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/get-customer-product-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/get-customer-products-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/put-product-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/put-product-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-product-tags-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/put-product-lambda" -> "ECommerceStackBeta/s3-bucket" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/delete-product-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/delete-product-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-product-tags-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/delete-product-lambda" -> "ECommerceStackBeta/s3-bucket" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/patch-product-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/patch-product-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-product-tags-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/patch-product-lambda" -> "ECommerceStackBeta/s3-bucket" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/get-tags-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-product-tags-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/put-dump-products-lambda" -> "ECommerceStackBeta/s3-admins-bucket" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/batch-delete-products-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/batch-put-products-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/send-verification-email-lambda" -> "ECommerceStackBeta/ECommerceStackBeta-admins-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/send-verification-email-lambda" -> "ECommerceStackBeta/http-api" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/get-verification-email" -> "ECommerceStackBeta/ECommerceStackBeta-admins-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/process-expired-lightning-deals" -> "ECommerceStackBeta/ECommerceStackBeta-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStackBeta/cron-every-5-minutes" -> "ECommerceStackBeta/process-expired-lightning-deals" [
+    dir = "both",
+  ];
+  "ECommerceStack/api" -> "ECommerceStack/jwt-token-admin-auth" [
+    dir = "both",
+  ];
+  "ECommerceStack/api" -> "ECommerceStack/put-account-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/api" -> "ECommerceStack/patch-account-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/api" -> "ECommerceStack/get-account-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/api" -> "ECommerceStack/get-accounts-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/api" -> "ECommerceStack/post-login-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/api" -> "ECommerceStack/get-products-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/api" -> "ECommerceStack/get-customer-product-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/api" -> "ECommerceStack/get-customer-products-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/api" -> "ECommerceStack/put-product-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/api" -> "ECommerceStack/delete-product-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/api" -> "ECommerceStack/patch-product-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/api" -> "ECommerceStack/get-tags-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/api" -> "ECommerceStack/put-dump-products-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/api" -> "ECommerceStack/batch-delete-products-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/api" -> "ECommerceStack/batch-put-products-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/admin-auth-lambda" -> "ECommerceStack/api" [
+    dir = "both",
+  ];
+  "ECommerceStack/admin-auth-lambda" -> "ECommerceStack/jwt-token-admin-auth" [
+    dir = "both",
+  ];
+  "ECommerceStack/jwt-token-admin-auth" -> "ECommerceStack/api" [
+    dir = "both",
+  ];
+  "ECommerceStack/jwt-token-admin-auth" -> "ECommerceStack/admin-auth-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/http-api" -> "ECommerceStack/email-auth-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/http-api" -> "ECommerceStack/send-verification-email-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/http-api" -> "ECommerceStack/get-verification-email" [
+    dir = "both",
+  ];
+  "ECommerceStack/http-api" -> "ECommerceStack/send-forgot-password-email-lambda" [
+    dir = "both",
+  ];
+  "ECommerceStack/eCommerceAmplifyApp" -> "ECommerceStack/api" [
+    dir = "both",
+  ];
+  "ECommerceStack/eCommerceAdminAmplifyApp" -> "ECommerceStack/api" [
+    dir = "both",
+  ];
+  "ECommerceStack/eCommerceAdminAmplifyApp" -> "ECommerceStack/http-api" [
+    dir = "both",
+  ];
+  "ECommerceStack/put-account-lambda" -> "ECommerceStack/ECommerceStack-admins-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/patch-account-lambda" -> "ECommerceStack/ECommerceStack-admins-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/patch-account-lambda" -> "ECommerceStack/s3-admins-bucket" [
+    dir = "both",
+  ];
+  "ECommerceStack/get-account-lambda" -> "ECommerceStack/ECommerceStack-admins-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/get-accounts-lambda" -> "ECommerceStack/ECommerceStack-admins-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/post-login-lambda" -> "ECommerceStack/ECommerceStack-admins-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/get-products-lambda" -> "ECommerceStack/ECommerceStack-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/get-customer-product-lambda" -> "ECommerceStack/ECommerceStack-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/get-customer-products-lambda" -> "ECommerceStack/ECommerceStack-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/put-product-lambda" -> "ECommerceStack/ECommerceStack-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/put-product-lambda" -> "ECommerceStack/ECommerceStack-product-tags-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/put-product-lambda" -> "ECommerceStack/s3-bucket" [
+    dir = "both",
+  ];
+  "ECommerceStack/delete-product-lambda" -> "ECommerceStack/ECommerceStack-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/delete-product-lambda" -> "ECommerceStack/ECommerceStack-product-tags-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/delete-product-lambda" -> "ECommerceStack/s3-bucket" [
+    dir = "both",
+  ];
+  "ECommerceStack/patch-product-lambda" -> "ECommerceStack/ECommerceStack-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/patch-product-lambda" -> "ECommerceStack/ECommerceStack-product-tags-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/patch-product-lambda" -> "ECommerceStack/s3-bucket" [
+    dir = "both",
+  ];
+  "ECommerceStack/get-tags-lambda" -> "ECommerceStack/ECommerceStack-product-tags-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/put-dump-products-lambda" -> "ECommerceStack/s3-admins-bucket" [
+    dir = "both",
+  ];
+  "ECommerceStack/batch-delete-products-lambda" -> "ECommerceStack/ECommerceStack-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/batch-put-products-lambda" -> "ECommerceStack/ECommerceStack-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/send-verification-email-lambda" -> "ECommerceStack/ECommerceStack-admins-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/send-verification-email-lambda" -> "ECommerceStack/http-api" [
+    dir = "both",
+  ];
+  "ECommerceStack/get-verification-email" -> "ECommerceStack/ECommerceStack-admins-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/process-expired-lightning-deals" -> "ECommerceStack/ECommerceStack-products-table" [
+    dir = "both",
+  ];
+  "ECommerceStack/cron-every-5-minutes" -> "ECommerceStack/process-expired-lightning-deals" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/api" -> "EcommerceStackProdSAEast/jwt-token-admin-auth" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/api" -> "EcommerceStackProdSAEast/put-account-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/api" -> "EcommerceStackProdSAEast/patch-account-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/api" -> "EcommerceStackProdSAEast/get-account-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/api" -> "EcommerceStackProdSAEast/get-accounts-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/api" -> "EcommerceStackProdSAEast/post-login-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/api" -> "EcommerceStackProdSAEast/get-products-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/api" -> "EcommerceStackProdSAEast/get-customer-product-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/api" -> "EcommerceStackProdSAEast/get-customer-products-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/api" -> "EcommerceStackProdSAEast/put-product-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/api" -> "EcommerceStackProdSAEast/delete-product-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/api" -> "EcommerceStackProdSAEast/patch-product-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/api" -> "EcommerceStackProdSAEast/get-tags-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/api" -> "EcommerceStackProdSAEast/put-dump-products-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/api" -> "EcommerceStackProdSAEast/batch-delete-products-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/api" -> "EcommerceStackProdSAEast/batch-put-products-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/admin-auth-lambda" -> "EcommerceStackProdSAEast/api" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/admin-auth-lambda" -> "EcommerceStackProdSAEast/jwt-token-admin-auth" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/jwt-token-admin-auth" -> "EcommerceStackProdSAEast/api" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/jwt-token-admin-auth" -> "EcommerceStackProdSAEast/admin-auth-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/http-api" -> "EcommerceStackProdSAEast/email-auth-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/http-api" -> "EcommerceStackProdSAEast/send-verification-email-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/http-api" -> "EcommerceStackProdSAEast/get-verification-email" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/http-api" -> "EcommerceStackProdSAEast/send-forgot-password-email-lambda" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/eCommerceAmplifyApp" -> "EcommerceStackProdSAEast/api" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/e-commerce-domain" -> "EcommerceStackProdSAEast/eCommerceAmplifyApp" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/eCommerceAdminAmplifyApp" -> "EcommerceStackProdSAEast/api" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/eCommerceAdminAmplifyApp" -> "EcommerceStackProdSAEast/http-api" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/e-commerce-admin-domain" -> "EcommerceStackProdSAEast/eCommerceAdminAmplifyApp" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/put-account-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-admins-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/patch-account-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-admins-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/patch-account-lambda" -> "EcommerceStackProdSAEast/s3-admins-bucket" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/get-account-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-admins-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/get-accounts-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-admins-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/post-login-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-admins-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/get-products-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-products-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/get-customer-product-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-products-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/get-customer-products-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-products-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/put-product-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-products-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/put-product-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-product-tags-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/put-product-lambda" -> "EcommerceStackProdSAEast/s3-bucket" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/delete-product-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-products-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/delete-product-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-product-tags-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/delete-product-lambda" -> "EcommerceStackProdSAEast/s3-bucket" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/patch-product-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-products-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/patch-product-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-product-tags-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/patch-product-lambda" -> "EcommerceStackProdSAEast/s3-bucket" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/get-tags-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-product-tags-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/put-dump-products-lambda" -> "EcommerceStackProdSAEast/s3-admins-bucket" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/batch-delete-products-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-products-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/batch-put-products-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-products-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/send-verification-email-lambda" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-admins-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/send-verification-email-lambda" -> "EcommerceStackProdSAEast/http-api" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/get-verification-email" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-admins-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/process-expired-lightning-deals" -> "EcommerceStackProdSAEast/EcommerceStackProdSAEast-products-table" [
+    dir = "both",
+  ];
+  "EcommerceStackProdSAEast/cron-every-5-minutes" -> "EcommerceStackProdSAEast/process-expired-lightning-deals" [
+    dir = "both",
+  ];
+}
