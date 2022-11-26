@@ -375,6 +375,7 @@ export class ECommerceStack extends cdk.Stack {
     const patchAccountLambda = new lambda.Function(this, "patch-account-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "main.handler",
+      timeout: cdk.Duration.seconds(29),
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/patch-account/dist")),
       environment: {
         REGION,
@@ -428,6 +429,7 @@ export class ECommerceStack extends cdk.Stack {
     const getAccountsLambda = new lambda.Function(this, "get-accounts-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "main.handler",
+      timeout: cdk.Duration.seconds(29),
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-accounts/dist")),
       environment: {
         REGION,
@@ -496,6 +498,7 @@ export class ECommerceStack extends cdk.Stack {
     const getCustomerProductLambda = new lambda.Function(this, "get-customer-product-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "main.handler",
+      timeout: cdk.Duration.seconds(29),
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/get-customer-product/dist")),
       environment: {
         REGION,
@@ -659,6 +662,7 @@ export class ECommerceStack extends cdk.Stack {
     const putDumpProductsLambda = new lambda.Function(this, "put-dump-products-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "main.handler",
+      timeout: cdk.Duration.seconds(29),
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/put-dump-products/dist")),
       environment: {
         REGION,
@@ -681,6 +685,7 @@ export class ECommerceStack extends cdk.Stack {
     const deleteBatchProductsLambda = new lambda.Function(this, "batch-delete-products-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "main.handler",
+      timeout: cdk.Duration.seconds(29),
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/batch-delete-products/dist")),
       environment: {
         REGION,
@@ -706,6 +711,7 @@ export class ECommerceStack extends cdk.Stack {
     const putBatchProductsLambda = new lambda.Function(this, "batch-put-products-lambda", {
       runtime: lambda.Runtime.NODEJS_14_X,
       handler: "main.handler",
+      timeout: cdk.Duration.seconds(29),
       code: lambda.Code.fromAsset(path.join(__dirname, "/../src/batch-put-products/dist")),
       environment: {
         REGION,
