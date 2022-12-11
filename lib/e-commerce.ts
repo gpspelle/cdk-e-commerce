@@ -15,7 +15,7 @@ import {
   SECRET, 
 } from '../.env'
 import {
-  STAGE, 
+  STAGE,
   ADMINS_TABLE,
   PRODUCT_TAGS_TABLE,
   HASH_ALG,
@@ -31,7 +31,7 @@ import {
   SAME_ORIGINAL_PROFILE_PHOTO_STRING,
   PRODUCTS_DUMP,
   PRODUCT_ORDER,
-  PRODUCT_STOCK,
+  PRODUCT_STOCK, AMAZON_PAY_REGION, AMAZON_PAY_SIGNATURE_KEY,
 } from "../constants";
 import * as amplify from '@aws-cdk/aws-amplify';
 import * as codebuild from '@aws-cdk/aws-codebuild';
@@ -49,6 +49,7 @@ interface CustomizableStack extends cdk.StackProps {
   heroHeaderText?: string;
   advantages?: string;
   aboutUsDescription?: string;
+  amazonPayReturnURL?: string;
 }
 
 export class ECommerceStack extends cdk.Stack {
@@ -70,6 +71,8 @@ export class ECommerceStack extends cdk.Stack {
     const HERO_HEADER_TEXT = props?.heroHeaderText || ''
     const ADVANTAGES = props?.advantages || ''
     const ABOUT_US_DESCRIPTION = props?.aboutUsDescription || ''
+    const AMAZON_PAY_RETURN_URL = props?.amazonPayReturnURL || 'localhost:3000'
+
 
     // 👇 create Dynamodb table for products
     const productsTable = new dynamodb.Table(this, `${id}-products-table`, {
@@ -348,6 +351,9 @@ export class ECommerceStack extends cdk.Stack {
 
     // 👇 add a /batch-products resource
     const batchProducts = restApi.root.addResource("batch-products")
+
+    // 👇 add a /amazon-pay resource
+    const amazonPay = restApi.root.addResource("amazon-pay")
 
     // 👇 define PUT account function
     const putAccountLambda = new lambda.Function(this, "put-account-lambda", {
@@ -952,5 +958,33 @@ export class ECommerceStack extends cdk.Stack {
     })
 
     rule.addTarget(new targets.LambdaFunction(processExpiredLightningDealsLambdaFunction))
+
+    // 👇 define PATCH account function
+    const amazonPaySignLambda = new lambda.Function(this, "amazon-pay-sign-lambda", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "main.handler",
+      code: lambda.Code.fromAsset(path.join(__dirname, "/../src/amazon-pay-sign/dist")),
+      environment: {
+        REGION,
+        AMAZON_PAY_REGION,
+        AMAZON_PAY_RETURN_URL,
+        AMAZON_PAY_SIGNATURE_KEY,
+        ADMINS_TABLE,
+        ADMINS_TABLE_PARTITION_KEY,
+      }
+    })
+
+    // 👇 integrate POST /amazonPay with amazonPaySignLambda
+    amazonPay.addMethod(
+        "POST",
+        new apigateway.LambdaIntegration(amazonPaySignLambda),
+        {
+          authorizationType: apigateway.AuthorizationType.CUSTOM,
+          authorizer: adminAuth,
+        }
+    )
+
+    // 👇 grant the lambda role get permissions to the admins table
+    adminsTable.grantReadWriteData(amazonPaySignLambda)
   }
 }

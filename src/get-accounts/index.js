@@ -7,7 +7,7 @@ exports.handler = async (event) => {
 
   const params = {
     TableName: ADMINS_TABLE,
-    ProjectionExpression: "id, phone_number, commercial_name, is_verified_email, #n, email, crop_profile_photo, about_me, about_products, facebook_link, instagram_link",
+    ProjectionExpression: "id, phone_number, commercial_name, is_verified_email, #n, email, crop_profile_photo, about_me, about_products, facebook_link, instagram_link, amazon_pay_signature",
     ExclusiveStartKey: undefined,
     ExpressionAttributeNames: {
       "#n": "name"
