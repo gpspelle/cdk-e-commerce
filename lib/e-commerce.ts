@@ -754,7 +754,6 @@ export class ECommerceStack extends cdk.Stack {
       lifecycleRules: [
         {
           abortIncompleteMultipartUploadAfter: cdk.Duration.days(90),
-          expiration: cdk.Duration.days(365),
           transitions: [
             {
               storageClass: s3.StorageClass.INFREQUENT_ACCESS,
@@ -794,7 +793,6 @@ export class ECommerceStack extends cdk.Stack {
       lifecycleRules: [
         {
           abortIncompleteMultipartUploadAfter: cdk.Duration.days(90),
-          expiration: cdk.Duration.days(365),
           transitions: [
             {
               storageClass: s3.StorageClass.INFREQUENT_ACCESS,
